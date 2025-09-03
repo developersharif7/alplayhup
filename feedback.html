@@ -1,0 +1,600 @@
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    
+    <title>Feedback - AlPlayHub | Share Your Gaming Experience</title>
+    
+    <meta name="description" content="Share your feedback about AlPlayHub gaming platform. Help us improve by sharing your gaming experience, suggestions, and feature requests.">
+    <meta name="keywords" content="AlPlayHub feedback, gaming platform review, user experience, suggestions, feature requests, HTML5 games feedback">
+    <meta name="author" content="AlPlayHub Team">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://allplayhub.netlify.app/feedback.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Feedback - AlPlayHub Gaming Platform">
+    <meta property="og:description" content="Share your gaming experience and help us improve AlPlayHub HTML5 gaming platform.">
+    <meta property="og:image" content="https://i.ibb.co/7Nv7n83N/Untitled-design-20250515-213921-0000.png">
+    <meta property="og:url" content="https://allplayhub.netlify.app/feedback.html">
+    <meta property="og:site_name" content="AlPlayHub">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AlPlayHub Feedback Portal">
+    <meta name="twitter:description" content="Help improve AlPlayHub by sharing your gaming experience and suggestions.">
+    <meta name="twitter:image" content="https://i.ibb.co/7Nv7n83N/Untitled-design-20250515-213921-0000.png">
+    
+    <meta name="theme-color" content="#8B5CF6">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="AlPlayHub Feedback">
+    
+    <!-- External Resources -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+            min-height: 100vh;
+            padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        .header-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .content-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .feedback-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .feedback-card {
+            background: rgba(139, 92, 246, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            border: 2px solid rgba(139, 92, 246, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .feedback-card:hover {
+            transform: translateY(-5px);
+            border-color: #8B5CF6;
+            box-shadow: 0 15px 30px rgba(139, 92, 246, 0.2);
+        }
+        
+        .feedback-card.selected {
+            border-color: #8B5CF6;
+            background: rgba(139, 92, 246, 0.2);
+        }
+        
+        .feedback-icon {
+            font-size: 3rem;
+            color: #8B5CF6;
+            margin-bottom: 1rem;
+        }
+        
+        .btn-primary {
+            background: #8B5CF6;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary:hover {
+            background: #7C3AED;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(139, 92, 246, 0.3);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: #8B5CF6;
+            padding: 12px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid #8B5CF6;
+        }
+        
+        .btn-secondary:hover {
+            background: #8B5CF6;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        h1 {
+            color: #8B5CF6;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        h2 {
+            color: #1F2937;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 2rem 0 1rem 0;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #374151;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #E5E7EB;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #8B5CF6;
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+        }
+        
+        textarea.form-input {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .rating-stars {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin: 1rem 0;
+        }
+        
+        .star {
+            font-size: 2rem;
+            color: #D1D5DB;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+        
+        .star:hover,
+        .star.active {
+            color: #FBBF24;
+        }
+        
+        .highlight {
+            background: linear-gradient(135deg, #8B5CF6, #7C3AED);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 600;
+        }
+        
+        .success-message {
+            background: rgba(16, 185, 129, 0.1);
+            border: 2px solid rgba(16, 185, 129, 0.3);
+            border-radius: 12px;
+            padding: 1rem;
+            text-align: center;
+            color: #059669;
+            margin: 1rem 0;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header-card">
+            <h1><i class="fas fa-comment-dots mr-3"></i>Feedback</h1>
+            <p class="text-gray-600 text-lg">Help us improve AlPlayHub with your valuable feedback</p>
+            <div class="rating-stars" id="overall-rating">
+                <span class="star" data-rating="1">⭐</span>
+                <span class="star" data-rating="2">⭐</span>
+                <span class="star" data-rating="3">⭐</span>
+                <span class="star" data-rating="4">⭐</span>
+                <span class="star" data-rating="5">⭐</span>
+            </div>
+            <p class="text-sm text-gray-500">Rate your overall experience</p>
+        </div>
+
+        <!-- Feedback Categories -->
+        <div class="content-card">
+            <h2>🎯 What would you like to share feedback about?</h2>
+            <div class="feedback-grid">
+                <div class="feedback-card" onclick="selectCategory('games')">
+                    <div class="feedback-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2">Games & Content</h3>
+                    <p class="text-gray-700 text-sm">Game quality, variety, and experience</p>
+                </div>
+                
+                <div class="feedback-card" onclick="selectCategory('platform')">
+                    <div class="feedback-icon">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2">Platform Features</h3>
+                    <p class="text-gray-700 text-sm">Website functionality and features</p>
+                </div>
+                
+                <div class="feedback-card" onclick="selectCategory('mobile')">
+                    <div class="feedback-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2">Mobile Experience</h3>
+                    <p class="text-gray-700 text-sm">Mobile gaming and responsiveness</p>
+                </div>
+                
+                <div class="feedback-card" onclick="selectCategory('upload')">
+                    <div class="feedback-icon">
+                        <i class="fas fa-upload"></i>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2">Upload Process</h3>
+                    <p class="text-gray-700 text-sm">Developer experience and submission</p>
+                </div>
+                
+                <div class="feedback-card" onclick="selectCategory('suggestion')">
+                    <div class="feedback-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2">Feature Request</h3>
+                    <p class="text-gray-700 text-sm">New features and improvements</p>
+                </div>
+                
+                <div class="feedback-card" onclick="selectCategory('bug')">
+                    <div class="feedback-icon">
+                        <i class="fas fa-bug"></i>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2">Bug Report</h3>
+                    <p class="text-gray-700 text-sm">Technical issues and problems</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Feedback Form -->
+        <div class="content-card">
+            <h2>📝 Share Your Feedback</h2>
+            <form id="feedbackForm" onsubmit="submitFeedback(event)">
+                <div class="form-group">
+                    <label class="form-label" for="userName">Your Name (Optional)</label>
+                    <input type="text" id="userName" name="userName" class="form-input" placeholder="Enter your name">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="userEmail">Email (Optional)</label>
+                    <input type="email" id="userEmail" name="userEmail" class="form-input" placeholder="your@email.com">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="category">Feedback Category</label>
+                    <select id="category" name="category" class="form-input" required>
+                        <option value="">Select a category</option>
+                        <option value="games">Games & Content</option>
+                        <option value="platform">Platform Features</option>
+                        <option value="mobile">Mobile Experience</option>
+                        <option value="upload">Upload Process</option>
+                        <option value="suggestion">Feature Request</option>
+                        <option value="bug">Bug Report</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="feedback">Your Feedback</label>
+                    <textarea id="feedback" name="feedback" class="form-input" required placeholder="Share your thoughts, suggestions, or report issues in detail..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Rate this aspect (1-5 stars)</label>
+                    <div class="rating-stars" id="category-rating">
+                        <span class="star" data-rating="1">⭐</span>
+                        <span class="star" data-rating="2">⭐</span>
+                        <span class="star" data-rating="3">⭐</span>
+                        <span class="star" data-rating="4">⭐</span>
+                        <span class="star" data-rating="5">⭐</span>
+                    </div>
+                </div>
+                
+                <div class="success-message" id="success-message">
+                    <i class="fas fa-check-circle mr-2"></i>
+                    Thank you for your feedback! We appreciate your input.
+                </div>
+                
+                <button type="submit" class="btn-primary w-full">
+                    <i class="fas fa-paper-plane"></i>
+                    Submit Feedback
+                </button>
+            </form>
+        </div>
+
+        <!-- Quick Feedback Options -->
+        <div class="content-card">
+            <h2>⚡ Quick Feedback</h2>
+            <p class="text-gray-700 mb-4">Help us with quick feedback on common topics:</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="p-4 bg-purple-50 rounded-lg text-center">
+                    <h3 class="font-semibold mb-2">Game Loading Speed</h3>
+                    <div class="flex justify-center gap-2">
+                        <button class="btn-secondary text-xs" onclick="quickFeedback('loading', 'fast')">Fast</button>
+                        <button class="btn-secondary text-xs" onclick="quickFeedback('loading', 'moderate')">Moderate</button>
+                        <button class="btn-secondary text-xs" onclick="quickFeedback('loading', 'slow')">Slow</button>
+                    </div>
+                </div>
+                
+                <div class="p-4 bg-purple-50 rounded-lg text-center">
+                    <h3 class="font-semibold mb-2">Mobile Experience</h3>
+                    <div class="flex justify-center gap-2">
+                        <button class="btn-secondary text-xs" onclick="quickFeedback('mobile', 'excellent')">Excellent</button>
+                        <button class="btn-secondary text-xs" onclick="quickFeedback('mobile', 'good')">Good</button>
+                        <button class="btn-secondary text-xs" onclick="quickFeedback('mobile', 'needs-work')">Needs Work</button>
+                    </div>
+                </div>
+                
+                <div class="p-4 bg-purple-50 rounded-lg text-center">
+                    <h3 class="font-semibold mb-2">Game Variety</h3>
+                    <div class="flex justify-center gap-2">
+                        <button class="btn-secondary text-xs" onclick="quickFeedback('variety', 'great')">Great</button>
+                        <button class="btn-secondary text-xs" onclick="quickFeedback('variety', 'good')">Good</button>
+                        <button class="btn-secondary text-xs" onclick="quickFeedback('variety', 'more-needed')">More Needed</button>
+                    </div>
+                </div>
+                
+                <div class="p-4 bg-purple-50 rounded-lg text-center">
+                    <h3 class="font-semibold mb-2">Overall Satisfaction</h3>
+                    <div class="flex justify-center gap-2">
+                        <button class="btn-secondary text-xs" onclick="quickFeedback('satisfaction', 'love-it')">Love It</button>
+                        <button class="btn-secondary text-xs" onclick="quickFeedback('satisfaction', 'like-it')">Like It</button>
+                        <button class="btn-secondary text-xs" onclick="quickFeedback('satisfaction', 'okay')">Okay</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Suggestions -->
+        <div class="content-card">
+            <h2>💡 Common Suggestions</h2>
+            <p class="text-gray-700 mb-4">Help us prioritize these potential improvements:</p>
+            <div class="space-y-3">
+                <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                    <span>Dark mode for the platform</span>
+                    <button class="btn-secondary text-xs" onclick="voteSuggestion('dark-mode')">Vote</button>
+                </div>
+                <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                    <span>Game categories and filters</span>
+                    <button class="btn-secondary text-xs" onclick="voteSuggestion('categories')">Vote</button>
+                </div>
+                <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                    <span>Multiplayer game support</span>
+                    <button class="btn-secondary text-xs" onclick="voteSuggestion('multiplayer')">Vote</button>
+                </div>
+                <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                    <span>Game rating and reviews</span>
+                    <button class="btn-secondary text-xs" onclick="voteSuggestion('ratings')">Vote</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Message -->
+        <div class="content-card text-center">
+            <h2>🙏 Thank You!</h2>
+            <p class="text-gray-700 mb-4">
+                Your feedback helps us create a better gaming experience for everyone. Every suggestion, bug report, and comment matters to us.
+            </p>
+            <p class="highlight text-xl font-semibold">
+                Together, we're building the best HTML5 gaming platform!
+            </p>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="text-center">
+            <a href="https://www.crekode.com/developersharif" target="_blank" class="btn-primary mr-4">
+                <i class="fas fa-external-link-alt"></i>
+                Developer Portal
+            </a>
+            <a href="mailto:ms2600971@gmail.com" class="btn-secondary">
+                <i class="fas fa-envelope"></i>
+                Direct Email
+            </a>
+        </div>
+    </div>
+
+    <script>
+        let selectedRating = 0;
+        let categoryRating = 0;
+        let selectedCategory = '';
+
+        // Handle star ratings
+        document.querySelectorAll('.rating-stars').forEach(container => {
+            const stars = container.querySelectorAll('.star');
+            stars.forEach((star, index) => {
+                star.addEventListener('click', () => {
+                    const rating = parseInt(star.dataset.rating);
+                    if (container.id === 'overall-rating') {
+                        selectedRating = rating;
+                    } else {
+                        categoryRating = rating;
+                    }
+                    
+                    // Update star display
+                    stars.forEach((s, i) => {
+                        if (i < rating) {
+                            s.classList.add('active');
+                        } else {
+                            s.classList.remove('active');
+                        }
+                    });
+                });
+                
+                star.addEventListener('mouseover', () => {
+                    const rating = parseInt(star.dataset.rating);
+                    stars.forEach((s, i) => {
+                        if (i < rating) {
+                            s.style.color = '#FBBF24';
+                        } else {
+                            s.style.color = '#D1D5DB';
+                        }
+                    });
+                });
+            });
+            
+            container.addEventListener('mouseleave', () => {
+                const currentRating = container.id === 'overall-rating' ? selectedRating : categoryRating;
+                stars.forEach((s, i) => {
+                    if (i < currentRating) {
+                        s.style.color = '#FBBF24';
+                    } else {
+                        s.style.color = '#D1D5DB';
+                    }
+                });
+            });
+        });
+
+        function selectCategory(category) {
+            selectedCategory = category;
+            document.getElementById('category').value = category;
+            
+            // Update visual selection
+            document.querySelectorAll('.feedback-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            event.currentTarget.classList.add('selected');
+        }
+
+        function submitFeedback(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('userName').value;
+            const email = document.getElementById('userEmail').value;
+            const category = document.getElementById('category').value;
+            const feedback = document.getElementById('feedback').value;
+            
+            // Create email content
+            const emailSubject = `AlPlayHub Feedback: ${category}`;
+            const emailBody = `
+Feedback Category: ${category}
+Overall Rating: ${selectedRating}/5 stars
+Category Rating: ${categoryRating}/5 stars
+Name: ${name || 'Anonymous'}
+Email: ${email || 'Not provided'}
+
+Feedback:
+${feedback}
+
+---
+Submitted via AlPlayHub Feedback Form
+            `;
+            
+            // Create mailto link
+            const mailtoLink = `mailto:ms2600971@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+            
+            // Open email client
+            window.location.href = mailtoLink;
+            
+            // Show success message
+            document.getElementById('success-message').style.display = 'block';
+            
+            // Reset form after delay
+            setTimeout(() => {
+                document.getElementById('feedbackForm').reset();
+                document.getElementById('success-message').style.display = 'none';
+                selectedRating = 0;
+                categoryRating = 0;
+                
+                // Reset stars
+                document.querySelectorAll('.star').forEach(star => {
+                    star.classList.remove('active');
+                    star.style.color = '#D1D5DB';
+                });
+                
+                // Reset category selection
+                document.querySelectorAll('.feedback-card').forEach(card => {
+                    card.classList.remove('selected');
+                });
+            }, 3000);
+        }
+
+        function quickFeedback(type, value) {
+            const emailSubject = `AlPlayHub Quick Feedback: ${type}`;
+            const emailBody = `Quick Feedback:\n${type}: ${value}\n\nSubmitted via AlPlayHub Feedback Form`;
+            
+            const mailtoLink = `mailto:ms2600971@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+            window.location.href = mailtoLink;
+            
+            // Visual feedback
+            event.target.style.background = '#8B5CF6';
+            event.target.style.color = 'white';
+            setTimeout(() => {
+                event.target.style.background = 'transparent';
+                event.target.style.color = '#8B5CF6';
+            }, 1000);
+        }
+
+        function voteSuggestion(suggestion) {
+            const emailSubject = `AlPlayHub Feature Vote: ${suggestion}`;
+            const emailBody = `Feature Vote: ${suggestion}\n\nUser voted for this feature to be prioritized.\n\nSubmitted via AlPlayHub Feedback Form`;
+            
+            const mailtoLink = `mailto:ms2600971@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+            window.location.href = mailtoLink;
+            
+            // Visual feedback
+            event.target.textContent = 'Voted!';
+            event.target.style.background = '#8B5CF6';
+            event.target.style.color = 'white';
+            setTimeout(() => {
+                event.target.textContent = 'Vote';
+                event.target.style.background = 'transparent';
+                event.target.style.color = '#8B5CF6';
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

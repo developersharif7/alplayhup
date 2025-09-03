@@ -1,0 +1,415 @@
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    
+    <title>Contact AlPlayHub - Get Support & Developer Info</title>
+    
+    <meta name="description" content="Contact AlPlayHub support team. Get help with games, report issues, developer inquiries, and technical support for our HTML5 gaming platform.">
+    <meta name="keywords" content="AlPlayHub contact, gaming support, developer contact, technical support, game platform help, HTML5 games support">
+    <meta name="author" content="AlPlayHub Team">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://allplayhub.netlify.app/contact.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Contact AlPlayHub - Support & Developer Info">
+    <meta property="og:description" content="Get in touch with AlPlayHub team for support, developer inquiries, and technical assistance.">
+    <meta property="og:image" content="https://i.ibb.co/7Nv7n83N/Untitled-design-20250515-213921-0000.png">
+    <meta property="og:url" content="https://allplayhub.netlify.app/contact.html">
+    <meta property="og:site_name" content="AlPlayHub">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Contact AlPlayHub Support">
+    <meta name="twitter:description" content="Get help and support for AlPlayHub HTML5 gaming platform.">
+    <meta name="twitter:image" content="https://i.ibb.co/7Nv7n83N/Untitled-design-20250515-213921-0000.png">
+    
+    <meta name="theme-color" content="#F97316">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Contact AlPlayHub">
+    
+    <!-- External Resources -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #F97316 0%, #EA580C 100%);
+            min-height: 100vh;
+            padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        .header-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .content-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .contact-card {
+            background: rgba(249, 115, 22, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            border: 2px solid rgba(249, 115, 22, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+            border-color: #F97316;
+            box-shadow: 0 15px 30px rgba(249, 115, 22, 0.2);
+        }
+        
+        .contact-icon {
+            font-size: 3rem;
+            color: #F97316;
+            margin-bottom: 1rem;
+        }
+        
+        .btn-primary {
+            background: #F97316;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary:hover {
+            background: #EA580C;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(249, 115, 22, 0.3);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: #F97316;
+            padding: 12px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid #F97316;
+        }
+        
+        .btn-secondary:hover {
+            background: #F97316;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        h1 {
+            color: #F97316;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        h2 {
+            color: #1F2937;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 2rem 0 1rem 0;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #374151;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #E5E7EB;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #F97316;
+            box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
+        }
+        
+        textarea.form-input {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .highlight {
+            background: linear-gradient(135deg, #F97316, #EA580C);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 600;
+        }
+        
+        .response-time {
+            background: rgba(249, 115, 22, 0.1);
+            border-left: 4px solid #F97316;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header-card">
+            <h1><i class="fas fa-envelope mr-3"></i>Contact Us</h1>
+            <p class="text-gray-600 text-lg">Get in touch with the AlPlayHub team</p>
+        </div>
+
+        <!-- Contact Methods -->
+        <div class="content-card">
+            <h2>📞 How to Reach Us</h2>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3 class="font-semibold text-xl mb-2">Email Support</h3>
+                    <p class="text-gray-700 mb-4">For technical support, bug reports, or general inquiries</p>
+                    <a href="mailto:ms2600971@gmail.com" class="btn-primary">
+                        <i class="fas fa-paper-plane"></i>
+                        Send Email
+                    </a>
+                    <div class="response-time mt-4">
+                        <strong>Response Time:</strong> Within 24 hours
+                    </div>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="font-semibold text-xl mb-2">Developer Portal</h3>
+                    <p class="text-gray-700 mb-4">Visit our developer portal for detailed information and services</p>
+                    <a href="https://www.crekode.com/developersharif" target="_blank" class="btn-primary">
+                        <i class="fas fa-external-link-alt"></i>
+                        Visit Portal
+                    </a>
+                    <div class="response-time mt-4">
+                        <strong>Available:</strong> 24/7 Online
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="content-card">
+            <h2>📝 Send us a Message</h2>
+            <form id="contactForm" onsubmit="submitForm(event)">
+                <div class="form-group">
+                    <label class="form-label" for="name">Your Name</label>
+                    <input type="text" id="name" name="name" class="form-input" required placeholder="Enter your full name">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="email">Email Address</label>
+                    <input type="email" id="email" name="email" class="form-input" required placeholder="your@email.com">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="subject">Subject</label>
+                    <select id="subject" name="subject" class="form-input" required>
+                        <option value="">Select a topic</option>
+                        <option value="technical">Technical Support</option>
+                        <option value="bug">Bug Report</option>
+                        <option value="feature">Feature Request</option>
+                        <option value="upload">Game Upload Issue</option>
+                        <option value="business">Business Inquiry</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="message">Message</label>
+                    <textarea id="message" name="message" class="form-input" required placeholder="Describe your issue or inquiry in detail..."></textarea>
+                </div>
+                
+                <button type="submit" class="btn-primary w-full">
+                    <i class="fas fa-paper-plane"></i>
+                    Send Message
+                </button>
+            </form>
+        </div>
+
+        <!-- Support Categories -->
+        <div class="content-card">
+            <h2>🛠️ What We Can Help With</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="p-4 bg-orange-50 rounded-lg">
+                    <h3 class="font-semibold text-lg mb-2 text-orange-700">
+                        <i class="fas fa-bug mr-2"></i>Technical Issues
+                    </h3>
+                    <ul class="text-sm text-gray-700 space-y-1">
+                        <li>• Game loading problems</li>
+                        <li>• Browser compatibility issues</li>
+                        <li>• Mobile responsiveness problems</li>
+                        <li>• Platform bugs and errors</li>
+                    </ul>
+                </div>
+                
+                <div class="p-4 bg-orange-50 rounded-lg">
+                    <h3 class="font-semibold text-lg mb-2 text-orange-700">
+                        <i class="fas fa-upload mr-2"></i>Upload Support
+                    </h3>
+                    <ul class="text-sm text-gray-700 space-y-1">
+                        <li>• Game submission guidelines</li>
+                        <li>• Upload process assistance</li>
+                        <li>• Content review status</li>
+                        <li>• HTML5 optimization tips</li>
+                    </ul>
+                </div>
+                
+                <div class="p-4 bg-orange-50 rounded-lg">
+                    <h3 class="font-semibold text-lg mb-2 text-orange-700">
+                        <i class="fas fa-handshake mr-2"></i>Business Inquiries
+                    </h3>
+                    <ul class="text-sm text-gray-700 space-y-1">
+                        <li>• Partnership opportunities</li>
+                        <li>• Custom development services</li>
+                        <li>• Platform integration</li>
+                        <li>• Sponsorship discussions</li>
+                    </ul>
+                </div>
+                
+                <div class="p-4 bg-orange-50 rounded-lg">
+                    <h3 class="font-semibold text-lg mb-2 text-orange-700">
+                        <i class="fas fa-lightbulb mr-2"></i>Suggestions
+                    </h3>
+                    <ul class="text-sm text-gray-700 space-y-1">
+                        <li>• New feature ideas</li>
+                        <li>• Platform improvements</li>
+                        <li>• User experience feedback</li>
+                        <li>• Community suggestions</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="content-card">
+            <h2>❓ Frequently Asked Questions</h2>
+            <div class="space-y-4">
+                <div class="border-b pb-4">
+                    <h3 class="font-semibold text-lg mb-2">How long does game review take?</h3>
+                    <p class="text-gray-700">Typically 24-48 hours for standard submissions. Complex games may take up to a week.</p>
+                </div>
+                <div class="border-b pb-4">
+                    <h3 class="font-semibold text-lg mb-2">Can I edit my game after submission?</h3>
+                    <p class="text-gray-700">Yes! You can edit your games anytime through your profile dashboard.</p>
+                </div>
+                <div class="border-b pb-4">
+                    <h3 class="font-semibold text-lg mb-2">Is AlPlayHub really free?</h3>
+                    <p class="text-gray-700">Absolutely! AlPlayHub is completely free for players and developers.</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-lg mb-2">How do I report inappropriate content?</h3>
+                    <p class="text-gray-700">Contact us via email with details about the content and we'll review it immediately.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Message -->
+        <div class="content-card text-center">
+            <h2>💬 We're Here to Help!</h2>
+            <p class="text-gray-700 mb-4">
+                Our team is dedicated to providing the best experience on AlPlayHub. Whether you're a player, developer, or business partner, we're here to support you.
+            </p>
+            <p class="highlight text-xl font-semibold">
+                Let's build an amazing gaming community together!
+            </p>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="text-center">
+            <a href="https://www.crekode.com/developersharif" target="_blank" class="btn-primary mr-4">
+                <i class="fas fa-external-link-alt"></i>
+                Developer Info
+            </a>
+            <a href="mailto:ms2600971@gmail.com" class="btn-secondary">
+                <i class="fas fa-envelope"></i>
+                Quick Email
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function submitForm(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Create email content
+            const emailSubject = `AlPlayHub Contact: ${subject}`;
+            const emailBody = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+            
+            // Create mailto link
+            const mailtoLink = `mailto:ms2600971@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+            
+            // Open email client
+            window.location.href = mailtoLink;
+            
+            // Show success message
+            alert('Thank you for contacting us! Your email client should open now. If not, please email us directly at ms2600971@gmail.com');
+            
+            // Reset form
+            document.getElementById('contactForm').reset();
+        }
+    </script>
+</body>
+</html>

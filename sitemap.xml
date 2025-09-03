@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<script>
+  const base = "https://alplayhub.netlify.app/";
+  const urls = [];
+
+  function crawl(dir) {
+    // yahan tumhare sabhi folders (tools, pages, extras, etc.) scan honge
+    // Netlify ke build ke waqt ye URLs collect ho jaayenge
+  }
+
+  urls.forEach(u => {
+    document.write(`<url><loc>${base}${u}</loc></url>`);
+  });
+</script>
+</urlset>

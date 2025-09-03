@@ -1,0 +1,5 @@
+
+User-agent: *
+Allow: /
+
+Sitemap: https://alplayhub.netlify.app/sitemap.xml

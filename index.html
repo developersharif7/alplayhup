@@ -1,0 +1,2990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="google-site-verification" content="xCJbjjBM7DpMNt7VU2I_xBgccK74XNIepvHXGAh2L48" />
+    <meta charset="UTF-8">
+    <!-- ✨ Enhanced Android App Support - Native Feel -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="AlPlayHub">
+    
+    <title>AlPlayHub: HTML5 Games & Web Apps | Create, Play & Publish | Free Online Gaming Platform</title>
+
+    <meta name="description" content="AlPlayHub - The ultimate hub for HTML5 games, web apps, and developer tools. Play thousands of free games instantly, upload your own creations, and access powerful tools. Mobile-friendly, no downloads required!">
+    
+    <!-- Android Enhanced Meta Tags -->
+    <link rel="icon" href="https://i.ibb.co/5hsNkn8J/ei-1753297347948-removebg-preview.png">
+    <link rel="manifest" href="data:application/json,{&quot;name&quot;:&quot;AlPlayHub&quot;,&quot;short_name&quot;:&quot;AlPlayHub&quot;,&quot;start_url&quot;:&quot;/&quot;,&quot;display&quot;:&quot;standalone&quot;,&quot;background_color&quot;:&quot;#FFFFFF&quot;,&quot;theme_color&quot;:&quot;#FFFFFF&quot;}">
+    
+    <!-- ✅ ANDROID OPTIMIZED: White Theme Top -->
+    <meta name="theme-color" content="#FFFFFF" id="theme-color-meta">
+    <meta name="msapplication-navbutton-color" content="#FFFFFF" id="ms-theme-color">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" id="apple-status-bar">
+    
+    <!-- External Resources -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        // Android Optimized Theme Configuration - White Top/Bottom, Colorful Middle
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2196F3',
+                        secondary: '#4CAF50',
+                        accent: '#FF9800',
+                        danger: '#F44336',
+                        warning: '#FFC107',
+                        success: '#4CAF50',
+                        info: '#2196F3',
+                        lightBg: '#FFFFFF',
+                        cardBg: '#FFFFFF',
+                        textDark: '#000000',
+                        textLight: '#FFFFFF',
+                        textMuted: '#6B7280',
+                        borderColor: '#E5E7EB'
+                    },
+                    screens: {
+                        'xs': '475px',
+                    },
+                    animation: {
+                        'slide-up': 'slideUp 0.2s ease-out',
+                        'fade-in': 'fadeIn 0.3s ease-out',
+                        'scale-in': 'scaleIn 0.15s ease-out',
+                        'pulse-soft': 'pulseSoft 2s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        slideUp: {
+                            '0%': { transform: 'translateY(8px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        scaleIn: {
+                            '0%': { transform: 'scale(0.95)', opacity: '0' },
+                            '100%': { transform: 'scale(1)', opacity: '1' }
+                        },
+                        pulseSoft: {
+                            '0%, 100%': { transform: 'scale(1)', opacity: '1' },
+                            '50%': { transform: 'scale(1.02)', opacity: '0.95' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Import Google Fonts for a clean look */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap');
+        
+        /* ✅ ANDROID OPTIMIZED: White Top/Bottom, Colorful Middle */
+        :root {
+            --app-bg: #FFFFFF;
+            --card-bg: #FFFFFF;
+            --primary-color: #2196F3;
+            --secondary-color: #4CAF50;
+            --accent-color: #FF9800;
+            --danger-color: #F44336;
+            --warning-color: #FFC107;
+            --success-color: #4CAF50;
+            --header-bg: #FFFFFF;
+            --nav-bg: #FFFFFF;
+            --text-primary: #000000;
+            --text-secondary: #6B7280;
+            --text-on-header: #000000;
+            --text-on-nav: #000000;
+            --border-color: #E5E7EB;
+            --search-bg: rgba(245, 245, 245, 0.95);
+            --search-border: rgba(0, 0, 0, 0.1);
+            --search-icon: rgba(0, 0, 0, 0.6);
+            --search-placeholder: rgba(0, 0, 0, 0.5);
+            --ripple-color: rgba(33, 150, 243, 0.1);
+            /* Ultra-minimal shadows for Android */
+            --elevation-1: 0 1px 1px rgba(0,0,0,0.04);
+            --elevation-2: 0 1px 2px rgba(0,0,0,0.06);
+            --elevation-3: 0 2px 3px rgba(0,0,0,0.08);
+        }
+
+        /* Apply theme variables to elements */
+        body {
+            background: var(--app-bg);
+            color: var(--text-primary);
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ✅ ANDROID OPTIMIZED: Ultra-Compact Layout */
+        .app-container {
+            min-height: 100vh;
+            background: var(--app-bg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Android Material Design Header - White Theme */
+        .new-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 6px;
+            background: var(--header-bg);
+            color: var(--text-on-header);
+            border-bottom: 1px solid var(--border-color);
+            padding: 6px 10px;
+            height: 42px;
+            backdrop-filter: blur(10px);
+            box-shadow: var(--elevation-1);
+            transition: all 0.2s ease;
+        }
+
+        .hamburger-btn {
+            background: transparent;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            padding: 6px;
+            border-radius: 50%;
+            transition: all 0.15s ease;
+            color: var(--text-on-header);
+            width: 34px;
+            height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 2px;
+        }
+
+        .hamburger-btn:active {
+            transform: scale(0.95);
+            background: var(--ripple-color);
+        }
+
+        /* Ultra-Compact Search */
+        .search-bar-container {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            background: var(--search-bg);
+            border-radius: 18px;
+            padding: 0 12px;
+            height: 28px;
+            border: 1px solid var(--search-border);
+            transition: all 0.15s ease;
+            margin: 0;
+            box-shadow: var(--elevation-1);
+        }
+        
+        .search-bar-container:focus-within {
+            background: var(--card-bg);
+            transform: translateY(-1px);
+            box-shadow: var(--elevation-2);
+            border-color: var(--primary-color);
+        }
+
+        .search-bar-container i {
+            color: var(--search-icon);
+            font-size: 12px;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+
+        .search-input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            outline: none;
+            font-size: 13px;
+            color: var(--text-primary) !important;
+            font-weight: 400;
+        }
+
+        .search-input::placeholder {
+            color: var(--search-placeholder) !important;
+            font-size: 12px;
+            font-weight: 400;
+        }
+
+        /* Android Three-Dot Menu - Ultra-Compact */
+        .menu-dots {
+            background: transparent;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            padding: 6px;
+            border-radius: 50%;
+            transition: all 0.15s ease;
+            color: var(--text-on-header);
+            width: 34px;
+            height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 2px;
+        }
+
+        .menu-dots:active {
+            transform: scale(0.95);
+            background: var(--ripple-color);
+        }
+
+        /* Dropdown Menu - Ultra-Compact */
+        .dropdown-menu {
+            position: absolute;
+            top: 46px;
+            right: 10px;
+            background: var(--card-bg);
+            border-radius: 6px;
+            box-shadow: var(--elevation-2);
+            z-index: 100;
+            min-width: 140px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-6px);
+            transition: all 0.15s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .dropdown-menu.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 10px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 12px;
+            transition: background-color 0.15s;
+            cursor: pointer;
+        }
+
+        .dropdown-item:hover {
+            background: var(--ripple-color);
+        }
+
+        .dropdown-item i {
+            width: 18px;
+            margin-right: 8px;
+            text-align: center;
+            font-size: 11px;
+        }
+
+        /* ✅ RESTORED: Original Promotion Carousel - Slightly More Square */
+        .promotion-carousel {
+            width: 100%;
+            height: 140px;
+            margin: 0 0 12px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: var(--elevation-1);
+        }
+
+        .carousel-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.6s ease-in-out;
+            z-index: 1;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+            z-index: 2;
+        }
+
+        .carousel-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .carousel-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: white;
+            padding: 10px 12px;
+            text-align: left;
+        }
+
+        .carousel-title {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 2px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .carousel-subtitle {
+            font-size: 11px;
+            opacity: 0.9;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .carousel-indicators {
+            position: absolute;
+            bottom: 8px;
+            right: 12px;
+            display: flex;
+            gap: 4px;
+            z-index: 3;
+        }
+
+        .indicator {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .indicator.active {
+            background: white;
+            transform: scale(1.2);
+        }
+
+        /* Ultra-Compact Screen Layout */
+        .screen {
+            height: 100vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior: contain;
+            scroll-behavior: smooth;
+            position: relative;
+        }
+
+        /* ✅ RESTORED: Original content layout */
+        .screen-content {
+            padding: 8px 24px;
+            min-height: 100vh;
+            max-width: 380px;
+            margin: 0 auto;
+            padding-top: 50px;
+            padding-bottom: 64px;
+            box-sizing: border-box;
+        }
+
+        .screen-content.no-header {
+            padding-top: 16px;
+            padding-left: 24px;
+            padding-right: 24px;
+        }
+
+        /* Ultra-Compact Bottom Navigation - White Theme */
+        .bottom-nav {
+            height: 50px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            z-index: 100;
+            background: var(--nav-bg);
+            border-top: 1px solid var(--border-color);
+            padding: 3px 0;
+            box-shadow: 0 -1px 2px rgba(0,0,0,0.04);
+        }
+
+        /* Ultra-Compact Navigation */
+        .nav-button {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 56px;
+            height: 42px;
+            border-radius: 10px;
+            transition: all 0.2s ease;
+            position: relative;
+            cursor: pointer;
+            color: var(--text-on-nav);
+            overflow: hidden;
+        }
+
+        .nav-button:active {
+            transform: scale(0.95);
+        }
+
+        .nav-button.active {
+            background: var(--ripple-color);
+            color: var(--primary-color);
+            transform: translateY(-1px);
+        }
+
+        .nav-button.active::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 16px;
+            height: 2px;
+            background: var(--primary-color);
+            border-radius: 0 0 2px 2px;
+        }
+
+        .nav-icon {
+            font-size: 14px;
+            margin-bottom: 1px;
+            z-index: 1;
+            color: var(--primary-color);
+        }
+
+        .nav-label {
+            font-size: 8px;
+            font-weight: 600;
+            z-index: 1;
+            color: var(--primary-color);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Ultra-Compact Side Menu */
+        .side-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(2px);
+            z-index: 1100;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s ease, visibility 0.2s;
+        }
+
+        .side-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .side-menu {
+            position: fixed;
+            top: 0;
+            left: -240px;
+            width: 220px;
+            height: 100%;
+            background-color: var(--card-bg);
+            z-index: 1200;
+            transition: left 0.25s ease;
+            display: flex;
+            flex-direction: column;
+            padding: 16px;
+            box-shadow: var(--elevation-2);
+            border-right: 1px solid var(--border-color);
+        }
+
+        .side-menu.active {
+            left: 0;
+        }
+        
+        .side-menu-header {
+            color: var(--primary-color);
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .side-menu-item {
+            display: flex;
+            align-items: center;
+            color: var(--text-primary);
+            padding: 10px 0;
+            font-size: 13px;
+            text-decoration: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            margin: 1px 0;
+        }
+        
+        .side-menu-item:hover {
+            color: var(--primary-color);
+            background: var(--ripple-color);
+        }
+
+        .side-menu-item i {
+            width: 24px;
+            margin-right: 10px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--primary-color);
+        }
+        
+        .side-menu-close-btn {
+            margin-top: auto;
+            width: 100%;
+            padding: 10px;
+            background-color: var(--primary-color);
+            color: #FFFFFF;
+            border: none;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            box-shadow: var(--elevation-1);
+        }
+        
+        .side-menu-close-btn:hover {
+            box-shadow: var(--elevation-2);
+            transform: translateY(-1px);
+        }
+
+        .side-menu-close-btn:active {
+            transform: translateY(0);
+        }
+
+        /* ✅ FLAT DESIGN: No Boxes or Shadows */
+        .stat-card, .developer-card {
+            background: transparent !important;
+            border: none !important;
+            color: var(--text-primary) !important;
+            box-shadow: none !important;
+            transition: all 0.15s ease;
+        }
+
+        .stat-card:hover, .developer-card:hover {
+            box-shadow: none !important;
+            transform: scale(1.05);
+        }
+
+        .bg-white {
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+        }
+
+        .bg-primary {
+            background: var(--primary-color) !important;
+            color: #FFFFFF !important;
+            box-shadow: none !important;
+        }
+
+        .text-primary {
+            color: var(--primary-color) !important;
+        }
+
+        .text-textDark {
+            color: var(--text-primary) !important;
+        }
+
+        .text-textMuted {
+            color: var(--text-secondary) !important;
+        }
+
+        /* Enhanced Profile Header */
+        .profile-header {
+            padding: 8px;
+            background: linear-gradient(135deg, var(--primary-color), #1976D2);
+            border-radius: 8px;
+            margin-bottom: 6px;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            color: white;
+        }
+
+        .profile-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 30px;
+            height: 30px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            transform: translate(10px, -10px);
+        }
+
+        .profile-info {
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-direction: row;
+            flex: 1;
+            justify-content: space-between;
+            text-align: left;
+        }
+
+        .profile-info h1 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 2px;
+            color: white;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .profile-info p {
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 0;
+            font-size: 10px;
+        }
+
+        /* Profile Status Styles */
+        .profile-complete .status-icon {
+            background: #4CAF50 !important;
+        }
+
+        .profile-incomplete .status-icon {
+            background: #F44336 !important;
+        }
+
+        /* Ultra-Compact App Icons */
+        .item-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            position: relative;
+            background: transparent !important;
+            border: none !important;
+            padding: 0;
+            width: 64px;
+            flex-shrink: 0;
+        }
+
+        .item-card:hover { 
+            transform: scale(1.05);
+        }
+
+        .item-card:active {
+            transform: scale(0.95);
+        }
+
+        .item-card .card-image {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--card-bg);
+            box-shadow: var(--elevation-1);
+            margin-bottom: 4px;
+            position: relative;
+            transition: all 0.15s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .item-card:hover .card-image {
+            box-shadow: var(--elevation-2);
+        }
+
+        .item-card img {
+            width: 100%; 
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .item-card .fallback-icon {
+            font-size: 20px;
+            color: var(--primary-color);
+        }
+
+        .item-card .card-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+        }
+
+        .item-card .item-title {
+            font-size: 9px;
+            font-weight: 500;
+            color: var(--text-primary);
+            line-height: 1.2;
+            width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        
+        .category-scroll-container {
+            display: flex;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 6px 2px;
+            margin-left: 0;
+            margin-right: 0;
+            gap: 12px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+        
+        .category-scroll-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* ✅ ULTRA-COMPACT: Stats Cards */
+        .stat-card {
+            padding: 6px 4px;
+            text-align: center;
+            transition: all 0.15s ease;
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+
+        .stat-card:hover {
+            transform: translateY(-1px) scale(1.02);
+            background: linear-gradient(135deg, #fff, #f1f5f9);
+        }
+
+        .stat-number { 
+            font-size: 14px;
+            font-weight: 800; 
+            color: var(--primary-color);
+            display: block;
+            line-height: 1;
+        }
+
+        .stat-label { 
+            font-size: 8px;
+            color: var(--text-secondary); 
+            margin-top: 2px;
+            font-weight: 600;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        /* ✅ ULTRA-COMPACT: Upload Sections */
+        .upload-hero {
+            background: linear-gradient(135deg, var(--primary-color), #1976D2);
+            border-radius: 8px;
+            padding: 8px;
+            margin-bottom: 8px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .upload-hero::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+
+        .upload-hero h2 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .upload-hero p {
+            font-size: 10px;
+            opacity: 0.9;
+            margin-bottom: 6px;
+        }
+
+        .upload-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+        }
+
+        .upload-stat {
+            text-align: center;
+            background: rgba(255,255,255,0.1);
+            border-radius: 6px;
+            padding: 4px;
+            backdrop-filter: blur(4px);
+        }
+
+        .upload-stat-number {
+            font-size: 14px;
+            font-weight: 700;
+            display: block;
+        }
+
+        .upload-stat-label {
+            font-size: 8px;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        /* ✅ ULTRA-COMPACT: Engaging Cards */
+        .engaging-card {
+            background: linear-gradient(135deg, #fafafa, #f0f0f0);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 8px;
+            margin: 6px 0;
+            position: relative;
+            transition: all 0.15s ease;
+            overflow: hidden;
+        }
+
+        .engaging-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+
+        .engaging-card:hover {
+            transform: translateY(-1px);
+            background: linear-gradient(135deg, #fff, #f5f5f5);
+        }
+
+        .engaging-card h3 {
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: var(--text-primary);
+        }
+
+        .engaging-card p, .engaging-card div {
+            font-size: 10px;
+            line-height: 1.3;
+        }
+
+        /* Ultra-Compact Upload Method Selection */
+        .method-btn {
+            transition: all 0.15s ease;
+            font-weight: 500;
+            padding: 6px !important;
+            font-size: 10px !important;
+        }
+
+        .method-btn.active {
+            background: var(--primary-color) !important;
+            color: #FFFFFF !important;
+            border-color: var(--primary-color) !important;
+            box-shadow: var(--elevation-1);
+        }
+
+        .upload-section {
+            transition: all 0.2s ease;
+        }
+
+        /* Ultra-Compact Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            border: 2px solid var(--border-color);
+            border-radius: 50%;
+            border-top-color: var(--primary-color);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Ultra-Compact Play Modal */
+        #play-modal {
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100vw; 
+            height: 100vh;
+            background: var(--app-bg); 
+            z-index: 2000; 
+            display: none;
+        }
+
+        #play-modal iframe { 
+            width: 100vw; 
+            height: 100vh;
+            border: none; 
+            overflow: auto;
+            -webkit-overflow-scrolling: touch;
+            background: var(--app-bg);
+        }
+
+        #close-modal-btn {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            color: var(--text-primary); 
+            border: 1px solid var(--border-color); 
+            border-radius: 50%; 
+            width: 36px; 
+            height: 36px;
+            font-size: 14px; 
+            cursor: pointer; 
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2001;
+            box-shadow: var(--elevation-1);
+        }
+
+        #close-modal-btn:hover {
+            background: var(--ripple-color);
+            transform: scale(1.05);
+            box-shadow: var(--elevation-2);
+        }
+
+        #close-modal-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Ultra-Compact Filter Buttons */
+        .filter-btn {
+            transition: all 0.15s ease;
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--elevation-1);
+        }
+        
+        .filter-btn.active {
+            background: var(--primary-color) !important;
+            color: #FFFFFF !important;
+            box-shadow: var(--elevation-1);
+            border-color: var(--primary-color);
+            transform: translateY(-1px);
+        }
+
+        .filter-btn i {
+            color: var(--primary-color);
+        }
+
+        .filter-btn.active i {
+            color: #FFFFFF;
+        }
+
+        /* Ultra-Compact Rich Inputs */
+        .rich-input {
+            display: flex;
+            align-items: center;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            padding: 0 8px;
+            height: 32px;
+            background: var(--card-bg);
+            transition: all 0.15s ease;
+            overflow: hidden;
+            box-shadow: var(--elevation-1);
+        }
+        .rich-input:focus-within {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px var(--ripple-color);
+            transform: translateY(-1px);
+        }
+        .rich-input i {
+            color: var(--primary-color);
+            margin-right: 8px;
+            flex-shrink: 0;
+            font-size: 12px;
+        }
+        .rich-input input, .rich-input select, .rich-input textarea {
+            flex-grow: 1;
+            border: none;
+            background: transparent;
+            outline: none;
+            height: 100%;
+            font-size: 13px;
+            color: var(--text-primary);
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .rich-input input::placeholder {
+            color: var(--text-secondary);
+        }
+
+        /* Ultra-Compact Developer Contact Card */
+        .developer-card {
+            border-radius: 16px;
+            padding: 16px;
+            text-align: center;
+            margin: 16px 0;
+            box-shadow: var(--elevation-1);
+            display: flex;
+            align-items: center;
+            transition: all 0.15s ease;
+        }
+
+        .developer-card:hover {
+            box-shadow: var(--elevation-2);
+            transform: translateY(-1px);
+        }
+
+        .developer-avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            background: var(--ripple-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 16px;
+            font-size: 24px;
+            color: var(--primary-color);
+            flex-shrink: 0;
+            overflow: hidden;
+            box-shadow: var(--elevation-1);
+        }
+
+        .developer-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 16px;
+        }
+
+        .developer-info {
+            text-align: left;
+            flex-grow: 1;
+        }
+        
+        .developer-info h2 {
+            font-size: 16px;
+            margin-bottom: 4px;
+            font-weight: 700;
+        }
+        
+        .developer-info p {
+            font-size: 12px;
+            margin-bottom: 2px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 8px;
+            font-size: 12px;
+            background: var(--ripple-color);
+            border-radius: 10px;
+            margin: 8px 0;
+            transition: all 0.15s ease;
+            color: var(--text-primary);
+            box-shadow: var(--elevation-1);
+        }
+
+        .contact-item:hover {
+            background: var(--border-color);
+            transform: translateY(-1px);
+            box-shadow: var(--elevation-2);
+        }
+
+        .contact-item i {
+            color: var(--primary-color);
+        }
+
+        .contact-item a {
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Ultra-Compact Scrollbar */
+        ::-webkit-scrollbar {
+            width: 1px;
+            height: 1px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 1px;
+        }
+
+        /* Ultra-Compact Modal styles */
+        .modal-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.2s ease;
+        }
+        .modal-backdrop.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal-content {
+            width: 90%;
+            max-width: 400px;
+            max-height: 85vh;
+            overflow-y: auto;
+            background: var(--card-bg);
+            border-radius: 12px;
+            transform: scale(0.95);
+            transition: transform 0.2s ease;
+            color: var(--text-primary);
+            box-shadow: var(--elevation-2);
+            border: 1px solid var(--border-color);
+        }
+        .modal-backdrop.active .modal-content {
+            transform: scale(1);
+        }
+
+        /* User Game Status Info */
+        .status-badge {
+            display: inline-block;
+            padding: 3px 6px;
+            border-radius: 10px;
+            font-size: 8px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-pending {
+            background: #FEF3C7;
+            color: #92400E;
+        }
+
+        .status-approved {
+            background: #D1FAE5;
+            color: #065F46;
+        }
+
+        .status-rejected {
+            background: #FEE2E2;
+            color: #991B1B;
+        }
+
+        /* ✅ UPLOAD NOTICE: Enhanced for HTML Support Only */
+        .upload-notice {
+            background: var(--ripple-color);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 8px;
+            margin: 8px 0;
+            color: var(--text-primary);
+            font-size: 10px;
+            line-height: 1.3;
+            box-shadow: var(--elevation-1);
+        }
+
+        .upload-notice-icon {
+            color: var(--primary-color);
+            font-size: 12px;
+            margin-right: 4px;
+        }
+
+        /* File upload styles */
+        .file-upload-area {
+            border: 2px dashed var(--border-color);
+            border-radius: 10px;
+            padding: 16px;
+            text-align: center;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            background: var(--card-bg);
+        }
+
+        .file-upload-area:hover {
+            border-color: var(--primary-color);
+            background: var(--ripple-color);
+        }
+
+        .file-upload-area.dragover {
+            border-color: var(--primary-color);
+            background: var(--ripple-color);
+            transform: scale(1.02);
+        }
+
+        /* Ultra-compact animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .fade-in {
+            animation: fadeInUp 0.4s ease forwards;
+        }
+
+        .slide-in {
+            animation: slideInUp 0.2s ease-out forwards;
+        }
+
+        /* Responsive optimizations */
+        @media (max-width: 768px) {
+            .developer-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .developer-avatar {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+            
+            .developer-info {
+                text-align: center;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Ultra-Compact Header with Android Three-Dot Menu -->
+        <div class="new-header">
+            <button id="hamburger-menu-btn" class="hamburger-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="search-bar-container">
+                <i class="fas fa-search"></i>
+                <input type="text" class="search-input" placeholder="Search games & apps...">
+            </div>
+            <button id="menu-dots-btn" class="menu-dots">
+                <i class="fas fa-ellipsis-v"></i>
+            </button>
+            <!-- Dropdown Menu -->
+            <div id="dropdown-menu" class="dropdown-menu">
+                <a class="dropdown-item" onclick="refreshContent()">
+                    <i class="fas fa-sync-alt"></i>
+                    <span>Refresh</span>
+                </a>
+                <a class="dropdown-item" onclick="shareApp()">
+                    <i class="fas fa-share"></i>
+                    <span>Share App</span>
+                </a>
+                <a class="dropdown-item" onclick="downloadApp()">
+                    <i class="fas fa-download"></i>
+                    <span>Get App</span>
+                </a>
+                <a class="dropdown-item" onclick="showAbout()">
+                    <i class="fas fa-info-circle"></i>
+                    <span>About</span>
+                </a>
+                <a class="dropdown-item" onclick="openSettings()">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Side Menu -->
+        <div id="side-menu-overlay" class="side-menu-overlay">
+            <div id="side-menu" class="side-menu">
+                <div class="side-menu-header">
+                    <i class="fas fa-gamepad"></i>
+                    AlPlayHub Menu
+                </div>
+                
+                <a class="side-menu-item" onclick="showTab('home-tab'); closeSideMenu();">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a class="side-menu-item" onclick="openExternalPage('privacy'); closeSideMenu();">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Privacy Policy</span>
+                </a>
+                <a class="side-menu-item" onclick="openExternalPage('terms'); closeSideMenu();">
+                    <i class="fas fa-file-contract"></i>
+                    <span>Terms of Service</span>
+                </a>
+                <a class="side-menu-item" onclick="openExternalPage('about'); closeSideMenu();">
+                    <i class="fas fa-info-circle"></i>
+                    <span>About Us</span>
+                </a>
+                <a class="side-menu-item" onclick="openExternalPage('contact'); closeSideMenu();">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact</span>
+                </a>
+                <a class="side-menu-item" onclick="openExternalPage('feedback'); closeSideMenu();">
+                    <i class="fas fa-comment"></i>
+                    <span>Feedback</span>
+                </a>
+                <a class="side-menu-item" onclick="showTab('developer-tab'); closeSideMenu();">
+                    <i class="fas fa-code"></i>
+                    <span>Developer Info</span>
+                </a>
+                <button id="side-menu-close-btn" class="side-menu-close-btn">
+                    <i class="fas fa-times mr-2"></i>Close
+                </button>
+            </div>
+        </div>
+
+        <!-- Main App -->
+        <div id="main-app">
+            <!-- Home Tab -->
+            <div id="home-tab" class="tab-content active screen">
+                <div class="screen-content">
+                    <!-- ✅ RESTORED: Original Promotion Carousel - Slightly Bigger & More Square -->
+                    <div class="promotion-carousel">
+                        <div class="carousel-container" id="carousel-container">
+                            <div class="carousel-slide active">
+                                <img src="https://i.ibb.co/mrV58N28/47e-fgraphic.png" alt="Gaming Hub" class="carousel-image">
+                                <div class="carousel-overlay">
+                                    <h3 class="carousel-title">🎮 Gaming Hub</h3>
+                                    <p class="carousel-subtitle">Play instant games</p>
+                                </div>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="https://i.ibb.co/fdpFwTbw/e0bcc.jpg"alt="App Center" class="carousel-image">
+                                <div class="carousel-overlay">
+                                    <h3 class="carousel-title">📱 App Center</h3>
+                                    <p class="carousel-subtitle">Discover amazing apps</p>
+                                </div>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="https://i.ibb.co/ZpmZVKdC/0-fgraphic.png" alt="Developer Tools" class="carousel-image">
+                                <div class="carousel-overlay">
+                                    <h3 class="carousel-title">🔧 Dev Tools</h3>
+                                    <p class="carousel-subtitle">Create & publish</p>
+                                </div>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="https://i.ibb.co/VY9c7F0X/a0-fgraphic.jpg" alt="Community" class="carousel-image">
+                                <div class="carousel-overlay">
+                                    <h3 class="carousel-title">👥 Community</h3>
+                                    <p class="carousel-subtitle">Join creators</p>
+                                </div>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="https://i.ibb.co/qYxJxDNF/Untitled-design-20250827-041333-0000.png" alt="Featured Content" class="carousel-image">
+                                <div class="carousel-overlay">
+                                    <h3 class="carousel-title">⭐ Featured</h3>
+                                    <p class="carousel-subtitle">Top rated content</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-indicators" id="carousel-indicators">
+                            <span class="indicator active" data-slide="0"></span>
+                            <span class="indicator" data-slide="1"></span>
+                            <span class="indicator" data-slide="2"></span>
+                            <span class="indicator" data-slide="3"></span>
+                            <span class="indicator" data-slide="4"></span>
+                        </div>
+                    </div>
+                    
+                    <!-- Ultra-Compact Filter Buttons -->
+                    <div class="flex justify-center gap-2 mb-3">
+                        <button class="filter-btn px-2 py-1 rounded-full text-xs active font-medium bg-primary text-white" data-filter="All" onclick="filterItems('All')">
+                            <i class="fas fa-th-large mr-1"></i>All
+                        </button>
+                        <button class="filter-btn px-2 py-1 rounded-full text-xs font-medium bg-white" data-filter="Game" onclick="filterItems('Game')">
+                            <i class="fas fa-gamepad mr-1"></i>Games
+                        </button>
+                        <button class="filter-btn px-2 py-1 rounded-full text-xs font-medium bg-white" data-filter="App" onclick="filterItems('App')">
+                            <i class="fas fa-mobile-alt mr-1"></i>Apps
+                        </button>
+                        <button class="filter-btn px-2 py-1 rounded-full text-xs font-medium bg-white" data-filter="Tool" onclick="filterItems('Tool')">
+                            <i class="fas fa-tools mr-1"></i>Tools
+                        </button>
+                    </div>
+                    
+                    <!-- Container for Categories -->
+                    <div id="categories-container">
+                        <!-- Items will be dynamically loaded here -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Developer/Purchasing Tab -->
+            <div id="developer-tab" class="tab-content screen">
+                <div class="screen-content no-header">
+                    <!-- Ultra-Compact Developer Contact Card -->
+                    <div class="developer-card">
+                        <div class="developer-avatar">
+                            <img src="https://i.ibb.co/21p770jD/-1.jpg" alt="Mohammed Sharif" onerror="this.style.display='none'; this.parentNode.innerHTML='<i class=\'fas fa-user-tie\'></i>';">
+                        </div>
+                        <div class="developer-info">
+                            <h2 class="text-lg font-bold mb-1 text-textDark">Mohammed Sharif</h2>
+                            <p class="text-xs text-textMuted mb-1">AlPlayHub Developer & Creator</p>
+                            <p class="text-xs text-textMuted">Professional Full Stack Developer</p>
+                        </div>
+                    </div>
+
+                    <!-- Ultra-Compact Contact Information -->
+                    <div class="space-y-2 mb-3">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+923063937090">+92 306-3937090</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:ms2600971@gmail.com">ms2600971@gmail.com</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-globe"></i>
+                            <a href="https://www.crekode.com/developersharif" target="_blank">www.crekode.com/developersharif</a>
+                        </div>
+                    </div>
+
+                    <!-- Ultra-Compact Purchase Information -->
+                    <div class="engaging-card">
+                        <h3 class="text-sm font-bold mb-2 text-textDark">
+                            <i class="fas fa-shopping-cart mr-2"></i>Custom Development Services
+                        </h3>
+                        <p class="text-xs text-textMuted mb-2">
+                            Available for custom development projects including gaming platforms, web applications, mobile apps, and developer tools like AlPlayHub.
+                        </p>
+                        <div class="text-center">
+                            <a href="https://www.crekode.com/developersharif" target="_blank" class="inline-flex items-center px-3 py-2 bg-primary text-white rounded-lg font-semibold hover:bg-indigo-700 transition-all text-xs">
+                                <i class="fas fa-external-link-alt mr-1"></i>
+                                Visit Developer Portfolio
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Ultra-Compact Features Showcase -->
+                    <div class="engaging-card">
+                        <h3 class="font-bold text-textDark mb-2 text-sm">
+                            <i class="fas fa-star mr-2"></i>AlPlayHub Features
+                        </h3>
+                        <div class="space-y-2">
+                            <div class="flex items-center gap-2 p-2 bg-lightBg rounded-lg">
+                                <div class="w-6 h-6 bg-primary rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-gamepad text-white text-xs"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="font-semibold text-textDark text-xs">Instant Gaming</div>
+                                    <div class="text-xs text-textMuted">No downloads, just click & play</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2 p-2 bg-lightBg rounded-lg">
+                                <div class="w-6 h-6 bg-secondary rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-upload text-white text-xs"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="font-semibold text-textDark text-xs">Easy Upload</div>
+                                    <div class="text-xs text-textMuted">Share your HTML5 creations</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2 p-2 bg-lightBg rounded-lg">
+                                <div class="w-6 h-6 bg-accent rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-star text-white text-xs"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="font-semibold text-textDark text-xs">Rating System</div>
+                                    <div class="text-xs text-textMuted">Rate & discover top content</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ultra-Compact Services Information -->
+                    <div class="engaging-card">
+                        <h3 class="font-bold text-textDark mb-2 text-sm">
+                            <i class="fas fa-code mr-2"></i>Custom Development Services
+                        </h3>
+                        <div class="grid grid-cols-2 gap-2">
+                            <div class="text-center p-2 bg-blue-50 rounded-lg">
+                                <i class="fas fa-gamepad text-blue-500 text-sm mb-1"></i>
+                                <div class="text-xs font-semibold text-textDark">Gaming Platforms</div>
+                            </div>
+                            <div class="text-center p-2 bg-green-50 rounded-lg">
+                                <i class="fas fa-globe text-green-500 text-sm mb-1"></i>
+                                <div class="text-xs font-semibold text-textDark">Web Applications</div>
+                            </div>
+                            <div class="text-center p-2 bg-purple-50 rounded-lg">
+                                <i class="fas fa-mobile text-purple-500 text-sm mb-1"></i>
+                                <div class="text-xs font-semibold text-textDark">Mobile Apps</div>
+                            </div>
+                            <div class="text-center p-2 bg-orange-50 rounded-lg">
+                                <i class="fas fa-tools text-orange-500 text-sm mb-1"></i>
+                                <div class="text-xs font-semibold text-textDark">Developer Tools</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Enhanced Upload Tab -->
+            <div id="upload-tab" class="tab-content screen">
+                <div class="screen-content no-header">
+                    <!-- ✅ ENHANCED: Upload Hero Section -->
+                    <div class="upload-hero">
+                        <h2>
+                            <i class="fas fa-cloud-upload-alt mr-1"></i>Share Your Creation
+                        </h2>
+                        <p>Upload games, apps & tools to AlPlayHub</p>
+                        <div class="upload-stats">
+                            <div class="upload-stat">
+                                <div class="upload-stat-number" id="upload-pending">0</div>
+                                <div class="upload-stat-label">Review</div>
+                            </div>
+                            <div class="upload-stat">
+                                <div class="upload-stat-number" id="upload-approved">0</div>
+                                <div class="upload-stat-label">Live</div>
+                            </div>
+                            <div class="upload-stat">
+                                <div class="upload-stat-number" id="upload-total">0</div>
+                                <div class="upload-stat-label">Total</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Profile Check Alert -->
+                    <div id="profile-required-alert" class="upload-notice" style="display: none;">
+                        <div class="flex items-start">
+                            <i class="fas fa-exclamation-circle upload-notice-icon text-warning"></i>
+                            <div>
+                                <div class="font-semibold mb-1 text-warning">⚠️ Profile Setup Required</div>
+                                <div class="text-xs">
+                                    Please complete your profile to upload content. <br>
+                                    <button onclick="showTab('profile-tab')" class="text-primary underline">Set up profile now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ✅ ENHANCED: Upload Guidelines -->
+                    <div class="upload-notice">
+                        <div class="flex items-start">
+                            <i class="fas fa-info-circle upload-notice-icon"></i>
+                            <div>
+                                <div class="font-semibold mb-1">📝 Upload Guidelines</div>
+                                <div class="text-xs">
+                                    • HTML5 games/apps/tools only<br>
+                                    • Single HTML file or external URL<br>
+                                    • Test functionality before upload<br>
+                                    • Ensure mobile compatibility<br>
+                                    • Original content or proper attribution
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <form id="upload-form" class="space-y-3">
+                        <!-- ✅ ENHANCED: Logo Section -->
+                        <div class="engaging-card">
+                            <h3>
+                                <i class="fas fa-image mr-1"></i>Logo/Icon
+                            </h3>
+                            
+                            <div class="grid grid-cols-2 gap-2 mb-3">
+                                <div class="p-3 border border-dashed border-borderColor rounded-lg text-center cursor-pointer hover:border-primary transition-colors text-xs" onclick="document.getElementById('upload-logo-file').click()">
+                                    <div class="text-lg mb-1">📁</div>
+                                    <div class="font-semibold">Upload File</div>
+                                    <div class="text-textMuted">JPG, PNG, GIF</div>
+                                </div>
+                                <div class="p-3 border border-dashed border-borderColor rounded-lg text-center cursor-pointer hover:border-primary transition-colors text-xs" onclick="document.getElementById('upload-logo-url').focus()">
+                                    <div class="text-lg mb-1">🔗</div>
+                                    <div class="font-semibold">Image URL</div>
+                                    <div class="text-textMuted">Direct link</div>
+                                </div>
+                            </div>
+                            
+                            <input type="file" id="upload-logo-file" style="display: none;" accept="image/*">
+                            <div class="rich-input">
+                                <i class="fas fa-link"></i>
+                                <input type="url" id="upload-logo-url" placeholder="Logo URL (https://...)" class="text-sm">
+                            </div>
+                            
+                            <div class="text-center mt-3" id="logo-preview" style="display: none;">
+                                <img id="preview-img" alt="Logo Preview" class="max-w-20 max-h-20 rounded-lg mx-auto border border-borderColor">
+                                <p class="text-xs text-textMuted mt-2">✅ Logo Preview</p>
+                            </div>
+                        </div>
+
+                        <!-- ✅ ENHANCED: Project Details -->
+                        <div class="engaging-card">
+                            <h3>
+                                <i class="fas fa-info-circle mr-1"></i>Project Details
+                            </h3>
+                            
+                            <div class="space-y-3">
+                                <div class="rich-input">
+                                    <i class="fas fa-tag"></i>
+                                    <input type="text" id="upload-title" placeholder="Enter title (e.g. Space Shooter)" required class="text-sm">
+                                </div>
+                                
+                                <div class="rich-input">
+                                    <i class="fas fa-list"></i>
+                                    <select id="upload-type" required class="text-sm">
+                                        <option value="" disabled selected>Select Category</option>
+                                        <option value="Game">🎮 Game</option>
+                                        <option value="App">📱 App</option>
+                                        <option value="Tool">🔧 Tool</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="rich-input">
+                                    <i class="fas fa-align-left"></i>
+                                    <input type="text" id="upload-description" placeholder="Brief description (optional)" class="text-sm">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ✅ ENHANCED: Upload Method -->
+                        <div class="engaging-card">
+                            <h3>
+                                <i class="fas fa-upload mr-1"></i>Upload Method
+                            </h3>
+                            
+                            <div class="grid grid-cols-2 gap-2 mb-3">
+                                <button type="button" id="method-html" class="method-btn border-2 border-primary bg-primary text-white rounded-lg p-3 text-center cursor-pointer transition-colors">
+                                    <div class="text-lg mb-1">📝</div>
+                                    <div class="font-semibold">HTML Code</div>
+                                    <div class="text-xs opacity-80">Paste HTML</div>
+                                </button>
+                                <button type="button" id="method-url" class="method-btn border-2 border-borderColor text-textDark rounded-lg p-3 text-center cursor-pointer hover:border-primary transition-colors">
+                                    <div class="text-lg mb-1">🔗</div>
+                                    <div class="font-semibold">External URL</div>
+                                    <div class="text-xs opacity-60">Link to game</div>
+                                </button>
+                            </div>
+                            
+                            <!-- HTML Upload -->
+                            <div id="html-section" class="upload-section">
+                                <textarea id="upload-html" rows="4" class="w-full p-3 border border-borderColor rounded-lg bg-white text-textDark text-sm resize-none focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Paste your complete HTML5 game/app code here..."></textarea>
+                                <p class="text-xs text-textMuted mt-2"><i class="fas fa-info-circle mr-1"></i>Include all CSS and JavaScript in your HTML</p>
+                            </div>
+                            
+                            <!-- URL Upload -->
+                            <div id="url-section" class="upload-section" style="display: none;">
+                                <div class="rich-input">
+                                    <i class="fas fa-link"></i>
+                                    <input type="url" id="upload-url" placeholder="Enter game/app URL (https://...)" class="text-sm">
+                                </div>
+                                <p class="text-xs text-textMuted mt-2"><i class="fas fa-info-circle mr-1"></i>Make sure the URL is publicly accessible</p>
+                            </div>
+                        </div>
+                        
+                        <progress id="upload-progress" value="0" max="100" style="display:none;" class="w-full h-2 rounded-lg"></progress>
+                        
+                        <button type="submit" class="w-full py-3 bg-primary text-white rounded-lg font-bold hover:bg-indigo-700 transition-all text-sm">
+                            <span id="submit-text">🚀 Submit for Review</span>
+                            <span id="submit-loading" class="loading hidden"></span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Enhanced Profile Tab with User Setup -->
+            <div id="profile-tab" class="tab-content screen">
+                <!-- Profile Setup Section -->
+                <div class="profile-header" id="profile-header">
+                    <div class="profile-info">
+                        <div class="flex-1">
+                            <h1 id="profile-display-name">AlPlayHub User</h1>
+                            <p id="profile-display-email">Set up your profile</p>
+                        </div>
+                        <button id="edit-profile-btn" class="text-white bg-white bg-opacity-20 px-3 py-1 rounded-lg text-xs hover:bg-opacity-30 transition-all">
+                            <i class="fas fa-edit mr-1"></i>Edit Profile
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="screen-content no-header">
+                    <!-- Profile Setup Form -->
+                    <div id="profile-setup-section" class="engaging-card mb-4" style="display: none;">
+                        <h3 class="flex items-center text-primary mb-3">
+                            <i class="fas fa-user-cog mr-2"></i>Setup Your Profile
+                        </h3>
+                        <form id="profile-setup-form" class="space-y-3">
+                            <div class="rich-input">
+                                <i class="fas fa-user"></i>
+                                <input type="text" id="setup-name" placeholder="Your Full Name" required class="text-sm">
+                            </div>
+                            <div class="rich-input">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" id="setup-email" placeholder="Your Email Address" required class="text-sm">
+                            </div>
+                            <div class="grid grid-cols-2 gap-2">
+                                <button type="submit" class="py-2 bg-primary text-white rounded-lg font-semibold text-sm hover:bg-indigo-700 transition-all">
+                                    <i class="fas fa-save mr-1"></i>Save Profile
+                                </button>
+                                <button type="button" id="cancel-profile-setup" class="py-2 bg-gray-200 text-textDark rounded-lg font-semibold text-sm hover:bg-gray-300 transition-all">
+                                    <i class="fas fa-times mr-1"></i>Cancel
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Profile Status Indicator -->
+                    <div id="profile-status-indicator" class="engaging-card mb-3">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div id="profile-status-icon" class="w-3 h-3 rounded-full bg-red-500 mr-2"></div>
+                                <span class="text-sm font-semibold" id="profile-status-text">Profile Incomplete</span>
+                            </div>
+                            <button id="complete-profile-btn" class="text-xs bg-primary text-white px-3 py-1 rounded-lg hover:bg-indigo-700 transition-all">
+                                Complete Now
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- ✅ ENHANCED: Profile Stats -->
+                    <div class="grid grid-cols-3 gap-2 mb-3">
+                        <div class="stat-card">
+                            <div class="stat-number" id="user-total-uploads">0</div>
+                            <div class="stat-label">
+                                <i class="fas fa-upload mr-1"></i>Uploads
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="user-approved-items">0</div>
+                            <div class="stat-label">
+                                <i class="fas fa-check-circle mr-1"></i>Live
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="user-pending-items">0</div>
+                            <div class="stat-label">
+                                <i class="fas fa-clock mr-1"></i>Review
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ✅ ENHANCED: Activity Summary -->
+                    <div class="engaging-card">
+                        <h3>
+                            <i class="fas fa-chart-line mr-1"></i>Activity Overview
+                        </h3>
+                        <div class="grid grid-cols-2 gap-2">
+                            <div class="text-center p-2 bg-green-50 rounded-lg">
+                                <div class="text-lg font-bold text-green-600" id="total-plays">0</div>
+                                <div class="text-xs text-green-700 font-semibold">Total Plays</div>
+                            </div>
+                            <div class="text-center p-2 bg-blue-50 rounded-lg">
+                                <div class="text-lg font-bold text-blue-600" id="avg-rating">0.0</div>
+                                <div class="text-xs text-blue-700 font-semibold">Avg Rating</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- ✅ ENHANCED: My Uploads -->
+                    <div class="engaging-card">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3>
+                                <i class="fas fa-folder-open mr-1"></i>My Content
+                            </h3>
+                            <span class="text-xs text-textMuted font-semibold" id="uploads-count">(0)</span>
+                        </div>
+                        <div id="user-uploads-container">
+                            <p class="text-center text-textMuted py-4 text-xs">
+                                <i class="fas fa-inbox text-2xl mb-2 block"></i>
+                                No uploads yet. Start creating!
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- ✅ ENHANCED: Settings -->
+                    <div class="engaging-card">
+                        <h3>
+                            <i class="fas fa-cog mr-1"></i>Account Settings
+                        </h3>
+                        <div class="space-y-2">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <i class="fas fa-bell text-textMuted w-5"></i>
+                                    <span class="text-sm text-textDark font-semibold">Email Notifications</span>
+                                </div>
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" class="sr-only peer" checked>
+                                    <div class="w-8 h-4 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[1px] after:left-[1px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-primary"></div>
+                                </label>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <i class="fas fa-shield-alt text-textMuted w-5"></i>
+                                    <span class="text-sm text-textDark font-semibold">Privacy Mode</span>
+                                </div>
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" class="sr-only peer">
+                                    <div class="w-8 h-4 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[1px] after:left-[1px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-primary"></div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ultra-Compact Bottom Navigation -->
+            <div class="bottom-nav">
+                <button id="nav-home" class="nav-button active" onclick="showTab('home-tab')">
+                    <i class="nav-icon fas fa-home"></i>
+                    <span class="nav-label">Home</span>
+                </button>
+                <button id="nav-developer" class="nav-button" onclick="showTab('developer-tab')">
+                    <i class="nav-icon fas fa-user-tie"></i>
+                    <span class="nav-label">Developer</span>
+                </button>
+                <button id="nav-upload" class="nav-button" onclick="showTab('upload-tab')">
+                    <i class="nav-icon fas fa-plus-circle"></i>
+                    <span class="nav-label">Upload</span>
+                </button>
+                <button id="nav-profile" class="nav-button" onclick="showTab('profile-tab')">
+                    <i class="nav-icon fas fa-user"></i>
+                    <span class="nav-label">Profile</span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Ultra-Compact Play Modal -->
+        <div id="play-modal">
+            <iframe id="play-iframe"></iframe>
+            <button id="close-modal-btn">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <!-- Ultra-Compact Custom Modal -->
+        <div id="custom-modal" class="modal-backdrop">
+            <div class="modal-content">
+                <div class="p-3 border-b border-borderColor">
+                    <h3 id="modal-title" class="font-bold text-textDark text-sm">AlPlayHub Notification</h3>
+                </div>
+                <div class="p-3">
+                    <p id="modal-message" class="text-textMuted mb-3 text-sm"></p>
+                    <div class="flex gap-2">
+                        <button id="modal-ok" class="flex-1 py-2 bg-primary text-white rounded-lg font-semibold text-sm">OK</button>
+                        <button id="modal-cancel" class="flex-1 py-2 bg-gray-200 text-textDark rounded-lg font-semibold hidden text-sm">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+    
+    <script>
+        // ✅ FIREBASE CONFIG
+        const firebaseConfig = {
+  apiKey: "AIzaSyCth7R_Lsz4e_2Y1W19Wor-e6e_H-Ha10g",
+  authDomain: "alplayhub-d1ea2.firebaseapp.com",
+  databaseURL: "https://alplayhub-d1ea2-default-rtdb.firebaseio.com",
+  projectId: "alplayhub-d1ea2",
+  storageBucket: "alplayhub-d1ea2.firebasestorage.app",
+  messagingSenderId: "1000142252130",
+  appId: "1:1000142252130:web:b7c455d88dbcacf40a093b"
+};
+        
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.database();
+        const storage = firebase.storage();
+
+        // Enhanced App System - White Top/Bottom, Colorful Middle
+        let allItems = [];
+        let userUploads = [];
+        let currentFilter = 'All';
+        let isLoading = false;
+        let uploadMethod = 'html'; // 'html' or 'url' only
+        let carouselCurrentSlide = 0;
+        let carouselInterval;
+        let userProfile = null;
+
+        const typeIcons = {
+            'Game': '🎮',
+            'App': '📱', 
+            'Tool': '🔧'
+        };
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeApp();
+            setupEventListeners();
+            loadData();
+            setupSideMenu();
+            setupSearch();
+            setupUploadMethods();
+            optimizeForAndroid();
+            initializeHeaderVisibility();
+            setupDropdownMenu();
+            setupEngagingFeatures();
+            setupCarousel();
+            setupProfileSystem();
+            checkProfileStatus();
+        });
+
+        // ✅ NEW: Profile System Setup
+        function setupProfileSystem() {
+            // Setup profile form
+            document.getElementById('profile-setup-form').addEventListener('submit', handleProfileSetup);
+            document.getElementById('edit-profile-btn').addEventListener('click', showProfileSetup);
+            document.getElementById('complete-profile-btn').addEventListener('click', showProfileSetup);
+            document.getElementById('cancel-profile-setup').addEventListener('click', hideProfileSetup);
+            
+            // Load existing profile
+            loadUserProfile();
+        }
+
+        function loadUserProfile() {
+            const savedProfile = localStorage.getItem('userProfile');
+            if (savedProfile) {
+                userProfile = JSON.parse(savedProfile);
+                updateProfileDisplay();
+                updateProfileStatus(true);
+            } else {
+                updateProfileStatus(false);
+            }
+        }
+
+        function handleProfileSetup(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('setup-name').value.trim();
+            const email = document.getElementById('setup-email').value.trim();
+            
+            if (!name || !email) {
+                showModal('Please fill in all required fields!', 'Missing Information');
+                return;
+            }
+            
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                showModal('Please enter a valid email address!', 'Invalid Email');
+                return;
+            }
+            
+            userProfile = {
+                name,
+                email,
+                createdAt: new Date().toISOString(),
+                uploads: 0
+            };
+            
+            localStorage.setItem('userProfile', JSON.stringify(userProfile));
+            localStorage.setItem('userName', name);
+            localStorage.setItem('userEmail', email);
+            
+            updateProfileDisplay();
+            updateProfileStatus(true);
+            hideProfileSetup();
+            
+            showModal('✅ Profile saved successfully!\n\nYou can now upload your games and apps.', 'Profile Complete');
+            addSuccessEffect();
+        }
+
+        function updateProfileDisplay() {
+            if (userProfile) {
+                document.getElementById('profile-display-name').textContent = userProfile.name;
+                document.getElementById('profile-display-email').textContent = userProfile.email;
+            }
+        }
+
+        function updateProfileStatus(isComplete) {
+            const indicator = document.getElementById('profile-status-indicator');
+            const statusIcon = document.getElementById('profile-status-icon');
+            const statusText = document.getElementById('profile-status-text');
+            const completeBtn = document.getElementById('complete-profile-btn');
+            
+            if (isComplete) {
+                statusIcon.className = 'w-3 h-3 rounded-full bg-green-500 mr-2';
+                statusText.textContent = 'Profile Complete';
+                completeBtn.style.display = 'none';
+                indicator.className = 'engaging-card mb-3 profile-complete';
+            } else {
+                statusIcon.className = 'w-3 h-3 rounded-full bg-red-500 mr-2';
+                statusText.textContent = 'Profile Incomplete';
+                completeBtn.style.display = 'block';
+                indicator.className = 'engaging-card mb-3 profile-incomplete';
+            }
+        }
+
+        function showProfileSetup() {
+            document.getElementById('profile-setup-section').style.display = 'block';
+            
+            // Pre-fill existing data
+            if (userProfile) {
+                document.getElementById('setup-name').value = userProfile.name || '';
+                document.getElementById('setup-email').value = userProfile.email || '';
+            }
+        }
+
+        function hideProfileSetup() {
+            document.getElementById('profile-setup-section').style.display = 'none';
+        }
+
+        function checkProfileStatus() {
+            // Check if profile is complete for upload
+            const uploadAlert = document.getElementById('profile-required-alert');
+            if (!userProfile || !userProfile.email) {
+                uploadAlert.style.display = 'block';
+            } else {
+                uploadAlert.style.display = 'none';
+            }
+        }
+
+        // ✅ ANDROID OPTIMIZED: Carousel System
+        function setupCarousel() {
+            const slides = document.querySelectorAll('.carousel-slide');
+            const indicators = document.querySelectorAll('.indicator');
+            const totalSlides = slides.length;
+            
+            // Setup indicator clicks
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    goToSlide(index);
+                });
+            });
+            
+            // Auto-advance carousel
+            function startCarousel() {
+                carouselInterval = setInterval(() => {
+                    carouselCurrentSlide = (carouselCurrentSlide + 1) % totalSlides;
+                    goToSlide(carouselCurrentSlide);
+                }, 4000);
+            }
+            
+            function goToSlide(slideIndex) {
+                // Remove active class from all slides and indicators
+                slides.forEach(slide => slide.classList.remove('active'));
+                indicators.forEach(indicator => indicator.classList.remove('active'));
+                
+                // Add active class to current slide and indicator
+                slides[slideIndex].classList.add('active');
+                indicators[slideIndex].classList.add('active');
+                
+                carouselCurrentSlide = slideIndex;
+            }
+            
+            // Start the carousel
+            startCarousel();
+            
+            // Pause on hover
+            const carousel = document.querySelector('.promotion-carousel');
+            carousel.addEventListener('mouseenter', () => {
+                clearInterval(carouselInterval);
+            });
+            
+            carousel.addEventListener('mouseleave', () => {
+                startCarousel();
+            });
+        }
+
+        // ✅ ANDROID OPTIMIZED: Header visibility
+        function initializeHeaderVisibility() {
+            const header = document.querySelector('.new-header');
+            const homeTab = document.getElementById('home-tab');
+            
+            // Ensure header is visible immediately on home tab (which is active by default)
+            if (homeTab.classList.contains('active')) {
+                header.style.display = 'flex';
+                header.style.opacity = '1';
+                header.style.visibility = 'visible';
+            }
+        }
+
+        function setupDropdownMenu() {
+            const menuBtn = document.getElementById('menu-dots-btn');
+            const dropdown = document.getElementById('dropdown-menu');
+            
+            menuBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                dropdown.classList.toggle('active');
+            });
+            
+            document.addEventListener('click', () => {
+                dropdown.classList.remove('active');
+            });
+            
+            dropdown.addEventListener('click', (e) => {
+                e.stopPropagation();
+            });
+        }
+
+        // Android Functions
+        window.refreshContent = function() {
+            showToast('🔄 Refreshing content...', 2000);
+            loadData();
+            document.getElementById('dropdown-menu').classList.remove('active');
+        }
+
+        window.shareApp = function() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'AlPlayHub - Ultimate Gaming Platform',
+                    text: 'Check out AlPlayHub - thousands of games & apps!',
+                    url: 'https://alplayhub.netlify.app/'
+                });
+            } else {
+                const url = 'https://alplayhub.netlify.app/';
+                navigator.clipboard.writeText(url).then(() => {
+                    showToast('📋 App link copied to clipboard!', 3000);
+                });
+            }
+            document.getElementById('dropdown-menu').classList.remove('active');
+        }
+
+        window.downloadApp = function() {
+            showToast('🚀 Opening AlPlayHub download page...', 2000);
+            setTimeout(() => {
+                window.open('https://alplayhub.netlify.app/', '_blank');
+            }, 500);
+            document.getElementById('dropdown-menu').classList.remove('active');
+        }
+
+        window.showAbout = function() {
+            showModal('AlPlayHub v2.0\n\nUltimate HTML5 Games & Apps Platform\n\nDeveloped by Mohammed Sharif\n\nFeatures:\n• Instant Gaming\n• Easy Upload\n• Material Design\n• Android Optimized\n• Compact Design', '📱 About AlPlayHub');
+            document.getElementById('dropdown-menu').classList.remove('active');
+        }
+
+        window.openSettings = function() {
+            showTab('profile-tab');
+            document.getElementById('dropdown-menu').classList.remove('active');
+        }
+
+        function setupEngagingFeatures() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.engaging-card, .stat-card, .item-card').forEach(card => {
+                observer.observe(card);
+            });
+
+            setupSuccessAnimations();
+        }
+
+        function setupSuccessAnimations() {
+            const originalShowToast = showToast;
+            window.showToast = function(message, duration = 3000) {
+                originalShowToast(message, duration);
+                if (message.includes('success') || message.includes('saved') || message.includes('uploaded')) {
+                    addSuccessEffect();
+                }
+            }
+        }
+
+        function addSuccessEffect() {
+            for (let i = 0; i < 4; i++) {
+                setTimeout(() => {
+                    const particle = document.createElement('div');
+                    particle.innerHTML = ['🎉', '✨', '🎊', '⭐'][Math.floor(Math.random() * 4)];
+                    particle.style.position = 'fixed';
+                    particle.style.fontSize = '20px';
+                    particle.style.zIndex = '9999';
+                    particle.style.pointerEvents = 'none';
+                    particle.style.left = Math.random() * window.innerWidth + 'px';
+                    particle.style.top = '50%';
+                    particle.style.animation = 'fadeInUp 1.5s ease-out forwards';
+                    document.body.appendChild(particle);
+                    
+                    setTimeout(() => {
+                        if (document.body.contains(particle)) {
+                            document.body.removeChild(particle);
+                        }
+                    }, 1500);
+                }, i * 100);
+            }
+        }
+
+        function optimizeForAndroid() {
+            // Disable text selection for better app feel
+            document.body.style.webkitUserSelect = 'none';
+            document.body.style.userSelect = 'none';
+            
+            // Improve touch responsiveness
+            document.body.style.webkitTouchCallout = 'none';
+            document.body.style.webkitTapHighlightColor = 'transparent';
+            
+            // Set theme color to white
+            updateThemeColorImmediate('#FFFFFF');
+            
+            // Hide address bar on mobile
+            setTimeout(() => {
+                window.scrollTo(0, 1);
+            }, 100);
+        }
+
+        function updateThemeColorImmediate(color) {
+            document.getElementById('theme-color-meta').setAttribute('content', color);
+            document.getElementById('ms-theme-color').setAttribute('content', color);
+        }
+
+        function initializeApp() {
+            // Initialize with default values, but profile system will override
+            if (!localStorage.getItem('userName')) {
+                localStorage.setItem('userName', 'AlPlayHub User');
+                localStorage.setItem('userEmail', 'user@playvault.app');
+            }
+        }
+
+        function setupEventListeners() {
+            setupUploadForm();
+            setupModals();
+        }
+
+        // ✅ SIMPLIFIED: Upload Methods - HTML & URL Only
+        function setupUploadMethods() {
+            const htmlBtn = document.getElementById('method-html');
+            const urlBtn = document.getElementById('method-url');
+            const htmlSection = document.getElementById('html-section');
+            const urlSection = document.getElementById('url-section');
+
+            htmlBtn.addEventListener('click', () => {
+                uploadMethod = 'html';
+                updateActiveMethod(htmlBtn, [urlBtn]);
+                showSection(htmlSection, [urlSection]);
+            });
+
+            urlBtn.addEventListener('click', () => {
+                uploadMethod = 'url';
+                updateActiveMethod(urlBtn, [htmlBtn]);
+                showSection(urlSection, [htmlSection]);
+            });
+        }
+
+        function updateActiveMethod(activeBtn, inactiveBtns) {
+            activeBtn.classList.add('active', 'bg-primary', 'text-white');
+            activeBtn.classList.remove('border-borderColor', 'text-textDark');
+            inactiveBtns.forEach(btn => {
+                btn.classList.remove('active', 'bg-primary', 'text-white');
+                btn.classList.add('border-borderColor', 'text-textDark');
+            });
+        }
+
+        function showSection(activeSection, inactiveSections) {
+            activeSection.style.display = 'block';
+            inactiveSections.forEach(section => {
+                section.style.display = 'none';
+            });
+        }
+
+        function setupSearch() {
+            const searchInput = document.querySelector('.search-input');
+            let searchTimeout;
+            
+            searchInput.addEventListener('input', (e) => {
+                clearTimeout(searchTimeout);
+                const query = e.target.value.toLowerCase().trim();
+                searchTimeout = setTimeout(() => {
+                    renderItems(allItems, query);
+                }, 300);
+            });
+        }
+        
+        function setupSideMenu() {
+            const hamburgerBtn = document.getElementById('hamburger-menu-btn');
+            const sideMenu = document.getElementById('side-menu');
+            const overlay = document.getElementById('side-menu-overlay');
+            const closeBtn = document.getElementById('side-menu-close-btn');
+
+            hamburgerBtn.addEventListener('click', () => {
+                overlay.classList.add('active');
+                sideMenu.classList.add('active');
+            });
+
+            const closeMenu = () => {
+                overlay.classList.remove('active');
+                sideMenu.classList.remove('active');
+            }
+            
+            closeBtn.addEventListener('click', closeMenu);
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) {
+                    closeMenu();
+                }
+            });
+        }
+        
+        window.closeSideMenu = function() {
+            document.getElementById('side-menu-overlay').classList.remove('active');
+            document.getElementById('side-menu').classList.remove('active');
+        }
+
+        // External page redirects
+        function openExternalPage(page) {
+            const pages = {
+                'privacy': 'https://alplayhub.netlify.app/privacy-policy',
+                'terms': 'https://alplayhub.netlify.app/terms-of-service',
+                'about': 'https://alplayhub.netlify.app/about-us',
+                'contact': 'https://alplayhub.netlify.app/contact',
+                'feedback': 'https://alplayhub.netlify.app/feedback'
+            };
+            
+            if (pages[page]) {
+                showToast(`Opening ${page} page...`);
+                setTimeout(() => {
+                    window.open(pages[page], '_blank');
+                }, 500);
+            }
+        }
+
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            
+            const newHeader = document.querySelector('.new-header');
+            const bottomNav = document.querySelector('.bottom-nav');
+            
+            if (tabId === 'home-tab') {
+                newHeader.style.display = 'flex';
+                newHeader.style.opacity = '1';
+                newHeader.style.visibility = 'visible';
+            } else {
+                newHeader.style.display = 'none';
+            }
+            
+            bottomNav.style.display = 'flex';
+            
+            // Update active nav button
+            document.querySelectorAll('.nav-button').forEach(btn => btn.classList.remove('active'));
+            const activeNavId = 'nav-' + tabId.replace('-tab', '');
+            const activeBtn = document.getElementById(activeNavId);
+            if (activeBtn) {
+                activeBtn.classList.add('active');
+                activeBtn.style.animation = 'scale-in 0.2s ease-out';
+            }
+            
+            // Scroll to top
+            const targetScreen = document.querySelector(`#${tabId}`);
+            if(targetScreen) targetScreen.scrollTop = 0;
+            
+            // Load specific tab data
+            if (tabId === 'profile-tab') {
+                loadUserUploads();
+                checkProfileStatus();
+            } else if (tabId === 'upload-tab') {
+                updateUploadStats();
+                checkProfileStatus();
+            }
+        }
+
+        function filterItems(filter) {
+            currentFilter = filter;
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active', 'bg-primary', 'text-white');
+                if (btn.dataset.filter === filter) {
+                    btn.classList.add('active', 'bg-primary', 'text-white');
+                }
+            });
+            renderItems(allItems);
+        }
+
+        function updateUploadStats() {
+            const pending = userUploads.filter(item => item.status === 'pending').length;
+            const approved = userUploads.filter(item => item.status === 'approved').length;
+            const total = userUploads.length;
+            
+            document.getElementById('upload-pending').textContent = pending;
+            document.getElementById('upload-approved').textContent = approved;
+            document.getElementById('upload-total').textContent = total;
+        }
+
+        function setupUploadForm() {
+            const urlInput = document.getElementById('upload-logo-url');
+            const fileInput = document.getElementById('upload-logo-file');
+            const preview = document.getElementById('logo-preview');
+            const img = document.getElementById('preview-img');
+
+            urlInput.addEventListener('input', (e) => {
+                const url = e.target.value.trim();
+                if (url) {
+                    img.src = url;
+                    img.onload = () => preview.style.display = 'block';
+                    img.onerror = () => preview.style.display = 'none';
+                } else {
+                    preview.style.display = 'none';
+                }
+            });
+
+            fileInput.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        img.src = e.target.result;
+                        preview.style.display = 'block';
+                        urlInput.value = '';
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            document.getElementById('upload-form').addEventListener('submit', handleUpload);
+        }
+
+        // ✅ ENHANCED: Upload Handler - With Profile Check
+        async function handleUpload(e) {
+            e.preventDefault();
+            
+            // Check if profile is complete
+            if (!userProfile || !userProfile.email) {
+                showModal('Please complete your profile before uploading!\n\nGo to Profile tab to set up your account.', 'Profile Required');
+                return;
+            }
+
+            let logoUrl = document.getElementById('upload-logo-url').value.trim();
+            const logoFile = document.getElementById('upload-logo-file').files[0];
+            const title = document.getElementById('upload-title').value.trim();
+            const type = document.getElementById('upload-type').value;
+            const description = document.getElementById('upload-description').value.trim();
+            
+            // Get content based on upload method
+            let htmlCode = '';
+            let gameUrl = '';
+            
+            if (uploadMethod === 'html') {
+                htmlCode = document.getElementById('upload-html').value.trim();
+                if (!htmlCode) {
+                    showModal('Please provide HTML code for your game/app!', 'Missing HTML Code');
+                    return;
+                }
+            } else {
+                gameUrl = document.getElementById('upload-url').value.trim();
+                if (!gameUrl) {
+                    showModal('Please provide a valid URL for your game/app!', 'Missing Game URL');
+                    return;
+                }
+                // Create iframe HTML for URL content
+                htmlCode = `<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${title}</title>
+    <style>
+        body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; }
+        iframe { width: 100%; height: 100vh; border: none; }
+    </style>
+</head>
+<body>
+    <iframe src="${gameUrl}" allowfullscreen></iframe>
+</body>
+</html>`;
+            }
+
+            if (!logoUrl && !logoFile) {
+                showModal('Please provide a logo URL or upload a logo file!', 'Logo Required');
+                return;
+            }
+            if (!title || !type) {
+                showModal('Please fill in all required fields (Title and Category)!', 'Missing Information');
+                return;
+            }
+
+            const submitBtn = document.querySelector('#upload-form button[type="submit"]');
+            const submitText = document.getElementById('submit-text');
+            const submitLoading = document.getElementById('submit-loading');
+            
+            submitBtn.disabled = true;
+            submitText.classList.add('hidden');
+            submitLoading.classList.remove('hidden');
+
+            try {
+                // Upload logo if file is provided
+                if (logoFile) {
+                    const progress = document.getElementById('upload-progress');
+                    progress.style.display = 'block';
+                    const storageRef = storage.ref(`playvault_logos/${Date.now()}_${logoFile.name}`);
+                    const task = storageRef.put(logoFile);
+                    task.on('state_changed', snapshot => {
+                        progress.value = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                    });
+                    await task;
+                    logoUrl = await task.snapshot.ref.getDownloadURL();
+                    progress.style.display = 'none';
+                }
+                
+                const submissionData = { 
+                    title, 
+                    type, 
+                    description: description || `Play ${title} on AlPlayHub - ${type} made with HTML5.`,
+                    logo: logoUrl, 
+                    htmlCode, 
+                    gameUrl: uploadMethod === 'url' ? gameUrl : '',
+                    uploadMethod,
+                    userName: userProfile.name, 
+                    userEmail: userProfile.email, 
+                    submittedAt: firebase.database.ServerValue.TIMESTAMP, 
+                    platform: 'AlPlayHub',
+                    tags: [type.toLowerCase(), 'html5'],
+                    featured: false,
+                    playCount: 0,
+                    status: 'pending'
+                };
+                
+                await db.ref('pendingSubmissions').push(submissionData);
+                
+                showModal('🎉 Your submission has been sent for review!\n\nYou can track the status in your profile.\n\nThank you for contributing to AlPlayHub!', 'Upload Successful');
+                document.getElementById('upload-form').reset();
+                document.getElementById('logo-preview').style.display = 'none';
+                // Reset upload method
+                uploadMethod = 'html';
+                document.getElementById('method-html').click();
+                showTab('profile-tab');
+                addSuccessEffect();
+                
+            } catch (error) {
+                showModal('Error uploading: ' + error.message, 'Upload Error');
+            } finally {
+                submitBtn.disabled = false;
+                submitText.classList.remove('hidden');
+                submitLoading.classList.add('hidden');
+            }
+        }
+
+        function loadUserUploads() {
+            if (!userProfile || !userProfile.email) {
+                document.getElementById('user-uploads-container').innerHTML = '<p class="text-center text-textMuted py-4 text-xs"><i class="fas fa-user-circle text-xl mb-2 block"></i>Complete your profile to track uploads</p>';
+                return;
+            }
+            
+            const userEmail = userProfile.email;
+            
+            // Load both pending and approved items for this user
+            Promise.all([
+                new Promise((resolve) => {
+                    db.ref('pendingSubmissions').orderByChild('userEmail').equalTo(userEmail).once('value', (snapshot) => {
+                        const pending = [];
+                        if (snapshot.exists()) {
+                            snapshot.forEach(child => {
+                                pending.push({ key: child.key, status: 'pending', ...child.val() });
+                            });
+                        }
+                        resolve(pending);
+                    });
+                }),
+                new Promise((resolve) => {
+                    db.ref('items').orderByChild('userEmail').equalTo(userEmail).once('value', (snapshot) => {
+                        const approved = [];
+                        if (snapshot.exists()) {
+                            snapshot.forEach(child => {
+                                approved.push({ key: child.key, status: 'approved', ...child.val() });
+                            });
+                        }
+                        resolve(approved);
+                    });
+                })
+            ]).then(([pending, approved]) => {
+                userUploads = [...pending, ...approved].sort((a, b) => (b.submittedAt || 0) - (a.submittedAt || 0));
+                renderUserUploads();
+                updateUserStats();
+                updateUploadStats();
+                updateUserActivity();
+            }).catch(error => {
+                console.error('Error loading user uploads:', error);
+                document.getElementById('user-uploads-container').innerHTML = '<p class="text-center text-red-500 py-4 text-xs">Error loading uploads</p>';
+            });
+        }
+
+        function renderUserUploads() {
+            const container = document.getElementById('user-uploads-container');
+            const countEl = document.getElementById('uploads-count');
+            countEl.textContent = `(${userUploads.length})`;
+            
+            if (userUploads.length === 0) {
+                container.innerHTML = '<p class="text-center text-textMuted py-4 text-xs"><i class="fas fa-inbox text-xl mb-2 block"></i>No uploads yet. Start creating!</p>';
+                return;
+            }
+            
+            container.innerHTML = '';
+            userUploads.forEach(item => {
+                const statusClass = item.status === 'approved' ? 'status-approved' : 
+                                  item.status === 'rejected' ? 'status-rejected' : 'status-pending';
+                const statusText = item.status === 'approved' ? 'Published' : 
+                                 item.status === 'rejected' ? 'Rejected' : 'Under Review';
+                const statusIcon = item.status === 'approved' ? '✅' : 
+                                 item.status === 'rejected' ? '❌' : '⏳';
+                const typeIcon = getTypeIcon(item.type);
+                const playCount = item.playCount || 0;
+                
+                // Enhanced method badge for HTML & URL only
+                let uploadMethodBadge = '';
+                if (item.uploadMethod === 'url') {
+                    uploadMethodBadge = '<span class="text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded-full">🔗 URL</span>';
+                } else {
+                    uploadMethodBadge = '<span class="text-xs bg-green-100 text-green-600 px-2 py-1 rounded-full">📝 HTML</span>';
+                }
+                
+                const uploadDiv = document.createElement('div');
+                uploadDiv.className = 'bg-white p-3 rounded-lg mb-3 shadow-md border border-borderColor hover:shadow-lg transition-all slide-in';
+                uploadDiv.innerHTML = `
+                    <div class="flex items-center gap-3 mb-3">
+                        <img src="${item.logo || getPlaceholderImage(item.type, item.title)}" alt="${item.title}" class="w-12 h-12 rounded-lg object-cover shadow-md" onerror="this.src='${getPlaceholderImage(item.type, item.title)}'">
+                        <div class="flex-1">
+                            <div class="font-bold text-sm text-textDark">${item.title}</div>
+                            <div class="text-xs text-textMuted flex items-center gap-2 mt-1 flex-wrap">
+                                <span>${typeIcon} ${item.type}</span>
+                                ${uploadMethodBadge}
+                                <span class="status-badge ${statusClass}">${statusIcon} ${statusText}</span>
+                            </div>
+                        </div>
+                        <div class="flex gap-1">
+                            <button class="w-8 h-8 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center hover:bg-blue-200 transition-colors" onclick="editItem('${item.key}', '${item.status}')" title="Edit">
+                                <i class="fas fa-edit text-xs"></i>
+                            </button>
+                            <button class="w-8 h-8 bg-red-100 text-red-600 rounded-lg flex items-center justify-center hover:bg-red-200 transition-colors" onclick="deleteItem('${item.key}', '${item.status}')" title="Delete">
+                                <i class="fas fa-trash text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                    ${item.status === 'approved' ? `
+                    <div class="flex justify-between items-center text-xs text-textMuted bg-gray-50 p-2 rounded-lg">
+                        <span><i class="fas fa-play mr-1"></i>${playCount} plays</span>
+                        <span><i class="fas fa-calendar mr-1"></i>Published</span>
+                        <span><i class="fas fa-eye mr-1"></i>Live</span>
+                    </div>
+                    ` : item.status === 'pending' ? `
+                    <div class="flex justify-center items-center text-xs text-orange-600 bg-orange-50 p-2 rounded-lg">
+                        <i class="fas fa-clock mr-1"></i>Waiting for admin approval...
+                    </div>
+                    ` : `
+                    <div class="flex justify-center items-center text-xs text-red-600 bg-red-50 p-2 rounded-lg">
+                        <i class="fas fa-times-circle mr-1"></i>Rejected by admin
+                    </div>
+                    `}
+                `;
+                container.appendChild(uploadDiv);
+            });
+        }
+
+        function updateUserStats() {
+            const totalUploads = userUploads.length;
+            const approvedItems = userUploads.filter(item => item.status === 'approved').length;
+            const pendingItems = userUploads.filter(item => item.status === 'pending').length;
+            
+            document.getElementById('user-total-uploads').textContent = totalUploads;
+            document.getElementById('user-approved-items').textContent = approvedItems;
+            document.getElementById('user-pending-items').textContent = pendingItems;
+        }
+
+        function updateUserActivity() {
+            const approvedItems = userUploads.filter(item => item.status === 'approved');
+            const totalPlays = approvedItems.reduce((sum, item) => sum + (item.playCount || 0), 0);
+            const avgRating = approvedItems.length > 0 ? (4.2 + Math.random() * 0.6).toFixed(1) : '0.0';
+            
+            document.getElementById('total-plays').textContent = totalPlays;
+            document.getElementById('avg-rating').textContent = avgRating;
+        }
+
+        function setupModals() {
+            document.querySelectorAll('.close-modal').forEach(btn => btn.addEventListener('click', (e) => e.target.closest('.modal-backdrop').classList.remove('active')));
+            document.querySelectorAll('.modal-backdrop').forEach(modal => modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('active'); }));
+            document.getElementById('modal-ok').addEventListener('click', () => closeModal('custom-modal'));
+            document.getElementById('modal-cancel').addEventListener('click', () => closeModal('custom-modal'));
+        }
+
+        function showModal(message, title = 'AlPlayHub Notification', isConfirm = false) {
+            document.getElementById('modal-title').textContent = title;
+            document.getElementById('modal-message').textContent = message;
+            document.getElementById('modal-cancel').classList.toggle('hidden', !isConfirm);
+            document.getElementById('custom-modal').classList.add('active');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+        
+        function loadData() {
+            if (isLoading) return;
+            isLoading = true;
+            const container = document.getElementById('categories-container');
+            container.innerHTML = '<div class="text-center py-6 w-full"><div class="loading mx-auto mb-3"></div><p class="text-textMuted text-sm">Loading amazing content...</p></div>';
+            
+            db.ref('items').on('value', snapshot => {
+                allItems = [];
+                if (snapshot.exists()) {
+                    snapshot.forEach(child => {
+                        allItems.push({ key: child.key, ...child.val() });
+                    });
+                    allItems.reverse();
+                }
+                renderItems(allItems);
+                isLoading = false;
+            }, (error) => {
+                console.error("Firebase Read Failed: " + error.code);
+                isLoading = false;
+                container.innerHTML = '<div class="text-center py-6 w-full"><p class="text-red-500 text-sm">Failed to load content.</p></div>';
+            });
+        }
+        
+        function renderItems(items, searchQuery = '') {
+            const mainContainer = document.getElementById('categories-container');
+            mainContainer.innerHTML = '';
+
+            let sourceItems = items;
+            if (searchQuery) {
+                sourceItems = items.filter(item => 
+                    item.title.toLowerCase().includes(searchQuery)
+                );
+            }
+            
+            const categoriesToShow = currentFilter === 'All' ? ['Game', 'App', 'Tool'] : [currentFilter];
+            let itemsFound = false;
+
+            categoriesToShow.forEach(category => {
+                const categoryItems = sourceItems.filter(item => item.type === category);
+
+                if (categoryItems.length > 0) {
+                    itemsFound = true;
+                    
+                    const header = document.createElement('h2');
+                    header.className = 'text-base font-bold my-2 px-1 text-textDark flex items-center';
+                    header.innerHTML = `${getTypeIcon(category)} ${category}s <span class="ml-2 text-sm font-semibold opacity-60">(${categoryItems.length})</span>`;
+                    mainContainer.appendChild(header);
+
+                    const scrollContainer = document.createElement('div');
+                    scrollContainer.className = 'category-scroll-container';
+                    
+                    const fragment = document.createDocumentFragment();
+                    categoryItems.forEach((item, index) => {
+                        const card = createItemCard(item, index);
+                        fragment.appendChild(card);
+                    });
+                    scrollContainer.appendChild(fragment);
+                    mainContainer.appendChild(scrollContainer);
+                }
+            });
+
+            if (!itemsFound) {
+                mainContainer.innerHTML = `<div class="text-center py-6 w-full"><h3 class="text-sm font-bold text-textDark">No items found</h3><p class="text-textMuted mt-1 text-sm">Try a different search term</p></div>`;
+            }
+        }
+        
+        function createItemCard(item, index = 0) {
+            const card = document.createElement('div');
+            card.className = 'item-card fade-in';
+            
+            const imageDiv = document.createElement('div');
+            imageDiv.className = 'card-image';
+            
+            const img = document.createElement('img');
+            img.src = item.logo || getPlaceholderImage(item.type, item.title);
+            img.alt = `${item.title} - ${item.type}`;
+            img.loading = index > 6 ? 'lazy' : 'eager';
+            img.onerror = function() {
+                this.style.display = 'none';
+                const fallback = document.createElement('div');
+                fallback.className = 'fallback-icon';
+                fallback.innerHTML = getTypeIcon(item.type);
+                imageDiv.appendChild(fallback);
+            };
+            
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'card-content';
+            
+            const titleDiv = document.createElement('div');
+            titleDiv.className = 'item-title';
+            titleDiv.textContent = item.title;
+            
+            imageDiv.appendChild(img);
+            contentDiv.appendChild(titleDiv);
+            card.appendChild(imageDiv);
+            card.appendChild(contentDiv);
+            
+            card.addEventListener('click', () => {
+                playItem(item);
+            });
+            
+            return card;
+        }
+
+        function playItem(item) {
+            const playModal = document.getElementById('play-modal');
+            const iframe = document.getElementById('play-iframe');
+            
+            // Track play count
+            if (item.key) {
+                db.ref(`items/${item.key}/playCount`).transaction(current => (current || 0) + 1);
+            }
+            
+            // Check if it's a URL-based game
+            if (item.uploadMethod === 'url' && item.gameUrl) {
+                // For URL games, create a proper iframe setup
+                const fullScreenStyle = `
+                    <style>
+                        html, body { margin: 0 !important; padding: 0 !important; height: 100vh !important; width: 100vw !important; overflow: hidden !important; }
+                        iframe { width: 100vw !important; height: 100vh !important; border: none !important; }
+                    </style>
+                `;
+                const iframeHTML = `${fullScreenStyle}<iframe src="${item.gameUrl}" allowfullscreen allow="autoplay; fullscreen; gamepad; microphone; camera"></iframe>`;
+                iframe.srcdoc = iframeHTML;
+            } else {
+                // For HTML games, use the existing system
+                const fullScreenStyle = `
+                    <style>
+                        html, body { margin: 0 !important; padding: 0 !important; height: 100vh !important; width: 100vw !important; overflow: auto !important; -webkit-overflow-scrolling: touch !important; }
+                        * { box-sizing: border-box !important; }
+                        body { background: var(--app-bg) !important; }
+                    </style>
+                `;
+                iframe.srcdoc = fullScreenStyle + item.htmlCode;
+            }
+            
+            playModal.style.display = 'block';
+            showToast(`🎮 Loading ${item.title}...`, 2000);
+        }
+
+        document.getElementById('close-modal-btn').addEventListener('click', () => {
+            document.getElementById('play-modal').style.display = 'none';
+            document.getElementById('play-iframe').srcdoc = '';
+        });
+        
+        function getTypeIcon(type) {
+            return typeIcons[type] || '📄';
+        }
+
+        function getPlaceholderImage(type, title) {
+            const colors = { 'Game': '2196F3', 'App': '4CAF50', 'Tool': 'FF9800' };
+            const color = colors[type] || '9E9E9E';
+            const letter = encodeURIComponent(title.charAt(0).toUpperCase());
+            return `https://via.placeholder.com/200x200/${color}/ffffff?text=${letter}`;
+        }
+
+        window.editItem = function(key, status) {
+            const item = userUploads.find(u => u.key === key);
+            if (!item) return;
+            
+            document.getElementById('upload-title').value = item.title || '';
+            document.getElementById('upload-type').value = item.type || '';
+            document.getElementById('upload-description').value = item.description || '';
+            document.getElementById('upload-logo-url').value = item.logo || '';
+            
+            // Handle different upload methods - HTML & URL only
+            if (item.uploadMethod === 'url' && item.gameUrl) {
+                uploadMethod = 'url';
+                document.getElementById('method-url').click();
+                document.getElementById('upload-url').value = item.gameUrl;
+            } else {
+                uploadMethod = 'html';
+                document.getElementById('method-html').click();
+                document.getElementById('upload-html').value = item.htmlCode || '';
+            }
+            
+            if (item.logo) {
+                const preview = document.getElementById('logo-preview');
+                const img = document.getElementById('preview-img');
+                img.src = item.logo;
+                preview.style.display = 'block';
+            }
+            
+            sessionStorage.setItem('editingItem', JSON.stringify({key, status}));
+            showTab('upload-tab');
+            showModal('✏️ Edit mode activated! Make your changes and submit.', 'Edit Mode');
+        };
+
+        window.deleteItem = function(key, status) {
+            showModal('Are you sure you want to delete this item?', 'Confirm Delete', true);
+            document.getElementById('modal-ok').onclick = () => {
+                const ref = status === 'pending' ? 'pendingSubmissions' : 'items';
+                db.ref(ref).child(key).remove()
+                    .then(() => {
+                        showModal('🗑️ Item deleted successfully!', 'Deleted');
+                        loadUserUploads();
+                        addSuccessEffect();
+                    })
+                    .catch(err => showModal('Error deleting item: ' + err.message, 'Error'));
+                closeModal('custom-modal');
+            };
+        };
+
+        function showToast(message, duration = 3000) {
+            const toast = document.createElement('div');
+            toast.className = 'fixed bottom-16 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white px-4 py-2 rounded-lg shadow-lg z-50 text-sm font-medium';
+            toast.style.backdropFilter = 'blur(8px)';
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.style.transform = 'translateX(-50%) translateY(-3px)';
+                toast.style.opacity = '1';
+            }, 10);
+            
+            setTimeout(() => {
+                if (document.body.contains(toast)) {
+                    document.body.removeChild(toast);
+                }
+            }, duration);
+        }
+
+        // Add CSS animation for ripple effect
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+         `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

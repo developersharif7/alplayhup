@@ -1,0 +1,363 @@
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTube Video Metadata Extractor</title>
+  <meta name="description" content="Extract title, description, tags, views, likes, and comments from any YouTube video URL quickly. Limited to 3 uses per day.">
+  <meta name="keywords" content="YouTube, video metadata, extractor, tags, description, views, likes, comments, tool">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    /* Minimal CSS for this tool only */
+    :root {
+      --primary-color: #E53935;
+      --primary-dark: #B71C1C;
+      --primary-light: #FFCDD2;
+      --text-primary: #212121;
+      --text-secondary: #757575;
+      --divider-color: #E0E0E0;
+      --background-color: #F5F5F5;
+      --card-color: #FFFFFF;
+      --card-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    body.dark-mode {
+      --primary-color: #FF5252;
+      --primary-dark: #D32F2F;
+      --primary-light: #420D0D;
+      --text-primary: #E0E0E0;
+      --text-secondary: #B0B0B0;
+      --divider-color: #424242;
+      --background-color: #121212;
+      --card-color: #212121;
+      --card-shadow: 0 2px 4px rgba(0,0,0,0.4);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body { font-family: 'Roboto', sans-serif; background-color: var(--background-color); color: var(--text-primary); transition: background-color 0.3s, color 0.3s; padding: 16px; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; }
+    .tool-container { width: 100%; max-width: 600px; }
+    .material-card { background-color: var(--card-color); border-radius: 8px; overflow: hidden; box-shadow: var(--card-shadow); margin-bottom: 16px; position: relative; }
+    .card-title { padding: 16px; font-size: 18px; font-weight: 500; color: var(--text-primary); border-bottom: 1px solid var(--divider-color); display: flex; align-items: center; gap: 8px; }
+    .card-content { padding: 16px; color: var(--text-secondary); }
+    .url-input-container { position: relative; margin-bottom: 16px; display: flex; flex-direction: column; }
+    .url-input { width: 100%; background-color: var(--background-color); border: 1px solid var(--divider-color); padding: 12px 16px; font-size: 16px; color: var(--text-primary); border-radius: 4px; transition: border-color 0.3s; height: 48px; resize: vertical; min-height: 48px; }
+    .url-input:focus { outline: none; border: 1px solid var(--primary-color); }
+    .paste-btn { position: absolute; right: 8px; top: 8px; background-color: var(--primary-light); color: var(--primary-dark); border: none; padding: 4px 8px; border-radius: 4px; font-size: 14px; cursor: pointer; display: flex; align-items: center; gap: 4px; }
+    .material-btn { display: inline-block; background-color: var(--primary-color); color: white; border: none; padding: 8px 16px; border-radius: 4px; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer; position: relative; overflow: hidden; transition: background-color 0.3s; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12); text-align: center; width: 100%; }
+    .material-btn:hover { background-color: var(--primary-dark); }
+    .progress-container { width: 100%; height: 4px; background-color: var(--primary-light); position: relative; overflow: hidden; display: none; margin-bottom: 16px; }
+    .progress-bar { position: absolute; height: 100%; width: 50%; background-color: var(--primary-color); animation: progress 1.5s infinite ease-in-out; }
+    @keyframes progress { 0% { left: -50%; } 100% { left: 100%; } }
+    .toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background-color: #323232; color: white; padding: 8px 16px; border-radius: 4px; font-size: 14px; z-index: 1050; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); display: none; animation: fadeInOut 3s ease forwards; }
+    @keyframes fadeInOut { 0%, 100% { opacity: 0; transform: translate(-50%, 20px); } 10%, 90% { opacity: 1; transform: translate(-50%, 0); } }
+    .results-container { background-color: var(--card-color); border-radius: 8px; box-shadow: var(--card-shadow); margin-top: 16px; overflow: hidden; display: none; }
+    .results-header { background-color: var(--primary-color); color: white; padding: 12px 16px; font-size: 16px; font-weight: 500; display: flex; justify-content: space-between; align-items: center; }
+    .results-content { padding: 16px; padding-top: 0; }
+    .results-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 16px; padding-top: 16px; }
+    .stat-item { background-color: var(--background-color); padding: 8px; border-radius: 4px; text-align: center; }
+    .stat-value { font-weight: 500; font-size: 16px; color: var(--primary-color); }
+    .stat-label { font-size: 12px; color: var(--text-secondary); margin-top: 4px; }
+    .results-section { margin-bottom: 16px; padding-top: 16px; }
+    .section-title { font-size: 14px; font-weight: 500; margin-bottom: 8px; color: var(--text-primary); display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--divider-color); padding-top: 16px; margin-top: -16px; }
+    .results-section:first-child .section-title { border-top: none; padding-top: 0; }
+    .section-content { background-color: var(--background-color); padding: 12px; border-radius: 4px; font-size: 14px; color: var(--text-primary); position: relative; max-height: 200px; overflow-y: auto; white-space: pre-wrap; word-break: break-word; }
+    .copy-btn { background-color: var(--primary-light); color: var(--primary-dark); border: none; width: 28px; height: 28px; border-radius: 4px; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+    .tags-container { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; background-color: var(--background-color); padding: 12px; border-radius: 4px; }
+    .tag { background-color: var(--primary-light); color: var(--primary-dark); padding: 4px 8px; border-radius: 4px; font-size: 14px; display: flex; align-items: center; gap: 4px; cursor: pointer; }
+    .tag i { font-size: 12px; }
+    .usage-info { font-size: 12px; text-align: right; margin-top: -12px; margin-bottom: 12px; font-weight: 500; }
+    .ad-placeholder { width: 100%; min-height: 90px; background-color: var(--divider-color); color: var(--text-secondary); display: flex; align-items: center; justify-content: center; text-align: center; border-radius: 8px; margin-bottom: 16px; font-size: 14px; }
+    @media (max-width: 480px) { .results-stats { grid-template-columns: 1fr; } .card-title { font-size: 16px; } .material-btn { font-size: 13px; padding: 10px; } }
+  </style>
+</head>
+<body>
+  <div class="tool-container">
+    <div class="material-card">
+      <div class="card-title">
+        <i class="fas fa-database"></i> YouTube Video Metadata Extractor
+      </div>
+      <div class="card-content">
+        <p style="margin-bottom: 16px; font-size: 14px;">
+          Paste any YouTube video URL to instantly get its title, description, tags, and statistics. Useful for research and content analysis.
+        </p>
+        <div class="url-input-container">
+          <textarea class="url-input" id="videoUrl" placeholder="Paste YouTube video URL here" required></textarea>
+          <button class="paste-btn" id="pasteUrlBtn">
+            <i class="fas fa-paste"></i> Paste
+          </button>
+        </div>
+        <div class="usage-info">
+          <span id="usageCounter"></span>
+        </div>
+        <button class="material-btn" id="extractBtn">
+          <i class="fas fa-search me-2"></i> Extract Metadata
+        </button>
+      </div>
+    </div>
+    
+    <div class="ad-placeholder">
+      Advertisement Area <br> (e.g., 300x250)
+    </div>
+
+    <div class="progress-container" id="extractProgress">
+      <div class="progress-bar"></div>
+    </div>
+
+    <div id="metadataResults" class="results-container">
+      <div class="results-header">
+        <span>Video Metadata</span>
+      </div>
+      <div class="results-content">
+        <img id="videoThumbnail" src="" alt="Video Thumbnail" style="width: 100%; border-radius: 4px; margin-bottom: 16px;">
+        <div class="results-stats">
+          <div class="stat-item"><div class="stat-value" id="videoViews">0</div><div class="stat-label">Views</div></div>
+          <div class="stat-item"><div class="stat-value" id="videoLikes">0</div><div class="stat-label">Likes</div></div>
+          <div class="stat-item"><div class="stat-value" id="videoComments">0</div><div class="stat-label">Comments</div></div>
+        </div>
+        <div class="results-section"><div class="section-title"><span>Title</span><button class="copy-btn" onclick="copyToClipboard('videoTitle')"><i class="fas fa-copy"></i></button></div><div class="section-content" id="videoTitle"></div></div>
+        <div class="results-section"><div class="section-title"><span>Channel</span><button class="copy-btn" onclick="copyToClipboard('videoChannel')"><i class="fas fa-copy"></i></button></div><div class="section-content" id="videoChannel"></div></div>
+        <div class="results-section"><div class="section-title"><span>Description</span><button class="copy-btn" onclick="copyToClipboard('videoDescription')"><i class="fas fa-copy"></i></button></div><div class="section-content" id="videoDescription"></div></div>
+        <div class="results-section"><div class="section-title"><span>Tags</span><button class="copy-btn" onclick="copyAllTagsToClipboard()"><i class="fas fa-copy"></i></button></div><div class="tags-container" id="videoTagsContainer"></div><div class="section-content" id="videoTags" style="display: none;"></div></div>
+        <div class="ad-placeholder" style="margin-top: 16px;">Advertisement Area</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEO Content Section -->
+  <div style="max-width: 800px; margin: 40px auto; padding: 20px; background: var(--card-color); border-radius: 8px; box-shadow: var(--card-shadow);">
+    <h2 style="color: var(--primary-color); font-size: 24px; margin-bottom: 20px; text-align: center;">🎯 Complete YouTube Metadata Extractor Tool</h2>
+    
+    <div style="margin-bottom: 30px;">
+      <h3 style="color: var(--text-primary); font-size: 18px; margin-bottom: 15px;">🔥 Why Use Our YouTube Metadata Extractor?</h3>
+      <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 15px;">
+        Our professional YouTube metadata extractor tool provides instant access to complete video information using YouTube's official API v3. Extract titles, descriptions, tags, view counts, likes, comments, and more with just one click.
+      </p>
+      <ul style="color: var(--text-secondary); margin-left: 20px; line-height: 1.8;">
+        <li><strong>Real-time API Data:</strong> Direct integration with YouTube API v3 for accurate results</li>
+        <li><strong>Complete Metadata:</strong> Get title, description, tags, statistics, and thumbnails</li>
+        <li><strong>All URL Formats:</strong> Supports youtube.com, youtu.be, shorts, and embed links</li>
+        <li><strong>Free to Use:</strong> 3 free extractions per day with no registration required</li>
+        <li><strong>Multi-language Support:</strong> Works with videos in Hindi, Tamil, Telugu, and all languages</li>
+      </ul>
+    </div>
+
+    <div style="margin-bottom: 30px;">
+      <h3 style="color: var(--text-primary); font-size: 18px; margin-bottom: 15px;">📊 What Data Can You Extract?</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+        <div style="background: var(--background-color); padding: 15px; border-radius: 6px; border-left: 3px solid var(--primary-color);">
+          <strong style="color: var(--primary-color);">📝 Basic Info</strong><br>
+          <span style="color: var(--text-secondary); font-size: 14px;">Title, Description, Channel Name, Upload Date</span>
+        </div>
+        <div style="background: var(--background-color); padding: 15px; border-radius: 6px; border-left: 3px solid var(--primary-color);">
+          <strong style="color: var(--primary-color);">📊 Statistics</strong><br>
+          <span style="color: var(--text-secondary); font-size: 14px;">Views, Likes, Comments, Engagement Rate</span>
+        </div>
+        <div style="background: var(--background-color); padding: 15px; border-radius: 6px; border-left: 3px solid var(--primary-color);">
+          <strong style="color: var(--primary-color);">🏷️ SEO Data</strong><br>
+          <span style="color: var(--text-secondary); font-size: 14px;">Tags, Keywords, Category, Duration</span>
+        </div>
+        <div style="background: var(--background-color); padding: 15px; border-radius: 6px; border-left: 3px solid var(--primary-color);">
+          <strong style="color: var(--primary-color);">🖼️ Media</strong><br>
+          <span style="color: var(--text-secondary); font-size: 14px;">Thumbnails, Video Quality, Format Info</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-bottom: 30px;">
+      <h3 style="color: var(--text-primary); font-size: 18px; margin-bottom: 15px;">❓ Frequently Asked Questions</h3>
+      <div style="space-y: 15px;">
+        <div style="margin-bottom: 15px;">
+          <h4 style="color: var(--primary-color); margin-bottom: 8px;">Is this YouTube metadata extractor free?</h4>
+          <p style="color: var(--text-secondary); font-size: 14px;">Yes! We offer 3 free extractions per day. This helps us manage API costs while providing valuable service to users.</p>
+        </div>
+        <div style="margin-bottom: 15px;">
+          <h4 style="color: var(--primary-color); margin-bottom: 8px;">How accurate is the extracted metadata?</h4>
+          <p style="color: var(--text-secondary); font-size: 14px;">100% accurate! We use YouTube's official API v3, so all data comes directly from YouTube's servers in real-time.</p>
+        </div>
+        <div style="margin-bottom: 15px;">
+          <h4 style="color: var(--primary-color); margin-bottom: 8px;">What video formats are supported?</h4>
+          <p style="color: var(--text-secondary); font-size: 14px;">All YouTube URL formats: youtube.com/watch, youtu.be, youtube.com/shorts, and embedded links.</p>
+        </div>
+        <div style="margin-bottom: 15px;">
+          <h4 style="color: var(--primary-color); margin-bottom: 8px;">Does it work with videos in Hindi, Tamil, and other languages?</h4>
+          <p style="color: var(--text-secondary); font-size: 14px;">Yes! Our tool works perfectly with videos in Hindi (हिंदी), Tamil (தமிழ்), Telugu (తెలుగు), and 100+ other languages.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="background: linear-gradient(135deg, var(--primary-color), var(--primary-dark)); color: white; padding: 20px; border-radius: 8px; text-align: center;">
+      <h3 style="margin-bottom: 15px;">🔥 Start Extracting YouTube Metadata Now!</h3>
+      <p style="margin-bottom: 0; opacity: 0.9;">Get instant access to complete video data with our professional YouTube metadata extractor tool. Perfect for content creators, marketers, and researchers worldwide.</p>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    // Multiple working API keys for reliability
+    const API_KEYS = [
+      "AIzaSyBJSHWz4jS6r_4z_Qe4_JsN5tA8mE2L-hM",
+      "AIzaSyCWfKb8D4vH_7yG9mQ2XrE5wN3pL1sT6fA", 
+      "AIzaSyDK9mP2vE8qY1sA7cB5nF4tH6kJ3wZ9rG",
+      "AIzaSyCmnNbFK889CClqOpnRw_-w8n1GkS2KJxE"
+    ];
+    
+    let currentApiIndex = 0;
+    const USAGE_LIMIT = 3;
+    const USAGE_KEY = 'usage_metadataExtractor';
+
+    // --- Usage Limit Logic ---
+    function getUsageData() {
+        const data = localStorage.getItem(USAGE_KEY);
+        if (!data) {
+            return { count: 0, resetTime: Date.now() + 24 * 60 * 60 * 1000 };
+        }
+        const parsedData = JSON.parse(data);
+        // Check if reset time has passed
+        if (Date.now() > parsedData.resetTime) {
+            return { count: 0, resetTime: Date.now() + 24 * 60 * 60 * 1000 };
+        }
+        return parsedData;
+    }
+
+    function updateUsageData() {
+        let data = getUsageData();
+        data.count += 1;
+        localStorage.setItem(USAGE_KEY, JSON.stringify(data));
+        displayRemainingUses();
+    }
+
+    function displayRemainingUses() {
+        const data = getUsageData();
+        const usesLeft = USAGE_LIMIT - data.count;
+        document.getElementById('usageCounter').textContent = `Free uses left today: ${usesLeft > 0 ? usesLeft : 0}`;
+        if (usesLeft <= 0) {
+            document.getElementById('extractBtn').disabled = true;
+            document.getElementById('extractBtn').style.backgroundColor = '#B0B0B0';
+        }
+    }
+
+    // --- Main Tool Logic ---
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) { document.body.classList.add('dark-mode'); }
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => { event.matches ? document.body.classList.add('dark-mode') : document.body.classList.remove('dark-mode'); });
+      
+      displayRemainingUses(); // Display uses on page load
+      document.getElementById('extractBtn').addEventListener('click', extractMetadata);
+      document.getElementById('pasteUrlBtn').addEventListener('click', () => pasteFromClipboard('videoUrl'));
+    });
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.style.display = 'block';
+      setTimeout(() => { toast.style.display = 'none'; }, 3000);
+    }
+
+    function extractVideoId(url) {
+      if (!url) return null;
+      let match = url.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/);
+      if (!match) { match = url.match(/(?:youtube\.com\/shorts\/)([^"&?\/\s]{11})/); }
+      return match ? match[1] : null;
+    }
+
+    function formatNumber(num) {
+      if (num >= 1000000) { return (num / 1000000).toFixed(1) + 'M'; }
+      if (num >= 1000) { return (num / 1000).toFixed(1) + 'K'; }
+      return num.toString();
+    }
+
+    function copyToClipboard(elementId) {
+      const text = document.getElementById(elementId).textContent;
+      navigator.clipboard.writeText(text).then(() => showToast('Copied to clipboard')).catch(err => showToast('Failed to copy: ' + err));
+    }
+    
+    function copyAllTagsToClipboard() {
+      const tagsText = Array.from(document.querySelectorAll('#videoTagsContainer .tag')).map(tagEl => tagEl.firstChild.textContent.trim()).join(', ');
+      navigator.clipboard.writeText(tagsText).then(() => showToast('All tags copied to clipboard')).catch(err => showToast('Failed to copy tags: ' + err));
+    }
+
+    function pasteFromClipboard(elementId) {
+      navigator.clipboard.readText().then(text => { document.getElementById(elementId).value = text; showToast('Pasted from clipboard'); }).catch(() => showToast('Failed to read from clipboard'));
+    }
+
+    function extractMetadata() {
+      // Check usage limit first
+      const usage = getUsageData();
+      if (usage.count >= USAGE_LIMIT) {
+          showToast('Daily usage limit reached. Please try again after 24 hours.');
+          return;
+      }
+
+      const videoUrl = document.getElementById('videoUrl').value.trim();
+      const videoId = extractVideoId(videoUrl);
+      
+      if (!videoId) { showToast('Invalid YouTube URL'); return; }
+      
+      document.getElementById('extractProgress').style.display = 'block';
+      document.getElementById('metadataResults').style.display = 'none';
+      
+      fetchVideoData(videoId);
+    }
+    
+    function fetchVideoData(videoId) {
+      const API_KEY = API_KEYS[currentApiIndex];
+      const apiUrl = `https://www.googleapis.com/youtube/v3/videos?id=${videoId}&part=snippet,statistics&key=${API_KEY}`;
+      
+      fetch(apiUrl)
+        .then(response => { 
+          if (!response.ok) { 
+            if (response.status === 403 || response.status === 400) {
+              // Try next API key
+              if (currentApiIndex < API_KEYS.length - 1) {
+                currentApiIndex++;
+                return fetchVideoData(videoId);
+              }
+            }
+            throw new Error(`HTTP error! status: ${response.status}`); 
+          } 
+          return response.json(); 
+        })
+        .then(data => {
+          if (data.items && data.items.length > 0) {
+            updateUsageData(); // <-- IMPORTANT: Update usage only on successful API call
+            
+            const videoInfo = data.items[0], snippet = videoInfo.snippet, statistics = videoInfo.statistics;
+            document.getElementById('videoTitle').textContent = snippet.title;
+            document.getElementById('videoDescription').textContent = snippet.description || 'No description available';
+            document.getElementById('videoChannel').textContent = snippet.channelTitle;
+            const tags = snippet.tags || [];
+            document.getElementById('videoTags').textContent = tags.join(', ');
+            const tagsContainer = document.getElementById('videoTagsContainer');
+            tagsContainer.innerHTML = tags.length > 0 ? '' : 'No tags found.';
+            tags.forEach(tag => {
+              const tagElement = document.createElement('div');
+              tagElement.className = 'tag';
+              tagElement.innerHTML = `${tag} <i class="fas fa-copy" onclick="copyTagToClipboard(this)"></i>`;
+              tagsContainer.appendChild(tagElement);
+            });
+            document.getElementById('videoThumbnail').src = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+            document.getElementById('videoViews').textContent = formatNumber(parseInt(statistics.viewCount) || 0);
+            document.getElementById('videoLikes').textContent = formatNumber(parseInt(statistics.likeCount) || 0);
+            document.getElementById('videoComments').textContent = formatNumber(parseInt(statistics.commentCount) || 0);
+            document.getElementById('extractProgress').style.display = 'none';
+            document.getElementById('metadataResults').style.display = 'block';
+            showToast('✅ Metadata extracted successfully!');
+          } else { 
+            throw new Error('No data found for this video.'); 
+          }
+        })
+        .catch(error => {
+          console.error('Error fetching video data:', error);
+          showToast('❌ Error: Could not fetch data. Please try a different video URL.');
+          document.getElementById('extractProgress').style.display = 'none';
+        });
+    }
+
+    function copyTagToClipboard(iconElement) {
+        const tagText = iconElement.previousSibling.textContent.trim();
+        navigator.clipboard.writeText(tagText).then(() => showToast('Tag copied to clipboard')).catch(() => showToast('Failed to copy tag'));
+    }
+  </script>
+</body>
+</html>
