@@ -1,0 +1,1492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌟 ABC Triple Match 🌟</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Nunito:wght@600;700;800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            user-select: none;
+            position: relative;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Mobile-First Landing Screen */
+        .landing-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .character-mascot {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            animation: mascotBounce 2s ease-in-out infinite;
+            box-shadow: 0 8px 25px rgba(255,215,0,0.4);
+            border: 4px solid rgba(255,255,255,0.3);
+        }
+
+        @keyframes mascotBounce {
+            0%, 100% { transform: translateY(0) rotate(-5deg); }
+            50% { transform: translateY(-12px) rotate(5deg); }
+        }
+
+        .game-title {
+            font-family: 'Fredoka One', cursive;
+            font-size: 2em;
+            color: white;
+            margin-bottom: 8px;
+            text-shadow: 3px 3px 0px rgba(0,0,0,0.3);
+            letter-spacing: 1px;
+        }
+
+        .game-subtitle {
+            font-size: 1em;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .feature-highlights {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 15px 0;
+            max-width: 320px;
+            flex-wrap: wrap;
+        }
+
+        .feature-card {
+            background: rgba(255,255,255,0.2);
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 15px;
+            padding: 12px 8px;
+            backdrop-filter: blur(15px);
+            text-align: center;
+            flex: 1;
+            min-width: 70px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-3px);
+            background: rgba(255,255,255,0.3);
+        }
+
+        .feature-icon {
+            font-size: 1.8em;
+            margin-bottom: 5px;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.2));
+        }
+
+        .feature-text {
+            color: white;
+            font-size: 0.7em;
+            font-weight: 700;
+            line-height: 1.2;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        /* Simple Learn Everything Section */
+        .learn-everything-section {
+            margin: 12px 0;
+            width: 100%;
+            max-width: 240px;
+        }
+
+        .learn-card {
+            background: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            padding: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border: 2px solid rgba(255,255,255,0.5);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .learn-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        .learn-icon {
+            font-size: 1.8em;
+            background: linear-gradient(135deg, #FF6B35, #F7931E);
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .learn-content {
+            flex: 1;
+        }
+
+        .learn-text {
+            font-family: 'Fredoka One', cursive;
+            font-size: 0.85em;
+            color: #FF6B35;
+            margin-bottom: 2px;
+            font-weight: 700;
+        }
+
+        .learn-description {
+            font-size: 0.65em;
+            color: #666;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        .start-button {
+            background: linear-gradient(135deg, #FF6B35, #F7931E, #FFD700);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            padding: 18px 35px;
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(255,107,53,0.4);
+            margin-top: 20px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            border: 3px solid rgba(255,255,255,0.3);
+        }
+
+        .start-button:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 12px 35px rgba(255,107,53,0.6);
+            background: linear-gradient(135deg, #F7931E, #FFD700, #FF6B35);
+        }
+
+        /* Compact Game Screen */
+        .game-screen {
+            display: none;
+            max-width: 380px;
+            margin: 0 auto;
+            padding: 8px;
+            min-height: 100vh;
+        }
+
+        .game-screen.active {
+            display: block;
+        }
+
+        /* Clean Header */
+        .game-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 15px;
+            padding: 8px 12px;
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .back-button {
+            background: rgba(255,255,255,0.9);
+            border: 2px solid #FF6B35;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.1em;
+            color: #FF6B35;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            transform: scale(1.1);
+            background: #FF6B35;
+            color: white;
+        }
+
+        .stats-panel {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+            font-weight: 700;
+        }
+
+        .stat-value {
+            font-size: 0.9em;
+            font-family: 'Fredoka One', cursive;
+        }
+
+        .stat-label {
+            font-size: 0.6em;
+            opacity: 0.8;
+        }
+
+        .voice-controls {
+            background: rgba(255,255,255,0.9);
+            border-radius: 20px;
+            padding: 6px 10px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .voice-toggle {
+            background: none;
+            border: none;
+            font-size: 1em;
+            cursor: pointer;
+            padding: 3px;
+        }
+
+        /* Compact Progress */
+        .progress-container {
+            background: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+
+        .level-indicator {
+            font-family: 'Fredoka One', cursive;
+            color: #FF6B35;
+            font-size: 0.9em;
+        }
+
+        .streak-counter {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 15px;
+            font-size: 0.7em;
+            font-weight: 700;
+        }
+
+        .progress-bar {
+            background: linear-gradient(90deg, #4ECDC4, #44A08D);
+            height: 12px;
+            border-radius: 15px;
+            width: 0%;
+            transition: width 1s ease;
+            position: relative;
+        }
+
+        .progress-text {
+            text-align: center;
+            font-weight: 700;
+            color: #333;
+            font-size: 0.75em;
+            margin-top: 4px;
+        }
+
+        /* Compact Power-ups */
+        .power-ups {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .power-up {
+            background: rgba(255,255,255,0.9);
+            border: 2px solid #FFD700;
+            border-radius: 12px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .power-up-timer {
+            position: absolute;
+            bottom: -3px;
+            right: -3px;
+            background: #F44336;
+            color: white;
+            border-radius: 50%;
+            width: 16px;
+            height: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.5em;
+            font-weight: 700;
+        }
+
+        /* Compact Mission Brief */
+        .mission-brief {
+            background: rgba(255,255,255,0.95);
+            border-radius: 10px;
+            padding: 6px 12px;
+            margin-bottom: 8px;
+            text-align: center;
+            box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+        }
+
+        .mission-character {
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1em;
+            margin: 0 auto 3px;
+        }
+
+        .mission-letter {
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.6em;
+            color: #FF6B35;
+            margin-bottom: 2px;
+            text-shadow: 1px 1px 0px rgba(0,0,0,0.1);
+        }
+
+        .mission-text {
+            font-size: 0.75em;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 2px;
+        }
+
+        .mission-instruction {
+            font-size: 0.65em;
+            color: #666;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3px;
+        }
+
+        /* Compact Status */
+        .game-status {
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 6px;
+            margin-bottom: 10px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .status-text {
+            color: white;
+            font-weight: 600;
+            font-size: 0.8em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .selection-counter {
+            background: #FF6B35;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: 700;
+        }
+
+        /* Compact Triple Matching */
+        .triple-matching {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .match-category {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .category-label {
+            background: rgba(255,255,255,0.95);
+            text-align: center;
+            padding: 6px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.7em;
+            color: #333;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        .match-item {
+            background: rgba(255,255,255,0.98);
+            border: 3px solid #E0E0E0;
+            border-radius: 15px;
+            padding: 12px 8px;
+            font-size: 1.3em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            min-height: 70px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .match-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            border-color: #4ECDC4;
+        }
+
+        .match-item.selected {
+            border-color: #FFD700;
+            background: linear-gradient(135deg, #FFF8DC, #FFFACD);
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(255,215,0,0.6);
+        }
+
+        .match-item.correct {
+            background: linear-gradient(135deg, #C8E6C9, #A5D6A7);
+            border-color: #4CAF50;
+            animation: correctPulse 0.8s ease;
+        }
+
+        .match-item.wrong {
+            background: linear-gradient(135deg, #FFCDD2, #EF9A9A);
+            border-color: #F44336;
+            animation: wrongShake 0.6s ease;
+        }
+
+        @keyframes correctPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.15); filter: brightness(1.3); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes wrongShake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-8px); }
+            75% { transform: translateX(8px); }
+        }
+
+        .emoji-display {
+            font-size: 2.2em;
+            margin-bottom: 4px;
+        }
+
+        .word-display {
+            font-size: 0.7em;
+            font-weight: 800;
+            color: #333;
+        }
+
+        /* Achievement Popup */
+        .achievement-popup {
+            position: fixed;
+            bottom: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 15px;
+            box-shadow: 0 3px 15px rgba(76,175,80,0.3);
+            transform: translateX(100%);
+            transition: transform 0.5s ease;
+            z-index: 2000;
+            max-width: 200px;
+        }
+
+        .achievement-popup.show {
+            transform: translateX(0);
+        }
+
+        .achievement-icon {
+            font-size: 1.5em;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        .achievement-title {
+            font-weight: 700;
+            font-size: 0.8em;
+            margin-bottom: 3px;
+        }
+
+        .achievement-desc {
+            font-size: 0.7em;
+            opacity: 0.9;
+        }
+
+        /* Auto Progress */
+        .auto-progress {
+            position: fixed;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 600;
+            display: none;
+            z-index: 1000;
+        }
+
+        .auto-progress.show {
+            display: block;
+        }
+
+        /* Final Celebration */
+        .final-celebration {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(135deg, #FF6B35, #F7931E, #FFD700);
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .final-celebration.active {
+            display: flex;
+        }
+
+        .celebration-title {
+            font-family: 'Fredoka One', cursive;
+            font-size: 2.2em;
+            color: white;
+            margin-bottom: 15px;
+            text-shadow: 3px 3px 0px rgba(0,0,0,0.3);
+        }
+
+        .celebration-message {
+            font-size: 1em;
+            color: white;
+            font-weight: 600;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .alphabet-showcase {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 6px;
+            margin-bottom: 20px;
+            max-width: 280px;
+        }
+
+        .alphabet-letter {
+            background: rgba(255,255,255,0.2);
+            padding: 6px;
+            border-radius: 8px;
+            font-family: 'Fredoka One', cursive;
+            font-size: 1em;
+            color: white;
+        }
+
+        .play-again-btn {
+            background: white;
+            color: #FF6B35;
+            border: none;
+            border-radius: 20px;
+            padding: 12px 25px;
+            font-family: 'Fredoka One', cursive;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        /* Confetti */
+        .confetti-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 1500;
+            display: none;
+        }
+
+        .confetti-container.active {
+            display: block;
+        }
+
+        .confetti {
+            position: absolute;
+            font-size: 2em;
+            animation: confettiFall 4s linear forwards;
+        }
+
+        @keyframes confettiFall {
+            0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+
+        /* Combo Display */
+        .combo-display {
+            position: fixed;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, #FF6B35, #F7931E);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.2em;
+            z-index: 2000;
+            display: none;
+        }
+
+        .combo-display.show {
+            display: block;
+            animation: comboAppear 1s ease;
+        }
+
+        @keyframes comboAppear {
+            0% { transform: translate(-50%, -50%) scale(0); }
+            50% { transform: translate(-50%, -50%) scale(1.2); }
+            100% { transform: translate(-50%, -50%) scale(1); }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 320px) {
+            .game-title { font-size: 1.6em; }
+            .mission-letter { font-size: 2em; }
+            .match-item { font-size: 1.1em; min-height: 60px; }
+            .emoji-display { font-size: 1.8em; }
+            .triple-matching { gap: 8px; }
+            .feature-highlights { flex-direction: column; gap: 6px; }
+            .learn-image { height: 100px; }
+        }
+
+        /* Haptic Feedback */
+        .haptic-feedback {
+            animation: hapticPulse 0.1s ease;
+        }
+
+        @keyframes hapticPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(0.98); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Compact Landing Screen -->
+    <div class="landing-container" id="landingScreen">
+        <div class="character-mascot">🦸</div>
+        <h1 class="game-title">ABC Triple Match</h1>
+        <p class="game-subtitle">Learn & Play Together!</p>
+        
+        <div class="feature-highlights">
+            <div class="feature-card">
+                <div class="feature-icon">🏆</div>
+                <div class="feature-text">26 Levels<br>A to Z</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⭐</div>
+                <div class="feature-text">Awards &<br>Points</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <div class="feature-text">Power-ups<br>& Fun</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎵</div>
+                <div class="feature-text">Voice &<br>Sound</div>
+            </div>
+        </div>
+
+        <!-- Learn Everything Section -->
+        <div class="learn-everything-section">
+            <div class="learn-card" onclick="openLearnEverything()">
+                <div class="learn-icon">🎓</div>
+                <div class="learn-content">
+                    <div class="learn-text">Explore More Games!</div>
+                    <div class="learn-description">Animals, Colors, Numbers & More!</div>
+                </div>
+            </div>
+        </div>
+        
+        <button class="start-button" onclick="startTripleMatch()">
+            🚀 Start Learning!
+        </button>
+    </div>
+
+    <!-- Compact Game Screen -->
+    <div class="game-screen" id="gameScreen">
+        <!-- Clean Header -->
+        <div class="game-header">
+            <div class="back-button" onclick="goBackToHome()">⬅️</div>
+            
+            <div class="stats-panel">
+                <div class="stat-item">
+                    <div class="stat-value" id="scoreValue">0</div>
+                    <div class="stat-label">Score</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="streakValue">0</div>
+                    <div class="stat-label">Streak</div>
+                </div>
+            </div>
+            
+            <div class="voice-controls">
+                <button class="voice-toggle" id="voiceToggle" onclick="toggleVoice()">🔊</button>
+                <span style="font-size: 0.6em; font-weight: 600; color: #333;" id="voiceStatus">ON</span>
+            </div>
+        </div>
+
+        <!-- Compact Progress -->
+        <div class="progress-container">
+            <div class="progress-header">
+                <div class="level-indicator" id="levelIndicator">Level 1</div>
+                <div class="streak-counter" id="streakCounter">🔥 0</div>
+            </div>
+            <div class="progress-bar" id="progressBar"></div>
+            <div class="progress-text" id="progressText">Letter A - Let's Start! 🌟</div>
+        </div>
+
+        <!-- Compact Power-ups -->
+        <div class="power-ups">
+            <div class="power-up" id="hintPowerUp" onclick="useHint()">💡</div>
+            <div class="power-up" id="freezePowerUp" onclick="useFreeze()">❄️</div>
+            <div class="power-up" id="shufflePowerUp" onclick="useShuffle()">🔄</div>
+        </div>
+
+        <!-- Compact Mission Brief -->
+        <div class="mission-brief">
+            <div class="mission-character">🦸</div>
+            <div class="mission-letter" id="missionLetter">A</div>
+            <div class="mission-text" id="missionText">Find triple match for A!</div>
+            <div class="mission-instruction">
+                <span>👆</span> Letter + Picture + Word <span>👆</span>
+            </div>
+        </div>
+
+        <!-- Compact Status -->
+        <div class="game-status">
+            <div class="status-text">
+                <span>Selected:</span>
+                <span class="selection-counter" id="selectionCounter">0/3</span>
+                <span id="statusMessage">Choose first item!</span>
+            </div>
+        </div>
+
+        <!-- Compact Triple Matching -->
+        <div class="triple-matching">
+            <div class="match-category">
+                <div class="category-label">📝 LETTERS</div>
+                <div class="match-item" id="letter1" onclick="selectItem(this)"></div>
+                <div class="match-item" id="letter2" onclick="selectItem(this)"></div>
+                <div class="match-item" id="letter3" onclick="selectItem(this)"></div>
+            </div>
+            
+            <div class="match-category">
+                <div class="category-label">🖼️ PICS</div>
+                <div class="match-item" id="picture1" onclick="selectItem(this)"></div>
+                <div class="match-item" id="picture2" onclick="selectItem(this)"></div>
+                <div class="match-item" id="picture3" onclick="selectItem(this)"></div>
+            </div>
+            
+            <div class="match-category">
+                <div class="category-label">💬 WORDS</div>
+                <div class="match-item" id="word1" onclick="selectItem(this)"></div>
+                <div class="match-item" id="word2" onclick="selectItem(this)"></div>
+                <div class="match-item" id="word3" onclick="selectItem(this)"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popups & Effects -->
+    <div class="combo-display" id="comboDisplay">🔥 COMBO! 🔥</div>
+    <div class="achievement-popup" id="achievementPopup">
+        <div class="achievement-icon">🏆</div>
+        <div class="achievement-title" id="achievementTitle">Achievement!</div>
+        <div class="achievement-desc" id="achievementDesc">Great job!</div>
+    </div>
+    <div class="auto-progress" id="autoProgress">🎉 Next level!</div>
+    
+    <!-- Final Celebration -->
+    <div class="final-celebration" id="finalCelebration">
+        <div class="celebration-title">🎊 AMAZING! 🎊</div>
+        <div class="celebration-message">
+            You completed ALL letters A to Z!<br>
+            Score: <span id="finalScore">0</span><br>
+            You are an ALPHABET MASTER! 🏆
+        </div>
+        <div class="alphabet-showcase" id="alphabetShowcase"></div>
+        <button class="play-again-btn" onclick="playAgain()">
+            🌟 Play Again! 🌟
+        </button>
+    </div>
+
+    <div class="confetti-container" id="confettiContainer"></div>
+
+    <script>
+        // Educational Data
+        const educationData = [
+            { letter: 'A', word: 'Apple', emoji: '🍎', sound: 'A is for Apple' },
+            { letter: 'B', word: 'Baby', emoji: '👶', sound: 'B is for Baby' },
+            { letter: 'C', word: 'Cat', emoji: '🐱', sound: 'C is for Cat' },
+            { letter: 'D', word: 'Dog', emoji: '🐕', sound: 'D is for Dog' },
+            { letter: 'E', word: 'Egg', emoji: '🥚', sound: 'E is for Egg' },
+            { letter: 'F', word: 'Fish', emoji: '🐟', sound: 'F is for Fish' },
+            { letter: 'G', word: 'Girl', emoji: '👧', sound: 'G is for Girl' },
+            { letter: 'H', word: 'Home', emoji: '🏠', sound: 'H is for Home' },
+            { letter: 'I', word: 'Ice', emoji: '🧊', sound: 'I is for Ice' },
+            { letter: 'J', word: 'Jump', emoji: '🦘', sound: 'J is for Jump' },
+            { letter: 'K', word: 'King', emoji: '👑', sound: 'K is for King' },
+            { letter: 'L', word: 'Love', emoji: '❤️', sound: 'L is for Love' },
+            { letter: 'M', word: 'Moon', emoji: '🌙', sound: 'M is for Moon' },
+            { letter: 'N', word: 'Nose', emoji: '👃', sound: 'N is for Nose' },
+            { letter: 'O', word: 'Orange', emoji: '🍊', sound: 'O is for Orange' },
+            { letter: 'P', word: 'Pizza', emoji: '🍕', sound: 'P is for Pizza' },
+            { letter: 'Q', word: 'Queen', emoji: '👸', sound: 'Q is for Queen' },
+            { letter: 'R', word: 'Red', emoji: '🔴', sound: 'R is for Red' },
+            { letter: 'S', word: 'Sun', emoji: '☀️', sound: 'S is for Sun' },
+            { letter: 'T', word: 'Tree', emoji: '🌳', sound: 'T is for Tree' },
+            { letter: 'U', word: 'Up', emoji: '⬆️', sound: 'U is for Up' },
+            { letter: 'V', word: 'Voice', emoji: '🗣️', sound: 'V is for Voice' },
+            { letter: 'W', word: 'Water', emoji: '💧', sound: 'W is for Water' },
+            { letter: 'X', word: 'Xray', emoji: '🩻', sound: 'X is for Xray' },
+            { letter: 'Y', word: 'Yes', emoji: '✅', sound: 'Y is for Yes' },
+            { letter: 'Z', word: 'Zoo', emoji: '🦓', sound: 'Z is for Zoo' }
+        ];
+
+        // Game State
+        let gameState = {
+            currentLessonIndex: 0,
+            selectedItems: [],
+            gameLocked: false,
+            score: 0,
+            streak: 0,
+            achievements: [],
+            powerUps: { hint: 3, freeze: 2, shuffle: 2 },
+            isVoiceEnabled: true,
+            completedLessons: []
+        };
+
+        // Audio System
+        let audioContext;
+        let speechQueue = [];
+        let isSpeaking = false;
+
+        function initAudioSystem() {
+            try {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                if (audioContext.state === 'suspended') {
+                    audioContext.resume();
+                }
+            } catch (e) {
+                console.log('Audio not available');
+            }
+        }
+
+        function playTone(frequency, duration, type = 'sine', volume = 0.3) {
+            if (!audioContext) return;
+            try {
+                const osc = audioContext.createOscillator();
+                const gain = audioContext.createGain();
+                osc.connect(gain);
+                gain.connect(audioContext.destination);
+                osc.frequency.setValueAtTime(frequency, audioContext.currentTime);
+                osc.type = type;
+                gain.gain.setValueAtTime(volume, audioContext.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + duration);
+                osc.start(audioContext.currentTime);
+                osc.stop(audioContext.currentTime + duration);
+            } catch (e) {}
+        }
+
+        function playCorrectSound() {
+            playTone(523.25, 0.3);
+            setTimeout(() => playTone(659.25, 0.3), 150);
+            setTimeout(() => playTone(783.99, 0.4), 300);
+            triggerHapticFeedback();
+        }
+
+        function playWrongSound() {
+            playTone(200, 0.5, 'sawtooth');
+        }
+
+        function playClickSound() {
+            playTone(800, 0.1, 'triangle');
+        }
+
+        function triggerHapticFeedback() {
+            try {
+                if (navigator.vibrate) {
+                    navigator.vibrate([50]);
+                }
+                document.body.classList.add('haptic-feedback');
+                setTimeout(() => {
+                    document.body.classList.remove('haptic-feedback');
+                }, 100);
+            } catch (e) {}
+        }
+
+        // Speech System
+        function speak(text, callback = null) {
+            if (!gameState.isVoiceEnabled) {
+                if (callback) setTimeout(callback, 500);
+                return;
+            }
+            speechQueue.push({ text, callback });
+            processSpeechQueue();
+        }
+
+        function processSpeechQueue() {
+            if (isSpeaking || speechQueue.length === 0) return;
+            const { text, callback } = speechQueue.shift();
+            isSpeaking = true;
+
+            try {
+                if (window.speechSynthesis && window.SpeechSynthesisUtterance) {
+                    const synth = window.speechSynthesis;
+                    synth.cancel();
+                    const utterance = new SpeechSynthesisUtterance(text);
+                    utterance.rate = 0.8;
+                    utterance.pitch = 1.1;
+                    utterance.volume = 1.0;
+                    
+                    utterance.onend = () => {
+                        isSpeaking = false;
+                        if (callback) callback();
+                        setTimeout(processSpeechQueue, 100);
+                    };
+                    
+                    utterance.onerror = () => {
+                        isSpeaking = false;
+                        if (callback) callback();
+                        setTimeout(processSpeechQueue, 100);
+                    };
+                    
+                    synth.speak(utterance);
+                } else {
+                    setTimeout(() => {
+                        isSpeaking = false;
+                        if (callback) callback();
+                        setTimeout(processSpeechQueue, 100);
+                    }, 2000);
+                }
+            } catch (e) {
+                isSpeaking = false;
+                if (callback) callback();
+                setTimeout(processSpeechQueue, 100);
+            }
+        }
+
+        // Voice Toggle
+        function toggleVoice() {
+            gameState.isVoiceEnabled = !gameState.isVoiceEnabled;
+            const toggle = document.getElementById('voiceToggle');
+            const status = document.getElementById('voiceStatus');
+            
+            if (gameState.isVoiceEnabled) {
+                toggle.textContent = '🔊';
+                status.textContent = 'ON';
+                speak('Voice enabled');
+            } else {
+                toggle.textContent = '🔇';
+                status.textContent = 'OFF';
+                if (window.speechSynthesis) {
+                    window.speechSynthesis.cancel();
+                }
+                speechQueue = [];
+                isSpeaking = false;
+            }
+            playClickSound();
+        }
+
+        // Learn Everything Function
+        function openLearnEverything() {
+            playClickSound();
+            triggerHapticFeedback();
+            speak('Opening more learning games!');
+            
+            // Open the URL in a new window/tab
+            window.open('https://categories26.blogspot.com/', '_blank');
+        }
+
+        // Achievement System
+        function showAchievement(title, desc, icon = '🏆') {
+            const popup = document.getElementById('achievementPopup');
+            document.getElementById('achievementTitle').textContent = title;
+            document.getElementById('achievementDesc').textContent = desc;
+            popup.querySelector('.achievement-icon').textContent = icon;
+            
+            popup.classList.add('show');
+            playTone(523.25, 0.5);
+            
+            setTimeout(() => {
+                popup.classList.remove('show');
+            }, 3000);
+        }
+
+        // Power-ups
+        function useHint() {
+            if (gameState.powerUps.hint <= 0) return;
+            gameState.powerUps.hint--;
+            playClickSound();
+            
+            const correctItems = document.querySelectorAll(`[data-id="correct"]`);
+            correctItems.forEach(item => {
+                item.style.background = 'linear-gradient(135deg, #FFD700, #FFA500)';
+                setTimeout(() => {
+                    item.style.background = '';
+                }, 2000);
+            });
+            
+            speak('Here are the correct items!');
+            updatePowerUpDisplay();
+        }
+
+        function useFreeze() {
+            if (gameState.powerUps.freeze <= 0) return;
+            gameState.powerUps.freeze--;
+            playClickSound();
+            speak('Time bonus activated!');
+            updatePowerUpDisplay();
+        }
+
+        function useShuffle() {
+            if (gameState.powerUps.shuffle <= 0) return;
+            gameState.powerUps.shuffle--;
+            playClickSound();
+            createTripleMatchItems();
+            speak('Items shuffled!');
+            updatePowerUpDisplay();
+        }
+
+        function updatePowerUpDisplay() {
+            document.getElementById('hintPowerUp').innerHTML = 
+                `💡${gameState.powerUps.hint > 0 ? `<div class="power-up-timer">${gameState.powerUps.hint}</div>` : ''}`;
+            document.getElementById('freezePowerUp').innerHTML = 
+                `❄️${gameState.powerUps.freeze > 0 ? `<div class="power-up-timer">${gameState.powerUps.freeze}</div>` : ''}`;
+            document.getElementById('shufflePowerUp').innerHTML = 
+                `🔄${gameState.powerUps.shuffle > 0 ? `<div class="power-up-timer">${gameState.powerUps.shuffle}</div>` : ''}`;
+        }
+
+        // Score System
+        function updateScoreDisplay() {
+            document.getElementById('scoreValue').textContent = gameState.score;
+            document.getElementById('streakValue').textContent = gameState.streak;
+            document.getElementById('streakCounter').innerHTML = `🔥 ${gameState.streak}`;
+        }
+
+        // Back to Home
+        function goBackToHome() {
+            playClickSound();
+            if (window.speechSynthesis) {
+                window.speechSynthesis.cancel();
+            }
+            speechQueue = [];
+            isSpeaking = false;
+            
+            gameState = {
+                currentLessonIndex: 0,
+                selectedItems: [],
+                gameLocked: false,
+                score: 0,
+                streak: 0,
+                achievements: [],
+                powerUps: { hint: 3, freeze: 2, shuffle: 2 },
+                isVoiceEnabled: gameState.isVoiceEnabled,
+                completedLessons: []
+            };
+            
+            document.getElementById('gameScreen').classList.remove('active');
+            document.getElementById('landingScreen').style.display = 'flex';
+            document.getElementById('finalCelebration').classList.remove('active');
+            document.getElementById('confettiContainer').classList.remove('active');
+            
+            speak('Welcome back! Ready for another adventure?');
+        }
+
+        // Start Game
+        function startTripleMatch() {
+            playClickSound();
+            initAudioSystem();
+            
+            document.getElementById('landingScreen').style.display = 'none';
+            document.getElementById('gameScreen').classList.add('active');
+            
+            updateScoreDisplay();
+            updatePowerUpDisplay();
+            
+            speak("Welcome to Triple Match! Find 3 items that match together. Let's start with letter A!", () => {
+                initializeLesson();
+            });
+        }
+
+        function initializeLesson() {
+            const lesson = educationData[gameState.currentLessonIndex];
+            gameState.selectedItems = [];
+            gameState.gameLocked = false;
+
+            document.getElementById('missionLetter').textContent = lesson.letter;
+            document.getElementById('missionText').textContent = `Find triple match for ${lesson.letter}!`;
+            document.getElementById('levelIndicator').textContent = `Level ${gameState.currentLessonIndex + 1}`;
+            updateSelectionCounter();
+            updateProgress();
+            createTripleMatchItems();
+        }
+
+        function createTripleMatchItems() {
+            const lesson = educationData[gameState.currentLessonIndex];
+            
+            const letters = [lesson.letter, getRandomLetter(lesson.letter), getRandomLetter(lesson.letter)];
+            const pictures = [lesson.emoji, getRandomEmoji(), getRandomEmoji()];
+            const words = [lesson.word, getRandomWord(), getRandomWord()];
+            
+            shuffle(letters);
+            shuffle(pictures);
+            shuffle(words);
+
+            letters.forEach((letter, i) => {
+                const item = document.getElementById(`letter${i + 1}`);
+                item.innerHTML = `<div>${letter}</div>`;
+                item.dataset.id = letter === lesson.letter ? 'correct' : 'wrong';
+                item.dataset.type = 'letter';
+                item.dataset.sound = `Letter ${letter}`;
+                item.classList.remove('selected', 'correct', 'wrong', 'matched');
+            });
+
+            pictures.forEach((emoji, i) => {
+                const item = document.getElementById(`picture${i + 1}`);
+                item.innerHTML = `<div class="emoji-display">${emoji}</div>`;
+                item.dataset.id = emoji === lesson.emoji ? 'correct' : 'wrong';
+                item.dataset.type = 'picture';
+                item.dataset.sound = emoji === lesson.emoji ? lesson.word : 'Different picture';
+                item.classList.remove('selected', 'correct', 'wrong', 'matched');
+            });
+
+            words.forEach((word, i) => {
+                const item = document.getElementById(`word${i + 1}`);
+                item.innerHTML = `<div class="word-display">${word}</div>`;
+                item.dataset.id = word === lesson.word ? 'correct' : 'wrong';
+                item.dataset.type = 'word';
+                item.dataset.sound = word;
+                item.classList.remove('selected', 'correct', 'wrong', 'matched');
+            });
+        }
+
+        function selectItem(item) {
+            if (gameState.gameLocked || item.classList.contains('matched')) return;
+
+            playClickSound();
+            triggerHapticFeedback();
+            speak(item.dataset.sound);
+
+            if (item.classList.contains('selected')) {
+                item.classList.remove('selected');
+                gameState.selectedItems = gameState.selectedItems.filter(selected => selected !== item);
+            } else {
+                item.classList.add('selected');
+                gameState.selectedItems.push(item);
+            }
+
+            updateSelectionCounter();
+
+            if (gameState.selectedItems.length === 3) {
+                setTimeout(checkTripleMatch, 800);
+            }
+        }
+
+        function updateSelectionCounter() {
+            document.getElementById('selectionCounter').textContent = `${gameState.selectedItems.length}/3`;
+            
+            const messages = [
+                'Choose first item! 🎯',
+                'Great! Pick second! 🌟',
+                'Last one! Choose third! ⭐',
+                'Checking... 🔍'
+            ];
+            
+            document.getElementById('statusMessage').textContent = messages[gameState.selectedItems.length];
+        }
+
+        function checkTripleMatch() {
+            gameState.gameLocked = true;
+            
+            const allCorrect = gameState.selectedItems.every(item => item.dataset.id === 'correct');
+            
+            if (allCorrect) {
+                playCorrectSound();
+                
+                gameState.selectedItems.forEach(item => {
+                    item.classList.remove('selected');
+                    item.classList.add('correct', 'matched');
+                });
+                
+                gameState.score += 100 + (gameState.streak * 10);
+                gameState.streak++;
+                updateScoreDisplay();
+                
+                if (gameState.streak === 5) {
+                    showAchievement('On Fire!', '5 perfect matches!', '🔥');
+                }
+                
+                const lesson = educationData[gameState.currentLessonIndex];
+                createMiniCelebration();
+                
+                speak(`Perfect! You found ${lesson.letter} for ${lesson.word}! Excellent work!`, () => {
+                    setTimeout(completeLesson, 1500);
+                });
+                
+            } else {
+                playWrongSound();
+                
+                gameState.selectedItems.forEach(item => {
+                    item.classList.remove('selected');
+                    item.classList.add('wrong');
+                });
+                
+                gameState.streak = 0;
+                updateScoreDisplay();
+                
+                document.getElementById('statusMessage').textContent = 'Try again! 💪';
+                speak('Not quite right. Try again!');
+                
+                setTimeout(() => {
+                    gameState.selectedItems.forEach(item => {
+                        item.classList.remove('wrong');
+                    });
+                    gameState.selectedItems = [];
+                    gameState.gameLocked = false;
+                    updateSelectionCounter();
+                }, 2500);
+            }
+        }
+
+        function completeLesson() {
+            if (!gameState.completedLessons.includes(gameState.currentLessonIndex)) {
+                gameState.completedLessons.push(gameState.currentLessonIndex);
+            }
+
+            if (gameState.currentLessonIndex < 25) {
+                showAutoProgress();
+                setTimeout(() => {
+                    gameState.currentLessonIndex++;
+                    const nextLesson = educationData[gameState.currentLessonIndex];
+                    speak(`Great job! Now let's learn letter ${nextLesson.letter}. ${nextLesson.sound}!`, () => {
+                        initializeLesson();
+                    });
+                }, 3000);
+            } else {
+                setTimeout(showFinalCelebration, 2000);
+            }
+        }
+
+        function showAutoProgress() {
+            const progress = document.getElementById('autoProgress');
+            progress.classList.add('show');
+            setTimeout(() => {
+                progress.classList.remove('show');
+            }, 2800);
+        }
+
+        function updateProgress() {
+            const progressPercent = ((gameState.currentLessonIndex + 1) / 26) * 100;
+            document.getElementById('progressBar').style.width = progressPercent + '%';
+            document.getElementById('progressText').textContent = 
+                `Letter ${gameState.currentLessonIndex + 1} of 26 - ${educationData[gameState.currentLessonIndex].letter} Time! 🚀`;
+        }
+
+        function createMiniCelebration() {
+            const container = document.getElementById('confettiContainer');
+            container.innerHTML = '';
+            container.classList.add('active');
+            
+            const emojis = ['🎉', '⭐', '✨', '🎊', '💖', '🏆'];
+            
+            for (let i = 0; i < 15; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.animationDelay = Math.random() * 1 + 's';
+                container.appendChild(confetti);
+            }
+            
+            setTimeout(() => {
+                container.classList.remove('active');
+            }, 3000);
+        }
+
+        function showFinalCelebration() {
+            document.getElementById('finalScore').textContent = gameState.score;
+            
+            const showcase = document.getElementById('alphabetShowcase');
+            showcase.innerHTML = '';
+            
+            educationData.forEach((data, i) => {
+                const letter = document.createElement('div');
+                letter.className = 'alphabet-letter';
+                letter.textContent = data.letter;
+                showcase.appendChild(letter);
+            });
+            
+            document.getElementById('finalCelebration').classList.add('active');
+            
+            const container = document.getElementById('confettiContainer');
+            container.innerHTML = '';
+            container.classList.add('active');
+            
+            const megaEmojis = ['🎉', '🎊', '🏆', '🌟', '⭐', '✨', '💫', '🎈'];
+            
+            for (let i = 0; i < 30; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.textContent = megaEmojis[Math.floor(Math.random() * megaEmojis.length)];
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.animationDelay = Math.random() * 2 + 's';
+                container.appendChild(confetti);
+            }
+            
+            speak(`Amazing! You completed all letters A to Z! Your score is ${gameState.score}! You are an Alphabet Master!`);
+        }
+
+        function playAgain() {
+            playClickSound();
+            
+            gameState = {
+                currentLessonIndex: 0,
+                selectedItems: [],
+                gameLocked: false,
+                score: 0,
+                streak: 0,
+                achievements: [],
+                powerUps: { hint: 3, freeze: 2, shuffle: 2 },
+                isVoiceEnabled: gameState.isVoiceEnabled,
+                completedLessons: []
+            };
+            
+            document.getElementById('finalCelebration').classList.remove('active');
+            document.getElementById('confettiContainer').classList.remove('active');
+            document.getElementById('landingScreen').style.display = 'flex';
+            document.getElementById('gameScreen').classList.remove('active');
+            
+            speak('Ready for another adventure? Let\'s play again!');
+        }
+
+        // Utility Functions
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        function getRandomLetter(exclude) {
+            const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            let letter;
+            do {
+                letter = letters[Math.floor(Math.random() * letters.length)];
+            } while (letter === exclude);
+            return letter;
+        }
+
+        function getRandomEmoji() {
+            const emojis = ['🎾', '📚', '🚗', '⭐', '🌙', '🎨', '🎭', '🎸'];
+            return emojis[Math.floor(Math.random() * emojis.length)];
+        }
+
+        function getRandomWord() {
+            const words = ['Ball', 'Book', 'Car', 'Star', 'Moon', 'Paint', 'Music', 'Game'];
+            return words[Math.floor(Math.random() * words.length)];
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            document.addEventListener('touchstart', initAudioSystem, { once: true });
+            document.addEventListener('click', initAudioSystem, { once: true });
+            
+            if (window.speechSynthesis) {
+                window.speechSynthesis.getVoices();
+            }
+            
+            setTimeout(() => {
+                speak("Welcome to Triple Match! Learn the alphabet by matching letters, pictures, and words together!");
+            }, 1500);
+        });
+
+        // APK Compatibility
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                if (window.speechSynthesis) window.speechSynthesis.pause();
+                if (audioContext && audioContext.state === 'running') audioContext.suspend();
+            } else {
+                if (window.speechSynthesis) window.speechSynthesis.resume();
+                if (audioContext && audioContext.state === 'suspended') audioContext.resume();
+            }
+        });
+
+        document.addEventListener('contextmenu', e => e.preventDefault());
+    </script>
+</body>
+</html>
