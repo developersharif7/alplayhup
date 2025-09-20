@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube CTR Predictor Tool</title>
+    <meta name="description" content="Estimate your video's potential Click-Through Rate (CTR) based on your title and thumbnail characteristics.">
+    <meta name="keywords" content="youtube ctr, click through rate, ctr predictor, youtube seo, thumbnail optimization, title optimization">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary-color: #E53935; --primary-dark: #B71C1C; --text-primary: #212121; --background-color: #F5F5F5; --card-color: #FFFFFF; --card-shadow: 0 2px 4px rgba(0,0,0,0.1); --success-color: #4CAF50; --warning-color: #FFC107; --error-color: #F44336;}
+        body.dark-mode { --primary-color: #FF5252; --primary-dark: #D32F2F; --text-primary: #E0E0E0; --background-color: #121212; --card-color: #212121; --success-color: #8BC34A; --warning-color: #FFEB3B; --error-color: #E57373; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Roboto', sans-serif; background-color: var(--background-color); color: var(--text-primary); min-height: 100vh; display: flex; flex-direction: column; }
+        .app-bar { background-color: var(--card-color); color: var(--primary-color); display: flex; justify-content: center; align-items: center; padding: 12px 16px; height: 56px; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .app-title { font-size: 24px; font-weight: 700; }
+        .app-content { flex: 1; padding: 16px; display: flex; flex-direction: column; align-items: center; }
+        .tool-container { width: 100%; max-width: 900px; }
+        .material-card { background-color: var(--card-color); border-radius: 8px; box-shadow: var(--card-shadow); margin-bottom: 16px; width: 100%; }
+        .card-title { padding: 16px; font-size: 18px; font-weight: 500; border-bottom: 1px solid #E0E0E0; display: flex; align-items: center; gap: 8px; }
+        .card-content { padding: 16px; }
+        .input-field { width: 100%; background-color: var(--background-color); border: 1px solid #E0E0E0; padding: 12px 16px; font-size: 16px; color: var(--text-primary); border-radius: 4px; margin-bottom: 16px; }
+        .material-btn { display: block; background-color: var(--primary-color); color: white; border: none; padding: 10px 20px; border-radius: 4px; font-size: 14px; font-weight: 500; text-transform: uppercase; cursor: pointer; width: 100%; text-align: center; }
+        .toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background-color: #323232; color: white; padding: 8px 16px; border-radius: 4px; font-size: 14px; z-index: 1050; display: none; animation: fadeInOut 3s ease forwards; }
+        @keyframes fadeInOut { 0%, 100% { opacity: 0; } 10%, 90% { opacity: 1; } }
+        .results-container { background-color: var(--card-color); border-radius: 8px; box-shadow: var(--card-shadow); margin-top: 16px; display: none; width: 100%; text-align: center; }
+        .results-content { padding: 24px; }
+        .ctr-value { font-size: 48px; font-weight: 700; margin-bottom: 8px; }
+        .ctr-label { font-size: 16px; color: #757575; margin-bottom: 24px; }
+        .ctr-low { color: var(--error-color); }
+        .ctr-medium { color: var(--warning-color); }
+        .ctr-high { color: var(--success-color); }
+        .feedback-section { text-align: left; margin-top: 16px; }
+        .feedback-item { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+        .checkbox-group { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 16px; }
+        .checkbox-item { display: flex; align-items: center; gap: 8px; }
+    </style>
+</head>
+<body>
+    <div class="app-bar"><div class="app-title">YouTube CTR Predictor</div></div>
+    <div class="app-content">
+        <div class="tool-container">
+            <div class="material-card">
+                <div class="card-title"><i class="fas fa-tachometer-alt"></i> Estimate Your CTR</div>
+                <div class="card-content">
+                    <label>Video Title:</label>
+                    <input type="text" class="input-field" id="ctr-title" placeholder="e.g., My Insane New Gaming Setup!">
+                    <label>Thumbnail Features:</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item"><input type="checkbox" id="thumb-face"> <label for="thumb-face">Emotional Face</label></div>
+                        <div class="checkbox-item"><input type="checkbox" id="thumb-text"> <label for="thumb-text">Clear, Bold Text</label></div>
+                        <div class="checkbox-item"><input type="checkbox" id="thumb-contrast"> <label for="thumb-contrast">High Contrast</label></div>
+                        <div class="checkbox-item"><input type="checkbox" id="thumb-brand"> <label for="thumb-brand">Clean Branding</label></div>
+                    </div>
+                    <button class="material-btn" style="margin-top: 16px;" id="ctr-predictBtn"><i class="fas fa-magic"></i> Predict CTR</button>
+                </div>
+            </div>
+            <div id="ctr-results" class="results-container">
+                <div class="results-content">
+                    <div id="ctr-value" class="ctr-value">0.0%</div>
+                    <div class="ctr-label">Estimated Click-Through Rate</div>
+                    <div id="ctr-feedback" class="feedback-section"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="toast" id="toast"></div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) { document.body.classList.add('dark-mode'); }
+            document.getElementById('ctr-predictBtn').addEventListener('click', predictCTR);
+        });
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message; toast.style.display = 'block';
+            setTimeout(() => { toast.style.display = 'none'; }, 3000);
+        }
+        function predictCTR() {
+            const title = document.getElementById('ctr-title').value;
+            if (!title) { showToast('Please enter a video title.'); return; }
+            let score = 2.0; // Base CTR
+            const feedback = [];
+            // Title analysis
+            if (title.length > 30 && title.length < 60) { score += 1.0; feedback.push({text: "Good title length.", positive: true}); } else { feedback.push({text: "Title is too long or short. Aim for 30-60 characters.", positive: false}); }
+            if (/\d/.test(title)) { score += 0.8; feedback.push({text: "Using numbers in title is effective.", positive: true}); }
+            if (/[!?]/.test(title)) { score += 0.5; }
+            const emotionalWords = ['insane', 'shocking', 'ultimate', 'secret', 'best', 'easy'];
+            if (emotionalWords.some(word => title.toLowerCase().includes(word))) { score += 1.2; feedback.push({text: "Good use of emotional/power words.", positive: true});}
+            // Thumbnail analysis
+            if (document.getElementById('thumb-face').checked) { score += 1.5; feedback.push({text: "Emotional faces in thumbnails work well.", positive: true}); }
+            if (document.getElementById('thumb-text').checked) { score += 1.0; feedback.push({text: "Clear text on thumbnails helps a lot.", positive: true}); }
+            if (document.getElementById('thumb-contrast').checked) { score += 0.7; feedback.push({text: "High contrast makes thumbnails stand out.", positive: true}); }
+            if (document.getElementById('thumb-brand').checked) { score -= 0.5; feedback.push({text: "Branding can sometimes lower CTR for new viewers, but is good for recognition.", positive: false});}
+
+            score = Math.min(Math.max(score, 1.0), 15.0); // Clamp score between 1% and 15%
+
+            const ctrValueEl = document.getElementById('ctr-value');
+            ctrValueEl.textContent = score.toFixed(1) + '%';
+            ctrValueEl.className = 'ctr-value';
+            if(score < 5) ctrValueEl.classList.add('ctr-low');
+            else if (score < 9) ctrValueEl.classList.add('ctr-medium');
+            else ctrValueEl.classList.add('ctr-high');
+
+            const feedbackEl = document.getElementById('ctr-feedback');
+            feedbackEl.innerHTML = '<strong>Feedback:</strong>';
+            feedback.forEach(fb => {
+                feedbackEl.innerHTML += `<div class="feedback-item"><i class="fas ${fb.positive ? 'fa-check-circle' : 'fa-times-circle'}" style="color:${fb.positive ? 'var(--success-color)' : 'var(--error-color)'};"></i> ${fb.text}</div>`;
+            });
+            document.getElementById('ctr-results').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

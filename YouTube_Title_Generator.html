@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Audience Persona Generator</title>
+  <meta name="description" content="Generate an ideal viewer persona for your YouTube channel or video topic. Understand your audience's demographics, interests, pain points, and goals.">
+  <meta name="keywords" content="YouTube tools, audience persona, target audience, content strategy, marketing, creator tools">
+  <meta name="robots" content="index, follow">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #E53935; /* YouTube Red */
+      --primary-dark: #B71C1C;
+      --primary-light: #FFCDD2;
+      --text-primary: #212121;
+      --text-secondary: #757575;
+      --divider-color: #E0E0E0;
+      --background-color: #F5F5F5;
+      --card-color: #FFFFFF;
+      --card-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      --hover-shadow: 0 6px 12px rgba(0,0,0,0.15);
+      --success-color: #4CAF50;
+      --warning-color: #FFC107;
+      --error-color: #F44336;
+      --accent-color: #2196F3;
+    }
+    body.dark-mode {
+      --primary-color: #FF5252;
+      --primary-dark: #D32F2F;
+      --primary-light: #420D0D;
+      --text-primary: #E0E0E0;
+      --text-secondary: #B0B0B0;
+      --divider-color: #424242;
+      --background-color: #121212;
+      --card-color: #212121;
+      --card-shadow: 0 2px 4px rgba(0,0,0,0.4);
+      --hover-shadow: 0 6px 12px rgba(0,0,0,0.6);
+      --success-color: #8BC34A;
+      --warning-color: #FFEB3B;
+      --error-color: #E57373;
+      --accent-color: #64B5F6;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body { font-family: 'Roboto', sans-serif; background-color: var(--background-color); color: var(--text-primary); transition: background-color 0.3s, color 0.3s; min-height: 100vh; display: flex; flex-direction: column; }
+    .app-bar { background-color: var(--card-color); color: var(--primary-color); display: flex; justify-content: center; align-items: center; padding: 12px 16px; height: 56px; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); }
+    .app-title { font-size: 24px; font-weight: 700; display: flex; align-items: center; gap: 8px; letter-spacing: -0.5px; color: var(--primary-color); white-space: nowrap; }
+    .app-content { flex: 1; padding: 16px; display: flex; flex-direction: column; align-items: center; overflow-y: auto; }
+    .screen { width: 100%; max-width: 900px; display: flex; flex-direction: column; align-items: center; }
+    .material-card { background-color: var(--card-color); border-radius: 8px; overflow: hidden; box-shadow: var(--card-shadow); margin-bottom: 16px; position: relative; width: 100%; }
+    .card-title { padding: 16px; font-size: 18px; font-weight: 500; color: var(--text-primary); border-bottom: 1px solid var(--divider-color); display: flex; align-items: center; gap: 8px; }
+    .card-content { padding: 16px; color: var(--text-secondary); }
+    .url-input-container { position: relative; margin-bottom: 16px; }
+    .url-input { width: 100%; background-color: var(--background-color); border: 1px solid var(--divider-color); padding: 12px 16px; font-size: 16px; color: var(--text-primary); border-radius: 4px; transition: border-color 0.3s; height: 100px; resize: vertical; }
+    .url-input:focus { outline: none; border: 1px solid var(--primary-color); }
+    .material-btn { display: inline-block; background-color: var(--primary-color); color: white; border: none; padding: 10px 20px; border-radius: 4px; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer; position: relative; overflow: hidden; transition: background-color 0.3s; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12); text-align: center; width: 100%; }
+    .material-btn:hover { background-color: var(--primary-dark); }
+    .progress-container { width: 100%; height: 4px; background-color: var(--primary-light); position: relative; overflow: hidden; display: none; margin-bottom: 16px; }
+    .progress-bar { position: absolute; height: 100%; width: 50%; background-color: var(--primary-color); animation: progress 1.5s infinite ease-in-out; }
+    @keyframes progress { 0% { left: -50%; } 100% { left: 100%; } }
+    .toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background-color: #323232; color: white; padding: 8px 16px; border-radius: 4px; font-size: 14px; z-index: 1050; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); display: none; animation: fadeInOut 3s ease forwards; }
+    @keyframes fadeInOut { 0%, 100% { opacity: 0; transform: translate(-50%, 20px); } 10%, 90% { opacity: 1; transform: translate(-50%, 0); } }
+    .results-container { background-color: var(--card-color); border-radius: 8px; box-shadow: var(--card-shadow); margin-top: 16px; overflow: hidden; display: none; width: 100%; }
+    .results-header { background-color: var(--primary-color); color: white; padding: 12px 16px; font-size: 16px; font-weight: 500; display: flex; justify-content: space-between; align-items: center; }
+    .results-content { padding: 16px; }
+    .copy-btn { background-color: var(--primary-light); color: var(--primary-dark); border: none; width: 28px; height: 28px; border-radius: 4px; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+    .ad-placeholder { margin-top: 16px; padding: 16px; background-color: var(--card-color); border-radius: 8px; box-shadow: var(--card-shadow); text-align: center; color: var(--text-secondary); font-size: 14px; width: 100%; }
+    /* Audience Persona Styles */
+    .persona-section { margin-bottom: 20px; padding-top: 16px; border-top: 1px solid var(--divider-color); }
+    .persona-section:first-child { border-top: none; padding-top: 0; }
+    .persona-section-title { font-size: 16px; font-weight: 500; margin-bottom: 10px; color: var(--text-primary); }
+    .persona-item { background-color: var(--background-color); border-radius: 4px; padding: 12px; margin-bottom: 8px; font-size: 14px; color: var(--text-primary); }
+    .persona-item strong { color: var(--primary-dark); }
+    .gender-chart { display: flex; height: 20px; border-radius: 4px; overflow: hidden; margin-top: 8px; }
+    .gender-male { background-color: var(--primary-color); color: white; display: flex; align-items: center; justify-content: center; font-size: 12px; }
+    .gender-female { background-color: var(--accent-color); color: white; display: flex; align-items: center; justify-content: center; font-size: 12px; }
+    .gender-labels { display: flex; justify-content: space-around; margin-top: 8px; font-size: 12px; color: var(--text-secondary); }
+    .gender-legend-item { display: flex; align-items: center; }
+    .gender-legend-color { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 4px; }
+    @media (max-width: 768px) { .app-title { font-size: 20px; } .card-title { font-size: 16px; } }
+  </style>
+</head>
+<body>
+  <div class="app-bar">
+    <div class="app-title">Audience Persona Generator</div>
+  </div>
+  <div class="app-content">
+    <div id="audience-persona-generator-screen" class="screen">
+      <div class="material-card">
+        <div class="card-title"><i class="fas fa-user-circle"></i> Audience Persona Generator</div>
+        <div class="card-content">
+          <div class="url-input-container">
+            <textarea class="url-input" id="persona-contentTopic" placeholder="Enter your video topic or channel niche (e.g., 'Beginner photography tutorials', 'Gaming PC builds', 'Vegan recipes for students')" required></textarea>
+          </div>
+          <button class="material-btn" id="persona-generatePersonaBtn"><i class="fas fa-user-circle me-2"></i> Generate Persona</button>
+        </div>
+      </div>
+      <div class="ad-placeholder"><p>🚀 Ad Space: Promote your product/service here!</p></div>
+      <div class="progress-container" id="persona-loadingProgress"><div class="progress-bar"></div></div>
+      <div id="persona-personaResults" class="results-container">
+        <div class="results-header">
+          <span>Ideal Viewer Persona</span>
+          <button class="copy-btn" onclick="copyPersonaToClipboard()"><i class="fas fa-copy"></i></button>
+        </div>
+        <div class="results-content">
+          <div class="persona-section">
+            <div class="persona-section-title"><i class="fas fa-user"></i> Basic Profile</div>
+            <div class="persona-item"><strong>Name:</strong> <span id="persona-personaName"></span></div>
+            <div class="persona-item"><strong>Age Range:</strong> <span id="persona-personaAge"></span></div>
+            <div class="persona-item"><strong>Occupation/Life Stage:</strong> <span id="persona-personaOccupation"></span></div>
+            <div class="persona-item"><strong>Location Focus:</strong> <span id="persona-personaLocation"></span></div>
+            <div class="persona-item"><strong>Gender:</strong>
+              <div class="gender-chart">
+                <div class="gender-male" id="persona-genderMale"></div>
+                <div class="gender-female" id="persona-genderFemale"></div>
+              </div>
+              <div class="gender-labels">
+                <span class="gender-legend-item"><span class="gender-legend-color" style="background-color: var(--primary-color);"></span>Male</span>
+                <span class="gender-legend-item"><span class="gender-legend-color" style="background-color: var(--accent-color);"></span>Female</span>
+              </div>
+            </div>
+          </div>
+          <div class="persona-section"><div class="persona-section-title"><i class="fas fa-heart"></i> Interests & Hobbies</div><div class="persona-item" id="persona-personaInterests"></div></div>
+          <div class="persona-section"><div class="persona-section-title"><i class="fas fa-frown"></i> Pain Points & Challenges</div><div class="persona-item" id="persona-personaPainPoints"></div></div>
+          <div class="persona-section"><div class="persona-section-title"><i class="fas fa-bullseye"></i> Goals & Aspirations</div><div class="persona-item" id="persona-personaGoals"></div></div>
+          <div class="persona-section"><div class="persona-section-title"><i class="fas fa-search"></i> What They Search For (Keywords)</div><div class="persona-item" id="persona-personaSearchTerms"></div></div>
+          <div class="persona-section"><div class="persona-section-title"><i class="fas fa-video"></i> Preferred Content Style</div><div class="persona-item" id="persona-personaContentStyle"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="toast" id="toast"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) { document.body.classList.add('dark-mode'); }
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => { document.body.classList.toggle('dark-mode', e.matches); });
+      setupAudiencePersonaListeners();
+    });
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.style.display = 'block';
+      setTimeout(() => { toast.style.display = 'none'; }, 3000);
+    }
+    function setupAudiencePersonaListeners() {
+      document.getElementById('persona-generatePersonaBtn').addEventListener('click', generateAudiencePersona);
+    }
+    function generateAudiencePersona() {
+      const topic = document.getElementById('persona-contentTopic').value.trim();
+      if (!topic) { showToast('Please enter a video topic or niche.'); return; }
+      document.getElementById('persona-loadingProgress').style.display = 'block';
+      document.getElementById('persona-personaResults').style.display = 'none';
+      setTimeout(() => {
+        document.getElementById('persona-loadingProgress').style.display = 'none';
+        const persona = generateFakePersona(topic);
+        displayPersona(persona);
+        document.getElementById('persona-personaResults').style.display = 'block';
+      }, 2000);
+    }
+    function generateFakePersona(topic) {
+      const names = ["Alex", "Jordan", "Taylor", "Casey", "Morgan", "Jamie", "Drew"];
+      const ageRanges = ["18-24", "25-34", "35-44", "20-30", "30-40", "28-38"];
+      const occupations = ["Student", "Young Professional", "Hobbyist", "Tech Enthusiast", "Stay-at-Home Parent", "Creative Freelancer"];
+      const locations = ["Global", "North America", "Europe", "Asia-Pacific", "Urban Centers", "Suburban Households"];
+      const contentStyles = ["Informative & Detailed", "Quick & Engaging", "Entertaining & Humorous", "Problem-Solving Focused", "Action-Oriented"];
+      const persona = {
+        name: names[Math.floor(Math.random() * names.length)], age: ageRanges[Math.floor(Math.random() * ageRanges.length)],
+        occupation: occupations[Math.floor(Math.random() * occupations.length)], location: locations[Math.floor(Math.random() * locations.length)],
+        genderMale: Math.floor(Math.random() * 50) + 30, interests: [], painPoints: [], goals: [], searchTerms: [],
+        contentStyle: contentStyles[Math.floor(Math.random() * contentStyles.length)]
+      };
+      persona.genderFemale = 100 - persona.genderMale;
+      const lowerTopic = topic.toLowerCase();
+      if (lowerTopic.includes("gaming")) persona.interests = ["Video Games", "Esports", "Tech Reviews", "Streaming"];
+      else if (lowerTopic.includes("photography")) persona.interests = ["DSLRs/Mirrorless cameras", "Photo Editing", "Travel Photography"];
+      else if (lowerTopic.includes("cooking")) persona.interests = ["Healthy Eating", "Recipe Experimentation", "Food Blogging"];
+      else persona.interests = ["Learning new skills", "Problem-solving", "Entertainment", "Self-improvement"];
+      if (lowerTopic.includes("beginner")) persona.painPoints = ["Overwhelm with too much info", "Lack of clear guides", "Not knowing where to start"];
+      else if (lowerTopic.includes("build")) persona.painPoints = ["Compatibility issues", "Budget constraints", "Complex assembly"];
+      else persona.painPoints = ["Information overload", "Time constraints", "Finding reliable sources"];
+      if (lowerTopic.includes("tutorial")) persona.goals = ["Learn a new skill", "Solve a specific problem", "Improve efficiency"];
+      else if (lowerTopic.includes("review")) persona.goals = ["Make informed decision", "Understand pros and cons", "Find best value"];
+      else persona.goals = ["Personal growth", "Skill development", "Staying updated"];
+      persona.searchTerms = [`${topic} tutorial`, `how to ${topic}`, `best ${topic} for beginners`, `[${topic}] reviews`];
+      persona.interests = persona.interests.join(', '); persona.painPoints = persona.painPoints.join(', ');
+      persona.goals = persona.goals.join(', '); persona.searchTerms = persona.searchTerms.join(', ');
+      return persona;
+    }
+    function displayPersona(persona) {
+      document.getElementById('persona-personaName').textContent = persona.name;
+      document.getElementById('persona-personaAge').textContent = persona.age;
+      document.getElementById('persona-personaOccupation').textContent = persona.occupation;
+      document.getElementById('persona-personaLocation').textContent = persona.location;
+      document.getElementById('persona-genderMale').style.width = `${persona.genderMale}%`; document.getElementById('persona-genderMale').textContent = `${persona.genderMale}%`;
+      document.getElementById('persona-genderFemale').style.width = `${persona.genderFemale}%`; document.getElementById('persona-genderFemale').textContent = `${persona.genderFemale}%`;
+      document.getElementById('persona-personaInterests').textContent = persona.interests; document.getElementById('persona-personaPainPoints').textContent = persona.painPoints;
+      document.getElementById('persona-personaGoals').textContent = persona.goals; document.getElementById('persona-personaSearchTerms').textContent = persona.searchTerms;
+      document.getElementById('persona-personaContentStyle').textContent = persona.contentStyle;
+    }
+    function copyPersonaToClipboard() {
+      let textToCopy = `Ideal Viewer Persona:\n\nName: ${document.getElementById('persona-personaName').textContent}\nAge Range: ${document.getElementById('persona-personaAge').textContent}\nOccupation/Life Stage: ${document.getElementById('persona-personaOccupation').textContent}\nLocation Focus: ${document.getElementById('persona-personaLocation').textContent}\nGender: Male ${document.getElementById('persona-genderMale').textContent}, Female ${document.getElementById('persona-genderFemale').textContent}\n\nInterests & Hobbies: ${document.getElementById('persona-personaInterests').textContent}\n\nPain Points & Challenges: ${document.getElementById('persona-personaPainPoints').textContent}\n\nGoals & Aspirations: ${document.getElementById('persona-personaGoals').textContent}\n\nWhat They Search For (Keywords): ${document.getElementById('persona-personaSearchTerms').textContent}\n\nPreferred Content Style: ${document.getElementById('persona-personaContentStyle').textContent}\n`;
+      navigator.clipboard.writeText(textToCopy).then(() => showToast('Persona copied!')).catch(err => showToast('Failed to copy: ' + err));
+    }
+  </script>
+</body>
+</html>

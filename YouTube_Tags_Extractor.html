@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trending Hashtag Statement Generator</title>
+    <meta name="description" content="Generate trending statements and relevant hashtags for your topic to use on YouTube, TikTok, and Instagram.">
+    <meta name="keywords" content="hashtag generator, trending hashtags, youtube seo, social media marketing, content ideas">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary-color: #E53935; --primary-dark: #B71C1C; --text-primary: #212121; --background-color: #F5F5F5; --card-color: #FFFFFF; --card-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        body.dark-mode { --primary-color: #FF5252; --primary-dark: #D32F2F; --text-primary: #E0E0E0; --background-color: #121212; --card-color: #212121; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Roboto', sans-serif; background-color: var(--background-color); color: var(--text-primary); min-height: 100vh; display: flex; flex-direction: column; }
+        .app-bar { background-color: var(--card-color); color: var(--primary-color); display: flex; justify-content: center; align-items: center; padding: 12px 16px; height: 56px; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .app-title { font-size: 24px; font-weight: 700; }
+        .app-content { flex: 1; padding: 16px; display: flex; flex-direction: column; align-items: center; }
+        .tool-container { width: 100%; max-width: 900px; }
+        .material-card { background-color: var(--card-color); border-radius: 8px; box-shadow: var(--card-shadow); margin-bottom: 16px; width: 100%; }
+        .card-title { padding: 16px; font-size: 18px; font-weight: 500; border-bottom: 1px solid #E0E0E0; display: flex; align-items: center; gap: 8px; }
+        .card-content { padding: 16px; }
+        .input-field { width: 100%; background-color: var(--background-color); border: 1px solid #E0E0E0; padding: 12px 16px; font-size: 16px; color: var(--text-primary); border-radius: 4px; margin-bottom: 16px; }
+        .material-btn { display: block; background-color: var(--primary-color); color: white; border: none; padding: 10px 20px; border-radius: 4px; font-size: 14px; font-weight: 500; text-transform: uppercase; cursor: pointer; width: 100%; text-align: center; }
+        .progress-container { width: 100%; max-width: 900px; height: 4px; background-color: #FFCDD2; overflow: hidden; display: none; margin-bottom: 16px; }
+        .progress-bar { height: 100%; width: 50%; background-color: var(--primary-color); animation: progress 1.5s infinite ease-in-out; }
+        @keyframes progress { 0% { left: -50%; } 100% { left: 100%; } }
+        .toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background-color: #323232; color: white; padding: 8px 16px; border-radius: 4px; font-size: 14px; z-index: 1050; display: none; animation: fadeInOut 3s ease forwards; }
+        @keyframes fadeInOut { 0%, 100% { opacity: 0; } 10%, 90% { opacity: 1; } }
+        .results-container { background-color: var(--card-color); border-radius: 8px; box-shadow: var(--card-shadow); margin-top: 16px; display: none; width: 100%; }
+        .results-header { background-color: var(--primary-color); color: white; padding: 12px 16px; font-size: 16px; font-weight: 500; display: flex; justify-content: space-between; align-items: center; }
+        .results-content { padding: 16px; }
+        .copy-btn { background-color: #FFCDD2; color: var(--primary-dark); border: none; width: 28px; height: 28px; border-radius: 4px; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+        .statement-item { background-color: var(--background-color); border-radius: 8px; padding: 12px; margin-bottom: 12px; }
+        .statement-content { font-size: 15px; color: var(--text-primary); }
+        .statement-tags { font-size: 13px; color: #757575; margin-top: 8px; }
+    </style>
+</head>
+<body>
+    <div class="app-bar"><div class="app-title">Trending Hashtag Generator</div></div>
+    <div class="app-content">
+        <div class="tool-container">
+            <div class="material-card">
+                <div class="card-title"><i class="fas fa-fire"></i> Generate Trending Statements</div>
+                <div class="card-content">
+                    <input type="text" class="input-field" id="hashtag-topicInput" placeholder="Enter your main topic or keyword (e.g., 'AI tools')" required>
+                    <button class="material-btn" id="hashtag-generateStatementsBtn"><i class="fas fa-hashtag"></i> Generate</button>
+                </div>
+            </div>
+            <div class="progress-container" id="hashtag-loadingProgress"><div class="progress-bar"></div></div>
+            <div id="hashtag-statementsResults" class="results-container">
+                <div class="results-header"><span>Trending Statements & Hashtags</span><button class="copy-btn" onclick="copyAllStatements()"><i class="fas fa-copy"></i></button></div>
+                <div class="results-content" id="hashtag-statementsContainer"></div>
+            </div>
+        </div>
+    </div>
+    <div class="toast" id="toast"></div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) { document.body.classList.add('dark-mode'); }
+            document.getElementById('hashtag-generateStatementsBtn').addEventListener('click', generateTrendingStatements);
+        });
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message; toast.style.display = 'block';
+            setTimeout(() => { toast.style.display = 'none'; }, 3000);
+        }
+        function generateTrendingStatements() {
+            const topic = document.getElementById('hashtag-topicInput').value.trim();
+            if (!topic) { showToast('Please enter a topic.'); return; }
+            document.getElementById('hashtag-loadingProgress').style.display = 'block';
+            document.getElementById('hashtag-statementsResults').style.display = 'none';
+            setTimeout(() => {
+                document.getElementById('hashtag-loadingProgress').style.display = 'none';
+                const statements = generateFakeStatements(topic);
+                displayStatements(statements);
+                document.getElementById('hashtag-statementsResults').style.display = 'block';
+            }, 1500);
+        }
+        function generateFakeStatements(topic) {
+            const lt = topic.toLowerCase().replace(/\s/g, '');
+            const statements = [
+                { content: `Is ${topic} the future or just a trend? Here's my take.`, tags: `#${lt} #futuretech #discussion #${lt}talks` },
+                { content: `The one secret about ${topic} that no one is talking about. 🤫`, tags: `#${lt}secrets #${lt}hacks #mindblown #mustwatch` },
+                { content: `I used ${topic} every day for a week. The results are shocking.`, tags: `#${lt}challenge #experiment #results #dailyvlog` },
+                { content: `Top 5 ${topic} mistakes to avoid in 2024.`, tags: `#${lt}tips #commonmistakes #tutorial #learn${lt}` },
+                { content: `This simple ${topic} tool will save you hours of work.`, tags: `#productivity #lifehack #${lt}tools #efficiency` }
+            ];
+            return statements.sort(() => 0.5 - Math.random());
+        }
+        function displayStatements(statements) {
+            const container = document.getElementById('hashtag-statementsContainer');
+            container.innerHTML = '';
+            statements.forEach(stmt => {
+                const el = document.createElement('div');
+                el.className = 'statement-item';
+                el.innerHTML = `<div class="statement-content">${stmt.content}</div><div class="statement-tags"><strong>Hashtags:</strong> ${stmt.tags}</div>`;
+                container.appendChild(el);
+            });
+        }
+        function copyAllStatements() {
+            const allContent = Array.from(document.querySelectorAll('.statement-item')).map(el => {
+                const content = el.querySelector('.statement-content').textContent;
+                const tags = el.querySelector('.statement-tags').textContent.replace('Hashtags: ', '');
+                return `${content}\n${tags}`;
+            }).join('\n\n');
+            if (!allContent) { showToast('No content to copy.'); return; }
+            navigator.clipboard.writeText(allContent).then(() => showToast('All content copied!'));
+        }
+    </script>
+</body>
+</html>
