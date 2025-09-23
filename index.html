@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+
 <head>
     <meta name="google-site-verification" content="xCJbjjBM7DpMNt7VU2I_xBgccK74XNIepvHXGAh2L48" />
     <meta charset="UTF-8">
@@ -372,12 +371,12 @@
             height: 100%;
             object-fit: cover;
             display: block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #000000 0%, #333333 100%);
         }
 
         /* ✅ FAST LOADING: Instant image loading */
         .carousel-slide {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #000000 0%, #333333 100%);
         }
 
         .carousel-slide img {
@@ -673,7 +672,7 @@
         /* Enhanced Profile Header - Compact Version */
         .profile-header {
             padding: 6px;
-            background: linear-gradient(135deg, var(--primary-color), #1976D2);
+            background: linear-gradient(135deg, var(--primary-color), #333333);
             border-radius: 8px;
             margin-bottom: 4px;
             min-height: 50px;
@@ -721,7 +720,7 @@
             font-size: 9px;
         }
 
-        /* Ultra-Compact App Icons */
+        /* ✅ IMPROVED GAME CARDS - Bigger and Square */
         .item-card {
             display: flex;
             flex-direction: column;
@@ -732,7 +731,7 @@
             background: transparent !important;
             border: none !important;
             padding: 0;
-            width: 64px;
+            width: 80px;
             flex-shrink: 0;
         }
 
@@ -745,16 +744,16 @@
         }
 
         .item-card .card-image {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
+            width: 72px;
+            height: 72px;
+            border-radius: 16px;
             overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
             background: var(--card-bg);
             box-shadow: var(--elevation-1);
-            margin-bottom: 4px;
+            margin-bottom: 6px;
             position: relative;
             transition: all 0.15s ease;
             border: 1px solid var(--border-color);
@@ -772,7 +771,7 @@
         }
 
         .item-card .fallback-icon {
-            font-size: 20px;
+            font-size: 24px;
             color: var(--primary-color);
         }
 
@@ -785,7 +784,7 @@
         }
 
         .item-card .item-title {
-            font-size: 9px;
+            font-size: 10px;
             font-weight: 500;
             color: var(--text-primary);
             line-height: 1.2;
@@ -793,6 +792,34 @@
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
+            margin-bottom: 4px;
+        }
+
+        /* ✅ PLAY BUTTON FOR ONLINE GAMES */
+        .play-button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 4px 8px;
+            font-size: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .play-button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .play-button:active {
+            transform: translateY(0);
         }
         
         .category-scroll-container {
@@ -802,7 +829,7 @@
             padding: 6px 2px;
             margin-left: 0;
             margin-right: 0;
-            gap: 12px;
+            gap: 16px;
             -webkit-overflow-scrolling: touch;
             scrollbar-width: none;
         }
@@ -986,8 +1013,8 @@
         }
 
         .upload-method-btn.border-blue-500 {
-            border-color: #3b82f6 !important;
-            background: rgba(59, 130, 246, 0.05) !important;
+            border-color: var(--primary-color) !important;
+            background: var(--ripple-color) !important;
         }
 
         /* ✅ ENHANCED UPLOAD ICON WITH ANIMATION */
@@ -1032,35 +1059,35 @@
         }
 
         .action-icon.shopping {
-            background: linear-gradient(135deg, #FF9800, #FF5722);
+            background: linear-gradient(135deg, #333333, #000000);
         }
 
         .action-icon.marketplace {
-            background: linear-gradient(135deg, #9C27B0, #673AB7);
+            background: linear-gradient(135deg, #333333, #000000);
         }
 
         .action-icon.store {
-            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            background: linear-gradient(135deg, #333333, #000000);
         }
 
         .action-icon.explore {
-            background: linear-gradient(135deg, #FF5722, #D32F2F);
+            background: linear-gradient(135deg, #333333, #000000);
         }
 
         /* ✅ APK DOWNLOAD BUTTON STYLES */
         .apk-download-btn {
-            background: linear-gradient(135deg, #4CAF50, #45a049);
+            background: var(--primary-color);
             color: white;
             border: none;
-            border-radius: 8px;
+            border-radius: 12px;
             padding: 4px 8px;
-            font-size: 10px;
+            font-size: 8px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.2s ease;
             display: flex;
             align-items: center;
-            gap: 4px;
+            gap: 2px;
             margin-top: 4px;
             width: 100%;
             justify-content: center;
@@ -1082,7 +1109,7 @@
 
         .logo-preview-success {
             background: #f0f9ff;
-            border-color: #0ea5e9;
+            border-color: var(--primary-color);
         }
 
         .logo-preview-error {
@@ -1234,7 +1261,7 @@
 
         /* Developer Tab Specific Styles */
         .profile-bg {
-            background: linear-gradient(135deg, #F59E0B 0%, #EAB308 50%, #D97706 100%);
+            background: linear-gradient(135deg, #333333 0%, #000000 50%, #333333 100%);
         }
 
         /* Responsive optimizations */
@@ -1310,7 +1337,7 @@
         }
 
         .tab-action-btn.primary:active {
-            background: #1976D2;
+            background: #333333;
         }
 
         /* Theme transition animations */
@@ -1403,7 +1430,7 @@
                     <i class="fas fa-code"></i>
                     <span>Developer Info</span>
                 </a>
-                <a class="side-menu-item" onclick="openCryptoPage(); closeSideMenu();" style="background: linear-gradient(135deg, #FFD700, #FFA500); color: white; border-radius: 8px; margin: 8px 0; animation: pulse 2s infinite;">
+                <a class="side-menu-item" onclick="openCryptoPage(); closeSideMenu();" style="background: linear-gradient(135deg, #333333, #000000); color: white; border-radius: 8px; margin: 8px 0; animation: pulse 2s infinite;">
                     <i class="fas fa-coins" style="color: white;"></i>
                     <span style="font-weight: 600;">🚀 Free Crypto Airdrops</span>
                 </a>
@@ -1557,11 +1584,11 @@
                                 <p class="stat-label">Projects</p>
                             </div>
                             <div class="stat-card">
-                                <p class="stat-number text-green-500">5+</p>
+                                <p class="stat-number">5+</p>
                                 <p class="stat-label">Years</p>
                             </div>
                             <div class="stat-card">
-                                <p class="stat-number text-orange-500">⭐</p>
+                                <p class="stat-number">⭐</p>
                                 <p class="stat-label">Quality</p>
                             </div>
                         </div>
@@ -1822,7 +1849,7 @@
                         
                         <!-- My Uploads Icon -->
                         <div class="text-center w-14">
-                            <button onclick="showMyUploadsModal()" class="action-icon mx-auto w-9 h-9" title="My Uploads" style="background: linear-gradient(135deg, #6366F1, #8B5CF6);">
+                            <button onclick="showMyUploadsModal()" class="action-icon mx-auto w-9 h-9" title="My Uploads" style="background: linear-gradient(135deg, #333333, #000000);">
                                 <i class="fas fa-folder-open text-sm"></i>
                             </button>
                             <p class="text-xs mt-1 text-gray-600 font-normal leading-tight">Files</p>
@@ -1921,7 +1948,7 @@
         <!-- Upload Modal -->
         <div id="upload-modal" class="modal-backdrop">
             <div class="modal-content max-w-md">
-                <div class="p-4 border-b border-gray-200 bg-gradient-to-r from-blue-600 to-purple-600 rounded-t-xl">
+                <div class="p-4 border-b border-gray-200 bg-gradient-to-r from-black to-gray-800 rounded-t-xl">
                     <div class="flex justify-between items-center">
                         <h3 class="text-lg font-bold text-white flex items-center">
                             <i class="fas fa-upload mr-2"></i>Upload Content
@@ -1937,17 +1964,17 @@
                         <!-- App/Game Name -->
                         <div>
                             <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                <i class="fas fa-gamepad mr-1 text-blue-500"></i>App/Game Name *
+                                <i class="fas fa-gamepad mr-1 text-black"></i>App/Game Name *
                             </label>
-                            <input type="text" id="app-name" required class="w-full p-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all text-base" placeholder="Enter your app name">
+                            <input type="text" id="app-name" required class="w-full p-3 border border-gray-300 rounded-lg focus:border-black focus:ring-2 focus:ring-gray-200 transition-all text-base" placeholder="Enter your app name">
                         </div>
 
                         <!-- Logo URL with Preview -->
                         <div>
                             <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                <i class="fas fa-image mr-1 text-green-500"></i>Logo Image URL *
+                                <i class="fas fa-image mr-1 text-black"></i>Logo Image URL *
                             </label>
-                            <input type="url" id="logo-url" required class="w-full p-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all text-base" placeholder="https://example.com/logo.png" onpaste="setTimeout(previewLogo, 100)" oninput="previewLogo()">
+                            <input type="url" id="logo-url" required class="w-full p-3 border border-gray-300 rounded-lg focus:border-black focus:ring-2 focus:ring-gray-200 transition-all text-base" placeholder="https://example.com/logo.png" onpaste="setTimeout(previewLogo, 100)" oninput="previewLogo()">
                             <p class="text-xs text-gray-500 mt-1">Square image recommended (512x512px)</p>
                             
                             <!-- Logo Preview -->
@@ -1972,9 +1999,9 @@
                         <!-- Category Selection -->
                         <div>
                             <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                <i class="fas fa-tags mr-1 text-purple-500"></i>Category *
+                                <i class="fas fa-tags mr-1 text-black"></i>Category *
                             </label>
-                            <select id="category" required class="w-full p-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all text-base">
+                            <select id="category" required class="w-full p-3 border border-gray-300 rounded-lg focus:border-black focus:ring-2 focus:ring-gray-200 transition-all text-base">
                                 <option value="">Select Category</option>
                                 <option value="Game">🎮 Game</option>
                                 <option value="App">📱 App</option>
@@ -1985,15 +2012,15 @@
                         <!-- Upload Method -->
                         <div>
                             <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                <i class="fas fa-upload mr-1 text-orange-500"></i>Upload Method *
+                                <i class="fas fa-upload mr-1 text-black"></i>Upload Method *
                             </label>
                             <div class="grid grid-cols-2 gap-2">
-                                <button type="button" onclick="selectUploadMethod('html')" class="upload-method-btn border-2 border-gray-300 rounded-lg p-3 text-center hover:border-blue-500 transition-all" data-method="html">
-                                    <i class="fas fa-code text-2xl text-blue-500 mb-2"></i>
+                                <button type="button" onclick="selectUploadMethod('html')" class="upload-method-btn border-2 border-gray-300 rounded-lg p-3 text-center hover:border-black transition-all" data-method="html">
+                                    <i class="fas fa-code text-2xl text-black mb-2"></i>
                                     <p class="text-sm font-medium">HTML Code</p>
                                 </button>
-                                <button type="button" onclick="selectUploadMethod('url')" class="upload-method-btn border-2 border-gray-300 rounded-lg p-3 text-center hover:border-blue-500 transition-all" data-method="url">
-                                    <i class="fas fa-link text-2xl text-green-500 mb-2"></i>
+                                <button type="button" onclick="selectUploadMethod('url')" class="upload-method-btn border-2 border-gray-300 rounded-lg p-3 text-center hover:border-black transition-all" data-method="url">
+                                    <i class="fas fa-link text-2xl text-black mb-2"></i>
                                     <p class="text-sm font-medium">Website URL</p>
                                 </button>
                             </div>
@@ -2002,33 +2029,33 @@
                         <!-- HTML Code Upload -->
                         <div id="html-upload" class="hidden">
                             <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                <i class="fas fa-code mr-1 text-blue-500"></i>HTML Code *
+                                <i class="fas fa-code mr-1 text-black"></i>HTML Code *
                             </label>
-                            <textarea id="html-code" rows="6" class="w-full p-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all text-base font-mono text-sm" placeholder="Paste your HTML code here..."></textarea>
+                            <textarea id="html-code" rows="6" class="w-full p-3 border border-gray-300 rounded-lg focus:border-black focus:ring-2 focus:ring-gray-200 transition-all text-base font-mono text-sm" placeholder="Paste your HTML code here..."></textarea>
                             <p class="text-xs text-gray-500 mt-1">Include complete HTML with CSS and JavaScript</p>
                         </div>
 
                         <!-- URL Upload -->
                         <div id="url-upload" class="hidden">
                             <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                <i class="fas fa-link mr-1 text-green-500"></i>Website URL *
+                                <i class="fas fa-link mr-1 text-black"></i>Website URL *
                             </label>
-                            <input type="url" id="website-url" class="w-full p-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all text-base" placeholder="https://yourgame.com">
+                            <input type="url" id="website-url" class="w-full p-3 border border-gray-300 rounded-lg focus:border-black focus:ring-2 focus:ring-gray-200 transition-all text-base" placeholder="https://yourgame.com">
                             <p class="text-xs text-gray-500 mt-1">Direct link to your game or app</p>
                         </div>
 
                         <!-- Description -->
                         <div>
                             <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                <i class="fas fa-align-left mr-1 text-teal-500"></i>Description
+                                <i class="fas fa-align-left mr-1 text-black"></i>Description
                             </label>
-                            <textarea id="description" rows="3" class="w-full p-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all text-base" placeholder="Describe your game or app..."></textarea>
+                            <textarea id="description" rows="3" class="w-full p-3 border border-gray-300 rounded-lg focus:border-black focus:ring-2 focus:ring-gray-200 transition-all text-base" placeholder="Describe your game or app..."></textarea>
                         </div>
 
                         <!-- Terms and Privacy Policy -->
                         <div class="bg-gray-50 p-4 rounded-lg">
                             <h4 class="font-semibold text-gray-800 mb-2 flex items-center">
-                                <i class="fas fa-shield-alt mr-2 text-blue-500"></i>Upload Guidelines
+                                <i class="fas fa-shield-alt mr-2 text-black"></i>Upload Guidelines
                             </h4>
                             <ul class="text-xs text-gray-600 space-y-1">
                                 <li>• Content must be family-friendly and appropriate</li>
@@ -2055,7 +2082,7 @@
                             <button type="button" onclick="closeUploadModal()" class="flex-1 py-3 px-4 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors">
                                 Cancel
                             </button>
-                            <button type="submit" id="upload-submit-btn" class="flex-1 py-3 px-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg font-semibold hover:shadow-lg transition-all transform hover:scale-105">
+                            <button type="submit" id="upload-submit-btn" class="flex-1 py-3 px-4 bg-gradient-to-r from-black to-gray-800 text-white rounded-lg font-semibold hover:shadow-lg transition-all transform hover:scale-105">
                                 <i class="fas fa-paper-plane mr-2"></i>Submit for Review
                             </button>
                         </div>
@@ -2067,7 +2094,7 @@
         <!-- Policy Modal -->
         <div id="policy-modal" class="modal-backdrop">
             <div class="modal-content policy-modal">
-                <div class="p-4 border-b border-gray-200 bg-gradient-to-r from-blue-600 to-purple-600 rounded-t-xl">
+                <div class="p-4 border-b border-gray-200 bg-gradient-to-r from-black to-gray-800 rounded-t-xl">
                     <div class="flex justify-between items-center">
                         <h3 id="policy-title" class="text-lg font-bold text-white flex items-center">
                             <i class="fas fa-clipboard-list mr-2"></i>Upload Guidelines
@@ -2163,8 +2190,8 @@
             img.src = logoUrl;
         }
 
-        // ✅ THEME MANAGEMENT
-        const themes = ['light', 'dark', 'green'];
+        // ✅ THEME MANAGEMENT - Only Black & White
+        const themes = ['light', 'dark'];
         
         function initializeTheme() {
             const savedTheme = localStorage.getItem('alplayhub-theme') || 'light';
@@ -2192,8 +2219,7 @@
             // Update meta theme color based on theme
             const themeColors = {
                 'light': '#FFFFFF',
-                'dark': '#1a1a1a',
-                'green': '#f0f8f0'
+                'dark': '#000000'
             };
             
             updateThemeColorImmediate(themeColors[theme]);
@@ -2203,8 +2229,7 @@
             const themeText = document.getElementById('theme-text');
             const themeNames = {
                 'light': 'Dark Theme',
-                'dark': 'Green Theme', 
-                'green': 'Light Theme'
+                'dark': 'Light Theme'
             };
             
             if (themeText) {
@@ -2264,7 +2289,7 @@
             const modalHTML = `
                 <div id="my-uploads-modal" class="modal-backdrop active">
                     <div class="modal-content max-w-md">
-                        <div class="p-4 border-b border-gray-200 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-t-xl">
+                        <div class="p-4 border-b border-gray-200 bg-gradient-to-r from-black to-gray-800 rounded-t-xl">
                             <div class="flex justify-between items-center">
                                 <h3 class="text-lg font-bold text-white flex items-center">
                                     <i class="fas fa-folder-open mr-2"></i>My Uploads Dashboard
@@ -2320,7 +2345,7 @@
                                 <i class="fas fa-inbox text-gray-400 text-4xl mb-3"></i>
                                 <h3 class="text-gray-600 font-medium mb-2">No Uploads Yet</h3>
                                 <p class="text-gray-500 text-sm mb-4">You haven't uploaded any content yet.</p>
-                                <button onclick="closeMyUploadsModal(); showUploadModal();" class="bg-purple-600 text-white px-4 py-2 rounded-lg text-sm">
+                                <button onclick="closeMyUploadsModal(); showUploadModal();" class="bg-black text-white px-4 py-2 rounded-lg text-sm">
                                     <i class="fas fa-plus mr-2"></i>Upload Content
                                 </button>
                             </div>
@@ -2382,7 +2407,7 @@
                         <div class="mb-4">
                             <div class="flex items-center justify-between mb-3">
                                 <h4 class="font-medium text-gray-900">Your Content (${uploads.length})</h4>
-                                <button onclick="closeMyUploadsModal(); showUploadModal();" class="text-purple-600 hover:text-purple-700 text-sm font-medium">
+                                <button onclick="closeMyUploadsModal(); showUploadModal();" class="text-black hover:text-gray-700 text-sm font-medium">
                                     <i class="fas fa-plus mr-1"></i>Add New
                                 </button>
                             </div>
@@ -2587,7 +2612,7 @@
             document.getElementById('upload-modal').classList.remove('active');
             document.getElementById('upload-form').reset();
             document.querySelectorAll('.upload-method-btn').forEach(btn => {
-                btn.classList.remove('border-blue-500', 'bg-blue-50');
+                btn.classList.remove('border-black', 'bg-gray-50');
                 btn.classList.add('border-gray-300');
             });
             document.getElementById('html-upload').classList.add('hidden');
@@ -2599,13 +2624,13 @@
         function selectUploadMethod(method) {
             // Reset all buttons
             document.querySelectorAll('.upload-method-btn').forEach(btn => {
-                btn.classList.remove('border-blue-500', 'bg-blue-50');
+                btn.classList.remove('border-black', 'bg-gray-50');
                 btn.classList.add('border-gray-300');
             });
             
             // Highlight selected button
             const selectedBtn = document.querySelector(`[data-method="${method}"]`);
-            selectedBtn.classList.add('border-blue-500', 'bg-blue-50');
+            selectedBtn.classList.add('border-black', 'bg-gray-50');
             selectedBtn.classList.remove('border-gray-300');
             
             // Show/hide upload sections
@@ -2667,7 +2692,7 @@
             };
 
             // Get upload method specific data
-            const selectedMethod = document.querySelector('.upload-method-btn.border-blue-500');
+            const selectedMethod = document.querySelector('.upload-method-btn.border-black');
             if (selectedMethod) {
                 const method = selectedMethod.getAttribute('data-method');
                 formData.uploadMethod = method;
@@ -2812,7 +2837,7 @@
         function resetUploadModal() {
             // Reset upload method buttons
             document.querySelectorAll('.upload-method-btn').forEach(btn => {
-                btn.classList.remove('border-blue-500', 'bg-blue-50');
+                btn.classList.remove('border-black', 'bg-gray-50');
                 btn.classList.add('border-gray-300');
             });
             
@@ -2915,7 +2940,7 @@
                 <div class="space-y-4">
                     <div class="policy-section">
                         <h4 class="font-semibold text-gray-800 mb-2 flex items-center">
-                            <i class="fas fa-upload mr-2 text-blue-500"></i>Content Upload Guidelines
+                            <i class="fas fa-upload mr-2 text-black"></i>Content Upload Guidelines
                         </h4>
                         <ul class="text-sm text-gray-600 space-y-2">
                             <li>• Submit only original content or content you have rights to distribute</li>
@@ -2952,10 +2977,10 @@
                     
                     <div class="policy-section">
                         <h4 class="font-semibold text-gray-800 mb-2 flex items-center">
-                            <i class="fas fa-envelope mr-2 text-purple-500"></i>Support & Contact
+                            <i class="fas fa-envelope mr-2 text-black"></i>Support & Contact
                         </h4>
                         <p class="text-sm text-gray-600 mb-2">For any questions or support:</p>
-                        <a href="mailto:ms2600971@gmail.com" class="text-blue-500 underline text-sm">ms2600971@gmail.com</a>
+                        <a href="mailto:ms2600971@gmail.com" class="text-black underline text-sm">ms2600971@gmail.com</a>
                     </div>
                 </div>
             `;
@@ -3025,7 +3050,7 @@
             loadProjects();
         }
 
-        const CSV_URL = 'https://docs.google.com/spreadsheets/d/1Zoj9EK4D2I2PUktNemO7wyXwVfcOWYedEEXzNKNGFRE/export?format=csv';
+        const CSV_URL = 'https://docs.google.com/spreadsheets/d/1-vZsrXfNFY4zoAI7jbBvyj8SD8yzhSIlT7RHmc0OhH0/export?format=csv';
 
         function showLoadingState() {
             document.getElementById('loadingState').classList.remove('hidden');
@@ -3292,7 +3317,7 @@
                     errorState.classList.add('hidden');
                 }
                 
-                const csvUrl = 'https://docs.google.com/spreadsheets/d/13FHwwwupiISo8xw-SbXmSCMA2kgIj4KZOGKdAvsGge8/export?format=csv';
+                const csvUrl = 'https://docs.google.com/spreadsheets/d/1D0atQH6PpjL4zS15gHOVHHdWtyOmsmfvxoY27QEsJTY/export?format=csv';
                 const response = await fetch(csvUrl);
                 
                 if (!response.ok) {
@@ -3318,7 +3343,7 @@
             loadOnlineGames();
         }
 
-        // Create mobile game card for online gaming matching home style
+        // Create mobile game card for online gaming matching home style with play button
         function createOnlineMobileGameCard(game) {
             return `
                 <div class="item-card">
@@ -3331,6 +3356,10 @@
                     </div>
                     <div class="card-content">
                         <div class="item-title">${game.name}</div>
+                        <button class="play-button" onclick="openGame('${game.url}')">
+                            <i class="fas fa-play"></i>
+                            Play
+                        </button>
                     </div>
                 </div>
             `;
@@ -3359,7 +3388,6 @@
                     onlineGames.forEach(game => {
                         const gameElement = document.createElement('div');
                         gameElement.innerHTML = createOnlineMobileGameCard(game);
-                        gameElement.firstElementChild.addEventListener('click', () => openGame(game.url));
                         allGamesContainer.appendChild(gameElement.firstElementChild);
                     });
                     gameCount.textContent = `(${onlineGames.length})`;
@@ -3398,7 +3426,6 @@
                     filteredGames.forEach(game => {
                         const gameElement = document.createElement('div');
                         gameElement.innerHTML = createOnlineMobileGameCard(game);
-                        gameElement.firstElementChild.addEventListener('click', () => openGame(game.url));
                         allGamesContainer.appendChild(gameElement.firstElementChild);
                     });
                     gameCount.textContent = `(${filteredGames.length})`;
@@ -3418,7 +3445,7 @@
                     errorState.classList.add('hidden');
                 }
                 
-                const csvUrl = 'https://docs.google.com/spreadsheets/d/15p-2dQQ82N5q52A4z2c_CY1JT7to_Fjn9E41hBZrBAc/export?format=csv';
+                const csvUrl = 'https://docs.google.com/spreadsheets/d/13Ym7uD8sHWBffzWhdCSuNeSLp3MV6szOfgyZTKQ750M/export?format=csv';
                 const response = await fetch(csvUrl);
                 
                 if (!response.ok) {
@@ -3881,8 +3908,8 @@
         }
 
         function getPlaceholderImage(type, title) {
-            const colors = { 'Game': '2196F3', 'App': '4CAF50', 'Tool': 'FF9800' };
-            const color = colors[type] || '9E9E9E';
+            const colors = { 'Game': '000000', 'App': '333333', 'Tool': '666666' };
+            const color = colors[type] || '999999';
             const letter = encodeURIComponent(title.charAt(0).toUpperCase());
             return `https://via.placeholder.com/200x200/${color}/ffffff?text=${letter}`;
         }
