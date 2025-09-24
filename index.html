@@ -1,4 +1,5 @@
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta name="google-site-verification" content="xCJbjjBM7DpMNt7VU2I_xBgccK74XNIepvHXGAh2L48" />
     <meta charset="UTF-8">
@@ -17,7 +18,7 @@
     <link rel="icon" href="https://i.ibb.co/5hsNkn8J/ei-1753297347948-removebg-preview.png">
     <link rel="manifest" href="data:application/json,{&quot;name&quot;:&quot;AlPlayHub&quot;,&quot;short_name&quot;:&quot;AlPlayHub&quot;,&quot;start_url&quot;:&quot;/&quot;,&quot;display&quot;:&quot;standalone&quot;,&quot;background_color&quot;:&quot;#FFFFFF&quot;,&quot;theme_color&quot;:&quot;#FFFFFF&quot;}">
     
-    <!-- ✅ ANDROID OPTIMIZED: Dynamic Theme Support -->
+    <!-- ✅ LIGHT THEME ONLY: Dynamic Theme Support -->
     <meta name="theme-color" content="#FFFFFF" id="theme-color-meta">
     <meta name="msapplication-navbutton-color" content="#FFFFFF" id="ms-theme-color">
     <meta name="apple-mobile-web-app-status-bar-style" content="default" id="apple-status-bar">
@@ -26,7 +27,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <script>
-        // Android Optimized Theme Configuration - Dynamic Theme Support
+        // Colorful Theme Configuration - Light Mode Only
         tailwind.config = {
             theme: {
                 extend: {
@@ -38,9 +39,13 @@
                         warning: '#FFC107',
                         success: '#4CAF50',
                         info: '#2196F3',
+                        purple: '#9C27B0',
+                        indigo: '#3F51B5',
+                        pink: '#E91E63',
+                        teal: '#009688',
                         lightBg: '#FFFFFF',
                         cardBg: '#FFFFFF',
-                        textDark: '#000000',
+                        textDark: '#6B7280',
                         textLight: '#FFFFFF',
                         textMuted: '#6B7280',
                         borderColor: '#E5E7EB'
@@ -87,7 +92,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         
-        /* ✅ DYNAMIC THEME SUPPORT: Light and Dark Themes */
+        /* ✅ LIGHT THEME ONLY: Clean White Theme */
         :root {
             --app-bg: #FFFFFF;
             --card-bg: #FFFFFF;
@@ -97,12 +102,16 @@
             --danger-color: #F44336;
             --warning-color: #FFC107;
             --success-color: #4CAF50;
+            --purple-color: #9C27B0;
+            --indigo-color: #3F51B5;
+            --pink-color: #E91E63;
+            --teal-color: #009688;
             --header-bg: #FFFFFF;
             --nav-bg: #FFFFFF;
-            --text-primary: #000000;
+            --text-primary: #2196F3;
             --text-secondary: #6B7280;
-            --text-on-header: #000000;
-            --text-on-nav: #000000;
+            --text-on-header: #2196F3;
+            --text-on-nav: #2196F3;
             --border-color: #E5E7EB;
             --search-bg: rgba(245, 245, 245, 0.95);
             --search-border: rgba(0, 0, 0, 0.1);
@@ -112,47 +121,6 @@
             --elevation-1: 0 1px 1px rgba(0,0,0,0.04);
             --elevation-2: 0 1px 2px rgba(0,0,0,0.06);
             --elevation-3: 0 2px 3px rgba(0,0,0,0.08);
-        }
-
-        /* Dark Theme Variables */
-        [data-theme="dark"] {
-            --app-bg: #1a1a1a;
-            --card-bg: #2d2d2d;
-            --header-bg: #1a1a1a;
-            --nav-bg: #1a1a1a;
-            --text-primary: #FFFFFF;
-            --text-secondary: #B0B0B0;
-            --text-on-header: #FFFFFF;
-            --text-on-nav: #FFFFFF;
-            --border-color: #404040;
-            --search-bg: rgba(45, 45, 45, 0.95);
-            --search-border: rgba(255, 255, 255, 0.1);
-            --search-icon: rgba(255, 255, 255, 0.6);
-            --search-placeholder: rgba(255, 255, 255, 0.5);
-            --ripple-color: rgba(33, 150, 243, 0.2);
-            --elevation-1: 0 1px 1px rgba(255,255,255,0.04);
-            --elevation-2: 0 1px 2px rgba(255,255,255,0.06);
-            --elevation-3: 0 2px 3px rgba(255,255,255,0.08);
-        }
-
-        /* Green Theme Variables */
-        [data-theme="green"] {
-            --app-bg: #f0f8f0;
-            --card-bg: #ffffff;
-            --primary-color: #4CAF50;
-            --secondary-color: #8BC34A;
-            --header-bg: #f0f8f0;
-            --nav-bg: #f0f8f0;
-            --text-primary: #1B5E20;
-            --text-secondary: #689F38;
-            --text-on-header: #1B5E20;
-            --text-on-nav: #1B5E20;
-            --border-color: #C8E6C9;
-            --search-bg: rgba(200, 230, 201, 0.5);
-            --search-border: rgba(76, 175, 80, 0.2);
-            --search-icon: rgba(27, 94, 32, 0.6);
-            --search-placeholder: rgba(27, 94, 32, 0.5);
-            --ripple-color: rgba(76, 175, 80, 0.1);
         }
 
         /* Apply theme variables to elements */
@@ -177,7 +145,7 @@
             transition: all 0.3s ease;
         }
 
-        /* Android Material Design Header - Dynamic Theme */
+        /* Android Material Design Header - Light Theme */
         .new-header {
             position: fixed;
             top: 0;
@@ -206,7 +174,7 @@
             padding: 6px;
             border-radius: 50%;
             transition: all 0.15s ease;
-            color: var(--text-on-header);
+            color: var(--primary-color);
             width: 34px;
             height: 34px;
             display: flex;
@@ -265,7 +233,7 @@
             font-weight: 400;
         }
 
-        /* Android Three-Dot Menu - Ultra-Compact */
+        /* Android Three-Dot Menu - Colorful */
         .menu-dots {
             background: transparent;
             border: none;
@@ -274,7 +242,7 @@
             padding: 6px;
             border-radius: 50%;
             transition: all 0.15s ease;
-            color: var(--text-on-header);
+            color: var(--accent-color);
             width: 34px;
             height: 34px;
             display: flex;
@@ -333,6 +301,15 @@
             font-size: 11px;
         }
 
+        /* Colorful Icon Colors */
+        .dropdown-item:nth-child(1) i { color: var(--success-color); }
+        .dropdown-item:nth-child(2) i { color: var(--primary-color); }
+        .dropdown-item:nth-child(3) i { color: var(--warning-color); }
+        .dropdown-item:nth-child(4) i { color: var(--danger-color); }
+        .dropdown-item:nth-child(5) i { color: var(--indigo-color); }
+        .dropdown-item:nth-child(6) i { color: var(--teal-color); }
+        .dropdown-item:nth-child(7) i { color: var(--purple-color); }
+
         /* ✅ RESTORED: Original Promotion Carousel - Slightly More Square */
         .promotion-carousel {
             width: 100%;
@@ -371,12 +348,12 @@
             height: 100%;
             object-fit: cover;
             display: block;
-            background: linear-gradient(135deg, #000000 0%, #333333 100%);
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
         }
 
         /* ✅ FAST LOADING: Instant image loading */
         .carousel-slide {
-            background: linear-gradient(135deg, #000000 0%, #333333 100%);
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
         }
 
         .carousel-slide img {
@@ -453,7 +430,7 @@
             box-sizing: border-box;
         }
 
-        /* Ultra-Compact Bottom Navigation - Dynamic Theme */
+        /* Ultra-Compact Bottom Navigation - Light Theme */
         .bottom-nav {
             height: 50px;
             position: fixed;
@@ -472,7 +449,7 @@
             transition: all 0.3s ease;
         }
 
-        /* Ultra-Compact Navigation */
+        /* Ultra-Compact Navigation with Colorful Icons */
         .nav-button {
             display: flex;
             flex-direction: column;
@@ -494,7 +471,6 @@
 
         .nav-button.active {
             background: var(--ripple-color);
-            color: var(--primary-color);
             transform: translateY(-1px);
         }
 
@@ -514,15 +490,26 @@
             font-size: 14px;
             margin-bottom: 1px;
             z-index: 1;
-            color: var(--primary-color);
         }
 
         .nav-label {
             font-size: 8px;
             font-weight: 600;
             z-index: 1;
-            color: var(--primary-color);
         }
+
+        /* Colorful Nav Icons */
+        #nav-home .nav-icon { color: var(--primary-color); }
+        #nav-home .nav-label { color: var(--primary-color); }
+        
+        #nav-developer .nav-icon { color: var(--success-color); }
+        #nav-developer .nav-label { color: var(--success-color); }
+        
+        #nav-upload .nav-icon { color: var(--warning-color); }
+        #nav-upload .nav-label { color: var(--warning-color); }
+        
+        #nav-profile .nav-icon { color: var(--purple-color); }
+        #nav-profile .nav-label { color: var(--purple-color); }
         
         .tab-content {
             display: none;
@@ -604,8 +591,17 @@
             margin-right: 10px;
             text-align: center;
             font-size: 12px;
-            color: var(--primary-color);
         }
+
+        /* Colorful Side Menu Icons */
+        .side-menu-item:nth-child(1) i { color: var(--primary-color); }
+        .side-menu-item:nth-child(2) i { color: var(--success-color); }
+        .side-menu-item:nth-child(3) i { color: var(--warning-color); }
+        .side-menu-item:nth-child(4) i { color: var(--teal-color); }
+        .side-menu-item:nth-child(5) i { color: var(--purple-color); }
+        .side-menu-item:nth-child(6) i { color: var(--pink-color); }
+        .side-menu-item:nth-child(7) i { color: var(--indigo-color); }
+        .side-menu-item:nth-child(8) i { color: var(--danger-color); }
         
         .side-menu-close-btn {
             margin-top: auto;
@@ -672,7 +668,7 @@
         /* Enhanced Profile Header - Compact Version */
         .profile-header {
             padding: 6px;
-            background: linear-gradient(135deg, var(--primary-color), #333333);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             border-radius: 8px;
             margin-bottom: 4px;
             min-height: 50px;
@@ -883,7 +879,7 @@
             letter-spacing: 0.3px;
         }
 
-        /* Ultra-Compact Filter Buttons */
+        /* Ultra-Compact Filter Buttons with Colorful Icons */
         .filter-btn {
             transition: all 0.15s ease;
             color: var(--text-primary);
@@ -907,6 +903,12 @@
         .filter-btn.active i {
             color: #FFFFFF;
         }
+
+        /* Filter button specific colors */
+        .filter-btn[data-filter="All"] i { color: var(--primary-color); }
+        .filter-btn[data-filter="Game"] i { color: var(--success-color); }
+        .filter-btn[data-filter="App"] i { color: var(--warning-color); }
+        .filter-btn[data-filter="Tool"] i { color: var(--purple-color); }
 
         /* Ultra-Compact Play Modal */
         #play-modal {
@@ -935,7 +937,7 @@
             right: 10px;
             background: var(--card-bg);
             backdrop-filter: blur(10px);
-            color: var(--text-primary); 
+            color: var(--danger-color); 
             border: 1px solid var(--border-color); 
             border-radius: 50%; 
             width: 36px; 
@@ -1037,9 +1039,8 @@
             box-shadow: var(--elevation-3);
         }
 
-        /* Action Icon Buttons for Online Tab */
+        /* Action Icon Buttons for Online Tab - Colorful */
         .action-icon {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
             border-radius: 50%;
             width: 40px;
@@ -1059,24 +1060,24 @@
         }
 
         .action-icon.shopping {
-            background: linear-gradient(135deg, #333333, #000000);
+            background: linear-gradient(135deg, var(--warning-color), var(--accent-color));
         }
 
         .action-icon.marketplace {
-            background: linear-gradient(135deg, #333333, #000000);
+            background: linear-gradient(135deg, var(--purple-color), var(--pink-color));
         }
 
         .action-icon.store {
-            background: linear-gradient(135deg, #333333, #000000);
+            background: linear-gradient(135deg, var(--teal-color), var(--success-color));
         }
 
         .action-icon.explore {
-            background: linear-gradient(135deg, #333333, #000000);
+            background: linear-gradient(135deg, var(--indigo-color), var(--primary-color));
         }
 
         /* ✅ APK DOWNLOAD BUTTON STYLES */
         .apk-download-btn {
-            background: var(--primary-color);
+            background: var(--warning-color);
             color: white;
             border: none;
             border-radius: 12px;
@@ -1178,7 +1179,7 @@
         }
         
         .header-bg {
-            background: linear-gradient(135deg, #1a1f36 0%, #2d3561 100%);
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
         }
         
         .game-icon {
@@ -1219,7 +1220,7 @@
             background: var(--secondary-color);
         }
 
-        /* Additional dark mode and project card styles */
+        /* Additional project card styles */
         .project-card {
             transition: all 0.3s ease;
             background: var(--card-bg);
@@ -1261,7 +1262,7 @@
 
         /* Developer Tab Specific Styles */
         .profile-bg {
-            background: linear-gradient(135deg, #333333 0%, #000000 50%, #333333 100%);
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 50%, var(--teal-color) 100%);
         }
 
         /* Responsive optimizations */
@@ -1337,10 +1338,10 @@
         }
 
         .tab-action-btn.primary:active {
-            background: #333333;
+            background: var(--secondary-color);
         }
 
-        /* Theme transition animations */
+        /* Theme transition animations - Removed */
         * {
             transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
@@ -1374,10 +1375,6 @@
                 <a class="dropdown-item" onclick="downloadApp()">
                     <i class="fas fa-download"></i>
                     <span>Get App</span>
-                </a>
-                <a class="dropdown-item" onclick="toggleTheme()">
-                    <i class="fas fa-palette"></i>
-                    <span id="theme-text">Dark Theme</span>
                 </a>
                 <a class="dropdown-item" onclick="redirectToAlPlayHub()">
                     <i class="fas fa-external-link-alt"></i>
@@ -1430,7 +1427,7 @@
                     <i class="fas fa-code"></i>
                     <span>Developer Info</span>
                 </a>
-                <a class="side-menu-item" onclick="openCryptoPage(); closeSideMenu();" style="background: linear-gradient(135deg, #333333, #000000); color: white; border-radius: 8px; margin: 8px 0; animation: pulse 2s infinite;">
+                <a class="side-menu-item" onclick="openCryptoPage(); closeSideMenu();" style="background: linear-gradient(135deg, #FF9800, #E91E63); color: white; border-radius: 8px; margin: 8px 0; animation: pulse 2s infinite;">
                     <i class="fas fa-coins" style="color: white;"></i>
                     <span style="font-weight: 600;">🚀 Free Crypto Airdrops</span>
                 </a>
@@ -1477,7 +1474,7 @@
                         </div>
                     </div>
                     
-                    <!-- Ultra-Compact Filter Buttons -->
+                    <!-- Ultra-Compact Filter Buttons with Colorful Icons -->
                     <div class="flex justify-center gap-2 mb-3">
                         <button class="filter-btn px-2 py-1 rounded-full text-xs active font-medium bg-primary text-white" data-filter="All" onclick="filterItems('All')">
                             <i class="fas fa-th-large mr-1"></i>All
@@ -1535,7 +1532,7 @@
                     </div>
                 </div>
 
-                <div class="screen-content bg-gray-50 dark:bg-dark" style="font-family: 'Inter', sans-serif;">
+                <div class="screen-content bg-gray-50">
                     <!-- Profile Section - Same spacing as home carousel -->
                     <div class="h-32 relative overflow-hidden rounded-2xl mb-3">
                         <div class="absolute inset-0 bg-cover bg-center" 
@@ -1559,19 +1556,19 @@
                     <div class="mb-4">
                         <!-- Developer Name & Info -->
                         <div class="text-center mb-4">
-                            <h1 class="text-xl font-bold text-gray-900 dark:text-white mb-1">MOHAMMED SHARIF</h1>
-                            <p class="text-gray-600 dark:text-gray-400 mb-1 text-sm">Game & Web Developer</p>
-                            <p class="text-xs text-gray-500 dark:text-gray-500">🇵🇰 Made in Pakistan</p>
+                            <h1 class="text-xl font-bold text-gray-900 mb-1">MOHAMMED SHARIF</h1>
+                            <p class="text-gray-600 mb-1 text-sm">Game & Web Developer</p>
+                            <p class="text-xs text-gray-500">🇵🇰 Made in Pakistan</p>
                             
-                            <!-- Social Media Icons -->
+                            <!-- Social Media Icons with different colors -->
                             <div class="flex justify-center space-x-3 mt-3">
-                                <a href="#" class="w-10 h-10 bg-black rounded-full flex items-center justify-center text-white hover:bg-gray-800 transition-colors">
+                                <a href="https://vm.tiktok.com/ZTHW2X4BW5ogt-H4qyl/" style="background: linear-gradient(135deg, #000000, #333333);" class="w-10 h-10 rounded-full flex items-center justify-center text-white hover:opacity-80 transition-colors">
                                     <i class="fab fa-tiktok text-sm"></i>
                                 </a>
-                                <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-white hover:bg-gray-900 transition-colors">
+                                <a href="https://x.com/dcmotorlab?t=iajS-fAz4Iax7LEbPOLq-g&s=09" style="background: linear-gradient(135deg, #1DA1F2, #0D8BD9);" class="w-10 h-10 rounded-full flex items-center justify-center text-white hover:opacity-80 transition-colors">
                                     <i class="fab fa-twitter text-sm"></i>
                                 </a>
-                                <a href="mailto:ms2600971@gmail.com" class="w-10 h-10 bg-red-500 rounded-full flex items-center justify-center text-white hover:bg-red-600 transition-colors">
+                                <a href="mailto:ms2600971@gmail.com" style="background: linear-gradient(135deg, #EA4335, #D33B2C);" class="w-10 h-10 rounded-full flex items-center justify-center text-white hover:opacity-80 transition-colors">
                                     <i class="fas fa-envelope text-sm"></i>
                                 </a>
                             </div>
@@ -1600,7 +1597,7 @@
                                 <i class="fas fa-globe mr-2"></i>Visit Portfolio
                             </a>
                             <button onclick="refreshProjects()" 
-                                    class="px-3 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+                                    class="px-3 py-2 bg-gray-100 text-gray-700 rounded-xl hover:bg-gray-200 transition-colors">
                                 <i class="fas fa-sync-alt" id="dev-refresh-icon"></i>
                             </button>
                         </div>
@@ -1609,22 +1606,22 @@
                     <!-- Projects Section -->
                     <div class="pb-6">
                         <div class="flex items-center justify-between mb-3">
-                            <h2 class="text-base font-bold text-gray-900 dark:text-white flex items-center">
+                            <h2 class="text-base font-bold text-gray-900 flex items-center">
                                 💼 My Projects
                             </h2>
-                            <div class="text-xs text-gray-500 dark:text-gray-400" id="lastUpdated"></div>
+                            <div class="text-xs text-gray-500" id="lastUpdated"></div>
                         </div>
 
                         <!-- Loading State -->
                         <div id="loadingState" class="flex flex-col items-center justify-center py-6">
                             <div class="loader mb-3"></div>
-                            <p class="text-gray-500 dark:text-gray-400 text-sm">Loading projects...</p>
+                            <p class="text-gray-500 text-sm">Loading projects...</p>
                         </div>
 
                         <!-- Error State -->
                         <div id="errorState" class="hidden flex flex-col items-center justify-center py-6">
                             <i class="fas fa-exclamation-triangle text-secondary text-xl mb-3"></i>
-                            <p class="text-gray-500 dark:text-gray-400 text-sm mb-3">Failed to load projects</p>
+                            <p class="text-gray-500 text-sm mb-3">Failed to load projects</p>
                             <button onclick="loadProjects()" 
                                     class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-opacity-90 transition-colors text-sm">
                                 Try Again
@@ -1637,7 +1634,7 @@
                         <!-- Empty State -->
                         <div id="emptyState" class="hidden flex flex-col items-center justify-center py-6">
                             <i class="fas fa-folder-open text-gray-400 text-xl mb-3"></i>
-                            <p class="text-gray-500 dark:text-gray-400 text-sm">No projects found</p>
+                            <p class="text-gray-500 text-sm">No projects found</p>
                         </div>
                     </div>
                 </div>
@@ -1821,7 +1818,7 @@
                         </div>
                     </div>
 
-                    <!-- Action Icons Section with Names -->
+                    <!-- Action Icons Section with Names and Colorful Backgrounds -->
                     <div class="flex justify-center items-center gap-3 mb-3">
                         <!-- Shopping Cart Icon -->
                         <div class="text-center w-14">
@@ -1849,7 +1846,7 @@
                         
                         <!-- My Uploads Icon -->
                         <div class="text-center w-14">
-                            <button onclick="showMyUploadsModal()" class="action-icon mx-auto w-9 h-9" title="My Uploads" style="background: linear-gradient(135deg, #333333, #000000);">
+                            <button onclick="showMyUploadsModal()" class="action-icon store mx-auto w-9 h-9" title="My Uploads">
                                 <i class="fas fa-folder-open text-sm"></i>
                             </button>
                             <p class="text-xs mt-1 text-gray-600 font-normal leading-tight">Files</p>
@@ -1900,7 +1897,7 @@
                 </div>
             </div>
 
-            <!-- Ultra-Compact Bottom Navigation -->
+            <!-- Ultra-Compact Bottom Navigation with Colorful Icons -->
             <div class="bottom-nav">
                 <button id="nav-home" class="nav-button active" onclick="showTab('home-tab')">
                     <i class="nav-icon fas fa-home"></i>
@@ -1948,7 +1945,7 @@
         <!-- Upload Modal -->
         <div id="upload-modal" class="modal-backdrop">
             <div class="modal-content max-w-md">
-                <div class="p-4 border-b border-gray-200 bg-gradient-to-r from-black to-gray-800 rounded-t-xl">
+                <div class="p-4 border-b border-gray-200 bg-gradient-to-r from-primary to-secondary rounded-t-xl">
                     <div class="flex justify-between items-center">
                         <h3 class="text-lg font-bold text-white flex items-center">
                             <i class="fas fa-upload mr-2"></i>Upload Content
@@ -1964,17 +1961,17 @@
                         <!-- App/Game Name -->
                         <div>
                             <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                <i class="fas fa-gamepad mr-1 text-black"></i>App/Game Name *
+                                <i class="fas fa-gamepad mr-1 text-primary"></i>App/Game Name *
                             </label>
-                            <input type="text" id="app-name" required class="w-full p-3 border border-gray-300 rounded-lg focus:border-black focus:ring-2 focus:ring-gray-200 transition-all text-base" placeholder="Enter your app name">
+                            <input type="text" id="app-name" required class="w-full p-3 border border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-blue-200 transition-all text-base" placeholder="Enter your app name">
                         </div>
 
                         <!-- Logo URL with Preview -->
                         <div>
                             <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                <i class="fas fa-image mr-1 text-black"></i>Logo Image URL *
+                                <i class="fas fa-image mr-1 text-secondary"></i>Logo Image URL *
                             </label>
-                            <input type="url" id="logo-url" required class="w-full p-3 border border-gray-300 rounded-lg focus:border-black focus:ring-2 focus:ring-gray-200 transition-all text-base" placeholder="https://example.com/logo.png" onpaste="setTimeout(previewLogo, 100)" oninput="previewLogo()">
+                            <input type="url" id="logo-url" required class="w-full p-3 border border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-blue-200 transition-all text-base" placeholder="https://example.com/logo.png" onpaste="setTimeout(previewLogo, 100)" oninput="previewLogo()">
                             <p class="text-xs text-gray-500 mt-1">Square image recommended (512x512px)</p>
                             
                             <!-- Logo Preview -->
@@ -1999,9 +1996,9 @@
                         <!-- Category Selection -->
                         <div>
                             <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                <i class="fas fa-tags mr-1 text-black"></i>Category *
+                                <i class="fas fa-tags mr-1 text-warning"></i>Category *
                             </label>
-                            <select id="category" required class="w-full p-3 border border-gray-300 rounded-lg focus:border-black focus:ring-2 focus:ring-gray-200 transition-all text-base">
+                            <select id="category" required class="w-full p-3 border border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-blue-200 transition-all text-base">
                                 <option value="">Select Category</option>
                                 <option value="Game">🎮 Game</option>
                                 <option value="App">📱 App</option>
@@ -2012,15 +2009,15 @@
                         <!-- Upload Method -->
                         <div>
                             <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                <i class="fas fa-upload mr-1 text-black"></i>Upload Method *
+                                <i class="fas fa-upload mr-1 text-purple"></i>Upload Method *
                             </label>
                             <div class="grid grid-cols-2 gap-2">
-                                <button type="button" onclick="selectUploadMethod('html')" class="upload-method-btn border-2 border-gray-300 rounded-lg p-3 text-center hover:border-black transition-all" data-method="html">
-                                    <i class="fas fa-code text-2xl text-black mb-2"></i>
+                                <button type="button" onclick="selectUploadMethod('html')" class="upload-method-btn border-2 border-gray-300 rounded-lg p-3 text-center hover:border-primary transition-all" data-method="html">
+                                    <i class="fas fa-code text-2xl text-primary mb-2"></i>
                                     <p class="text-sm font-medium">HTML Code</p>
                                 </button>
-                                <button type="button" onclick="selectUploadMethod('url')" class="upload-method-btn border-2 border-gray-300 rounded-lg p-3 text-center hover:border-black transition-all" data-method="url">
-                                    <i class="fas fa-link text-2xl text-black mb-2"></i>
+                                <button type="button" onclick="selectUploadMethod('url')" class="upload-method-btn border-2 border-gray-300 rounded-lg p-3 text-center hover:border-primary transition-all" data-method="url">
+                                    <i class="fas fa-link text-2xl text-teal mb-2"></i>
                                     <p class="text-sm font-medium">Website URL</p>
                                 </button>
                             </div>
@@ -2029,33 +2026,33 @@
                         <!-- HTML Code Upload -->
                         <div id="html-upload" class="hidden">
                             <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                <i class="fas fa-code mr-1 text-black"></i>HTML Code *
+                                <i class="fas fa-code mr-1 text-indigo"></i>HTML Code *
                             </label>
-                            <textarea id="html-code" rows="6" class="w-full p-3 border border-gray-300 rounded-lg focus:border-black focus:ring-2 focus:ring-gray-200 transition-all text-base font-mono text-sm" placeholder="Paste your HTML code here..."></textarea>
+                            <textarea id="html-code" rows="6" class="w-full p-3 border border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-blue-200 transition-all text-base font-mono text-sm" placeholder="Paste your HTML code here..."></textarea>
                             <p class="text-xs text-gray-500 mt-1">Include complete HTML with CSS and JavaScript</p>
                         </div>
 
                         <!-- URL Upload -->
                         <div id="url-upload" class="hidden">
                             <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                <i class="fas fa-link mr-1 text-black"></i>Website URL *
+                                <i class="fas fa-link mr-1 text-pink"></i>Website URL *
                             </label>
-                            <input type="url" id="website-url" class="w-full p-3 border border-gray-300 rounded-lg focus:border-black focus:ring-2 focus:ring-gray-200 transition-all text-base" placeholder="https://yourgame.com">
+                            <input type="url" id="website-url" class="w-full p-3 border border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-blue-200 transition-all text-base" placeholder="https://yourgame.com">
                             <p class="text-xs text-gray-500 mt-1">Direct link to your game or app</p>
                         </div>
 
                         <!-- Description -->
                         <div>
                             <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                <i class="fas fa-align-left mr-1 text-black"></i>Description
+                                <i class="fas fa-align-left mr-1 text-success"></i>Description
                             </label>
-                            <textarea id="description" rows="3" class="w-full p-3 border border-gray-300 rounded-lg focus:border-black focus:ring-2 focus:ring-gray-200 transition-all text-base" placeholder="Describe your game or app..."></textarea>
+                            <textarea id="description" rows="3" class="w-full p-3 border border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-blue-200 transition-all text-base" placeholder="Describe your game or app..."></textarea>
                         </div>
 
                         <!-- Terms and Privacy Policy -->
                         <div class="bg-gray-50 p-4 rounded-lg">
                             <h4 class="font-semibold text-gray-800 mb-2 flex items-center">
-                                <i class="fas fa-shield-alt mr-2 text-black"></i>Upload Guidelines
+                                <i class="fas fa-shield-alt mr-2 text-primary"></i>Upload Guidelines
                             </h4>
                             <ul class="text-xs text-gray-600 space-y-1">
                                 <li>• Content must be family-friendly and appropriate</li>
@@ -2082,7 +2079,7 @@
                             <button type="button" onclick="closeUploadModal()" class="flex-1 py-3 px-4 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors">
                                 Cancel
                             </button>
-                            <button type="submit" id="upload-submit-btn" class="flex-1 py-3 px-4 bg-gradient-to-r from-black to-gray-800 text-white rounded-lg font-semibold hover:shadow-lg transition-all transform hover:scale-105">
+                            <button type="submit" id="upload-submit-btn" class="flex-1 py-3 px-4 bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-semibold hover:shadow-lg transition-all transform hover:scale-105">
                                 <i class="fas fa-paper-plane mr-2"></i>Submit for Review
                             </button>
                         </div>
@@ -2094,7 +2091,7 @@
         <!-- Policy Modal -->
         <div id="policy-modal" class="modal-backdrop">
             <div class="modal-content policy-modal">
-                <div class="p-4 border-b border-gray-200 bg-gradient-to-r from-black to-gray-800 rounded-t-xl">
+                <div class="p-4 border-b border-gray-200 bg-gradient-to-r from-primary to-secondary rounded-t-xl">
                     <div class="flex justify-between items-center">
                         <h3 id="policy-title" class="text-lg font-bold text-white flex items-center">
                             <i class="fas fa-clipboard-list mr-2"></i>Upload Guidelines
@@ -2132,7 +2129,7 @@
         const db = firebase.database();
         const storage = firebase.storage();
 
-        // Enhanced App System with Theme Support
+        // Enhanced App System - Light Theme Only
         let allItems = [];
         let currentFilter = 'All';
         let isLoading = false;
@@ -2190,51 +2187,21 @@
             img.src = logoUrl;
         }
 
-        // ✅ THEME MANAGEMENT - Only Black & White
-        const themes = ['light', 'dark'];
-        
+        // ✅ THEME MANAGEMENT - Light Theme Only
         function initializeTheme() {
-            const savedTheme = localStorage.getItem('alplayhub-theme') || 'light';
-            currentTheme = savedTheme;
+            currentTheme = 'light';
             applyTheme(currentTheme);
-            updateThemeText();
         }
 
         function toggleTheme() {
-            const currentIndex = themes.indexOf(currentTheme);
-            const nextIndex = (currentIndex + 1) % themes.length;
-            currentTheme = themes[nextIndex];
-            
-            applyTheme(currentTheme);
-            updateThemeText();
-            localStorage.setItem('alplayhub-theme', currentTheme);
+            // Theme toggle disabled - only light theme available
+            showToast(`🎨 Light theme active!`, 2000);
             document.getElementById('dropdown-menu').classList.remove('active');
-            
-            showToast(`🎨 Switched to ${currentTheme} theme!`, 2000);
         }
 
         function applyTheme(theme) {
-            document.documentElement.setAttribute('data-theme', theme);
-            
-            // Update meta theme color based on theme
-            const themeColors = {
-                'light': '#FFFFFF',
-                'dark': '#000000'
-            };
-            
-            updateThemeColorImmediate(themeColors[theme]);
-        }
-
-        function updateThemeText() {
-            const themeText = document.getElementById('theme-text');
-            const themeNames = {
-                'light': 'Dark Theme',
-                'dark': 'Light Theme'
-            };
-            
-            if (themeText) {
-                themeText.textContent = themeNames[currentTheme];
-            }
+            document.documentElement.setAttribute('data-theme', 'light');
+            updateThemeColorImmediate('#FFFFFF');
         }
 
         // ✅ URL REDIRECTION
@@ -2289,7 +2256,7 @@
             const modalHTML = `
                 <div id="my-uploads-modal" class="modal-backdrop active">
                     <div class="modal-content max-w-md">
-                        <div class="p-4 border-b border-gray-200 bg-gradient-to-r from-black to-gray-800 rounded-t-xl">
+                        <div class="p-4 border-b border-gray-200 bg-gradient-to-r from-primary to-secondary rounded-t-xl">
                             <div class="flex justify-between items-center">
                                 <h3 class="text-lg font-bold text-white flex items-center">
                                     <i class="fas fa-folder-open mr-2"></i>My Uploads Dashboard
@@ -2345,7 +2312,7 @@
                                 <i class="fas fa-inbox text-gray-400 text-4xl mb-3"></i>
                                 <h3 class="text-gray-600 font-medium mb-2">No Uploads Yet</h3>
                                 <p class="text-gray-500 text-sm mb-4">You haven't uploaded any content yet.</p>
-                                <button onclick="closeMyUploadsModal(); showUploadModal();" class="bg-black text-white px-4 py-2 rounded-lg text-sm">
+                                <button onclick="closeMyUploadsModal(); showUploadModal();" class="bg-primary text-white px-4 py-2 rounded-lg text-sm">
                                     <i class="fas fa-plus mr-2"></i>Upload Content
                                 </button>
                             </div>
@@ -2407,7 +2374,7 @@
                         <div class="mb-4">
                             <div class="flex items-center justify-between mb-3">
                                 <h4 class="font-medium text-gray-900">Your Content (${uploads.length})</h4>
-                                <button onclick="closeMyUploadsModal(); showUploadModal();" class="text-black hover:text-gray-700 text-sm font-medium">
+                                <button onclick="closeMyUploadsModal(); showUploadModal();" class="text-primary hover:text-blue-700 text-sm font-medium">
                                     <i class="fas fa-plus mr-1"></i>Add New
                                 </button>
                             </div>
@@ -2511,6 +2478,9 @@
             setupOnlineCarousel();
         });
 
+        // Rest of the JavaScript code remains the same...
+        // [The rest of your existing JavaScript functions remain unchanged]
+
         // ✅ SETUP SEPARATE CAROUSEL FOR APK PAGE WITH UNIQUE IMAGES
         function setupAPKCarousel() {
             const slides = document.querySelectorAll('#apk-carousel-container .carousel-slide');
@@ -2612,7 +2582,7 @@
             document.getElementById('upload-modal').classList.remove('active');
             document.getElementById('upload-form').reset();
             document.querySelectorAll('.upload-method-btn').forEach(btn => {
-                btn.classList.remove('border-black', 'bg-gray-50');
+                btn.classList.remove('border-primary', 'bg-gray-50');
                 btn.classList.add('border-gray-300');
             });
             document.getElementById('html-upload').classList.add('hidden');
@@ -2624,13 +2594,13 @@
         function selectUploadMethod(method) {
             // Reset all buttons
             document.querySelectorAll('.upload-method-btn').forEach(btn => {
-                btn.classList.remove('border-black', 'bg-gray-50');
+                btn.classList.remove('border-primary', 'bg-gray-50');
                 btn.classList.add('border-gray-300');
             });
             
             // Highlight selected button
             const selectedBtn = document.querySelector(`[data-method="${method}"]`);
-            selectedBtn.classList.add('border-black', 'bg-gray-50');
+            selectedBtn.classList.add('border-primary', 'bg-gray-50');
             selectedBtn.classList.remove('border-gray-300');
             
             // Show/hide upload sections
@@ -2692,7 +2662,7 @@
             };
 
             // Get upload method specific data
-            const selectedMethod = document.querySelector('.upload-method-btn.border-black');
+            const selectedMethod = document.querySelector('.upload-method-btn.border-primary');
             if (selectedMethod) {
                 const method = selectedMethod.getAttribute('data-method');
                 formData.uploadMethod = method;
@@ -2837,7 +2807,7 @@
         function resetUploadModal() {
             // Reset upload method buttons
             document.querySelectorAll('.upload-method-btn').forEach(btn => {
-                btn.classList.remove('border-black', 'bg-gray-50');
+                btn.classList.remove('border-primary', 'bg-gray-50');
                 btn.classList.add('border-gray-300');
             });
             
@@ -2846,39 +2816,6 @@
             document.getElementById('url-upload').classList.add('hidden');
             document.getElementById('logo-preview').classList.add('hidden');
             document.getElementById('logo-error').classList.add('hidden');
-        }
-
-        // Show BIG success message
-        function showBigSuccessMessage(title, uploadKey) {
-            const successHTML = `
-                <div id="success-overlay" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[9999]" style="backdrop-filter: blur(4px);">
-                    <div class="bg-white rounded-2xl p-6 mx-4 max-w-sm w-full text-center shadow-2xl">
-                        <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <i class="fas fa-check text-white text-2xl"></i>
-                        </div>
-                        <h2 class="text-xl font-bold text-gray-800 mb-2">🎉 Upload Successful!</h2>
-                        <p class="text-gray-600 mb-4">"${title}" has been sent to admin for review</p>
-                        <div class="bg-gray-50 rounded-lg p-3 mb-4">
-                            <p class="text-sm text-gray-700"><strong>Upload ID:</strong> ${uploadKey.substr(-8)}</p>
-                            <p class="text-sm text-gray-700"><strong>Status:</strong> Pending Review</p>
-                        </div>
-                        <p class="text-xs text-gray-500 mb-4">Review typically takes 24-48 hours. You can check status in "My Uploads" section.</p>
-                        <button onclick="closeSuccessMessage()" class="w-full bg-green-500 text-white py-3 rounded-lg font-semibold hover:bg-green-600 transition-colors">
-                            ✅ Got it!
-                        </button>
-                    </div>
-                </div>
-            `;
-            
-            document.body.insertAdjacentHTML('beforeend', successHTML);
-        }
-
-        // Close success message
-        function closeSuccessMessage() {
-            const overlay = document.getElementById('success-overlay');
-            if (overlay) {
-                overlay.remove();
-            }
         }
 
         // Helper function to reset submit button
@@ -2927,20 +2864,13 @@
             return true;
         }
 
-        // Enhanced success modal with detailed instructions
-        function showUploadSuccessModal(title, uploadKey) {
-            const message = `🎉 Upload Successful!\n\n✅ "${title}" has been submitted for review\n\nUpload ID: ${uploadKey.substr(-8)}\n\n📋 Next Steps:\n• Your content is now with our admin team\n• Review typically takes 24-48 hours\n• Once approved, it will appear on the platform\n• You can check status in "My Uploads" section\n\n📧 You'll be notified when it's live!\n\n🚀 Thank you for contributing to AlPlayHub!`;
-            
-            showModal(message, '🎉 Upload Complete!');
-        }
-
         // ✅ POLICY FUNCTIONALITY
         function showUploadPolicy() {
             const content = `
                 <div class="space-y-4">
                     <div class="policy-section">
                         <h4 class="font-semibold text-gray-800 mb-2 flex items-center">
-                            <i class="fas fa-upload mr-2 text-black"></i>Content Upload Guidelines
+                            <i class="fas fa-upload mr-2 text-primary"></i>Content Upload Guidelines
                         </h4>
                         <ul class="text-sm text-gray-600 space-y-2">
                             <li>• Submit only original content or content you have rights to distribute</li>
@@ -2977,10 +2907,10 @@
                     
                     <div class="policy-section">
                         <h4 class="font-semibold text-gray-800 mb-2 flex items-center">
-                            <i class="fas fa-envelope mr-2 text-black"></i>Support & Contact
+                            <i class="fas fa-envelope mr-2 text-primary"></i>Support & Contact
                         </h4>
                         <p class="text-sm text-gray-600 mb-2">For any questions or support:</p>
-                        <a href="mailto:ms2600971@gmail.com" class="text-black underline text-sm">ms2600971@gmail.com</a>
+                        <a href="mailto:ms2600971@gmail.com" class="text-primary underline text-sm">ms2600971@gmail.com</a>
                     </div>
                 </div>
             `;
@@ -3572,7 +3502,7 @@
         }
 
         window.showAbout = function() {
-            showModal('AlPlayHub v2.0\n\nUltimate HTML5 Games & Apps Platform\n\nDeveloped by Mohammed Sharif\n\nFeatures:\n• Instant Gaming\n• Easy Upload\n• Material Design\n• Android Optimized\n• Dynamic Themes\n• Compact Design', '📱 About AlPlayHub');
+            showModal('AlPlayHub v2.0\n\nUltimate HTML5 Games & Apps Platform\n\nDeveloped by Mohammed Sharif\n\nFeatures:\n• Instant Gaming\n• Easy Upload\n• Material Design\n• Android Optimized\n• Colorful Design\n• Compact Design', '📱 About AlPlayHub');
             document.getElementById('dropdown-menu').classList.remove('active');
         }
 
@@ -3908,7 +3838,7 @@
         }
 
         function getPlaceholderImage(type, title) {
-            const colors = { 'Game': '000000', 'App': '333333', 'Tool': '666666' };
+            const colors = { 'Game': '2196F3', 'App': '4CAF50', 'Tool': 'FF9800' };
             const color = colors[type] || '999999';
             const letter = encodeURIComponent(title.charAt(0).toUpperCase());
             return `https://via.placeholder.com/200x200/${color}/ffffff?text=${letter}`;
