@@ -23,17 +23,17 @@
     <link rel="icon" href="https://i.ibb.co/5hsNkn8J/ei-1753297347948-removebg-preview.png">
     <link rel="manifest" href="data:application/json,{&quot;name&quot;:&quot;AlPlayHub&quot;,&quot;short_name&quot;:&quot;AlPlayHub&quot;,&quot;start_url&quot;:&quot;/&quot;,&quot;display&quot;:&quot;standalone&quot;,&quot;background_color&quot;:&quot;#FFFFFF&quot;,&quot;theme_color&quot;:&quot;#FFFFFF&quot;}">
     
-    <!-- ✅ LIGHT THEME WITH DARK STATUS BAR ICONS (White Background) -->
-<meta name="theme-color" content="#FFFFFF" id="theme-color-meta">
-<meta name="msapplication-navbutton-color" content="#FFFFFF" id="ms-theme-color">
-<meta name="apple-mobile-web-app-status-bar-style" content="default" id="apple-status-bar">
-<meta name="color-scheme" content="light">
+    <!-- ✅ DYNAMIC THEME WITH DARK STATUS BAR ICONS -->
+    <meta name="theme-color" content="#FFFFFF" id="theme-color-meta">
+    <meta name="msapplication-navbutton-color" content="#FFFFFF" id="ms-theme-color">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" id="apple-status-bar">
+    <meta name="color-scheme" content="light">
     
     <!-- External Resources -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <script>
-        // Colorful Theme Configuration - Light Mode Only
+        // Multiple Theme Configuration
         tailwind.config = {
             theme: {
                 extend: {
@@ -65,6 +65,7 @@
                         'scale-in': 'scaleIn 0.15s ease-out',
                         'pulse-soft': 'pulseSoft 2s ease-in-out infinite',
                         'float': 'float 2s ease-in-out infinite',
+                        'rotate': 'rotate 0.3s ease-in-out',
                     },
                     keyframes: {
                         slideUp: {
@@ -86,6 +87,10 @@
                         float: {
                             '0%, 100%': { transform: 'translateY(0px)' },
                             '50%': { transform: 'translateY(-6px)' }
+                        },
+                        rotate: {
+                            '0%': { transform: 'rotate(0deg)' },
+                            '100%': { transform: 'rotate(360deg)' }
                         }
                     }
                 }
@@ -98,7 +103,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         
-        /* ✅ LIGHT THEME ONLY: Clean White Theme */
+        /* ✅ DYNAMIC THEME SYSTEM */
         :root {
             --app-bg: #FFFFFF;
             --card-bg: #FFFFFF;
@@ -127,6 +132,78 @@
             --elevation-1: 0 1px 1px rgba(0,0,0,0.04);
             --elevation-2: 0 1px 2px rgba(0,0,0,0.06);
             --elevation-3: 0 2px 3px rgba(0,0,0,0.08);
+        }
+
+        /* Ocean Theme */
+        [data-theme="ocean"] {
+            --app-bg: #E3F2FD;
+            --card-bg: #FFFFFF;
+            --primary-color: #2196F3;
+            --secondary-color: #00BCD4;
+            --accent-color: #3F51B5;
+            --header-bg: #FFFFFF;
+            --nav-bg: #FFFFFF;
+            --text-primary: #2196F3;
+            --text-secondary: #455A64;
+            --text-on-header: #2196F3;
+            --text-on-nav: #2196F3;
+            --border-color: #BBDEFB;
+            --search-bg: rgba(227, 242, 253, 0.8);
+            --ripple-color: rgba(33, 150, 243, 0.15);
+        }
+
+        /* Sunset Theme */
+        [data-theme="sunset"] {
+            --app-bg: #FFF3E0;
+            --card-bg: #FFFFFF;
+            --primary-color: #FF5722;
+            --secondary-color: #FF9800;
+            --accent-color: #E91E63;
+            --header-bg: #FFFFFF;
+            --nav-bg: #FFFFFF;
+            --text-primary: #FF5722;
+            --text-secondary: #BF360C;
+            --text-on-header: #FF5722;
+            --text-on-nav: #FF5722;
+            --border-color: #FFCCBC;
+            --search-bg: rgba(255, 243, 224, 0.8);
+            --ripple-color: rgba(255, 87, 34, 0.15);
+        }
+
+        /* Nature Theme */
+        [data-theme="nature"] {
+            --app-bg: #F1F8E9;
+            --card-bg: #FFFFFF;
+            --primary-color: #4CAF50;
+            --secondary-color: #8BC34A;
+            --accent-color: #009688;
+            --header-bg: #FFFFFF;
+            --nav-bg: #FFFFFF;
+            --text-primary: #4CAF50;
+            --text-secondary: #2E7D32;
+            --text-on-header: #4CAF50;
+            --text-on-nav: #4CAF50;
+            --border-color: #C8E6C9;
+            --search-bg: rgba(241, 248, 233, 0.8);
+            --ripple-color: rgba(76, 175, 80, 0.15);
+        }
+
+        /* Royal Theme */
+        [data-theme="royal"] {
+            --app-bg: #F3E5F5;
+            --card-bg: #FFFFFF;
+            --primary-color: #9C27B0;
+            --secondary-color: #673AB7;
+            --accent-color: #E91E63;
+            --header-bg: #FFFFFF;
+            --nav-bg: #FFFFFF;
+            --text-primary: #9C27B0;
+            --text-secondary: #4A148C;
+            --text-on-header: #9C27B0;
+            --text-on-nav: #9C27B0;
+            --border-color: #E1BEE7;
+            --search-bg: rgba(243, 229, 245, 0.8);
+            --ripple-color: rgba(156, 39, 176, 0.15);
         }
 
         /* Apply theme variables to elements */
@@ -237,6 +314,33 @@
             color: var(--search-placeholder) !important;
             font-size: 12px;
             font-weight: 400;
+        }
+
+        /* Theme Selector Button */
+        .theme-selector {
+            background: transparent;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            padding: 6px;
+            border-radius: 50%;
+            transition: all 0.15s ease;
+            color: var(--primary-color);
+            width: 34px;
+            height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 2px;
+        }
+
+        .theme-selector:active {
+            transform: scale(0.95);
+            background: var(--ripple-color);
+        }
+
+        .theme-selector.rotating {
+            animation: rotate 0.3s ease-in-out;
         }
 
         /* Android Three-Dot Menu - Colorful */
@@ -436,7 +540,7 @@
             box-sizing: border-box;
         }
 
-        /* Ultra-Compact Bottom Navigation - Light Theme */
+        /* Ultra-Compact Bottom Navigation */
         .bottom-nav {
             height: 50px;
             position: fixed;
@@ -633,7 +737,7 @@
             transform: translateY(0);
         }
 
-        /* ✅ FLAT DESIGN: No Boxes or Shadows */
+        /* ✅ IMPROVED: Better Card Design */
         .stat-card, .developer-card {
             background: var(--card-bg) !important;
             border: 1px solid var(--border-color) !important;
@@ -722,7 +826,7 @@
             font-size: 9px;
         }
 
-        /* ✅ IMPROVED GAME CARDS - Bigger and Square */
+        /* ✅ IMPROVED: Better Item Cards with Improved Layout */
         .item-card {
             display: flex;
             flex-direction: column;
@@ -733,8 +837,9 @@
             background: transparent !important;
             border: none !important;
             padding: 0;
-            width: 80px;
+            width: 85px;
             flex-shrink: 0;
+            margin: 0 auto;
         }
 
         .item-card:hover { 
@@ -746,8 +851,8 @@
         }
 
         .item-card .card-image {
-            width: 72px;
-            height: 72px;
+            width: 76px;
+            height: 76px;
             border-radius: 16px;
             overflow: hidden;
             display: flex;
@@ -786,7 +891,7 @@
         }
 
         .item-card .item-title {
-            font-size: 11px;
+            font-size: 13px;
             font-weight: 500;
             color: var(--text-primary);
             line-height: 1.2;
@@ -794,7 +899,25 @@
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
-            margin-bottom: 4px;
+            margin-bottom: 1px;
+        }
+
+        /* ✅ BETTER CATEGORY SCROLL */
+        .category-scroll-container {
+            display: flex;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 1px 1px;
+            margin-left: 0;
+            margin-right: 0;
+            gap: 1px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            justify-content: center;
+        }
+        
+        .category-scroll-container::-webkit-scrollbar {
+            display: none;
         }
 
         /* ✅ PLAY BUTTON FOR ONLINE GAMES */
@@ -824,12 +947,13 @@
             transform: translateY(0);
         }
         
-        /* ✅ MODIFIED: Grid Layout for Online Games - Same sizes as original, no shadows */
+        /* ✅ IMPROVED APK PAGE: Better Grid Layout with Larger Images */
         .online-games-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 6px;
-            padding: 5px 5px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            padding: 4px 4px;
+            justify-items: center;
         }
 
         .online-game-card {
@@ -842,7 +966,7 @@
             background: transparent !important;
             border: none !important;
             padding: 0;
-            width: 80px;
+            width: 85px;
             flex-shrink: 0;
         }
 
@@ -855,8 +979,8 @@
         }
 
         .online-game-card .game-image {
-            width: 72px;
-            height: 72px;
+            width: 76px;
+            height: 76px;
             border-radius: 16px;
             overflow: hidden;
             display: flex;
@@ -897,22 +1021,6 @@
             margin-bottom: 4px;
             text-align: center;
         }
-        
-        .category-scroll-container {
-            display: flex;
-            overflow-x: auto;
-            overflow-y: hidden;
-            padding: 6px 2px;
-            margin-left: 0;
-            margin-right: 0;
-            gap: 16px;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-        }
-        
-        .category-scroll-container::-webkit-scrollbar {
-            display: none;
-        }
 
         /* ✅ ULTRA-COMPACT: Stats Cards */
         .stat-card {
@@ -931,7 +1039,7 @@
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
+            right: 0;Tools
             height: 2px;
             background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
         }
@@ -1119,7 +1227,7 @@
             box-shadow: var(--elevation-3);
         }
 
-        /* Action Icon Buttons for Online Tab - Colorful */
+        /* Action Icon Buttons for Online Tab - YouTube Theme */
         .action-icon {
             color: white;
             border-radius: 50%;
@@ -1139,12 +1247,12 @@
             box-shadow: var(--elevation-3);
         }
 
-        .action-icon.shopping {
-            background: linear-gradient(135deg, var(--warning-color), var(--accent-color));
+        .action-icon.youtube-tools {
+            background: linear-gradient(135deg, #FF0000, #CC0000);
         }
 
-        .action-icon.marketplace {
-            background: linear-gradient(135deg, var(--purple-color), var(--pink-color));
+        .action-icon.creator-tools {
+            background: linear-gradient(135deg, #FF4081, #E91E63);
         }
 
         .action-icon.store {
@@ -1155,13 +1263,13 @@
             background: linear-gradient(135deg, var(--indigo-color), var(--primary-color));
         }
 
-        /* ✅ APK DOWNLOAD BUTTON STYLES */
+        /* ✅ IMPROVED APK DOWNLOAD BUTTON STYLES WITH FREE HTML MESSAGE */
         .apk-download-btn {
-            background: var(--warning-color);
+            background: var(--success-color);
             color: white;
             border: none;
             border-radius: 12px;
-            padding: 4px 8px;
+            padding: 6px 8px;
             font-size: 8px;
             font-weight: 600;
             cursor: pointer;
@@ -1181,6 +1289,29 @@
 
         .apk-download-btn:active {
             transform: translateY(0);
+        }
+
+        /* APK Page Enhancement */
+        .apk-free-notice {
+            background: linear-gradient(135deg, var(--success-color), var(--teal-color));
+            color: white;
+            padding: 12px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 16px;
+            box-shadow: var(--elevation-2);
+        }
+
+        .apk-free-notice h3 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .apk-free-notice p {
+            font-size: 11px;
+            opacity: 0.9;
+            margin: 0;
         }
 
         /* Logo Preview Styles */
@@ -1421,12 +1552,12 @@
             background: var(--secondary-color);
         }
 
-        /* Theme transition animations - Removed */
+        /* Theme transition animations */
         * {
             transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
 
-        /* ✅ CHAT SYSTEM STYLES - Only show on home page */
+        /* ✅ ENHANCED CHAT SYSTEM STYLES */
         #chat-system {
             display: none;
         }
@@ -1440,7 +1571,7 @@
             position: fixed;
             bottom: 80px;
             right: 20px;
-            background: #007bff;
+            background: var(--primary-color);
             color: #fff;
             border: none;
             border-radius: 15px;
@@ -1456,6 +1587,75 @@
         #chat-toggle:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+        }
+
+        /* User Name Input Modal */
+        .username-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(4px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .username-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .username-modal-content {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            width: 90%;
+            max-width: 320px;
+            text-align: center;
+            box-shadow: var(--elevation-3);
+            border: 1px solid var(--border-color);
+        }
+
+        .username-input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 16px;
+            margin: 16px 0;
+            outline: none;
+            transition: border-color 0.3s ease;
+            background: var(--card-bg);
+            color: var(--text-primary);
+        }
+
+        .username-input:focus {
+            border-color: var(--primary-color);
+        }
+
+        .username-submit {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .username-submit:hover {
+            background: var(--secondary-color);
+            transform: translateY(-1px);
         }
 
         /* Notification Badge */
@@ -1489,8 +1689,8 @@
             right: 20px;
             width: 320px;
             height: 450px;
-            background: #fff;
-            border: 1px solid #ccc;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
             display: none;
@@ -1500,7 +1700,7 @@
         }
 
         #chat-header {
-            background: #007bff;
+            background: var(--primary-color);
             color: white;
             padding: 12px;
             font-weight: bold;
@@ -1534,7 +1734,7 @@
             flex: 1;
             overflow-y: auto;
             padding: 10px;
-            background: #f8f9fa;
+            background: var(--app-bg);
         }
 
         .msg {
@@ -1549,14 +1749,14 @@
         }
 
         .user { 
-            background:#d1ffd1; 
-            float:right; 
+            background: #d1ffd1; 
+            float: right; 
             margin-left: 30%;
         }
         
         .admin { 
-            background:#d1e0ff; 
-            float:left; 
+            background: #d1e0ff; 
+            float: left; 
             margin-right: 30%;
         }
 
@@ -1596,20 +1796,25 @@
 
         #input-area {
             display: flex;
-            border-top: 1px solid #ccc;
+            border-top: 1px solid var(--border-color);
             padding: 8px;
+            background: var(--card-bg);
         }
+        
         #msg {
             flex: 1;
             padding: 10px;
-            border: 1px solid #ddd;
+            border: 1px solid var(--border-color);
             border-radius: 20px;
             outline: none;
             margin-right: 8px;
             font-size: 14px;
+            background: var(--card-bg);
+            color: var(--text-primary);
         }
+        
         #send {
-            background: #007bff;
+            background: var(--primary-color);
             color: white;
             border: none;
             padding: 10px 15px;
@@ -1617,14 +1822,15 @@
             border-radius: 20px;
             font-weight: bold;
         }
+        
         #send:hover {
-            background: #0056b3;
+            background: var(--secondary-color);
         }
     </style>
 </head>
 <body>
     <div class="app-container">
-        <!-- Ultra-Compact Header with Android Three-Dot Menu -->
+        <!-- Ultra-Compact Header with Theme Selector and Android Three-Dot Menu -->
         <div class="new-header">
             <button id="hamburger-menu-btn" class="hamburger-btn">
                 <i class="fas fa-bars"></i>
@@ -1633,6 +1839,9 @@
                 <i class="fas fa-search"></i>
                 <input type="text" class="search-input" placeholder="Search games & apps...">
             </div>
+            <button id="theme-selector-btn" class="theme-selector">
+                <i class="fas fa-palette"></i>
+            </button>
             <button id="menu-dots-btn" class="menu-dots">
                 <i class="fas fa-ellipsis-v"></i>
             </button>
@@ -1652,7 +1861,7 @@
                 </a>
                 <a class="dropdown-item" onclick="redirectToAlPlayHub()">
                     <i class="fas fa-external-link-alt"></i>
-                    <span>Upcoming</span>
+                    <span>Website</span>
                 </a>
                 <a class="dropdown-item" onclick="showAbout()">
                     <i class="fas fa-info-circle"></i>
@@ -1748,18 +1957,18 @@
                         </div>
                     </div>
                     
-                    <!-- Ultra-Compact Filter Buttons with Colorful Icons -->
-                    <div class="flex justify-center gap-2 mb-3">
-                        <button class="filter-btn px-2 py-1 rounded-full text-xs active font-medium bg-primary text-white" data-filter="All" onclick="filterItems('All')">
+                    <!-- Ultra-Compact Filter Buttons with Better Center Alignment -->
+                    <div class="flex justify-center gap-2 mb-4">
+                        <button class="filter-btn px-3 py-2 rounded-full text-xs active font-medium bg-primary text-white" data-filter="All" onclick="filterItems('All')">
                             <i class="fas fa-th-large mr-1"></i>All
                         </button>
-                        <button class="filter-btn px-2 py-1 rounded-full text-xs font-medium" data-filter="Game" onclick="filterItems('Game')">
+                        <button class="filter-btn px-3 py-2 rounded-full text-xs font-medium" data-filter="Game" onclick="filterItems('Game')">
                             <i class="fas fa-gamepad mr-1"></i>Games
                         </button>
-                        <button class="filter-btn px-2 py-1 rounded-full text-xs font-medium" data-filter="App" onclick="filterItems('App')">
+                        <button class="filter-btn px-3 py-2 rounded-full text-xs font-medium" data-filter="App" onclick="filterItems('App')">
                             <i class="fas fa-mobile-alt mr-1"></i>Apps
                         </button>
-                        <button class="filter-btn px-2 py-1 rounded-full text-xs font-medium" data-filter="Tool" onclick="filterItems('Tool')">
+                        <button class="filter-btn px-3 py-2 rounded-full text-xs font-medium" data-filter="Tool" onclick="filterItems('Tool')">
                             <i class="fas fa-tools mr-1"></i>Tools
                         </button>
                     </div>
@@ -1793,7 +2002,7 @@
                         </a>
                         <a href="#" onclick="redirectToAlPlayHub(); toggleDeveloperMenu();" class="flex items-center px-3 py-2 text-gray-700 hover:bg-blue-50 border-b border-gray-100 transition-all duration-200">
                             <span class="text-sm mr-2">🌐</span>
-                            <span class="text-xs font-medium">In Progress</span>
+                            <span class="text-xs font-medium">Visit Website</span>
                         </a>
                         <a href="https://www.crekode.com/developersharif" target="_blank" onclick="toggleDeveloperMenu();" class="flex items-center px-3 py-2 text-gray-700 hover:bg-blue-50 border-b border-gray-100 transition-all duration-200">
                             <span class="text-sm mr-2">💼</span>
@@ -1914,14 +2123,14 @@
                 </div>
             </div>
             
-            <!-- APK Downloader Tab - Using Home Layout Structure -->
+            <!-- APK Downloader Tab - Enhanced with Free HTML Notice -->
             <div id="upload-tab" class="tab-content screen">
                 <!-- Tab Header matching home layout -->
                 <div class="tab-header" style="display: none;">
                     <button class="tab-action-btn">
                        
                     </button>
-                    <div class="tab-title">APK.Download→Free.Source.Code.Download</div>
+                    <div class="tab-title">Download</div>
                     <button onclick="toggleAPKMenu()" class="tab-action-btn">
                         
                     </button>
@@ -1936,7 +2145,7 @@
                         </a>
                         <a href="#" onclick="redirectToAlPlayHub(); toggleAPKMenu();" class="flex items-center px-3 py-2 text-gray-700 hover:bg-blue-50 border-b border-gray-100 transition-all duration-200">
                             <span class="text-sm mr-2">🌐</span>
-                            <span class="text-xs font-medium">Visit AlPlayHub</span>
+                            <span class="text-xs font-medium">Visit Website</span>
                         </a>
                         <a href="mailto:ms2600971@gmail.com" class="flex items-center px-3 py-2 text-gray-700 hover:bg-blue-50 transition-all duration-200">
                             <span class="text-sm mr-2">📧</span>
@@ -1966,8 +2175,8 @@
                             <div class="carousel-slide">
                                 <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=400&fit=crop" alt="App Center" class="carousel-image">
                                 <div class="carousel-overlay">
-                                    <h3 class="carousel-title">🚀 Free Apps</h3>
-                                    <p class="carousel-subtitle">Download & Install</p>
+                                    <h3 class="carousel-title">🚀 Free HTML Source</h3>
+                                    <p class="carousel-subtitle">Download Source Code</p>
                                 </div>
                             </div>
                         </div>
@@ -1976,6 +2185,12 @@
                             <span class="indicator" data-slide="1"></span>
                             <span class="indicator" data-slide="2"></span>
                         </div>
+                    </div>
+
+                    <!-- ✅ FREE HTML SOURCE CODE NOTICE -->
+                    <div class="apk-free-notice">
+                        <h3>💻 Free HTML Source Code Available!</h3>
+                        <p>Download APK files + Get complete HTML source code for all projects - Completely FREE!</p>
                     </div>
 
                     <!-- Search Bar - Same style as home -->
@@ -2006,7 +2221,7 @@
                     <!-- Games Sections -->
                     <div id="apk-gamesSections" class="hidden">
                         <h2 class="text-base font-bold my-2 px-1 text-textDark flex items-center">
-                            🎮 Games <span class="ml-2 text-sm font-semibold opacity-60" id="apk-gameCount"></span>
+                            🎮 Games & Source Code <span class="ml-2 text-sm font-semibold opacity-60" id="apk-gameCount"></span>
                         </h2>
                         <div class="category-scroll-container">
                             <div id="apk-allGames" class="flex gap-3"></div>
@@ -2020,14 +2235,14 @@
                 </div>
             </div>
             
-            <!-- Online Gaming Tab - Fixed Layout -->
+            <!-- Online Gaming Tab - Enhanced with YouTube Tools -->
             <div id="profile-tab" class="tab-content screen">
                 <!-- Tab Header matching home layout -->
                 <div class="tab-header" style="display: none;">
                     <button class="tab-action-btn">
                         
                     </button>
-                    <div class="tab-title">Online game</div>
+                    <div class="tab-title">Online Games + Tools</div>
                     <button onclick="toggleOnlineMenu()" class="tab-action-btn">
                         <i class="fas fa-ellipsis-v"></i>
                     </button>
@@ -2042,7 +2257,7 @@
                         </a>
                         <a href="#" onclick="redirectToAlPlayHub(); toggleOnlineMenu();" class="flex items-center px-3 py-2 text-gray-700 hover:bg-blue-50 border-b border-gray-100 transition-all duration-200">
                             <span class="text-sm mr-2">🌐</span>
-                            <span class="text-xs font-medium">InProgress</span>
+                            <span class="text-xs font-medium">Visit Website</span>
                         </a>
                         <a href="#" onclick="showUploadPolicy(); toggleOnlineMenu();" class="flex items-center px-3 py-2 text-gray-700 hover:bg-blue-50 border-b border-gray-100 transition-all duration-200">
                             <span class="text-sm mr-2">📋</span>
@@ -2080,8 +2295,8 @@
                             <div class="carousel-slide">
                                 <img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=800&h=400&fit=crop" alt="Featured" class="carousel-image">
                                 <div class="carousel-overlay">
-                                    <h3 class="carousel-title">⭐ Featured</h3>
-                                    <p class="carousel-subtitle">Top rated content</p>
+                                    <h3 class="carousel-title">⭐ YouTube Tools</h3>
+                                    <p class="carousel-subtitle">Creator toolkit available</p>
                                 </div>
                             </div>
                         </div>
@@ -2092,22 +2307,22 @@
                         </div>
                     </div>
 
-                    <!-- Action Icons Section with Names and Colorful Backgrounds -->
+                    <!-- Action Icons Section with YouTube Theme -->
                     <div class="flex justify-center items-center gap-3 mb-3">
-                        <!-- Shopping Cart Icon -->
+                        <!-- YouTube Multi Tool Kit Icon -->
                         <div class="text-center w-14">
-                            <button onclick="openShoppingCenter()" class="action-icon shopping mx-auto w-9 h-9" title="Shopping Center">
-                                <i class="fas fa-shopping-cart text-sm"></i>
+                            <button onclick="openYouTubeTools()" class="action-icon youtube-tools mx-auto w-9 h-9" title="YouTube Multi Tool Kit">
+                                <i class="fab fa-youtube text-sm"></i>
                             </button>
-                            <p class="text-xs mt-1 text-gray-600 font-normal leading-tight">Coming</p>
+                            <p class="text-xs mt-1 text-gray-600 font-normal leading-tight">ToolKit</p>
                         </div>
                         
-                        <!-- Marketplace Icon -->
+                        <!-- Content Creator Tools Icon -->
                         <div class="text-center w-14">
-                            <button onclick="openMarketplace()" class="action-icon marketplace mx-auto w-9 h-9" title="Marketplace">
-                                <i class="fas fa-store text-sm"></i>
+                            <button onclick="openCreatorTools()" class="action-icon creator-tools mx-auto w-9 h-9" title="Content Creator Tools">
+                                <i class="fas fa-video text-sm"></i>
                             </button>
-                            <p class="text-xs mt-1 text-gray-600 font-normal leading-tight">Coming</p>
+                            <p class="text-xs mt-1 text-gray-600 font-normal leading-tight">AllTool</p>
                         </div>
                         
                         <!-- Center Upload Cloud Icon -->
@@ -2210,6 +2425,16 @@
                         <button id="modal-cancel" class="flex-1 py-2 bg-gray-200 text-textDark rounded-lg font-semibold hidden text-sm">Cancel</button>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- User Name Input Modal -->
+        <div id="username-modal" class="username-modal">
+            <div class="username-modal-content">
+                <h3 class="text-lg font-bold text-gray-900 mb-2">👋 Welcome to Chat Support!</h3>
+                <p class="text-gray-600 text-sm mb-4">Please enter your name to start chatting with our support team.</p>
+                <input type="text" id="username-input" class="username-input" placeholder="Enter your name..." maxlength="50">
+                <button id="username-submit" class="username-submit">Start Chat</button>
             </div>
         </div>
 
@@ -2379,7 +2604,7 @@
         </div>
     </div>
 
-    <!-- ✅ CHAT SYSTEM - Only show on home page -->
+    <!-- ✅ ENHANCED CHAT SYSTEM WITH USERNAME -->
     <div id="chat-system" style="display: none;">
         <!-- Floating Chat Button -->
         <button id="chat-toggle">
@@ -2390,7 +2615,7 @@
         <!-- Chat Box -->
         <div id="chat-box-container">
             <div id="chat-header">
-                Chat Support
+                <span id="chat-header-text">Chat Support</span>
                 <button id="close-chat">×</button>
             </div>
             <div id="chat-box"></div>
@@ -2422,13 +2647,13 @@
         const db = firebase.database();
         const storage = firebase.storage();
 
-        // Enhanced App System - Light Theme Only
+        // Enhanced App System with Multiple Themes
         let allItems = [];
         let currentFilter = 'All';
         let isLoading = false;
         let carouselCurrentSlide = 0;
         let carouselInterval;
-        let currentTheme = 'light';
+        let currentTheme = 'light'; // Default theme
 
         // ✅ DEVELOPER TAB SPECIFIC VARIABLES
         let projectsData = [];
@@ -2451,13 +2676,15 @@
             'Tool': '🔧'
         };
 
-        // ✅ CHAT SYSTEM VARIABLES
+        // ✅ ENHANCED CHAT SYSTEM VARIABLES WITH USERNAME
         const senderRole = "user";
         const chatBox = document.getElementById("chat-box");
         const notificationBadge = document.getElementById("notification-badge");
         
-        // Generate unique user ID
+        // Enhanced user management
         let userId = sessionStorage.getItem('chatUserId');
+        let userName = sessionStorage.getItem('chatUserName');
+        
         if (!userId) {
             userId = 'user_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
             sessionStorage.setItem('chatUserId', userId);
@@ -2467,6 +2694,95 @@
         let isChatOpen = false;
         let hasShownWelcome = false;
 
+        // ✅ ENHANCED THEME MANAGEMENT WITH MULTIPLE OPTIONS
+        const themes = [
+            { name: 'light', label: 'Classic', icon: '☀️', color: '#FFFFFF' },
+            { name: 'ocean', label: 'Ocean', icon: '🌊', color: '#E3F2FD' },
+            { name: 'sunset', label: 'Sunset', icon: '🌅', color: '#FFF3E0' },
+            { name: 'nature', label: 'Nature', icon: '🌿', color: '#F1F8E9' },
+            { name: 'royal', label: 'Royal', icon: '👑', color: '#F3E5F5' }
+        ];
+
+        let currentThemeIndex = 0;
+
+        function initializeTheme() {
+            const savedTheme = localStorage.getItem('alplayhub-theme') || 'light';
+            const themeIndex = themes.findIndex(t => t.name === savedTheme);
+            currentThemeIndex = themeIndex !== -1 ? themeIndex : 0;
+            currentTheme = themes[currentThemeIndex].name;
+            applyTheme(currentTheme);
+        }
+
+        function cycleTheme() {
+            const themeSelectorBtn = document.getElementById('theme-selector-btn');
+            themeSelectorBtn.classList.add('rotating');
+            
+            setTimeout(() => {
+                themeSelectorBtn.classList.remove('rotating');
+            }, 300);
+
+            currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+            currentTheme = themes[currentThemeIndex].name;
+            
+            applyTheme(currentTheme);
+            localStorage.setItem('alplayhub-theme', currentTheme);
+            
+            const themeInfo = themes[currentThemeIndex];
+            showToast(`${themeInfo.icon} ${themeInfo.label} Theme Active!`, 2000);
+            
+            document.getElementById('dropdown-menu').classList.remove('active');
+        }
+
+        function applyTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            const themeData = themes.find(t => t.name === theme);
+            if (themeData) {
+                updateThemeColorImmediate(themeData.color);
+            }
+        }
+
+        // ✅ URL REDIRECTION - UPDATED LINKS
+        function redirectToAlPlayHub() {
+            showToast('🌐 Opening FruZo Slicer Game...', 2000);
+            setTimeout(() => {
+                window.open('https://linktr.ee/SharifDevelopers', '_blank');
+            }, 500);
+        }
+
+        // ✅ UPDATED DOWNLOAD APP FUNCTION
+        window.downloadApp = function() {
+            showToast('🚀 Opening APK download...', 2000);
+            setTimeout(() => {
+                window.open('https://drive.google.com/file/d/1AUZH7Mp6bsZGv8EQaFFnP8T3P3Y59QLa/view?usp=drivesdk', '_blank');
+            }, 500);
+            document.getElementById('dropdown-menu').classList.remove('active');
+        }
+
+        // ✅ ENHANCED YOUTUBE TOOLS FUNCTIONS
+        function openYouTubeTools() {
+            showToast('📺 Opening YouTube Multi Tool Kit...', 2000);
+            setTimeout(() => {
+                // Replace with actual YouTube tools URL
+                window.open('https://alplayhub.netlify.app/all-ytanalyzr', '_blank');
+            }, 500);
+        }
+
+        function openCreatorTools() {
+            showToast('🎬 Opening Content Creator Tools...', 2000);
+            setTimeout(() => {
+                // Replace with actual creator tools URL  
+                window.open('https://alplayhub.netlify.app/ytanalyzr', '_blank');
+            }, 500);
+        }
+
+        // ✅ CRYPTO PAGE FUNCTION
+        function openCryptoPage() {
+            showToast('🚀 Opening Free Crypto Airdrops page...', 2000);
+            setTimeout(() => {
+                window.open('https://alplayhub.netlify.app/FreeCryptoAirdrops', '_blank');
+            }, 500);
+        }
+
         // ✅ LOGO PREVIEW FUNCTIONALITY
         function previewLogo() {
             const logoUrl = document.getElementById('logo-url').value.trim();
@@ -2474,7 +2790,6 @@
             const errorContainer = document.getElementById('logo-error');
             const previewImage = document.getElementById('preview-image');
             
-            // Hide both containers initially
             previewContainer.classList.add('hidden');
             errorContainer.classList.add('hidden');
             
@@ -2482,7 +2797,6 @@
                 return;
             }
             
-            // Test if the URL is a valid image
             const img = new Image();
             img.onload = function() {
                 previewImage.src = logoUrl;
@@ -2496,87 +2810,214 @@
             img.src = logoUrl;
         }
 
-        // ✅ THEME MANAGEMENT - Light Theme Only
-        function initializeTheme() {
-            currentTheme = 'light';
-            applyTheme(currentTheme);
+        // ✅ ENHANCED CHAT SYSTEM WITH USERNAME INPUT
+        function showUsernameModal() {
+            document.getElementById('username-modal').classList.add('active');
         }
 
-        function toggleTheme() {
-            // Theme toggle disabled - only light theme available
-            showToast(`🎨 Light theme active!`, 2000);
-            document.getElementById('dropdown-menu').classList.remove('active');
+        function hideUsernameModal() {
+            document.getElementById('username-modal').classList.remove('active');
         }
 
-        function applyTheme(theme) {
-            document.documentElement.setAttribute('data-theme', 'light');
-            updateThemeColorImmediate('#FFFFFF');
+        function handleUsernameSubmit() {
+            const usernameInput = document.getElementById('username-input');
+            const username = usernameInput.value.trim();
+            
+            if (username.length < 2) {
+                showToast('❌ Please enter a valid name (at least 2 characters)', 3000);
+                return;
+            }
+            
+            if (username.length > 50) {
+                showToast('❌ Name too long (maximum 50 characters)', 3000);
+                return;
+            }
+            
+            // Save username
+            userName = username;
+            sessionStorage.setItem('chatUserName', userName);
+            
+            // Update chat header
+            document.getElementById('chat-header-text').textContent = `Chat - ${userName}`;
+            
+            // Hide username modal
+            hideUsernameModal();
+            
+            // Open chat box
+            document.getElementById("chat-box-container").style.display = "flex";
+            isChatOpen = true;
+            
+            // Show welcome message
+            if (!hasShownWelcome) {
+                showWelcomeMessage();
+                hasShownWelcome = true;
+            }
+            
+            // Clear notification count
+            unreadCount = 0;
+            updateNotificationBadge();
+            
+            showToast(`👋 Welcome ${userName}! Chat started.`, 2000);
         }
 
-        // ✅ URL REDIRECTION - UPDATED LINKS
-        function redirectToAlPlayHub() {
-            showToast('🌐 Opening FruZo Slicer Game...', 2000);
-            setTimeout(() => {
-                window.open('https://pixelsewa.blogspot.com/?m=1', '_blank');
-            }, 500);
+        // ✅ CHAT SYSTEM FUNCTIONS
+        document.getElementById("chat-toggle").addEventListener("click", () => {
+            // Check if user has set name
+            if (!userName) {
+                showUsernameModal();
+                return;
+            }
+            
+            const box = document.getElementById("chat-box-container");
+            isChatOpen = (box.style.display === "flex");
+            box.style.display = isChatOpen ? "none" : "flex";
+            isChatOpen = !isChatOpen;
+            
+            if (isChatOpen) {
+                unreadCount = 0;
+                updateNotificationBadge();
+                if (!hasShownWelcome) {
+                    showWelcomeMessage();
+                    hasShownWelcome = true;
+                }
+            }
+        });
+
+        // Username submit handlers
+        document.getElementById("username-submit").addEventListener("click", handleUsernameSubmit);
+        document.getElementById("username-input").addEventListener("keypress", (e) => {
+            if (e.key === "Enter") handleUsernameSubmit();
+        });
+
+        // Close Chat
+        document.getElementById("close-chat").addEventListener("click", () => {
+            document.getElementById("chat-box-container").style.display = "none";
+            isChatOpen = false;
+        });
+
+        // Send Message
+        document.getElementById("send").addEventListener("click", sendMessage);
+        document.getElementById("msg").addEventListener("keypress", (e) => {
+            if (e.key === "Enter") sendMessage();
+        });
+
+        function sendMessage(){
+            const text = document.getElementById("msg").value;
+            if(text.trim() === "") return;
+            
+            // Include username in message
+            const newMsg = db.ref(`chats/${userId}/messages`).push();
+            newMsg.set({
+                id: newMsg.key,
+                sender: senderRole,
+                text: text,
+                timestamp: Date.now(),
+                userId: userId,
+                userName: userName || 'Anonymous'
+            });
+            
+            // Update last activity
+            db.ref(`chats/${userId}/lastActivity`).set(Date.now());
+            db.ref(`chats/${userId}/userActive`).set(true);
+            db.ref(`chats/${userId}/userName`).set(userName || 'Anonymous');
+            
+            document.getElementById("msg").value = "";
         }
 
-        // ✅ UPDATED DOWNLOAD APP FUNCTION
-        window.downloadApp = function() {
-            showToast('🚀 Opening APK download...', 2000);
-            setTimeout(() => {
-                window.open('https://drive.google.com/file/d/1AUZH7Mp6bsZGv8EQaFFnP8T3P3Y59QLa/view?usp=drivesdk', '_blank');
-            }, 500);
-            document.getElementById('dropdown-menu').classList.remove('active');
+        // ✅ ENHANCED WELCOME MESSAGE WITH DEVELOPER INFO
+        function showWelcomeMessage() {
+            const welcomeDiv = document.createElement("div");
+            welcomeDiv.classList.add("msg", "welcome-msg");
+            welcomeDiv.innerHTML = `
+                <div>Welcome ${userName}! 👋</div>
+                <div style="margin: 8px 0; font-size: 11px;">
+                    <strong>Developer: Mohammed Sharif</strong><br>
+                    🇵🇰 Pakistan-based Game & Web Developer<br>
+                    📧 Contact: ms2600971@gmail.com<br>
+                    💼 Portfolio: crekode.com/developersharif
+                </div>
+                <div class="timestamp">How can I help you today?</div>
+            `;
+            chatBox.appendChild(welcomeDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
         }
 
-        // ✅ ACTION ICON FUNCTIONS FOR ONLINE TAB - Updated with proper names
-        function openShoppingCenter() {
-            showToast('🛒 Opening Shopping Center...', 2000);
-            setTimeout(() => {
-                window.open('https://example.com/shopping', '_blank');
-            }, 500);
+        // Listen for Messages
+        db.ref(`chats/${userId}/messages`).on("child_added", snapshot => {
+            const msg = snapshot.val();
+            displayMessage(msg);
+            
+            // Show notification if chat is closed and message is from admin
+            if (!isChatOpen && msg.sender === "admin") {
+                unreadCount++;
+                updateNotificationBadge();
+            }
+        });
+
+        // Listen for Message Delete
+        db.ref(`chats/${userId}/messages`).on("child_removed", snapshot => {
+            const msgDiv = document.getElementById("msg-" + snapshot.key);
+            if(msgDiv) msgDiv.remove();
+        });
+
+        // Update Notification Badge
+        function updateNotificationBadge() {
+            if (unreadCount > 0) {
+                notificationBadge.style.display = "flex";
+                notificationBadge.textContent = unreadCount > 99 ? "99+" : unreadCount;
+            } else {
+                notificationBadge.style.display = "none";
+            }
         }
 
-        function openDeveloperHub() {
-            showToast('👨‍💻 Opening Developer Hub...', 2000);
-            setTimeout(() => {
-                window.open('https://github.com/', '_blank');
-            }, 500);
+        // Display Message
+        function displayMessage(msg){
+            const div = document.createElement("div");
+            div.classList.add("msg", msg.sender);
+            div.id = "msg-" + msg.id;
+            
+            const time = new Date(msg.timestamp).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+            const senderLabel = msg.sender === "user" ? (msg.userName || "You") : "Support";
+            
+            div.innerHTML = `
+                <div>${msg.text}</div>
+                <span class="timestamp">${senderLabel} • ${time}</span>
+            `;
+
+            // Delete button (only for own messages)
+            if (msg.sender === senderRole) {
+                const delBtn = document.createElement("button");
+                delBtn.innerHTML = "×";
+                delBtn.classList.add("delete-btn");
+                delBtn.onclick = () => {
+                    db.ref(`chats/${userId}/messages/${msg.id}`).remove();
+                };
+                div.appendChild(delBtn);
+            }
+
+            chatBox.appendChild(div);
+            chatBox.scrollTop = chatBox.scrollHeight;
         }
 
-        function openMarketplace() {
-            showToast('🏪 Opening Marketplace...', 2000);
-            setTimeout(() => {
-                window.open('https://example.com/marketplace', '_blank');
-            }, 500);
-        }
+        // Keep user active status updated
+        window.addEventListener('beforeunload', () => {
+            db.ref(`chats/${userId}/userActive`).set(false);
+        });
 
-        function openGameStore() {
-            showToast('🎮 Opening Game Store...', 2000);
-            setTimeout(() => {
-                window.open('https://example.com/gamestore', '_blank');
-            }, 500);
-        }
-
-        // ✅ CRYPTO PAGE FUNCTION
-        function openCryptoPage() {
-            showToast('🚀 Opening Free Crypto Airdrops page...', 2000);
-            setTimeout(() => {
-                // You can replace this URL later
-                window.open('https://alplayhub.netlify.app/FreeCryptoAirdrops', '_blank');
-            }, 500);
-        }
+        setInterval(() => {
+            if (isChatOpen) {
+                db.ref(`chats/${userId}/userActive`).set(true);
+                db.ref(`chats/${userId}/lastActivity`).set(Date.now());
+            }
+        }, 30000);
 
         // ✅ FIXED: UPLOAD FUNCTIONALITY WITH PROPER FIREBASE INTEGRATION
         function handleUploadSubmit(event) {
             event.preventDefault();
             console.log('🔥 Upload form submitted!');
             
-            // Show inline status immediately
             showInlineStatus('⏳ Starting upload process...', 'info');
             
-            // Validate form first
             if (!validateUploadForm()) {
                 console.log('❌ Form validation failed');
                 showInlineStatus('❌ Please fill all required fields correctly', 'error');
@@ -2585,16 +3026,13 @@
             
             console.log('✅ Form validation passed');
             
-            // Show loading state
             const submitBtn = event.target.querySelector('button[type="submit"]');
             const originalText = submitBtn.innerHTML;
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Uploading...';
             submitBtn.disabled = true;
             
-            // Show inline upload progress
             showInlineStatus('📤 Uploading your content to admin for review...', 'loading');
             
-            // Generate unique user ID for tracking
             const uploadUserId = sessionStorage.getItem('uploadUserId') || 'user_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
             sessionStorage.setItem('uploadUserId', uploadUserId);
             
@@ -2613,7 +3051,6 @@
                 uploadId: 'upload_' + currentTime
             };
 
-            // Get upload method specific data and create proper HTML template
             const selectedMethod = document.querySelector('.upload-method-btn.border-blue-500');
             if (selectedMethod) {
                 const method = selectedMethod.getAttribute('data-method');
@@ -2636,10 +3073,8 @@
                     }
                     formData.gameUrl = gameUrl;
                     
-                    // Create HTML template for URL uploads
                     formData.htmlCode = `<!DOCTYPE html>
-<html lang="en">
-<head>
+             <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${formData.title}</title>
@@ -2661,13 +3096,11 @@
 
             console.log('📋 Form data prepared:', formData);
 
-            // Submit to Firebase uploads collection for admin review
             try {
                 db.ref('uploads').push(formData)
                     .then((ref) => {
                         console.log('✅ Upload successful to admin:', ref.key);
                         
-                        // Also save to user's personal uploads for tracking
                         const userUploadData = {
                             ...formData,
                             adminUploadKey: ref.key,
@@ -2679,29 +3112,21 @@
                     .then((userRef) => {
                         console.log('✅ User upload tracking saved:', userRef.key);
                         
-                        // Reset button
                         resetSubmitButton(submitBtn, originalText);
                         
-                        // Show SUCCESS message on same page
                         showInlineStatus(`🎉 Upload Successful! "${formData.title}" has been sent to admin for review. You can track status in "My Uploads".`, 'success');
                         
-                        // Clear form after 3 seconds
                         setTimeout(() => {
                             document.getElementById('upload-form').reset();
                             resetUploadModal();
                             hideInlineStatus();
                         }, 3000);
                         
-                        // Show success toast
                         showToast(`🎉 "${formData.title}" uploaded successfully!`, 3000);
                     })
                     .catch((error) => {
                         console.error('❌ Upload error:', error);
-                        
-                        // Reset button
                         resetSubmitButton(submitBtn, originalText);
-                        
-                        // Show error on same page
                         showInlineStatus(`❌ Upload failed: ${error.message}. Please check your connection and try again.`, 'error');
                     });
             } catch (error) {
@@ -2711,9 +3136,8 @@
             }
         }
 
-        // ✅ FIXED: MY UPLOADS FUNCTIONALITY WITH DELETE OPTION
+        // ✅ MY UPLOADS FUNCTIONALITY WITH DELETE OPTION
         function showMyUploadsModal() {
-            // Create modal HTML
             const modalHTML = `
                 <div id="my-uploads-modal" class="modal-backdrop active">
                     <div class="modal-content max-w-md">
@@ -2740,10 +3164,7 @@
                 </div>
             `;
             
-            // Add modal to body
             document.body.insertAdjacentHTML('beforeend', modalHTML);
-            
-            // Load user uploads
             loadMyUploads();
         }
 
@@ -2772,7 +3193,6 @@
                 return;
             }
             
-            // Load user's uploads from their personal collection
             db.ref(`userUploads/${uploadUserId}`).orderByChild('timestamp').once('value')
                 .then(snapshot => {
                     const uploads = [];
@@ -2780,7 +3200,7 @@
                         uploads.push({ key: child.key, ...child.val() });
                     });
                     
-                    uploads.reverse(); // Show latest first
+                    uploads.reverse();
                     
                     if (uploads.length === 0) {
                         content.innerHTML = `
@@ -2796,19 +3216,19 @@
                         return;
                     }
                     
+                    const statusColors = {
+                        'pending': 'bg-yellow-100 text-yellow-800',
+                        'approved': 'bg-green-100 text-green-800',
+                        'rejected': 'bg-red-100 text-red-800'
+                    };
+                    
+                    const statusIcons = {
+                        'pending': 'fas fa-clock',
+                        'approved': 'fas fa-check-circle',
+                        'rejected': 'fas fa-times-circle'
+                    };
+                    
                     const uploadsHTML = uploads.map(upload => {
-                        const statusColors = {
-                            'pending': 'bg-yellow-100 text-yellow-800',
-                            'approved': 'bg-green-100 text-green-800',
-                            'rejected': 'bg-red-100 text-red-800'
-                        };
-                        
-                        const statusIcons = {
-                            'pending': 'fas fa-clock',
-                            'approved': 'fas fa-check-circle',
-                            'rejected': 'fas fa-times-circle'
-                        };
-                        
                         const uploadDate = new Date(upload.timestamp).toLocaleDateString();
                         
                         return `
@@ -2863,7 +3283,6 @@
                                 </button>
                             </div>
                             
-                            <!-- Status Legend -->
                             <div class="bg-gray-50 rounded-lg p-3 mb-4">
                                 <p class="text-xs font-medium text-gray-700 mb-2">Status Guide:</p>
                                 <div class="grid grid-cols-3 gap-2 text-xs">
@@ -2909,14 +3328,11 @@
                 });
         }
 
-        // ✅ DELETE UPLOAD FUNCTIONALITY
+        // Delete upload functionality
         function deleteUpload(userId, userUploadKey, adminUploadKey) {
-            // Show custom confirmation dialog
             showCustomConfirm('Are you sure you want to delete this upload?', () => {
-                // Delete from user's collection
                 db.ref(`userUploads/${userId}/${userUploadKey}`).remove()
                     .then(() => {
-                        // Also try to delete from admin collection if key exists
                         if (adminUploadKey) {
                             return db.ref(`uploads/${adminUploadKey}`).remove();
                         }
@@ -2924,7 +3340,6 @@
                     })
                     .then(() => {
                         showToast('🗑️ Upload deleted successfully', 2000);
-                        // Reload uploads list
                         loadMyUploads();
                     })
                     .catch(error => {
@@ -2934,7 +3349,6 @@
             });
         }
 
-        // Custom confirmation dialog
         function showCustomConfirm(message, onConfirm) {
             const confirmModal = document.createElement('div');
             confirmModal.className = 'modal-backdrop active';
@@ -2999,143 +3413,10 @@
             } else {
                 chatSystem.classList.remove('show-chat');
                 chatSystem.style.display = 'none';
-                // Close chat if open
                 document.getElementById("chat-box-container").style.display = "none";
                 isChatOpen = false;
             }
         }
-
-        // ✅ CHAT SYSTEM FUNCTIONS
-        // Toggle Chat Box
-        document.getElementById("chat-toggle").addEventListener("click", () => {
-            const box = document.getElementById("chat-box-container");
-            isChatOpen = (box.style.display === "flex");
-            box.style.display = isChatOpen ? "none" : "flex";
-            isChatOpen = !isChatOpen;
-            
-            if (isChatOpen) {
-                unreadCount = 0;
-                updateNotificationBadge();
-                if (!hasShownWelcome) {
-                    showWelcomeMessage();
-                    hasShownWelcome = true;
-                }
-            }
-        });
-
-        // Close Chat
-        document.getElementById("close-chat").addEventListener("click", () => {
-            document.getElementById("chat-box-container").style.display = "none";
-            isChatOpen = false;
-        });
-
-        // Send Message
-        document.getElementById("send").addEventListener("click", sendMessage);
-        document.getElementById("msg").addEventListener("keypress", (e) => {
-            if (e.key === "Enter") sendMessage();
-        });
-
-        function sendMessage(){
-            const text = document.getElementById("msg").value;
-            if(text.trim() === "") return;
-            
-            const newMsg = db.ref(`chats/${userId}/messages`).push();
-            newMsg.set({
-                id: newMsg.key,
-                sender: senderRole,
-                text: text,
-                timestamp: Date.now(),
-                userId: userId
-            });
-            
-            // Update last activity
-            db.ref(`chats/${userId}/lastActivity`).set(Date.now());
-            db.ref(`chats/${userId}/userActive`).set(true);
-            
-            document.getElementById("msg").value = "";
-        }
-
-        // Show Welcome Message
-        function showWelcomeMessage() {
-            const welcomeDiv = document.createElement("div");
-            welcomeDiv.classList.add("msg", "welcome-msg");
-            welcomeDiv.innerHTML = `
-                <div>Welcome to Chat Support! 👋</div>
-                <div class="timestamp">How can we help you today?</div>
-            `;
-            chatBox.appendChild(welcomeDiv);
-            chatBox.scrollTop = chatBox.scrollHeight;
-        }
-
-        // Listen for Messages
-        db.ref(`chats/${userId}/messages`).on("child_added", snapshot => {
-            const msg = snapshot.val();
-            displayMessage(msg);
-            
-            // Show notification if chat is closed and message is from admin
-            if (!isChatOpen && msg.sender === "admin") {
-                unreadCount++;
-                updateNotificationBadge();
-            }
-        });
-
-        // Listen for Message Delete
-        db.ref(`chats/${userId}/messages`).on("child_removed", snapshot => {
-            const msgDiv = document.getElementById("msg-" + snapshot.key);
-            if(msgDiv) msgDiv.remove();
-        });
-
-        // Update Notification Badge
-        function updateNotificationBadge() {
-            if (unreadCount > 0) {
-                notificationBadge.style.display = "flex";
-                notificationBadge.textContent = unreadCount > 99 ? "99+" : unreadCount;
-            } else {
-                notificationBadge.style.display = "none";
-            }
-        }
-
-        // Display Message
-        function displayMessage(msg){
-            const div = document.createElement("div");
-            div.classList.add("msg", msg.sender);
-            div.id = "msg-" + msg.id;
-            
-            const time = new Date(msg.timestamp).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-            const senderLabel = msg.sender === "user" ? "You" : "Support";
-            
-            div.innerHTML = `
-                <div>${msg.text}</div>
-                <span class="timestamp">${senderLabel} • ${time}</span>
-            `;
-
-            // Delete button (only for own messages)
-            if (msg.sender === senderRole) {
-                const delBtn = document.createElement("button");
-                delBtn.innerHTML = "×";
-                delBtn.classList.add("delete-btn");
-                delBtn.onclick = () => {
-                    db.ref(`chats/${userId}/messages/${msg.id}`).remove();
-                };
-                div.appendChild(delBtn);
-            }
-
-            chatBox.appendChild(div);
-            chatBox.scrollTop = chatBox.scrollHeight;
-        }
-
-        // Update user status
-        window.addEventListener('beforeunload', () => {
-            db.ref(`chats/${userId}/userActive`).set(false);
-        });
-
-        // Keep user active status updated
-        setInterval(() => {
-            if (isChatOpen) {
-                db.ref(`chats/${userId}/userActive`).set(true);
-                db.ref(`chats/${userId}/lastActivity`).set(Date.now());
-            }
-        }, 30000);
         
         document.addEventListener('DOMContentLoaded', () => {
             initializeApp();
@@ -3155,7 +3436,10 @@
             initializeTheme();
             setupAPKCarousel();
             setupOnlineCarousel();
-            updateChatVisibility(); // Initialize chat visibility
+            updateChatVisibility();
+            
+            // Setup theme selector
+            document.getElementById('theme-selector-btn').addEventListener('click', cycleTheme);
         });
 
         // ✅ SETUP SEPARATE CAROUSEL FOR APK PAGE WITH UNIQUE IMAGES
@@ -3269,18 +3553,15 @@
         }
 
         function selectUploadMethod(method) {
-            // Reset all buttons
             document.querySelectorAll('.upload-method-btn').forEach(btn => {
                 btn.classList.remove('border-primary', 'bg-gray-50', 'border-blue-500');
                 btn.classList.add('border-gray-300');
             });
             
-            // Highlight selected button
             const selectedBtn = document.querySelector(`[data-method="${method}"]`);
             selectedBtn.classList.add('border-blue-500', 'bg-gray-50');
             selectedBtn.classList.remove('border-gray-300');
             
-            // Show/hide upload sections
             document.getElementById('html-upload').classList.add('hidden');
             document.getElementById('url-upload').classList.add('hidden');
             
@@ -3291,7 +3572,6 @@
             }
         }
 
-        // Setup upload form
         function setupUploadForm() {
             const uploadForm = document.getElementById('upload-form');
             if (uploadForm) {
@@ -3299,12 +3579,10 @@
             }
         }
 
-        // Show inline status messages on same page
         function showInlineStatus(message, type) {
             const statusDiv = document.getElementById('upload-status');
             const contentDiv = document.getElementById('upload-status-content');
             
-            // Set styling based on type
             statusDiv.className = 'mb-4 p-4 rounded-lg';
             contentDiv.innerHTML = '';
             
@@ -3361,39 +3639,31 @@
             }
             
             statusDiv.classList.remove('hidden');
-            
-            // Scroll to status message
             statusDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
 
-        // Hide inline status
         function hideInlineStatus() {
             const statusDiv = document.getElementById('upload-status');
             statusDiv.classList.add('hidden');
         }
 
-        // Reset upload modal to initial state
         function resetUploadModal() {
-            // Reset upload method buttons
             document.querySelectorAll('.upload-method-btn').forEach(btn => {
                 btn.classList.remove('border-primary', 'bg-gray-50', 'border-blue-500');
                 btn.classList.add('border-gray-300');
             });
             
-            // Hide upload sections
             document.getElementById('html-upload').classList.add('hidden');
             document.getElementById('url-upload').classList.add('hidden');
             document.getElementById('logo-preview').classList.add('hidden');
             document.getElementById('logo-error').classList.add('hidden');
         }
 
-        // Helper function to reset submit button
         function resetSubmitButton(submitBtn, originalText) {
             submitBtn.innerHTML = originalText;
             submitBtn.disabled = false;
         }
 
-        // Enhanced form validation
         function validateUploadForm() {
             const appName = document.getElementById('app-name').value.trim();
             const logoUrl = document.getElementById('logo-url').value.trim();
@@ -3634,10 +3904,7 @@
             hideAllStates();
             grid.innerHTML = projectsData.map(createProjectCard).join('');
             
-            // Update project count
             document.getElementById('projectCount').textContent = projectsData.length;
-            
-            // Update last updated time
             document.getElementById('lastUpdated').textContent = `Updated: ${new Date().toLocaleTimeString()}`;
         }
 
@@ -3688,17 +3955,14 @@
             loadAPKGames();
         }
 
-        // CSV Parser for APK Downloader
         function parseAPKCSV(csvText) {
             const lines = csvText.split('\n');
             const result = [];
             
-            // Skip header row and process data
             for (let i = 1; i < lines.length; i++) {
                 const line = lines[i].trim();
                 if (!line) continue;
                 
-                // Simple CSV parsing (handles basic cases)
                 const values = line.split(',').map(val => val.trim());
                 if (values.length >= 3) {
                     result.push({
@@ -3712,7 +3976,7 @@
             return result;
         }
 
-        // Create mobile game card with download functionality matching home style
+        // ✅ ENHANCED APK CARD WITH BETTER STYLING AND FREE HTML NOTICE
         function createMobileGameCard(game) {
             return `
                 <div class="item-card">
@@ -3727,23 +3991,20 @@
                         <div class="item-title">${game.name}</div>
                         <button class="apk-download-btn" onclick="downloadGame('${game.url}', '${game.name}')">
                             <i class="fas fa-download"></i>
-                            Download
+                            APK + HTML
                         </button>
                     </div>
                 </div>
             `;
         }
 
-        // Download game function - Direct APK download (FIXED)
         function downloadGame(url, gameName) {
             if (url && url !== '#') {
-                // Direct download without creating HTML file
                 window.open(url, '_blank');
-                showToast(`📱 Downloading ${gameName}...`, 3000);
+                showToast(`📱 Downloading ${gameName} APK + HTML source...`, 3000);
             }
         }
 
-        // Render games in home layout style for APK downloader
         function renderAPKMobileDashboard() {
             const gamesSections = document.querySelector('#apk-gamesSections');
             const loadingState = document.querySelector('#apk-loadingState');
@@ -3766,7 +4027,6 @@
             }
         }
 
-        // Search functionality for APK downloader
         function searchAPKGames(query) {
             if (!query.trim()) {
                 renderAPKMobileDashboard();
@@ -3805,7 +4065,6 @@
             }
         }
 
-        // Load games from CSV for APK downloader
         async function loadAPKGames() {
             const loadingState = document.querySelector('#apk-loadingState');
             const errorState = document.querySelector('#apk-errorState');
@@ -3842,7 +4101,6 @@
             loadOnlineGames();
         }
 
-        // Create mobile game card for online gaming with grid layout
         function createOnlineGameCardForGrid(game) {
             return `
                 <div class="online-game-card">
@@ -3862,14 +4120,12 @@
             `;
         }
 
-        // Open game for online gaming
         function openGame(url) {
             if (url && url !== '#') {
                 window.open(url, '_blank');
             }
         }
 
-        // ✅ MODIFIED: Render games in 4-column grid layout instead of horizontal scroll
         function renderOnlineMobileDashboard() {
             const gamesSections = document.querySelector('#online-gamesSections');
             const loadingState = document.querySelector('#online-loadingState');
@@ -3892,7 +4148,6 @@
             }
         }
 
-        // ✅ MODIFIED: Search functionality for online gaming with grid layout
         function searchOnlineGames(query) {
             if (!query.trim()) {
                 renderOnlineMobileDashboard();
@@ -3931,7 +4186,6 @@
             }
         }
 
-        // Load games from CSV for online gaming
         async function loadOnlineGames() {
             const loadingState = document.querySelector('#online-loadingState');
             const errorState = document.querySelector('#online-errorState');
@@ -4061,7 +4315,7 @@
         }
 
         window.showAbout = function() {
-            showModal('AlPlayHub v2.0\n\nUltimate HTML5 Games & Apps Platform\n\nDeveloped by Mohammed Sharif\n\nFeatures:\n• Instant Gaming\n• Easy Upload\n• Material Design\n• Android Optimized\n• Colorful Design\n• Compact Design', '📱 About AlPlayHub');
+            showModal('AlPlayHub v3.0\n\nUltimate HTML5 Games & Apps Platform\n\nDeveloped by Mohammed Sharif\n\nFeatures:\n• 5 Dynamic Themes\n• YouTube Creator Tools\n• Enhanced Chat System\n• APK + Source Downloads\n• Material Design\n• Android Optimized', '📱 About AlPlayHub');
             document.getElementById('dropdown-menu').classList.remove('active');
         }
 
@@ -4168,7 +4422,6 @@
         }
 
         function showTab(tabId) {
-            // Close all dropdown menus
             document.querySelectorAll('[id$="Menu"]').forEach(menu => {
                 menu.classList.add('hidden');
             });
@@ -4179,14 +4432,12 @@
             const newHeader = document.querySelector('.new-header');
             const bottomNav = document.querySelector('.bottom-nav');
             
-            // Show main header only for home tab
             if (tabId === 'home-tab') {
                 newHeader.style.display = 'flex';
             } else {
                 newHeader.style.display = 'none';
             }
             
-            // Show/hide tab headers for non-home tabs
             document.querySelectorAll('.tab-header').forEach(header => {
                 header.style.display = 'none';
             });
@@ -4211,7 +4462,6 @@
             const targetScreen = document.querySelector(`#${tabId}`);
             if(targetScreen) targetScreen.scrollTop = 0;
             
-            // Update chat visibility based on current tab
             updateChatVisibility();
             
             if (tabId === 'developer-tab') {
