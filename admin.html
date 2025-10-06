@@ -3,264 +3,898 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel - Neon App Hub</title>
+    <title>Professional Admin Panel - AlPlayHub</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-        :root {
-            --primary-gradient: linear-gradient(135deg, #0f2027, #2c5364);
-            --accent-gradient: linear-gradient(90deg, #ff00ff, #9f00ff, #00ffff);
-            --solid-gradient: linear-gradient(90deg, #8A2387, #E94057, #F27121);
-            --success-color: #28a745;
-            --danger-color: #dc3545;
-            --warning-color: #ffc107;
-            --info-color: #17a2b8;
-            --font-family: 'Poppins', sans-serif;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
         
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+            -webkit-tap-highlight-color: transparent;
+        }
         
         body { 
-            font-family: var(--font-family); 
-            background: var(--primary-gradient); 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: #fff; 
             overflow-x: hidden;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
-        
-        .container { 
-            padding: 1rem; 
-            max-width: 1600px; 
-            margin: auto; 
+
+        /* Professional Variables */
+        :root {
+            --primary-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --card-bg: rgba(255, 255, 255, 0.08);
+            --card-border: rgba(255, 255, 255, 0.12);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.8);
+            --accent-blue: #3b82f6;
+            --accent-green: #10b981;
+            --accent-red: #ef4444;
+            --accent-orange: #f59e0b;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.2);
+            --border-radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        
-        .glass-box {
-            background: rgba(255, 255, 255, 0.1); 
-            backdrop-filter: blur(12px);
-            border-radius: 20px; 
-            border: 1px solid rgba(255, 255, 255, 0.1); 
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-        }
-        
+
+        /* Auth Container */
         .auth-container { 
             display: flex; 
             justify-content: center; 
             align-items: center; 
             min-height: 100vh; 
+            padding: 20px;
         }
         
         .auth-box { 
             width: 100%; 
             max-width: 400px; 
-            text-align: center; 
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--card-border);
+            border-radius: var(--border-radius);
+            padding: 32px;
+            box-shadow: var(--shadow-lg);
         }
-        
-        h1, h2, h3 {
-            font-weight: 700; 
-            background: var(--accent-gradient);
-            -webkit-background-clip: text; 
-            -webkit-text-fill-color: transparent; 
-            margin-bottom: 1rem;
+
+        .auth-title {
+            font-size: 28px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        
+
         .input-field {
             width: 100%; 
-            padding: 1rem; 
-            margin-bottom: 1rem; 
-            border-radius: 15px; 
-            border: none;
-            background: rgba(255, 255, 255, 0.9); 
-            font-family: var(--font-family); 
+            padding: 14px 16px; 
+            margin-bottom: 16px; 
+            border-radius: var(--border-radius); 
+            border: 1px solid var(--card-border);
+            background: rgba(255, 255, 255, 0.95); 
+            font-family: 'Inter', sans-serif;
             font-size: 16px; 
-            color: #333;
+            color: #1f2937;
+            transition: var(--transition);
         }
-        
+
+        .input-field:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
         textarea.input-field { 
             min-height: 120px; 
             resize: vertical;
+            font-family: 'Inter', monospace;
         }
-        
+
         .btn {
-            padding: 0.8rem 1.5rem; 
-            border-radius: 25px; 
+            padding: 12px 20px; 
+            border-radius: var(--border-radius); 
             border: none; 
-            font-family: var(--font-family);
+            font-family: 'Inter', sans-serif;
             font-weight: 600; 
-            font-size: 0.9rem; 
+            font-size: 14px;
             cursor: pointer; 
-            transition: all 0.3s ease;
-            text-align: center; 
-            color: #fff; 
-            margin: 0.25rem;
-            display: inline-block;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
         }
-        
-        .btn-solid { background: var(--solid-gradient); width: 100%; }
-        .btn-success { background: var(--success-color); }
-        .btn-danger { background: var(--danger-color); }
-        .btn-warning { background: var(--warning-color); color: #333; }
-        .btn-info { background: var(--info-color); }
-        .btn-outline { background: transparent; border: 2px solid #fff; }
-        
-        .btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
-        
-        #admin-dashboard { display: none; }
-        
-        /* Mobile Navigation */
-        .mobile-nav {
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary { 
+            background: linear-gradient(135deg, var(--accent-blue), #6366f1); 
+            color: white; 
+            width: 100%;
+        }
+        .btn-success { 
+            background: linear-gradient(135deg, var(--accent-green), #059669); 
+            color: white; 
+        }
+        .btn-danger { 
+            background: linear-gradient(135deg, var(--accent-red), #dc2626); 
+            color: white; 
+        }
+        .btn-warning { 
+            background: linear-gradient(135deg, var(--accent-orange), #d97706); 
+            color: white; 
+        }
+        .btn-info { 
+            background: linear-gradient(135deg, #06b6d4, #0891b2); 
+            color: white; 
+        }
+        .btn-outline { 
+            background: transparent; 
+            border: 2px solid rgba(255, 255, 255, 0.3); 
+            color: white; 
+        }
+
+        .btn:hover { 
+            transform: translateY(-1px); 
+            box-shadow: var(--shadow-md); 
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        /* Compact Admin Dashboard */
+        #admin-dashboard { 
+            display: none; 
+        }
+
+        /* Professional Header - Compact & Square */
+        .admin-header {
             position: fixed;
-            bottom: 0;
+            top: 0;
             left: 0;
             right: 0;
-            background: rgba(0,0,0,0.9);
-            backdrop-filter: blur(10px);
-            padding: 1rem;
             z-index: 1000;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--card-border);
+            padding: 12px 20px;
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
         }
-        
-        .nav-item {
-            text-align: center;
-            color: #fff;
-            text-decoration: none;
-            padding: 0.5rem;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-            font-size: 0.8rem;
-        }
-        
-        .nav-item.active, .nav-item:hover {
-            background: var(--accent-gradient);
-            color: #fff;
-        }
-        
-        /* Header */
-        header { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            padding: 1rem; 
-            margin-bottom: 1rem;
-        }
-        
-        /* Analytics Cards */
-        .analytics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-        
-        .stat-card {
-            background: rgba(255, 255, 255, 0.15);
-            padding: 1.5rem;
-            border-radius: 15px;
-            text-align: center;
-            backdrop-filter: blur(10px);
-        }
-        
-        .stat-number {
-            font-size: 2.5rem;
+
+        .admin-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 18px;
             font-weight: 700;
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: block;
+            color: var(--text-primary);
         }
-        
-        .stat-label {
-            font-size: 0.9rem;
-            opacity: 0.8;
-            margin-top: 0.5rem;
+
+        .admin-logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #60a5fa, #a78bfa);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
         }
-        
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logout-btn {
+            padding: 8px 16px;
+            font-size: 12px;
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            color: #fca5a5;
+            border-radius: 8px;
+        }
+
+        .logout-btn:hover {
+            background: var(--accent-red);
+            color: white;
+        }
+
+        /* Compact Navigation Pills */
+        .admin-nav {
+            position: fixed;
+            top: 70px;
+            left: 20px;
+            right: 20px;
+            z-index: 999;
+            display: flex;
+            gap: 8px;
+            padding: 12px;
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--card-border);
+            border-radius: var(--border-radius);
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .admin-nav::-webkit-scrollbar {
+            display: none;
+        }
+
+        .nav-pill {
+            padding: 8px 16px;
+            border-radius: 8px;
+            background: transparent;
+            border: 1px solid transparent;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            font-size: 13px;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            position: relative;
+            min-width: fit-content;
+        }
+
+        .nav-pill:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+        }
+
+        .nav-pill.active {
+            background: var(--accent-blue);
+            color: white;
+            border-color: var(--accent-blue);
+        }
+
+        .nav-badge {
+            background: var(--accent-red);
+            color: white;
+            border-radius: 10px;
+            padding: 2px 6px;
+            font-size: 10px;
+            font-weight: 600;
+            min-width: 16px;
+            height: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Content Container */
+        .content-container {
+            margin-top: 140px;
+            padding: 20px;
+            min-height: calc(100vh - 140px);
+        }
+
         /* Content Sections */
         .content-section {
             display: none;
-            padding-bottom: 100px; /* Space for mobile nav */
+            animation: fadeInUp 0.3s ease-out;
         }
-        
+
         .content-section.active {
             display: block;
         }
-        
-        /* Dashboard Grid */
-        .dashboard-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1rem;
-        }
-        
-        @media (min-width: 768px) {
-            .dashboard-grid {
-                grid-template-columns: 2fr 1fr;
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
             }
-            
-            .mobile-nav {
-                display: none;
-            }
-            
-            .content-section {
-                display: block;
-                padding-bottom: 0;
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
-        
-        /* Items List */
-        .submission-item {
-            background: rgba(255, 255, 255, 0.15);
-            padding: 1.5rem;
-            border-radius: 15px;
-            margin-bottom: 1rem;
-            position: relative;
+
+        .section-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--card-border);
+            border-radius: var(--border-radius);
+            padding: 24px;
+            box-shadow: var(--shadow-md);
         }
-        
-        .item-header {
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text-primary);
             display: flex;
             align-items: center;
-            margin-bottom: 1rem;
+            gap: 8px;
         }
-        
-        .item-logo {
-            width: 60px;
-            height: 60px;
-            border-radius: 10px;
-            object-fit: cover;
-            margin-right: 1rem;
-            background: rgba(255,255,255,0.1);
+
+        /* Analytics Grid - Mobile Optimized */
+        .analytics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin-bottom: 24px;
         }
-        
-        .item-info h3 {
-            margin: 0;
-            font-size: 1.1rem;
+
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: var(--border-radius);
+            padding: 16px;
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
         }
-        
-        .item-meta {
-            font-size: 0.8rem;
-            opacity: 0.8;
-            margin-top: 0.25rem;
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-green));
         }
-        
-        .item-actions {
-            margin-top: 1rem;
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .stat-number {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Items List - Android Optimized */
+        .items-container {
+            max-height: 60vh;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+        }
+
+        .items-container::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .items-container::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .items-container::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+        }
+
+        .item-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--card-border);
+            border-radius: var(--border-radius);
+            padding: 16px;
+            margin-bottom: 12px;
             display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
+            align-items: center;
+            gap: 12px;
+            transition: var(--transition);
         }
-        
-        .item-actions .btn {
+
+        .item-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(4px);
+        }
+
+        .item-logo {
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+            object-fit: cover;
+            background: var(--card-bg);
+            flex-shrink: 0;
+        }
+
+        .item-info {
             flex: 1;
-            min-width: 80px;
-            font-size: 0.8rem;
-            padding: 0.5rem 1rem;
+            min-width: 0;
         }
-        
-        /* Form Section */
-        .form-section {
-            position: sticky;
-            top: 2rem;
+
+        .item-title {
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
-        
+
+        .item-meta {
+            font-size: 11px;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        .item-actions {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .item-actions .btn {
+            padding: 6px 12px;
+            font-size: 11px;
+            min-width: 60px;
+        }
+
+        /* Search Box */
+        .search-box {
+            margin-bottom: 16px;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 16px 12px 40px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--card-border);
+            border-radius: var(--border-radius);
+            color: var(--text-primary);
+            font-size: 14px;
+            transition: var(--transition);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .search-input::placeholder {
+            color: var(--text-secondary);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+        }
+
+        /* Upload Form */
+        .upload-methods {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .upload-method {
+            padding: 16px;
+            border: 2px solid var(--card-border);
+            border-radius: var(--border-radius);
+            background: var(--card-bg);
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .upload-method.active {
+            border-color: var(--accent-blue);
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        .upload-method-icon {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .upload-method-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        /* Professional Chat Icon */
+        .chat-float-icon {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--accent-blue), #6366f1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+            z-index: 1500;
+            transition: var(--transition);
+            border: none;
+            outline: none;
+        }
+
+        .chat-float-icon:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 35px rgba(59, 130, 246, 0.4);
+        }
+
+        .chat-notification-badge {
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            background: var(--accent-red);
+            color: white;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* Chat System */
+        .chat-fullscreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 2000;
+            background: var(--primary-bg);
+            display: none;
+            flex-direction: column;
+        }
+
+        .chat-fullscreen.active {
+            display: flex;
+        }
+
+        .chat-header {
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(20px);
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .chat-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .chat-controls {
+            display: flex;
+            gap: 8px;
+        }
+
+        .chat-btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .chat-users-row {
+            display: flex;
+            gap: 12px;
+            padding: 16px 24px;
+            overflow-x: auto;
+            border-bottom: 1px solid var(--card-border);
+            scrollbar-width: none;
+        }
+
+        .chat-users-row::-webkit-scrollbar {
+            display: none;
+        }
+
+        .chat-user-avatar {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #60a5fa, #a78bfa);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            border: 3px solid transparent;
+            flex-shrink: 0;
+        }
+
+        .chat-user-avatar:hover {
+            transform: scale(1.05);
+        }
+
+        .chat-user-avatar.active {
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+        }
+
+        .user-status-indicator {
+            position: absolute;
+            bottom: 2px;
+            right: 2px;
+            width: 12px;
+            height: 12px;
+            background: var(--accent-green);
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+
+        .user-unread-badge {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            background: var(--accent-red);
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 9px;
+            font-weight: 700;
+        }
+
+        .chat-main-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .chat-selected-user {
+            padding: 16px 24px;
+            border-bottom: 1px solid var(--card-border);
+            text-align: center;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .selected-user-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .selected-user-status {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .chat-messages-area {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .chat-message {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            animation: messageSlide 0.3s ease-out;
+            position: relative;
+        }
+
+        @keyframes messageSlide {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .chat-message.admin {
+            flex-direction: row-reverse;
+        }
+
+        .chat-message-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: white;
+            font-size: 12px;
+            flex-shrink: 0;
+        }
+
+        .chat-message.user .chat-message-avatar {
+            background: linear-gradient(135deg, #60a5fa, #a78bfa);
+        }
+
+        .chat-message.admin .chat-message-avatar {
+            background: linear-gradient(135deg, var(--accent-green), #059669);
+        }
+
+        .chat-message-bubble {
+            max-width: 80%;
+            padding: 12px 16px;
+            border-radius: 16px;
+            position: relative;
+            word-wrap: break-word;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .chat-message.user .chat-message-bubble {
+            background: rgba(255, 255, 255, 0.95);
+            color: #1f2937;
+            border-bottom-left-radius: 6px;
+        }
+
+        .chat-message.admin .chat-message-bubble {
+            background: linear-gradient(135deg, var(--accent-blue), #6366f1);
+            color: white;
+            border-bottom-right-radius: 6px;
+        }
+
+        .chat-message-time {
+            font-size: 10px;
+            opacity: 0.7;
+            margin-top: 4px;
+        }
+
+        .chat-message.admin .chat-message-time {
+            text-align: right;
+        }
+
+        .chat-delete-btn {
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            width: 20px;
+            height: 20px;
+            background: var(--accent-red);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 10px;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .chat-message:hover .chat-delete-btn {
+            display: flex;
+            opacity: 1;
+        }
+
+        .chat-input-area {
+            padding: 20px 24px;
+            border-top: 1px solid var(--card-border);
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .chat-input-wrapper {
+            display: flex;
+            gap: 12px;
+            align-items: flex-end;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            color: #1f2937;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            resize: none;
+            outline: none;
+            max-height: 100px;
+            transition: var(--transition);
+        }
+
+        .chat-input:focus {
+            border-color: var(--accent-blue);
+        }
+
+        .chat-send-btn {
+            width: 44px;
+            height: 44px;
+            background: var(--accent-blue);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .chat-send-btn:hover {
+            background: #2563eb;
+            transform: scale(1.05);
+        }
+
+        .chat-no-selection {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            opacity: 0.6;
+            padding: 40px 20px;
+        }
+
         /* Modal */
         .modal {
             position: fixed;
@@ -268,356 +902,437 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.9);
-            z-index: 2000;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 3000;
             display: none;
             justify-content: center;
             align-items: center;
-            padding: 1rem;
+            padding: 20px;
+            backdrop-filter: blur(4px);
         }
-        
+
         .modal-content {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 24px;
+            max-width: 500px;
             width: 100%;
-            height: 100%;
-            background: #fff;
             position: relative;
-            border-radius: 10px;
-            overflow: hidden;
+            box-shadow: var(--shadow-lg);
         }
-        
-        .modal-header {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0,0,0,0.8);
-            padding: 1rem;
-            z-index: 2001;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .modal-title {
-            color: white;
+
+        .modal h3 {
+            color: #1f2937;
+            margin-bottom: 12px;
+            font-size: 18px;
             font-weight: 600;
         }
-        
-        .modal-close {
-            background: #dc3545;
-            color: white;
+
+        .modal p {
+            color: #6b7280;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+        }
+
+        .modal-btn {
+            padding: 10px 20px;
             border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            font-size: 1.2rem;
+            border-radius: 8px;
             cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: var(--transition);
         }
-        
-        .modal-content iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            margin-top: 60px;
+
+        .modal-btn-cancel {
+            background: #e5e7eb;
+            color: #374151;
         }
-        
-        /* User Management */
-        .user-item {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 1rem;
-            border-radius: 10px;
-            margin-bottom: 0.5rem;
+
+        .modal-btn-confirm {
+            background: var(--accent-red);
+            color: white;
+        }
+
+        /* Review Modal */
+        .review-modal .modal-content {
+            width: 95vw;
+            height: 95vh;
+            max-width: none;
+            padding: 0;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+
+        .modal-header {
+            background: #1f2937;
+            padding: 16px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            color: white;
         }
-        
-        .user-info {
-            flex: 1;
+
+        .modal-close {
+            background: var(--accent-red);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            width: 32px;
+            height: 32px;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        
-        .user-stats {
-            text-align: right;
-            font-size: 0.8rem;
-            opacity: 0.8;
+
+        .modal-content iframe {
+            width: 100%;
+            height: calc(100% - 64px);
+            border: none;
         }
-        
-        /* Activity Log */
-        .activity-item {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 0.8rem;
-            border-radius: 8px;
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
-        }
-        
-        .activity-time {
-            opacity: 0.6;
-            font-size: 0.8rem;
-        }
-        
-        /* Loading States */
-        .loading {
+
+        /* Empty & Loading States */
+        .empty-state, .loading {
             text-align: center;
-            padding: 2rem;
-            opacity: 0.7;
+            padding: 40px 20px;
+            color: var(--text-secondary);
         }
-        
+
         .loading::after {
             content: "⏳ Loading...";
         }
-        
-        /* Empty States */
-        .empty-state {
-            text-align: center;
-            padding: 3rem 1rem;
-            opacity: 0.6;
-        }
-        
-        /* Search */
-        .search-box {
-            margin-bottom: 1rem;
-        }
-        
-        /* Ad Insertion Controls */
-        .ad-controls {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 1rem;
-            border-radius: 10px;
-            margin-top: 1rem;
-        }
-        
-        .ad-position-selector {
-            display: flex;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
-        }
-        
-        .ad-template-container {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 1rem;
-            border-radius: 8px;
-            margin-top: 1rem;
-        }
-        
-        /* Responsive adjustments */
-        @media (max-width: 767px) {
-            .container {
-                padding: 0.5rem;
+
+        /* Android Optimizations */
+        @media (max-width: 768px) {
+            .admin-nav {
+                top: 65px;
+                left: 12px;
+                right: 12px;
+                padding: 8px;
+                gap: 6px;
             }
-            
-            .glass-box {
-                padding: 1rem;
-                border-radius: 15px;
+
+            .nav-pill {
+                padding: 6px 12px;
+                font-size: 12px;
             }
-            
-            header {
-                flex-direction: column;
-                gap: 1rem;
-                text-align: center;
+
+            .content-container {
+                margin-top: 125px;
+                padding: 12px;
             }
-            
+
+            .section-card {
+                padding: 16px;
+            }
+
             .analytics-grid {
-                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-                gap: 0.5rem;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
             }
-            
+
             .stat-card {
-                padding: 1rem;
+                padding: 12px;
             }
-            
+
             .stat-number {
-                font-size: 1.8rem;
+                font-size: 20px;
             }
-            
+
+            .item-card {
+                padding: 12px;
+                flex-direction: column;
+                text-align: center;
+                gap: 8px;
+            }
+
             .item-actions {
-                flex-direction: column;
-            }
-            
-            .item-actions .btn {
+                justify-content: center;
                 width: 100%;
-                margin: 0.25rem 0;
             }
-            
-            .ad-position-selector {
-                flex-direction: column;
+
+            .upload-methods {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            .chat-float-icon {
+                bottom: 20px;
+                right: 20px;
+                width: 56px;
+                height: 56px;
+            }
+
+            .chat-users-row {
+                padding: 12px 16px;
+            }
+
+            .chat-header, .chat-main-area {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+
+            .chat-input-area {
+                padding: 16px;
+            }
+
+            /* Touch-friendly buttons */
+            .btn, .nav-pill, .item-actions .btn {
+                min-height: 44px;
+                min-width: 44px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+
+        /* Super small screens */
+        @media (max-width: 480px) {
+            .admin-header {
+                padding: 8px 12px;
+                height: 56px;
+            }
+
+            .admin-logo {
+                font-size: 16px;
+            }
+
+            .admin-logo-icon {
+                width: 28px;
+                height: 28px;
+                font-size: 14px;
+            }
+
+            .admin-nav {
+                top: 60px;
+            }
+
+            .content-container {
+                margin-top: 115px;
+                padding: 8px;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Auth View -->
     <div id="auth-view" class="auth-container">
-        <div class="auth-box glass-box">
-            <h1>🚀 Admin Login</h1>
+        <div class="auth-box">
+            <h1 class="auth-title">🚀 Admin Login</h1>
             <form id="login-form">
                 <input type="email" id="login-email" class="input-field" placeholder="Admin Email" required>
                 <input type="password" id="login-password" class="input-field" placeholder="Password" required>
-                <button type="submit" class="btn btn-solid">🔐 Login to Dashboard</button>
+                <button type="submit" class="btn btn-primary">
+                    <span>🔐</span>
+                    Login to Dashboard
+                </button>
             </form>
         </div>
     </div>
 
-    <div id="admin-dashboard" class="container">
-        <header>
-            <h1>🎮 Neon Hub Admin</h1>
-            <button id="logout-btn" class="btn btn-outline">👋 Logout</button>
+    <!-- Professional Admin Dashboard -->
+    <div id="admin-dashboard">
+        <!-- Compact Header -->
+        <header class="admin-header">
+            <div class="admin-logo">
+                <div class="admin-logo-icon">🎮</div>
+                <span>AlPlayHub Admin</span>
+            </div>
+            <div class="header-actions">
+                <button id="logout-btn" class="logout-btn">👋 Logout</button>
+            </div>
         </header>
 
-        <!-- Analytics Section -->
-        <section id="analytics-section" class="content-section active">
-            <div class="analytics-grid">
-                <div class="stat-card">
-                    <span class="stat-number" id="total-users">0</span>
-                    <div class="stat-label">👥 Total Users</div>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number" id="total-submissions">0</span>
-                    <div class="stat-label">📤 Submissions</div>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number" id="published-count">0</span>
-                    <div class="stat-label">✅ Published</div>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number" id="pending-count">0</span>
-                    <div class="stat-label">⏳ Pending</div>
-                </div>
-            </div>
-
-            <div class="glass-box">
-                <h2>📊 User Analytics</h2>
-                <div class="search-box">
-                    <input type="text" id="user-search" class="input-field" placeholder="🔍 Search users...">
-                </div>
-                <div id="users-analytics"></div>
-            </div>
-        </section>
-
-        <!-- Pending Submissions Section -->
-        <section id="pending-section" class="content-section">
-            <div class="glass-box">
-                <h2>⏳ Pending Submissions</h2>
-                <div class="search-box">
-                    <input type="text" id="pending-search" class="input-field" placeholder="🔍 Search pending...">
-                </div>
-                <div id="submissions-list"></div>
-            </div>
-        </section>
-
-        <!-- Published Items Section -->
-        <section id="published-section" class="content-section">
-            <div class="glass-box">
-                <h2>✅ Published Items</h2>
-                <div class="search-box">
-                    <input type="text" id="published-search" class="input-field" placeholder="🔍 Search published...">
-                </div>
-                <div id="published-items-list"></div>
-            </div>
-        </section>
-
-        <!-- Add/Edit Form Section -->
-        <section id="form-section" class="content-section">
-            <div class="glass-box">
-                <h2 id="form-title">➕ Add New Item</h2>
-                <form id="item-form">
-                    <input type="hidden" id="item-key">
-                    <input type="hidden" id="pending-key">
-                    <input type="hidden" id="user-email-field">
-                    
-                    <textarea id="item-html" class="input-field" placeholder="📝 HTML Code" required></textarea>
-                    <input type="text" id="item-title" class="input-field" placeholder="🏷️ Title" required>
-                    <input type="url" id="item-logo" class="input-field" placeholder="🖼️ Logo Image URL" required>
-                    
-                    <select id="item-type" class="input-field" required>
-                        <option value="" disabled selected>🎯 Select Type</option>
-                        <option value="Game">🎮 Game</option>
-                        <option value="App">📱 App</option>
-                        <option value="Tool">🔧 Tool</option>
-                    </select>
-                    
-                    <!-- Manual Ad Integration Controls -->
-                    <div class="ad-controls">
-                        <h4>📢 Ad Integration (Optional)</h4>
-                        <div class="ad-position-selector">
-                            <button type="button" class="btn btn-info" onclick="insertAd('top')">🔝 Insert Top Ad</button>
-                            <button type="button" class="btn btn-info" onclick="insertAd('middle')">🎯 Insert Middle Ad</button>
-                            <button type="button" class="btn btn-info" onclick="insertAd('bottom')">🔚 Insert Bottom Ad</button>
-                        </div>
-                        <div class="ad-template-container">
-                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">💰 Ad Code Template:</label>
-                            <textarea id="ad-template" class="input-field" placeholder="Enter your ad code here..." rows="3"></textarea>
-                        </div>
-                    </div>
-                    
-                    <button type="submit" class="btn btn-solid">💾 Save to Hub</button>
-                </form>
-            </div>
-        </section>
-
-        <!-- Ad Templates Section -->
-        <section id="ads-section" class="content-section">
-            <div class="glass-box">
-                <h2>💰 Ad Template Management</h2>
-                <p style="margin-bottom: 1rem; opacity: 0.8;">Create and manage ad templates for manual insertion into games and apps.</p>
-                
-                <form id="template-form">
-                    <input type="text" id="template-name" class="input-field" placeholder="📝 Template Name (e.g., Banner Ad, Video Ad)" required>
-                    <textarea id="template-code" class="input-field" placeholder="💻 Ad Code" required></textarea>
-                    <button type="submit" class="btn btn-solid">💾 Save Template</button>
-                </form>
-            </div>
-
-            <div class="glass-box">
-                <h3>📄 Saved Ad Templates</h3>
-                <div id="templates-list">
-                    <div class="loading"></div>
-                </div>
-            </div>
-
-            <div class="glass-box">
-                <h3>📊 Ad Integration Stats</h3>
-                <div id="ad-stats">
-                    <div class="stat-card">
-                        <span class="stat-number" id="items-with-ads">0</span>
-                        <div class="stat-label">📢 Items with Ads</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="glass-box">
-                <h3>📈 Recent Admin Activity</h3>
-                <div id="admin-activity">
-                    <div class="loading"></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Mobile Navigation -->
-        <nav class="mobile-nav">
-            <a href="#" class="nav-item active" data-section="analytics">
-                📊<br>Analytics
-            </a>
-            <a href="#" class="nav-item" data-section="pending">
-                ⏳<br>Pending
-            </a>
-            <a href="#" class="nav-item" data-section="published">
-                ✅<br>Published
-            </a>
-            <a href="#" class="nav-item" data-section="form">
-                ➕<br>Add Item
-            </a>
-            <a href="#" class="nav-item" data-section="ads">
-                💰<br>Templates
-            </a>
+        <!-- Compact Navigation -->
+        <nav class="admin-nav">
+            <button class="nav-pill active" data-section="analytics">
+                <span>📊</span> Analytics
+            </button>
+            <button class="nav-pill" data-section="pending" id="pending-nav">
+                <span>⏳</span> Pending
+                <span class="nav-badge" id="pending-badge" style="display: none;">0</span>
+            </button>
+            <button class="nav-pill" data-section="published" id="published-nav">
+                <span>✅</span> Published
+                <span class="nav-badge" id="published-badge" style="display: none;">0</span>
+            </button>
+            <button class="nav-pill" data-section="upload">
+                <span>➕</span> Upload
+            </button>
         </nav>
+
+        <!-- Content Container -->
+        <div class="content-container">
+            <!-- Analytics Section -->
+            <div id="analytics-section" class="content-section active">
+                <div class="section-card">
+                    <h2 class="section-title">
+                        <span>📊</span> Dashboard Analytics
+                    </h2>
+                    <div class="analytics-grid">
+                        <div class="stat-card">
+                            <span class="stat-number" id="total-uploads">0</span>
+                            <div class="stat-label">Total Uploads</div>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number" id="pending-count">0</span>
+                            <div class="stat-label">Pending Review</div>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number" id="published-count">0</span>
+                            <div class="stat-label">Published</div>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number" id="rejected-count">0</span>
+                            <div class="stat-label">Rejected</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pending Section -->
+            <div id="pending-section" class="content-section">
+                <div class="section-card">
+                    <h2 class="section-title">
+                        <span>⏳</span> Pending Review
+                    </h2>
+                    <div class="search-box">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" id="pending-search" class="search-input" placeholder="Search pending uploads...">
+                    </div>
+                    <div class="items-container" id="uploads-list">
+                        <div class="loading"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Published Section -->
+            <div id="published-section" class="content-section">
+                <div class="section-card">
+                    <h2 class="section-title">
+                        <span>✅</span> Published Items
+                    </h2>
+                    <div class="search-box">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" id="published-search" class="search-input" placeholder="Search published items...">
+                    </div>
+                    <div class="items-container" id="published-list">
+                        <div class="loading"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Upload Section -->
+            <div id="upload-section" class="content-section">
+                <div class="section-card">
+                    <h2 class="section-title" id="upload-form-title">
+                        <span>➕</span> Admin Upload
+                    </h2>
+                    <form id="admin-upload-form">
+                        <input type="hidden" id="edit-key">
+                        
+                        <!-- Upload Methods -->
+                        <div class="upload-methods">
+                            <div class="upload-method active" onclick="selectUploadMethod('html')" data-method="html">
+                                <div class="upload-method-icon">💻</div>
+                                <div class="upload-method-label">HTML Code</div>
+                            </div>
+                            <div class="upload-method" onclick="selectUploadMethod('url')" data-method="url">
+                                <div class="upload-method-icon">🔗</div>
+                                <div class="upload-method-label">Website URL</div>
+                            </div>
+                        </div>
+                        
+                        <!-- HTML Upload -->
+                        <div id="html-upload-section">
+                            <textarea id="admin-html-code" class="input-field" placeholder="Paste your HTML code here..." rows="8"></textarea>
+                        </div>
+                        
+                        <!-- URL Upload -->
+                        <div id="url-upload-section" style="display: none;">
+                            <input type="url" id="admin-game-url" class="input-field" placeholder="Enter website URL (https://example.com)">
+                        </div>
+                        
+                        <!-- Common Fields -->
+                        <input type="text" id="admin-title" class="input-field" placeholder="App/Game Name" required>
+                        <input type="url" id="admin-logo" class="input-field" placeholder="Logo Image URL" required>
+                        
+                        <select id="admin-type" class="input-field" required>
+                            <option value="" disabled selected>Select Category</option>
+                            <option value="Game">🎮 Game</option>
+                            <option value="App">📱 App</option>
+                            <option value="Tool">🔧 Tool</option>
+                        </select>
+                        
+                        <textarea id="admin-description" class="input-field" placeholder="Description (optional)" rows="3"></textarea>
+                        
+                        <button type="submit" class="btn btn-primary">
+                            <span>💾</span>
+                            Publish to Platform
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- Enhanced Review Modal -->
-    <div id="review-modal" class="modal">
+    <!-- Professional Chat Icon -->
+    <button id="chat-float-icon" class="chat-float-icon" onclick="openChatSystem()">
+        <span style="font-size: 24px;">💬</span>
+        <div id="chat-notification-badge" class="chat-notification-badge">0</div>
+    </button>
+
+    <!-- Full Screen Chat System -->
+    <div id="chat-fullscreen" class="chat-fullscreen">
+        <div class="chat-header">
+            <h2 class="chat-title">💬 Chat Management</h2>
+            <div class="chat-controls">
+                <button class="chat-btn btn-success" onclick="addNewUser()">➕ Add</button>
+                <button class="chat-btn btn-danger" onclick="clearAllChats()">🗑️ Clear</button>
+                <button class="chat-btn btn-outline" onclick="closeChatSystem()">✖️ Close</button>
+            </div>
+        </div>
+
+        <div class="chat-users-row" id="chat-users-row">
+            <div style="color: var(--text-secondary); padding: 20px; text-align: center; width: 100%;">Loading users...</div>
+        </div>
+
+        <div class="chat-main-area">
+            <div id="chat-selected-user" class="chat-selected-user" style="display: none;">
+                <div class="selected-user-name" id="selected-user-name">Select a user</div>
+                <div class="selected-user-status" id="selected-user-status"></div>
+            </div>
+
+            <div id="chat-messages-area" class="chat-messages-area">
+                <div class="chat-no-selection">
+                    <div style="font-size: 48px; margin-bottom: 16px; opacity: 0.3;">💬</div>
+                    <h3>Professional Chat Management</h3>
+                    <p>Select a user from above to start managing conversations</p>
+                </div>
+            </div>
+
+            <div id="chat-input-area" class="chat-input-area" style="display: none;">
+                <div class="chat-input-wrapper">
+                    <textarea id="chat-input" class="chat-input" placeholder="Type your message..." rows="1"></textarea>
+                    <button id="chat-send-btn" class="chat-send-btn" onclick="sendMessage()">➤</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Review Modal -->
+    <div id="review-modal" class="modal review-modal">
         <div class="modal-content">
             <div class="modal-header">
-                <div class="modal-title">🔍 Previewing Game/App</div>
+                <h3>🔍 Content Preview</h3>
                 <button class="modal-close" onclick="closeReviewModal()">✖️</button>
             </div>
             <iframe id="review-iframe"></iframe>
@@ -626,12 +1341,12 @@
 
     <!-- Confirmation Modal -->
     <div id="confirm-modal" class="modal">
-        <div class="modal-content" style="width: 400px; height: auto; padding: 2rem; background: #fff; color: #333;">
-            <h3 id="confirm-title" style="color: #333; margin-bottom: 1rem;"></h3>
-            <p id="confirm-message" style="color: #666; margin-bottom: 2rem;"></p>
-            <div style="display: flex; gap: 1rem; justify-content: flex-end;">
-                <button id="confirm-cancel" class="btn" style="background: #6c757d;">Cancel</button>
-                <button id="confirm-ok" class="btn btn-danger">Confirm</button>
+        <div class="modal-content">
+            <h3 id="confirm-title"></h3>
+            <p id="confirm-message"></p>
+            <div class="modal-buttons">
+                <button id="confirm-cancel" class="modal-btn modal-btn-cancel">Cancel</button>
+                <button id="confirm-ok" class="modal-btn modal-btn-confirm">Confirm</button>
             </div>
         </div>
     </div>
@@ -639,62 +1354,48 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
     <script>
-     const firebaseConfig = {
-  apiKey: "AIzaSyCth7R_Lsz4e_2Y1W19Wor-e6e_H-Ha10g",
-  authDomain: "alplayhub-d1ea2.firebaseapp.com",
-  databaseURL: "https://alplayhub-d1ea2-default-rtdb.firebaseio.com",
-  projectId: "alplayhub-d1ea2",
-  storageBucket: "alplayhub-d1ea2.firebasestorage.app",
-  messagingSenderId: "1000142252130",
-  appId: "1:1000142252130:web:b7c455d88dbcacf40a093b"
-};
+        const firebaseConfig = {
+            apiKey: "AIzaSyCth7R_Lsz4e_2Y1W19Wor-e6e_H-Ha10g",
+            authDomain: "alplayhub-d1ea2.firebaseapp.com",
+            databaseURL: "https://alplayhub-d1ea2-default-rtdb.firebaseio.com",
+            projectId: "alplayhub-d1ea2",
+            storageBucket: "alplayhub-d1ea2.firebasestorage.app",
+            messagingSenderId: "1000142252130",
+            appId: "1:1000142252130:web:b7c455d88dbcacf40a093b"
+        };
         
         const adminApp = firebase.initializeApp(firebaseConfig, 'adminApp');
         const adminAuth = adminApp.auth();
         const adminDb = adminApp.database();
-        const adminStorage = adminApp.storage();
         
         // DOM Elements
         const authView = document.getElementById('auth-view');
         const dashboardView = document.getElementById('admin-dashboard');
         const loginForm = document.getElementById('login-form');
         const logoutBtn = document.getElementById('logout-btn');
-        const submissionsList = document.getElementById('submissions-list');
-        const publishedList = document.getElementById('published-items-list');
-        const itemForm = document.getElementById('item-form');
+        const confirmModal = document.getElementById('confirm-modal');
         const reviewModal = document.getElementById('review-modal');
         const reviewIframe = document.getElementById('review-iframe');
-        const confirmModal = document.getElementById('confirm-modal');
+        const adminUploadForm = document.getElementById('admin-upload-form');
         
-        // Analytics Elements
-        const totalUsersEl = document.getElementById('total-users');
-        const totalSubmissionsEl = document.getElementById('total-submissions');
-        const publishedCountEl = document.getElementById('published-count');
-        const pendingCountEl = document.getElementById('pending-count');
-        const usersAnalyticsEl = document.getElementById('users-analytics');
+        // Chat Elements
+        const chatFullscreen = document.getElementById('chat-fullscreen');
+        const chatUsersRow = document.getElementById('chat-users-row');
+        const chatMessagesArea = document.getElementById('chat-messages-area');
+        const chatInputArea = document.getElementById('chat-input-area');
+        const chatInput = document.getElementById('chat-input');
+        const chatSelectedUser = document.getElementById('chat-selected-user');
+        const selectedUserName = document.getElementById('selected-user-name');
+        const selectedUserStatus = document.getElementById('selected-user-status');
+        const chatNotificationBadge = document.getElementById('chat-notification-badge');
         
-        // Search Elements
-        const userSearchEl = document.getElementById('user-search');
-        const pendingSearchEl = document.getElementById('pending-search');
-        const publishedSearchEl = document.getElementById('published-search');
-        
-        // Ad Template Elements
-        const templateForm = document.getElementById('template-form');
-        const templateNameEl = document.getElementById('template-name');
-        const templateCodeEl = document.getElementById('template-code');
-        const templatesListEl = document.getElementById('templates-list');
-        const adTemplateEl = document.getElementById('ad-template');
-        const adminActivityEl = document.getElementById('admin-activity');
-        const adStatsEl = document.getElementById('ad-stats');
-        
-        // Global Data Storage
-        let allUsers = {};
-        let allSubmissions = {};
+        // Global Data
+        let allUploads = {};
         let allPublished = {};
-        let adTemplates = {};
-        let adminActivities = [];
+        let allChatUsers = {};
+        let currentChatUser = null;
+        let totalUnreadMessages = 0;
         
         // Authentication
         loginForm.addEventListener('submit', e => {
@@ -713,240 +1414,71 @@
                 authView.style.display = 'none';
                 dashboardView.style.display = 'block';
                 loadAllData();
-                logActivity('🔐 Admin logged in');
+                loadChatUsers();
             } else {
                 authView.style.display = 'flex';
                 dashboardView.style.display = 'none';
             }
         });
-        
-        // Mobile Navigation
-        document.querySelectorAll('.nav-item').forEach(item => {
-            item.addEventListener('click', e => {
-                e.preventDefault();
-                const section = e.currentTarget.dataset.section;
+
+        // Navigation
+        document.querySelectorAll('.nav-pill').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const section = btn.dataset.section;
                 switchSection(section);
+                
+                // Update active button
+                document.querySelectorAll('.nav-pill').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
             });
         });
-        
+
         function switchSection(sectionName) {
-            // Update navigation
-            document.querySelectorAll('.nav-item').forEach(item => {
-                item.classList.remove('active');
-            });
-            document.querySelector(`[data-section="${sectionName}"]`).classList.add('active');
-            
-            // Update content
             document.querySelectorAll('.content-section').forEach(section => {
                 section.classList.remove('active');
             });
             document.getElementById(`${sectionName}-section`).classList.add('active');
         }
-        
-        // Data Loading Functions
+
+        // Load All Data
         function loadAllData() {
-            loadPendingSubmissions();
+            loadUserUploads();
             loadPublishedItems();
-            loadUsersAnalytics();
-            loadAdTemplates();
-            loadAdminActivity();
         }
-        
-        function loadPendingSubmissions() {
-            adminDb.ref('pendingSubmissions').on('value', snapshot => {
-                allSubmissions = snapshot.val() || {};
-                renderSubmissions();
+
+        function loadUserUploads() {
+            adminDb.ref('uploads').on('value', snapshot => {
+                allUploads = snapshot.val() || {};
+                renderUploads();
                 updateAnalytics();
             });
         }
-        
+
         function loadPublishedItems() {
             adminDb.ref('items').on('value', snapshot => {
                 allPublished = snapshot.val() || {};
                 renderPublishedItems();
                 updateAnalytics();
-                updateAdStats();
             });
         }
-        
-        function loadUsersAnalytics() {
-            adminDb.ref('users').on('value', snapshot => {
-                allUsers = snapshot.val() || {};
-                renderUsersAnalytics();
-                updateAnalytics();
-            });
-        }
-        
-        function loadAdTemplates() {
-            adminDb.ref('adTemplates').on('value', snapshot => {
-                adTemplates = snapshot.val() || {};
-                renderAdTemplates();
-            });
-        }
-        
-        function loadAdminActivity() {
-            adminDb.ref('adminActivity').limitToLast(10).on('value', snapshot => {
-                adminActivities = [];
-                if (snapshot.exists()) {
-                    snapshot.forEach(child => {
-                        adminActivities.unshift(child.val());
-                    });
-                }
-                renderAdminActivity();
-            });
-        }
-        
-        // Manual Ad Integration Helper
-        function insertAdIntoCode(htmlCode, adCode, position) {
-            if (!htmlCode || !adCode) return htmlCode;
-            
-            const adContainer = `
-                <div style="text-align: center; margin: 20px 0; padding: 15px; background: rgba(0,0,0,0.05); border-radius: 10px; border: 1px solid rgba(0,0,0,0.1);">
-                    ${adCode}
-                </div>
-            `;
-            
-            switch(position) {
-                case 'top':
-                    return adContainer + '\n' + htmlCode;
-                case 'bottom':
-                    return htmlCode + '\n' + adContainer;
-                case 'middle':
-                    const lines = htmlCode.split('\n');
-                    const middleIndex = Math.floor(lines.length / 2);
-                    lines.splice(middleIndex, 0, adContainer);
-                    return lines.join('\n');
-                default:
-                    return htmlCode;
-            }
-        }
-        
-        // Ad Insertion Functions
-        window.insertAd = (position) => {
-            const adCode = adTemplateEl.value.trim();
-            const htmlCode = itemForm['item-html'].value;
-            
-            if (!adCode) {
-                showAlert('Please enter ad code in the template field', 'warning');
-                return;
-            }
-            
-            const updatedCode = insertAdIntoCode(htmlCode, adCode, position);
-            itemForm['item-html'].value = updatedCode;
-            
-            showAlert(`Ad inserted at ${position} position`, 'success');
-            logActivity(`📢 Inserted ${position} ad into item`);
-        };
-        
-        // Template Management
-        templateForm.addEventListener('submit', e => {
-            e.preventDefault();
-            
-            const templateData = {
-                name: templateNameEl.value.trim(),
-                code: templateCodeEl.value.trim(),
-                createdAt: firebase.database.ServerValue.TIMESTAMP
-            };
-            
-            adminDb.ref('adTemplates').push(templateData).then(() => {
-                showAlert('Ad template saved successfully!', 'success');
-                templateForm.reset();
-                logActivity(`📄 Created ad template: ${templateData.name}`);
-            }).catch(err => {
-                showAlert(`Error saving template: ${err.message}`, 'danger');
-            });
-        });
-        
-        function renderAdTemplates() {
-            templatesListEl.innerHTML = '';
-            
-            if (Object.keys(adTemplates).length === 0) {
-                templatesListEl.innerHTML = '<div class="empty-state">📄 No ad templates created yet</div>';
-                return;
-            }
-            
-            Object.entries(adTemplates).forEach(([key, template]) => {
-                const templateEl = document.createElement('div');
-                templateEl.className = 'submission-item';
-                templateEl.innerHTML = `
-                    <div class="item-header">
-                        <div class="item-info">
-                            <h3>${template.name}</h3>
-                            <div class="item-meta">
-                                📅 ${new Date(template.createdAt).toLocaleDateString()}
-                            </div>
-                            <div style="margin-top: 0.5rem; padding: 0.5rem; background: rgba(255,255,255,0.05); border-radius: 5px; font-family: monospace; font-size: 0.8rem; max-height: 60px; overflow: hidden;">
-                                ${template.code.substring(0, 100)}${template.code.length > 100 ? '...' : ''}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item-actions">
-                        <button class="btn btn-info" onclick="useTemplate('${key}')">📋 Use Template</button>
-                        <button class="btn btn-danger" onclick="deleteTemplate('${key}')">🗑️ Delete</button>
-                    </div>
-                `;
-                templatesListEl.appendChild(templateEl);
-            });
-        }
-        
-        window.useTemplate = (key) => {
-            const template = adTemplates[key];
-            if (template) {
-                adTemplateEl.value = template.code;
-                showAlert(`Template "${template.name}" loaded`, 'success');
-                switchSection('form');
-            }
-        };
-        
-        window.deleteTemplate = (key) => {
-            const template = adTemplates[key];
-            showConfirm(
-                '🗑️ Delete Template',
-                `Are you sure you want to delete the template "${template.name}"?`,
-                () => {
-                    adminDb.ref(`adTemplates/${key}`).remove()
-                        .then(() => {
-                            showAlert('Template deleted successfully', 'success');
-                            logActivity(`🗑️ Deleted ad template: ${template.name}`);
-                        })
-                        .catch(err => showAlert(`Error: ${err.message}`, 'danger'));
-                }
-            );
-        };
-        
-        // Update Ad Statistics
-        function updateAdStats() {
-            let itemsWithAds = 0;
-            
-            Object.values(allPublished).forEach(item => {
-                if (item.htmlCode && (
-                    item.htmlCode.includes('ad-container') || 
-                    item.htmlCode.includes('advertisement') ||
-                    item.htmlCode.includes('google-ads') ||
-                    item.htmlCode.includes('adsense')
-                )) {
-                    itemsWithAds++;
-                }
-            });
-            
-            const itemsWithAdsEl = document.getElementById('items-with-ads');
-            if (itemsWithAdsEl) {
-                animateNumber(itemsWithAdsEl, itemsWithAds);
-            }
-        }
-        
-        // Analytics Functions
+
+        // Analytics
         function updateAnalytics() {
-            const userCount = Object.keys(allUsers).length;
-            const submissionCount = Object.keys(allSubmissions).length;
+            const totalUploads = Object.keys(allUploads).length;
+            const pendingCount = Object.values(allUploads).filter(item => item.status === 'pending').length;
+            const rejectedCount = Object.values(allUploads).filter(item => item.status === 'rejected').length;
             const publishedCount = Object.keys(allPublished).length;
-            
-            animateNumber(totalUsersEl, userCount);
-            animateNumber(totalSubmissionsEl, submissionCount);
-            animateNumber(publishedCountEl, publishedCount);
-            animateNumber(pendingCountEl, submissionCount);
+
+            animateNumber(document.getElementById('total-uploads'), totalUploads);
+            animateNumber(document.getElementById('pending-count'), pendingCount);
+            animateNumber(document.getElementById('published-count'), publishedCount);
+            animateNumber(document.getElementById('rejected-count'), rejectedCount);
+
+            // Update badges
+            updateBadge('pending-badge', pendingCount);
+            updateBadge('published-badge', publishedCount);
         }
-        
+
         function animateNumber(element, target) {
             const current = parseInt(element.textContent) || 0;
             const increment = Math.ceil((target - current) / 20);
@@ -958,130 +1490,59 @@
                 element.textContent = target;
             }
         }
-        
-        function renderUsersAnalytics() {
-            const searchTerm = userSearchEl.value.toLowerCase();
-            usersAnalyticsEl.innerHTML = '';
-            
-            if (Object.keys(allUsers).length === 0) {
-                usersAnalyticsEl.innerHTML = '<div class="empty-state">👤 No users found</div>';
-                return;
+
+        function updateBadge(badgeId, count) {
+            const badge = document.getElementById(badgeId);
+            if (count > 0) {
+                badge.textContent = count > 99 ? '99+' : count;
+                badge.style.display = 'flex';
+            } else {
+                badge.style.display = 'none';
             }
-            
-            // Calculate user statistics
-            const userStats = {};
-            
-            // Initialize from registered users
-            Object.entries(allUsers).forEach(([uid, userData]) => {
-                const email = userData.email;
-                if (email) {
-                    userStats[email] = {
-                        email: email,
-                        name: userData.name || userData.displayName || 'Unknown User',
-                        submissions: 0,
-                        published: 0,
-                        joinDate: userData.createdAt || 'N/A'
-                    };
-                }
-            });
-            
-            // Count submissions per user
-            Object.values(allSubmissions).forEach(submission => {
-                const email = submission.userEmail;
-                if (email) {
-                    if (!userStats[email]) {
-                        userStats[email] = {
-                            email: email,
-                            name: submission.userName || 'Unknown User',
-                            submissions: 0,
-                            published: 0,
-                            joinDate: 'N/A'
-                        };
-                    }
-                    userStats[email].submissions++;
-                }
-            });
-            
-            // Count published items per user
-            Object.values(allPublished).forEach(item => {
-                const email = item.userEmail;
-                if (email && userStats[email]) {
-                    userStats[email].published++;
-                }
-            });
-            
-            // Filter users based on search
-            const filteredUsers = Object.values(userStats).filter(user => 
-                user.name.toLowerCase().includes(searchTerm) ||
-                user.email.toLowerCase().includes(searchTerm)
-            );
-            
-            if (filteredUsers.length === 0) {
-                usersAnalyticsEl.innerHTML = '<div class="empty-state">👤 No users match your search</div>';
-                return;
-            }
-            
-            // Render user statistics
-            filteredUsers.forEach(user => {
-                const userEl = document.createElement('div');
-                userEl.className = 'user-item';
-                userEl.innerHTML = `
-                    <div class="user-info">
-                        <div style="font-weight: 600;">${user.name}</div>
-                        <div style="font-size: 0.8rem; opacity: 0.7;">${user.email}</div>
-                        <div style="font-size: 0.7rem; opacity: 0.5;">Joined: ${new Date(user.joinDate).toLocaleDateString() || 'N/A'}</div>
-                    </div>
-                    <div class="user-stats">
-                        <div>📤 ${user.submissions} submitted</div>
-                        <div>✅ ${user.published} published</div>
-                    </div>
-                `;
-                usersAnalyticsEl.appendChild(userEl);
-            });
         }
-        
-        // Rendering Functions
-        function renderSubmissions() {
-            const searchTerm = pendingSearchEl.value.toLowerCase();
-            submissionsList.innerHTML = '';
+
+        // Render Functions
+        function renderUploads() {
+            const container = document.getElementById('uploads-list');
+            const searchTerm = document.getElementById('pending-search').value.toLowerCase();
             
-            const filtered = Object.entries(allSubmissions).filter(([key, data]) => {
-                return data.title.toLowerCase().includes(searchTerm) ||
-                       (data.userName || '').toLowerCase().includes(searchTerm) ||
-                       (data.userEmail || '').toLowerCase().includes(searchTerm);
+            const pendingUploads = Object.entries(allUploads).filter(([key, data]) => {
+                const matchesSearch = data.title.toLowerCase().includes(searchTerm) ||
+                                    (data.uploader || '').toLowerCase().includes(searchTerm);
+                return matchesSearch && data.status === 'pending';
             });
             
-            if (filtered.length === 0) {
-                submissionsList.innerHTML = '<div class="empty-state">📭 No pending submissions found</div>';
+            if (pendingUploads.length === 0) {
+                container.innerHTML = '<div class="empty-state">📭 No pending uploads found</div>';
                 return;
             }
             
-            filtered.forEach(([key, data]) => {
+            container.innerHTML = '';
+            pendingUploads.forEach(([key, data]) => {
                 const itemEl = document.createElement('div');
-                itemEl.className = 'submission-item';
+                itemEl.className = 'item-card';
                 itemEl.innerHTML = `
-                    <div class="item-header">
-                        <img src="${data.logo || 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjYwIiBmaWxsPSIjNDMzODUwIi8+Cjx0ZXh0IHg9IjMwIiB5PSIzNSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+Tk8gSU1BR0U8L3RleHQ+Cjwvc3ZnPgo='}" alt="Logo" class="item-logo">
-                        <div class="item-info">
-                            <h3>${data.title}</h3>
-                            <div class="item-meta">
-                                📱 ${data.type} • 👤 ${data.userName || 'Unknown'} • 📧 ${data.userEmail || 'N/A'}
-                            </div>
+                    <img src="${data.logo || 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQ4IiBoZWlnaHQ9IjQ4IiBmaWxsPSIjNDMzODUwIi8+Cjx0ZXh0IHg9IjI0IiB5PSIyOCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjgiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5OTyBJTUFHRTwvdGV4dD4KPC9zdmc+'}" alt="Logo" class="item-logo">
+                    <div class="item-info">
+                        <div class="item-title">${data.title}</div>
+                        <div class="item-meta">
+                            📱 ${data.type} • 👤 ${data.uploader || 'Unknown'}<br>
+                            📅 ${new Date(data.timestamp).toLocaleDateString()} • ${data.uploadMethod === 'url' ? '🔗 URL' : '💻 HTML'}
                         </div>
                     </div>
                     <div class="item-actions">
-                        <button class="btn btn-info" onclick="reviewItem('${key}')">🔍 Preview</button>
-                        <button class="btn btn-success" onclick="approveItem('${key}')">✅ Approve</button>
-                        <button class="btn btn-danger" onclick="rejectItem('${key}')">❌ Reject</button>
+                        <button class="btn btn-info" onclick="reviewUpload('${key}')">🔍</button>
+                        <button class="btn btn-success" onclick="approveUpload('${key}')">✅</button>
+                        <button class="btn btn-danger" onclick="rejectUpload('${key}')">❌</button>
                     </div>
                 `;
-                submissionsList.appendChild(itemEl);
+                container.appendChild(itemEl);
             });
         }
-        
+
         function renderPublishedItems() {
-            const searchTerm = publishedSearchEl.value.toLowerCase();
-            publishedList.innerHTML = '';
+            const container = document.getElementById('published-list');
+            const searchTerm = document.getElementById('published-search').value.toLowerCase();
             
             const filtered = Object.entries(allPublished).filter(([key, data]) => {
                 return data.title.toLowerCase().includes(searchTerm) ||
@@ -1089,99 +1550,508 @@
             });
             
             if (filtered.length === 0) {
-                publishedList.innerHTML = '<div class="empty-state">📦 No published items found</div>';
+                container.innerHTML = '<div class="empty-state">📦 No published items found</div>';
                 return;
             }
             
+            container.innerHTML = '';
             filtered.forEach(([key, data]) => {
-                const hasAds = data.htmlCode && (
-                    data.htmlCode.includes('ad-container') || 
-                    data.htmlCode.includes('advertisement') ||
-                    data.htmlCode.includes('google-ads') ||
-                    data.htmlCode.includes('adsense')
-                );
-                
                 const itemEl = document.createElement('div');
-                itemEl.className = 'submission-item';
+                itemEl.className = 'item-card';
                 itemEl.innerHTML = `
-                    <div class="item-header">
-                        <img src="${data.logo || 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjYwIiBmaWxsPSIjNDMzODUwIi8+Cjx0ZXh0IHg9IjMwIiB5PSIzNSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+Tk8gSU1BR0U8L3RleHQ+Cjwvc3ZnPgo='}" alt="Logo" class="item-logo">
-                        <div class="item-info">
-                            <h3>${data.title} ${hasAds ? '📢' : ''}</h3>
-                            <div class="item-meta">
-                                📱 ${data.type} • ⭐ ${data.rating || 0}/5 (${data.ratingCount || 0} votes)
-                                ${hasAds ? '<br>📢 Contains Ads' : ''}
-                            </div>
+                    <img src="${data.logo || 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQ4IiBoZWlnaHQ9IjQ4IiBmaWxsPSIjNDMzODUwIi8+Cjx0ZXh0IHg9IjI0IiB5PSIyOCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjgiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5OTyBJTUFHRTwvdGV4dD4KPC9zdmc+'}" alt="Logo" class="item-logo">
+                    <div class="item-info">
+                        <div class="item-title">${data.title}</div>
+                        <div class="item-meta">
+                            📱 ${data.type} • 📅 ${new Date(data.timestamp || data.createdAt).toLocaleDateString()}
                         </div>
                     </div>
                     <div class="item-actions">
-                        <button class="btn btn-info" onclick="reviewItem('${key}', true)">🔍 Preview</button>
-                        <button class="btn btn-warning" onclick="editItem('${key}')">✏️ Edit</button>
-                        <button class="btn btn-danger" onclick="deleteItem('${key}')">🗑️ Delete</button>
+                        <button class="btn btn-info" onclick="reviewPublished('${key}')">🔍</button>
+                        <button class="btn btn-warning" onclick="editPublished('${key}')">✏️</button>
+                        <button class="btn btn-danger" onclick="deletePublished('${key}')">🗑️</button>
                     </div>
                 `;
-                publishedList.appendChild(itemEl);
+                container.appendChild(itemEl);
             });
         }
-        
-        function renderAdminActivity() {
-            adminActivityEl.innerHTML = '';
+
+        // Search Events
+        document.getElementById('pending-search').addEventListener('input', renderUploads);
+        document.getElementById('published-search').addEventListener('input', renderPublishedItems);
+
+        // Upload Method Selection
+        function selectUploadMethod(method) {
+            document.querySelectorAll('.upload-method').forEach(btn => {
+                btn.classList.remove('active');
+            });
             
-            if (adminActivities.length === 0) {
-                adminActivityEl.innerHTML = '<div class="empty-state">📝 No recent activity</div>';
-                return;
+            document.querySelector(`[data-method="${method}"]`).classList.add('active');
+            
+            if (method === 'html') {
+                document.getElementById('html-upload-section').style.display = 'block';
+                document.getElementById('url-upload-section').style.display = 'none';
+            } else {
+                document.getElementById('html-upload-section').style.display = 'none';
+                document.getElementById('url-upload-section').style.display = 'block';
             }
-            
-            adminActivities.slice(0, 10).forEach(activity => {
-                const activityEl = document.createElement('div');
-                activityEl.className = 'activity-item';
-                activityEl.innerHTML = `
-                    <div>${activity.action}</div>
-                    <div class="activity-time">${new Date(activity.timestamp).toLocaleString()}</div>
-                `;
-                adminActivityEl.appendChild(activityEl);
-            });
         }
-        
-        function logActivity(action) {
-            const activity = {
-                action: action,
-                timestamp: Date.now(),
-                admin: adminAuth.currentUser?.email || 'Unknown'
-            };
-            
-            adminDb.ref('adminActivity').push(activity);
-        }
-        
-        // Search Functions
-        userSearchEl.addEventListener('input', renderUsersAnalytics);
-        pendingSearchEl.addEventListener('input', renderSubmissions);
-        publishedSearchEl.addEventListener('input', renderPublishedItems);
-        
-        // Modal Functions
-        window.reviewItem = (key, isPublished = false) => {
-            const ref = isPublished ? 'items' : 'pendingSubmissions';
-            adminDb.ref(`${ref}/${key}`).once('value', snapshot => {
-                const data = snapshot.val();
+
+        // Upload Actions
+        window.reviewUpload = (key) => {
+            const upload = allUploads[key];
+            if (upload) {
+                let content = '';
+                if (upload.uploadMethod === 'url') {
+                    content = `
+                        <style>
+                            body, html { margin: 0; padding: 0; height: 100vh; overflow: hidden; }
+                            iframe { width: 100vw; height: 100vh; border: none; }
+                        </style>
+                        <iframe src="${upload.gameUrl}" allowfullscreen></iframe>
+                    `;
+                } else {
+                    content = upload.htmlCode || '<div style="padding: 2rem; text-align: center;">No content available</div>';
+                }
                 
-                reviewIframe.srcdoc = data.htmlCode || `
-                    <div style="display: flex; justify-content: center; align-items: center; height: 100vh; background: #f8f9fa; color: #6c757d; text-align: center; padding: 2rem; font-family: Arial, sans-serif;">
-                        ⚠️ No HTML content available
-                    </div>
-                `;
+                reviewIframe.srcdoc = content;
                 reviewModal.style.display = 'flex';
-            });
+            }
         };
-        
+
+        window.reviewPublished = (key) => {
+            const item = allPublished[key];
+            if (item) {
+                let content = '';
+                if (item.uploadMethod === 'url' && item.gameUrl) {
+                    content = `
+                        <style>
+                            body, html { margin: 0; padding: 0; height: 100vh; overflow: hidden; }
+                            iframe { width: 100vw; height: 100vh; border: none; }
+                        </style>
+                        <iframe src="${item.gameUrl}" allowfullscreen></iframe>
+                    `;
+                } else {
+                    content = item.htmlCode || '<div style="padding: 2rem; text-align: center;">No content available</div>';
+                }
+                
+                reviewIframe.srcdoc = content;
+                reviewModal.style.display = 'flex';
+            }
+        };
+
         window.closeReviewModal = () => {
             reviewModal.style.display = 'none';
             reviewIframe.srcdoc = '';
         };
-        
-        // Confirmation Modal
+
+        window.approveUpload = (key) => {
+            const upload = allUploads[key];
+            showConfirm(
+                '✅ Approve Upload',
+                `Approve "${upload.title}" and publish it to the platform?`,
+                () => {
+                    const itemData = {
+                        title: upload.title,
+                        logo: upload.logo,
+                        type: upload.type,
+                        description: upload.description || '',
+                        htmlCode: upload.htmlCode || '',
+                        uploadMethod: upload.uploadMethod,
+                        gameUrl: upload.gameUrl || '',
+                        timestamp: firebase.database.ServerValue.TIMESTAMP,
+                        rating: 0,
+                        ratingCount: 0
+                    };
+                    
+                    adminDb.ref('items').push(itemData).then(() => {
+                        return adminDb.ref(`uploads/${key}/status`).set('approved');
+                    }).then(() => {
+                        showAlert('Upload approved and published!', 'success');
+                    }).catch(err => {
+                        showAlert(`Error: ${err.message}`, 'danger');
+                    });
+                }
+            );
+        };
+
+        window.rejectUpload = (key) => {
+            const upload = allUploads[key];
+            showConfirm(
+                '❌ Reject Upload',
+                `Reject "${upload.title}"?`,
+                () => {
+                    adminDb.ref(`uploads/${key}/status`).set('rejected')
+                        .then(() => showAlert('Upload rejected', 'success'))
+                        .catch(err => showAlert(`Error: ${err.message}`, 'danger'));
+                }
+            );
+        };
+
+        window.deletePublished = (key) => {
+            const item = allPublished[key];
+            showConfirm(
+                '🗑️ Delete Item',
+                `Permanently delete "${item.title}"?`,
+                () => {
+                    adminDb.ref(`items/${key}`).remove()
+                        .then(() => showAlert('Item deleted successfully', 'success'))
+                        .catch(err => showAlert(`Error: ${err.message}`, 'danger'));
+                }
+            );
+        };
+
+        window.editPublished = (key) => {
+            const item = allPublished[key];
+            if (item) {
+                document.getElementById('edit-key').value = key;
+                document.getElementById('admin-title').value = item.title;
+                document.getElementById('admin-logo').value = item.logo;
+                document.getElementById('admin-type').value = item.type;
+                document.getElementById('admin-description').value = item.description || '';
+                
+                if (item.uploadMethod === 'url') {
+                    selectUploadMethod('url');
+                    document.getElementById('admin-game-url').value = item.gameUrl || '';
+                } else {
+                    selectUploadMethod('html');
+                    document.getElementById('admin-html-code').value = item.htmlCode || '';
+                }
+                
+                document.getElementById('upload-form-title').innerHTML = '<span>✏️</span> Edit Item';
+                switchSection('upload');
+                document.querySelectorAll('.nav-pill').forEach(b => b.classList.remove('active'));
+                document.querySelector('[data-section="upload"]').classList.add('active');
+            }
+        };
+
+        // Admin Upload Form
+        adminUploadForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const editKey = document.getElementById('edit-key').value;
+            const isEditing = editKey !== '';
+            
+            const selectedMethod = document.querySelector('.upload-method.active').dataset.method;
+            
+            const formData = {
+                title: document.getElementById('admin-title').value.trim(),
+                logo: document.getElementById('admin-logo').value.trim(),
+                type: document.getElementById('admin-type').value,
+                description: document.getElementById('admin-description').value.trim(),
+                uploadMethod: selectedMethod,
+                timestamp: firebase.database.ServerValue.TIMESTAMP,
+                rating: 0,
+                ratingCount: 0
+            };
+            
+            if (selectedMethod === 'html') {
+                formData.htmlCode = document.getElementById('admin-html-code').value.trim();
+                if (!formData.htmlCode) {
+                    showAlert('Please provide HTML code', 'warning');
+                    return;
+                }
+            } else {
+                formData.gameUrl = document.getElementById('admin-game-url').value.trim();
+                if (!formData.gameUrl) {
+                    showAlert('Please provide website URL', 'warning');
+                    return;
+                }
+                
+                formData.htmlCode = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${formData.title}</title>
+    <style>
+        body, html { margin: 0; padding: 0; height: 100vh; overflow: hidden; }
+        iframe { width: 100vw; height: 100vh; border: none; }
+    </style>
+</head>
+<body>
+    <iframe src="${formData.gameUrl}" allowfullscreen></iframe>
+</body>
+</html>`;
+            }
+            
+            const ref = isEditing ? adminDb.ref(`items/${editKey}`) : adminDb.ref('items').push();
+            
+            ref.set(formData).then(() => {
+                showAlert(`${isEditing ? 'Updated' : 'Published'} successfully!`, 'success');
+                adminUploadForm.reset();
+                document.getElementById('edit-key').value = '';
+                document.getElementById('upload-form-title').innerHTML = '<span>➕</span> Admin Upload';
+                selectUploadMethod('html');
+            }).catch(err => {
+                showAlert(`Error: ${err.message}`, 'danger');
+            });
+        });
+
+        // Chat System Functions
+        function openChatSystem() {
+            chatFullscreen.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeChatSystem() {
+            chatFullscreen.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function loadChatUsers() {
+            adminDb.ref('chats').on('value', (snapshot) => {
+                allChatUsers = snapshot.val() || {};
+                renderChatUsers();
+                updateNotificationBadge();
+            });
+        }
+
+        function renderChatUsers() {
+            chatUsersRow.innerHTML = '';
+            totalUnreadMessages = 0;
+
+            Object.entries(allChatUsers).forEach(([userId, userData]) => {
+                const userDiv = document.createElement('div');
+                userDiv.className = 'chat-user-avatar';
+                userDiv.dataset.userId = userId;
+                userDiv.onclick = () => selectChatUser(userId);
+
+                const userName = userData.userName || userId.replace('user_', 'User ');
+                const userInitial = userName.charAt(0).toUpperCase();
+                const isOnline = userData.userActive || (userData.lastActivity && Date.now() - userData.lastActivity < 5 * 60 * 1000);
+                
+                let unreadCount = 0;
+                if (userData.messages) {
+                    const messages = Object.values(userData.messages);
+                    unreadCount = messages.filter(msg => 
+                        msg.sender === 'user' && !msg.read && msg.timestamp > (Date.now() - 24 * 60 * 60 * 1000)
+                    ).length;
+                    totalUnreadMessages += unreadCount;
+                }
+
+                userDiv.innerHTML = `
+                    ${userInitial}
+                    ${isOnline ? '<div class="user-status-indicator"></div>' : ''}
+                    ${unreadCount > 0 ? `<div class="user-unread-badge">${unreadCount > 99 ? '99+' : unreadCount}</div>` : ''}
+                `;
+
+                userDiv.title = `${userName}${isOnline ? ' (Online)' : ' (Offline)'}`;
+                chatUsersRow.appendChild(userDiv);
+            });
+
+            if (Object.keys(allChatUsers).length === 0) {
+                chatUsersRow.innerHTML = '<div style="color: var(--text-secondary); padding: 20px; text-align: center; width: 100%;">No users found</div>';
+            }
+        }
+
+        function updateNotificationBadge() {
+            if (totalUnreadMessages > 0) {
+                chatNotificationBadge.textContent = totalUnreadMessages > 99 ? '99+' : totalUnreadMessages;
+                chatNotificationBadge.style.display = 'flex';
+            } else {
+                chatNotificationBadge.style.display = 'none';
+            }
+        }
+
+        function selectChatUser(userId) {
+            currentChatUser = userId;
+            
+            document.querySelectorAll('.chat-user-avatar').forEach(item => {
+                item.classList.remove('active');
+            });
+            document.querySelector(`[data-user-id="${userId}"]`).classList.add('active');
+
+            chatSelectedUser.style.display = 'block';
+            chatInputArea.style.display = 'block';
+
+            const userData = allChatUsers[userId];
+            const userName = userData.userName || userId.replace('user_', 'User ');
+            const isOnline = userData.userActive || (userData.lastActivity && Date.now() - userData.lastActivity < 5 * 60 * 1000);
+            const lastSeen = userData.lastActivity ? formatTime(userData.lastActivity) : 'Never';
+
+            selectedUserName.textContent = userName;
+            selectedUserStatus.textContent = isOnline ? '🟢 Online' : `⚫ Last seen ${lastSeen}`;
+
+            loadChatMessages(userId);
+            markMessagesAsRead(userId);
+        }
+
+        function loadChatMessages(userId) {
+            chatMessagesArea.innerHTML = '';
+
+            adminDb.ref(`chats/${userId}/messages`).off();
+
+            adminDb.ref(`chats/${userId}/messages`).orderByChild('timestamp').on('child_added', (snapshot) => {
+                const message = snapshot.val();
+                displayMessage(message);
+            });
+
+            adminDb.ref(`chats/${userId}/messages`).on('child_removed', (snapshot) => {
+                const msgElement = document.getElementById(`msg-${snapshot.key}`);
+                if (msgElement) msgElement.remove();
+            });
+        }
+
+        function displayMessage(msg) {
+            const div = document.createElement('div');
+            div.className = `chat-message ${msg.sender}`;
+            div.id = `msg-${msg.id}`;
+
+            const time = formatTime(msg.timestamp);
+            const userName = msg.userName || (msg.sender === 'user' ? allChatUsers[currentChatUser]?.userName || 'User' : 'Admin');
+            const avatarInitial = userName.charAt(0).toUpperCase();
+
+            const bubbleDiv = document.createElement('div');
+            bubbleDiv.className = 'chat-message-bubble';
+            bubbleDiv.innerHTML = `
+                ${msg.text}
+                <div class="chat-message-time">${time}</div>
+                <button class="chat-delete-btn" onclick="deleteMessage('${currentChatUser}', '${msg.id}')">×</button>
+            `;
+
+            const avatarDiv = document.createElement('div');
+            avatarDiv.className = 'chat-message-avatar';
+            avatarDiv.textContent = avatarInitial;
+
+            div.appendChild(avatarDiv);
+            div.appendChild(bubbleDiv);
+
+            chatMessagesArea.appendChild(div);
+            chatMessagesArea.scrollTop = chatMessagesArea.scrollHeight;
+        }
+
+        function sendMessage() {
+            if (!currentChatUser) return;
+            
+            const text = chatInput.value.trim();
+            if (!text) return;
+
+            const messageData = {
+                id: Date.now().toString(),
+                sender: 'admin',
+                text: text,
+                timestamp: Date.now(),
+                userName: 'Admin',
+                read: true
+            };
+
+            const newMsg = adminDb.ref(`chats/${currentChatUser}/messages`).push();
+            messageData.id = newMsg.key;
+            
+            newMsg.set(messageData);
+            adminDb.ref(`chats/${currentChatUser}/lastActivity`).set(Date.now());
+            
+            chatInput.value = '';
+            chatInput.style.height = 'auto';
+        }
+
+        function markMessagesAsRead(userId) {
+            const messagesRef = adminDb.ref(`chats/${userId}/messages`);
+            messagesRef.once('value', (snapshot) => {
+                const messages = snapshot.val() || {};
+                const updates = {};
+                
+                Object.keys(messages).forEach(msgId => {
+                    const msg = messages[msgId];
+                    if (msg.sender === 'user' && !msg.read) {
+                        updates[`${msgId}/read`] = true;
+                    }
+                });
+                
+                if (Object.keys(updates).length > 0) {
+                    messagesRef.update(updates);
+                }
+            });
+        }
+
+        function deleteMessage(userId, messageId) {
+            showConfirm(
+                '🗑️ Delete Message',
+                'Are you sure you want to delete this message?',
+                () => {
+                    adminDb.ref(`chats/${userId}/messages/${messageId}`).remove()
+                        .then(() => showAlert('Message deleted!', 'success'))
+                        .catch(err => showAlert('Error deleting message', 'danger'));
+                }
+            );
+        }
+
+        function addNewUser() {
+            const userName = prompt('Enter user name:');
+            if (userName && userName.trim()) {
+                const userId = `user_${Date.now()}`;
+                const newUserData = {
+                    userName: userName.trim(),
+                    userActive: false,
+                    lastActivity: Date.now(),
+                    messages: {
+                        welcome: {
+                            id: 'welcome',
+                            sender: 'admin',
+                            text: `Welcome ${userName.trim()}! How can I help you today? 😊`,
+                            timestamp: Date.now(),
+                            userName: 'Admin',
+                            read: true
+                        }
+                    }
+                };
+
+                adminDb.ref(`chats/${userId}`).set(newUserData)
+                    .then(() => {
+                        showAlert('User added successfully!', 'success');
+                        selectChatUser(userId);
+                    })
+                    .catch(() => showAlert('Error adding user', 'danger'));
+            }
+        }
+
+        function clearAllChats() {
+            showConfirm(
+                '🗑️ Clear All Chats',
+                'This will delete ALL chat conversations. This action cannot be undone!',
+                () => {
+                    adminDb.ref('chats').remove()
+                        .then(() => {
+                            showAlert('All chats cleared!', 'success');
+                            currentChatUser = null;
+                            chatSelectedUser.style.display = 'none';
+                            chatInputArea.style.display = 'none';
+                            chatMessagesArea.innerHTML = '<div class="chat-no-selection"><div style="font-size: 48px; margin-bottom: 16px; opacity: 0.3;">💬</div><h3>Professional Chat Management</h3><p>Select a user from above to start managing conversations</p></div>';
+                        })
+                        .catch(() => showAlert('Error clearing chats', 'danger'));
+                }
+            );
+        }
+
+        function formatTime(timestamp) {
+            const now = Date.now();
+            const diff = now - timestamp;
+            
+            if (diff < 60000) return 'now';
+            else if (diff < 3600000) return `${Math.floor(diff / 60000)}m`;
+            else if (diff < 86400000) return `${Math.floor(diff / 3600000)}h`;
+            else return new Date(timestamp).toLocaleDateString();
+        }
+
+        // Auto-resize chat input
+        chatInput.addEventListener('input', () => {
+            chatInput.style.height = 'auto';
+            chatInput.style.height = Math.min(chatInput.scrollHeight, 100) + 'px';
+        });
+
+        // Send message on Enter
+        chatInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+
+        // Modal Functions
         function showConfirm(title, message, onConfirm) {
             document.getElementById('confirm-title').textContent = title;
-            document.getElementById('confirm-message').textContent = message;
+            document.getElementById('confirm-message').innerHTML = message;
             confirmModal.style.display = 'flex';
             
             document.getElementById('confirm-ok').onclick = () => {
@@ -1193,22 +2063,47 @@
                 confirmModal.style.display = 'none';
             };
         }
-        
-        // Alert Function
-        function showAlert(message, type = 'info') {
+
+        // Close modals on outside click
+        confirmModal.addEventListener('click', e => {
+            if (e.target === confirmModal) {
+                confirmModal.style.display = 'none';
+            }
+        });
+
+        reviewModal.addEventListener('click', e => {
+            if (e.target === reviewModal) {
+                closeReviewModal();
+            }
+        });
+
+        // Professional Alert Function
+        function showAlert(message, type = 'success') {
             const toast = document.createElement('div');
+            const bgColor = {
+                success: 'linear-gradient(135deg, #10b981, #059669)',
+                danger: 'linear-gradient(135deg, #ef4444, #dc2626)',
+                warning: 'linear-gradient(135deg, #f59e0b, #d97706)',
+                info: 'linear-gradient(135deg, #3b82f6, #2563eb)'
+            };
+            
             toast.style.cssText = `
                 position: fixed;
-                top: 20px;
+                top: 80px;
                 right: 20px;
-                background: ${type === 'danger' ? '#dc3545' : type === 'success' ? '#28a745' : type === 'warning' ? '#ffc107' : '#17a2b8'};
-                color: ${type === 'warning' ? '#333' : 'white'};
-                padding: 1rem 1.5rem;
-                border-radius: 10px;
-                z-index: 3000;
-                box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+                background: ${bgColor[type] || bgColor.success};
+                color: white;
+                padding: 16px 20px;
+                border-radius: 12px;
+                z-index: 5000;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.2);
                 transform: translateX(100%);
-                transition: transform 0.3s ease;
+                transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                font-weight: 600;
+                max-width: 320px;
+                font-size: 14px;
+                line-height: 1.4;
+                backdrop-filter: blur(10px);
             `;
             toast.textContent = message;
             document.body.appendChild(toast);
@@ -1217,114 +2112,18 @@
             setTimeout(() => {
                 toast.style.transform = 'translateX(100%)';
                 setTimeout(() => document.body.removeChild(toast), 300);
-            }, 3000);
+            }, 4000);
         }
-        
-        // Action Functions
-        window.rejectItem = key => {
-            showConfirm(
-                '❌ Reject Submission',
-                'Are you sure you want to reject this submission? This action cannot be undone.',
-                () => {
-                    adminDb.ref(`pendingSubmissions/${key}`).remove()
-                        .then(() => {
-                            showAlert('Submission rejected successfully', 'success');
-                            logActivity('❌ Rejected a submission');
-                        })
-                        .catch(err => showAlert(`Error: ${err.message}`, 'danger'));
-                }
-            );
-        };
-        
-        window.deleteItem = key => {
-            showConfirm(
-                '🗑️ Delete Item',
-                'Are you sure you want to permanently delete this published item?',
-                () => {
-                    adminDb.ref(`items/${key}`).remove()
-                        .then(() => {
-                            showAlert('Item deleted successfully', 'success');
-                            logActivity('🗑️ Deleted a published item');
-                        })
-                        .catch(err => showAlert(`Error: ${err.message}`, 'danger'));
-                }
-            );
-        };
-        
-        // Form Functions
-        const populateForm = (data, key, pendingKey = '') => {
-            itemForm.reset();
-            document.getElementById('form-title').innerText = key ? '✏️ Edit Item' : '➕ Add New Item';
-            itemForm['item-key'].value = key || '';
-            itemForm['pending-key'].value = pendingKey;
-            itemForm['user-email-field'].value = data.userEmail || '';
-            itemForm['item-html'].value = data.htmlCode || '';
-            itemForm['item-title'].value = data.title || '';
-            itemForm['item-logo'].value = data.logo || '';
-            itemForm['item-type'].value = data.type || '';
-            
-            switchSection('form');
-        };
-        
-        window.approveItem = key => {
-            adminDb.ref(`pendingSubmissions/${key}`).once('value', snapshot => {
-                populateForm(snapshot.val(), '', key);
-                document.getElementById('form-title').innerText = '✅ Approve Submission';
-            });
-        };
-        
-        window.editItem = key => {
-            adminDb.ref(`items/${key}`).once('value', snapshot => {
-                populateForm(snapshot.val(), key);
-            });
-        };
-        
-        // Form Submission
-        itemForm.addEventListener('submit', e => {
-            e.preventDefault();
-            
-            const key = itemForm['item-key'].value;
-            const ref = key ? adminDb.ref(`items/${key}`) : adminDb.ref('items').push();
-            
-            const itemData = {
-                htmlCode: itemForm['item-html'].value,
-                title: itemForm['item-title'].value,
-                logo: itemForm['item-logo'].value,
-                type: itemForm['item-type'].value,
-                rating: 0,
-                ratingCount: 0,
-                createdAt: firebase.database.ServerValue.TIMESTAMP,
-                userEmail: itemForm['user-email-field'].value || null
-            };
-            
-            ref.set(itemData).then(() => {
-                showAlert('Item saved successfully!', 'success');
-                logActivity(`💾 ${key ? 'Updated' : 'Created'} item: ${itemData.title}`);
-                
-                const pendingKey = itemForm['pending-key'].value;
-                if (pendingKey) {
-                    adminDb.ref(`pendingSubmissions/${pendingKey}`).remove();
-                    logActivity('✅ Approved a submission');
-                }
-                
-                itemForm.reset();
-                document.getElementById('form-title').innerText = '➕ Add New Item';
-                switchSection('published');
-            }).catch(err => {
-                showAlert(`Error: ${err.message}`, 'danger');
-            });
-        });
-        
-        // Close modals on outside click
-        reviewModal.addEventListener('click', e => {
-            if (e.target === reviewModal) closeReviewModal();
-        });
-        
-        confirmModal.addEventListener('click', e => {
-            if (e.target === confirmModal) {
-                confirmModal.style.display = 'none';
+
+        // Auto-refresh every 30 seconds
+        setInterval(() => {
+            if (currentChatUser && allChatUsers[currentChatUser]) {
+                const userData = allChatUsers[currentChatUser];
+                const isOnline = userData.userActive || (userData.lastActivity && Date.now() - userData.lastActivity < 5 * 60 * 1000);
+                const lastSeen = userData.lastActivity ? formatTime(userData.lastActivity) : 'Never';
+                selectedUserStatus.textContent = isOnline ? '🟢 Online' : `⚫ Last seen ${lastSeen}`;
             }
-        });
+        }, 30000);
     </script>
 </body>
 </html>
