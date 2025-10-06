@@ -1,43 +1,141 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-  <!-- Homepage -->
   <url>
-    <loc>https://alplayhup.netlify.app/</loc>
+    <loc>https://alplayhub.netlify.app/</loc>
+    <lastmod>2025-10-06</lastmod>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
-
-  <!-- Main Pages -->
-  <url><loc>https://alplayhup.netlify.app/index.html</loc></url>
-  <url><loc>https://alplayhup.netlify.app/about-us.html</loc></url>
-  <url><loc>https://alplayhup.netlify.app/contact.html</loc></url>
-  <url><loc>https://alplayhup.netlify.app/privacy-policy.html</loc></url>
-  <url><loc>https://alplayhup.netlify.app/terms-of-service.html</loc></url>
-  <url><loc>https://alplayhup.netlify.app/feedback.html</loc></url>
-
-  <!-- Games -->
-  <url><loc>https://alplayhup.netlify.app/ABCTripleMatch.html</loc></url>
-  <url><loc>https://alplayhup.netlify.app/FlappyAdventure.html</loc></url>
-  <url><loc>https://alplayhup.netlify.app/FruzoSlicer.html</loc></url>
-  <url><loc>https://alplayhup.netlify.app/SkyFlip.html</loc></url>
-  <url><loc>https://alplayhup.netlify.app/Zigra.html</loc></url>
-
-  <!-- YouTube Tools -->
-  <url><loc>https://alplayhup.netlify.app/All-YTAnalyzr.html</loc></url>
-  <url><loc>https://alplayhup.netlify.app/YTAnalyzr.html</loc></url>
-  <url><loc>https://alplayhup.netlify.app/YouTube_CTR_Predictor.html</loc></url>
-  <url><loc>https://alplayhup.netlify.app/YouTube_Tags_Extractor.html</loc></url>
-  <url><loc>https://alplayhup.netlify.app/YouTube_Title_Generator.html</loc></url>
-  <url><loc>https://alplayhup.netlify.app/YouTube_Transcript_Generator.html</loc></url>
-
-  <!-- Extra Tools -->
-  <url><loc>https://alplayhup.netlify.app/FreeCryptoAirdrops.html</loc></url>
-  <url><loc>https://alplayhup.netlify.app/Generator.html</loc></url>
-  <url><loc>https://alplayhup.netlify.app/Metadata_Extractor.html</loc></url>
-  <url><loc>https://alplayhup.netlify.app/Title_Generator.html</loc></url>
-  <url><loc>https://alplayhup.netlify.app/viral_hashtags.html</loc></url>
-
-  <!-- Admin (optional: keep/remove as per choice) -->
-  <url><loc>https://alplayhup.netlify.app/admin.html</loc></url>
-
+  <url>
+    <loc>https://alplayhub.netlify.app/alplayhup-main/ABCTripleMatch.html</loc>
+    <lastmod>2025-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://alplayhub.netlify.app/alplayhup-main/All-YTAnalyzr.html</loc>
+    <lastmod>2025-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://alplayhub.netlify.app/alplayhup-main/FlappyAdventure.html</loc>
+    <lastmod>2025-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://alplayhub.netlify.app/alplayhup-main/FreeCryptoAirdrops.html</loc>
+    <lastmod>2025-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://alplayhub.netlify.app/alplayhup-main/FruzoSlicer.html</loc>
+    <lastmod>2025-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://alplayhub.netlify.app/alplayhup-main/Generator.html</loc>
+    <lastmod>2025-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://alplayhub.netlify.app/alplayhup-main/Metadata_Extractor.html</loc>
+    <lastmod>2025-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://alplayhub.netlify.app/alplayhup-main/Privacy-Policy.html</loc>
+    <lastmod>2025-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://alplayhub.netlify.app/alplayhup-main/SkyFlip.html</loc>
+    <lastmod>2025-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://alplayhub.netlify.app/alplayhup-main/Title_Generator.html</loc>
+    <lastmod>2025-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://alplayhub.netlify.app/alplayhup-main/YTAnalyzr.html</loc>
+    <lastmod>2025-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://alplayhub.netlify.app/alplayhup-main/YouTube_CTR_Predictor.html</loc>
+    <lastmod>2025-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://alplayhub.netlify.app/alplayhup-main/YouTube_Tags_Extractor.html</loc>
+    <lastmod>2025-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://alplayhub.netlify.app/alplayhup-main/YouTube_Title_Generator.html</loc>
+    <lastmod>2025-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://alplayhub.netlify.app/alplayhup-main/YouTube_Transcript_Generator.html</loc>
+    <lastmod>2025-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://alplayhub.netlify.app/alplayhup-main/about-us.html</loc>
+    <lastmod>2025-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://alplayhub.netlify.app/alplayhup-main/admin.html</loc>
+    <lastmod>2025-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://alplayhub.netlify.app/alplayhup-main/contact.html</loc>
+    <lastmod>2025-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://alplayhub.netlify.app/alplayhup-main/feedback.html</loc>
+    <lastmod>2025-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://alplayhub.netlify.app/alplayhup-main/index.html</loc>
+    <lastmod>2025-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://alplayhub.netlify.app/alplayhup-main/terms-of-service.html</loc>
+    <lastmod>2025-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://alplayhub.netlify.app/alplayhup-main/viral_hashtags.html</loc>
+    <lastmod>2025-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>

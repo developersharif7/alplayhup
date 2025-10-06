@@ -1,5 +1,7 @@
-
 User-agent: *
 Allow: /
-
 Sitemap: https://alplayhub.netlify.app/sitemap.xml
+
+# Optional: block admin or private folders
+Disallow: /admin/
+Disallow: /_data/
