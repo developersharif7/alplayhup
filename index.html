@@ -169,41 +169,28 @@
             --search-bg: rgba(255, 243, 224, 0.8);
             --ripple-color: rgba(255, 87, 34, 0.15);
         }
-
-        /* Nature Theme */
-        [data-theme="nature"] {
-            --app-bg: #F1F8E9;
-            --card-bg: #FFFFFF;
-            --primary-color: #4CAF50;
-            --secondary-color: #8BC34A;
-            --accent-color: #009688;
-            --header-bg: #FFFFFF;
-            --nav-bg: #FFFFFF;
-            --text-primary: #4CAF50;
-            --text-secondary: #2E7D32;
-            --text-on-header: #4CAF50;
-            --text-on-nav: #4CAF50;
-            --border-color: #C8E6C9;
-            --search-bg: rgba(241, 248, 233, 0.8);
-            --ripple-color: rgba(76, 175, 80, 0.15);
-        }
-
-        /* Royal Theme */
-        [data-theme="royal"] {
-            --app-bg: #F3E5F5;
-            --card-bg: #FFFFFF;
-            --primary-color: #9C27B0;
-            --secondary-color: #673AB7;
-            --accent-color: #E91E63;
-            --header-bg: #FFFFFF;
-            --nav-bg: #FFFFFF;
-            --text-primary: #9C27B0;
-            --text-secondary: #4A148C;
-            --text-on-header: #9C27B0;
-            --text-on-nav: #9C27B0;
-            --border-color: #E1BEE7;
-            --search-bg: rgba(243, 229, 245, 0.8);
-            --ripple-color: rgba(156, 39, 176, 0.15);
+        /* ✅ NEW: Dark Theme */
+        [data-theme="dark"] {
+            --app-bg: #000000;
+            --card-bg: #1A1A1A;
+            --primary-color: #BB86FC;
+            --secondary-color: #03DAC6;
+            --accent-color: #CF6679;
+            --header-bg: #1A1A1A;
+            --nav-bg: #1A1A1A;
+            --text-primary: #FFFFFF;
+            --text-secondary: #B3B3B3;
+            --text-on-header: #FFFFFF;
+            --text-on-nav: #FFFFFF;
+            --border-color: #333333;
+            --search-bg: rgba(26, 26, 26, 0.95);
+            --search-border: rgba(255, 255, 255, 0.2);
+            --search-icon: rgba(255, 255, 255, 0.7);
+            --search-placeholder: rgba(255, 255, 255, 0.5);
+            --ripple-color: rgba(187, 134, 252, 0.15);
+            --elevation-1: 0 1px 1px rgba(255,255,255,0.04);
+            --elevation-2: 0 1px 2px rgba(255,255,255,0.06);
+            --elevation-3: 0 2px 3px rgba(255,255,255,0.08);
         }
 
         /* Apply theme variables to elements */
@@ -947,13 +934,92 @@
             transform: translateY(0);
         }
         
-        /* ✅ IMPROVED APK PAGE: Better Grid Layout with Larger Images */
+        /* ✅ FIXED: Proper 3-Column Grid Layout for APK Games */
+        .apk-games-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            padding: 4px;
+            justify-items: center;
+            max-width: 100%;
+        }
+
+        .apk-game-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            position: relative;
+            background: transparent !important;
+            border: none !important;
+            padding: 0;
+            width: 100%;
+            max-width: 95px;
+            flex-shrink: 0;
+        }
+
+        .apk-game-card:hover {
+            transform: scale(1.05);
+        }
+
+        .apk-game-card:active {
+            transform: scale(0.95);
+        }
+
+        .apk-game-card .game-image {
+            width: 76px;
+            height: 76px;
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--card-bg);
+            margin-bottom: 6px;
+            position: relative;
+            transition: all 0.15s ease;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--elevation-1);
+        }
+
+        .apk-game-card:hover .game-image {
+            box-shadow: var(--elevation-2);
+        }
+
+        .apk-game-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .apk-game-card .fallback-icon {
+            font-size: 24px;
+            color: var(--primary-color);
+        }
+
+        .apk-game-card .game-title {
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--text-primary);
+            line-height: 1.2;
+            width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            margin-bottom: 4px;
+            text-align: center;
+        }
+
+        /* ✅ IMPROVED: Online Games Grid Layout */
         .online-games-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 8px;
-            padding: 4px 4px;
+            padding: 4px;
             justify-items: center;
+            max-width: 100%;
         }
 
         .online-game-card {
@@ -966,7 +1032,8 @@
             background: transparent !important;
             border: none !important;
             padding: 0;
-            width: 85px;
+            width: 100%;
+            max-width: 95px;
             flex-shrink: 0;
         }
 
@@ -991,6 +1058,7 @@
             position: relative;
             transition: all 0.15s ease;
             border: 1px solid var(--border-color);
+            box-shadow: var(--elevation-1);
         }
 
         .online-game-card:hover .game-image {
@@ -1039,7 +1107,7 @@
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;Tools
+            right: 0;
             height: 2px;
             background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
         }
@@ -1259,6 +1327,10 @@
             background: linear-gradient(135deg, var(--teal-color), var(--success-color));
         }
 
+        .action-icon.crypto {
+            background: linear-gradient(135deg, #FF9800, #E91E63);
+        }
+
         .action-icon.explore {
             background: linear-gradient(135deg, var(--indigo-color), var(--primary-color));
         }
@@ -1271,14 +1343,14 @@
             border-radius: 12px;
             padding: 6px 8px;
             font-size: 8px;
-            font-weight: 600;
+            font-weight: 1000;
             cursor: pointer;
             transition: all 0.2s ease;
             display: flex;
             align-items: center;
-            gap: 2px;
-            margin-top: 4px;
-            width: 100%;
+            gap: 6px;
+            margin-top: 10px;
+            width: 80%;
             justify-content: center;
         }
 
@@ -1295,10 +1367,10 @@
         .apk-free-notice {
             background: linear-gradient(135deg, var(--success-color), var(--teal-color));
             color: white;
-            padding: 12px;
-            border-radius: 12px;
+            padding: 5px;
+            border-radius: 10px;
             text-align: center;
-            margin-bottom: 16px;
+            margin-bottom: 10px;
             box-shadow: var(--elevation-2);
         }
 
@@ -1910,10 +1982,6 @@
                     <i class="fas fa-code"></i>
                     <span>Developer Info</span>
                 </a>
-                <a class="side-menu-item" onclick="openCryptoPage(); closeSideMenu();" style="background: linear-gradient(135deg, #FF9800, #E91E63); color: white; border-radius: 8px; margin: 8px 0; animation: pulse 2s infinite;">
-                    <i class="fas fa-coins" style="color: white;"></i>
-                    <span style="font-weight: 600;">🚀 Free Crypto Airdrops</span>
-                </a>
                 <button id="side-menu-close-btn" class="side-menu-close-btn">
                     <i class="fas fa-times mr-2"></i>Close
                 </button>
@@ -2147,6 +2215,10 @@
                             <span class="text-sm mr-2">🌐</span>
                             <span class="text-xs font-medium">Visit Website</span>
                         </a>
+                        <a href="#" onclick="openCryptoPage(); toggleAPKMenu();" class="flex items-center px-3 py-2 text-gray-700 hover:bg-blue-50 border-b border-gray-100 transition-all duration-200">
+                            <span class="text-sm mr-2">🚀</span>
+                            <span class="text-xs font-medium">Free Crypto Airdrops</span>
+                        </a>
                         <a href="mailto:ms2600971@gmail.com" class="flex items-center px-3 py-2 text-gray-700 hover:bg-blue-50 transition-all duration-200">
                             <span class="text-sm mr-2">📧</span>
                             <span class="text-xs font-medium">Support</span>
@@ -2193,6 +2265,8 @@
                         <p>Download APK files + Get complete HTML source code for all projects - Completely FREE!</p>
                     </div>
 
+                    
+
                     <!-- Search Bar - Same style as home -->
                     <div class="search-bar-container mb-3">
                         <i class="fas fa-search"></i>
@@ -2218,14 +2292,13 @@
                         </button>
                     </div>
 
-                    <!-- Games Sections -->
+                    <!-- ✅ FIXED: APK Games Grid Layout -->
                     <div id="apk-gamesSections" class="hidden">
                         <h2 class="text-base font-bold my-2 px-1 text-textDark flex items-center">
                             🎮 Games & Source Code <span class="ml-2 text-sm font-semibold opacity-60" id="apk-gameCount"></span>
                         </h2>
-                        <div class="category-scroll-container">
-                            <div id="apk-allGames" class="flex gap-3"></div>
-                        </div>
+                        <!-- ✅ CHANGED: Using proper 3-column grid instead of horizontal scroll -->
+                        <div id="apk-allGames" class="apk-games-grid"></div>
                     </div>
 
                     <!-- No Results -->
@@ -2317,6 +2390,14 @@
                             <p class="text-xs mt-1 text-gray-600 font-normal leading-tight">ToolKit</p>
                         </div>
                         
+                         <!-- Content Creator Tools Icon -->
+                        <div class="text-center w-14">
+                            <button onclick="openCryptoPage()" class="action-icon creator-tools mx-auto w-9 h-9" title="Content Creator Tools">
+                                <i class="fas fa-coins text-sm"></i>
+                            </button>
+                            <p class="text-xs mt-1 text-gray-600 font-normal leading-tight">crypto</p>
+                        </div>
+                     
                         <!-- Content Creator Tools Icon -->
                         <div class="text-center w-14">
                             <button onclick="openCreatorTools()" class="action-icon creator-tools mx-auto w-9 h-9" title="Content Creator Tools">
@@ -2694,13 +2775,14 @@
         let isChatOpen = false;
         let hasShownWelcome = false;
 
-        // ✅ ENHANCED THEME MANAGEMENT WITH MULTIPLE OPTIONS
+        // ✅ ENHANCED THEME MANAGEMENT WITH BLACK THEME
         const themes = [
             { name: 'light', label: 'Classic', icon: '☀️', color: '#FFFFFF' },
             { name: 'ocean', label: 'Ocean', icon: '🌊', color: '#E3F2FD' },
             { name: 'sunset', label: 'Sunset', icon: '🌅', color: '#FFF3E0' },
             { name: 'nature', label: 'Nature', icon: '🌿', color: '#F1F8E9' },
-            { name: 'royal', label: 'Royal', icon: '👑', color: '#F3E5F5' }
+            { name: 'royal', label: 'Royal', icon: '👑', color: '#F3E5F5' },
+            { name: 'dark', label: 'Dark', icon: '🌙', color: '#000000' }
         ];
 
         let currentThemeIndex = 0;
@@ -3950,7 +4032,7 @@
             }
         }
 
-        // ✅ APK DOWNLOADER TAB FUNCTIONS
+        // ✅ APK DOWNLOADER TAB FUNCTIONS - FIXED WITH PROPER 3-COLUMN GRID
         function initializeAPKDownloaderTab() {
             loadAPKGames();
         }
@@ -3976,24 +4058,22 @@
             return result;
         }
 
-        // ✅ ENHANCED APK CARD WITH BETTER STYLING AND FREE HTML NOTICE
-        function createMobileGameCard(game) {
+        // ✅ FIXED: APK Card with proper 3-column layout
+        function createAPKGameCard(game) {
             return `
-                <div class="item-card">
-                    <div class="card-image">
+                <div class="apk-game-card">
+                    <div class="game-image">
                         ${game.logo ? 
                             `<img src="${game.logo}" alt="${game.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                              <div class="fallback-icon" style="display:none;">🎮</div>` : 
                             `<div class="fallback-icon">🎮</div>`
                         }
                     </div>
-                    <div class="card-content">
-                        <div class="item-title">${game.name}</div>
-                        <button class="apk-download-btn" onclick="downloadGame('${game.url}', '${game.name}')">
-                            <i class="fas fa-download"></i>
-                            APK + HTML
-                        </button>
-                    </div>
+                    <div class="game-title">${game.name}</div>
+                    <button class="apk-download-btn" onclick="downloadGame('${game.url}', '${game.name}')">
+                        <i class="fas fa-download"></i>
+                        APK + HTML
+                    </button>
                 </div>
             `;
         }
@@ -4017,10 +4097,11 @@
                 const gameCount = document.querySelector('#apk-gameCount');
                 if (allGamesContainer && gameCount) {
                     allGamesContainer.innerHTML = '';
+                    // ✅ FIXED: Proper grid layout instead of horizontal append
                     allGames.forEach(game => {
-                        const gameElement = document.createElement('div');
-                        gameElement.innerHTML = createMobileGameCard(game);
-                        allGamesContainer.appendChild(gameElement.firstElementChild);
+                        const gameDiv = document.createElement('div');
+                        gameDiv.innerHTML = createAPKGameCard(game);
+                        allGamesContainer.appendChild(gameDiv.firstElementChild);
                     });
                     gameCount.textContent = `(${allGames.length})`;
                 }
@@ -4055,9 +4136,9 @@
                 if (allGamesContainer && gameCount) {
                     allGamesContainer.innerHTML = '';
                     filteredGames.forEach(game => {
-                        const gameElement = document.createElement('div');
-                        gameElement.innerHTML = createMobileGameCard(game);
-                        allGamesContainer.appendChild(gameElement.firstElementChild);
+                        const gameDiv = document.createElement('div');
+                        gameDiv.innerHTML = createAPKGameCard(game);
+                        allGamesContainer.appendChild(gameDiv.firstElementChild);
                     });
                     gameCount.textContent = `(${filteredGames.length})`;
                     document.querySelector('#apk-gamesSections h2').innerHTML = '🔍 Search Results <span class="ml-2 text-sm font-semibold opacity-60" id="apk-gameCount">('+filteredGames.length+')</span>';
@@ -4315,7 +4396,7 @@
         }
 
         window.showAbout = function() {
-            showModal('AlPlayHub v3.0\n\nUltimate HTML5 Games & Apps Platform\n\nDeveloped by Mohammed Sharif\n\nFeatures:\n• 5 Dynamic Themes\n• YouTube Creator Tools\n• Enhanced Chat System\n• APK + Source Downloads\n• Material Design\n• Android Optimized', '📱 About AlPlayHub');
+            showModal('AlPlayHub v3.0\n\nUltimate HTML5 Games & Apps Platform\n\nDeveloped by Mohammed Sharif\n\nFeatures:\n• 6 Dynamic Themes (including Dark)\n• YouTube Creator Tools\n• Enhanced Chat System\n• APK + Source Downloads\n• Material Design\n• Android Optimized', '📱 About AlPlayHub');
             document.getElementById('dropdown-menu').classList.remove('active');
         }
 
