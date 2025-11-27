@@ -4907,4 +4907,16 @@
         });
     </script>
 </body>
+<script>
+if (location.pathname !== "/" && location.pathname !== "/index.html") {
+  const key = location.pathname.substring(1);   // -Of5Kcs_...
+  firebase.database().ref(key).once("value").then(s => {
+    const g = s.val();
+    if (g && g.htmlCode) {
+      document.title = g.title title + " - AlPlayHub";
+      document.body.innerHTML = g.htmlCode;
+    }
+  });
+}
+</script>
 </html>
