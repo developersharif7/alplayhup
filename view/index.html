@@ -1,1 +1,30 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Loading...</title>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyCth7R_Lsz4e_2Y1W19Wor-e6e_H-Ha10g",
+    authDomain: "alplayhub-d1ea2.firebaseapp.com",
+    databaseURL: "https://alplayhub-d1ea2-default-rtdb.firebaseio.com",
+    projectId: "alplayhub-d1ea2",
+    storageBucket: "alplayhub-d1ea2.firebasestorage.app",
+    messagingSenderId: "1000142252130",
+    appId: "1:1000142252130:web:b7c455d88dbcacf40a093b"
+  };
+  firebase.initializeApp(firebaseConfig);
 
+  const key = location.pathname.split('/').pop();   // -Of5S9... ya jo bhi key ho
+  firebase.database().ref(key).once('value').then(s => {
+    const data = s.val();
+    if (data) {
+      document.title = (data.title || "Item") + " - AlPlayHub";
+      if (data.fullCode) {
+        document.body.innerHTML = data.fullCode;                 // HTML Game/Tool/App
+      } else if (data.gameUrl) {
+        document.body.innerHTML = `<iframe src="${data.gameUrl}" style="width:100%;height:100vh;border:none"></iframe>`;
+      }
+    }
+  });
+</script>
+</head><body></body></html>
