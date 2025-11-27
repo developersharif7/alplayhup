@@ -1,1 +1,41 @@
 
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Loading Game...</title>
+  <meta name="description" content="Free HTML5 Game">
+  <meta property="og:image" content="https://alplayhub.netlify.app/logo.png">
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyCth7R_Lsz4e_2Y1W19Wor-e6e_H-Ha10g",
+      authDomain: "alplayhub-d1ea2.firebaseapp.com",
+      databaseURL: "https://alplayhub-d1ea2-default-rtdb.firebaseio.com",
+      projectId: "alplayhub-d1ea2",
+      storageBucket: "alplayhub-d1ea2.firebasestorage.app",
+      messagingSenderId: "1000142252130",
+      appId: "1:1000142252130:web:b7c455d88dbcacf40a093b"
+    };
+    firebase.initializeApp(firebaseConfig);
+
+    const id = location.pathname.split('/').pop();  // g999
+    if (id && id.startsWith('g')) {
+      firebase.database().ref('approvedGames/' + id).once('value').then(snap => {
+        const game = snap.val();
+        if (game) {
+          document.title = game.title + " - Play Free on AlPlayHub";
+          document.querySelector('meta[name="description"]').content = game.title + " - Free HTML5 Game";
+          if (game.fullCode) {
+            document.body.innerHTML = game.fullCode;
+          } else if (game.gameUrl) {
+            document.body.innerHTML = `<iframe src="${game.gameUrl}" style="width:100%;height:100vh;border:none;margin:0;padding:0"></iframe>`;
+          }
+        }
+      });
+    }
+  </script>
+</head>
+<body></body>
+</html>
